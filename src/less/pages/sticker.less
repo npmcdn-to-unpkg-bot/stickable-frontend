@@ -1,0 +1,164 @@
+.sticker-splash {
+    // min-height: ~"calc(100vh - @{navbar-height} - 36px)"; // 36 = breadcrumbs
+
+    .sticker {
+        display: block;
+        margin: auto;
+    }
+
+    .desc {
+        clear: both;
+    }
+}
+
+// xs
+@media (max-width: @screen-xs-max) {
+    .sticker-splash h1,
+    .sticker-splash h2,
+    .sticker-info {
+        text-align: center;
+    }
+}
+
+// xs, sm, md
+// Below lg everything is in one column - add top margins to headings
+@media (max-width: @screen-md-max) {
+    .sticker-splash h2:first-child {
+        margin-top: 15px;
+    }
+}
+
+// sm, md, lg
+// Sticker floated left
+@media (min-width: @screen-sm-min) {
+    .sticker-splash h1 {
+        font-size: @font-size-h1;
+        margin-top: 0;
+        padding-top: 26px;
+    }
+
+    .sticker-splash .sticker {
+        float: left;
+        margin: 0 15px 15px 0;
+    }
+}
+
+@media (min-width: @screen-lg-min) {
+
+    // Who's got it section
+    .sticker-splash .row .row > :last-child {
+        margin-top: 30px;
+    }
+}
+
+.sticker-info {
+    font-size: @font-size-xs;
+    list-style: none;
+    padding: 0;
+
+    li {
+        margin-left: 15px;
+        display: inline;
+
+        &:first-child {
+            margin-left: 0;
+        }
+    }
+
+    a {
+        color: #fff;
+    }
+}
+
+.stickerPage .stickerImage {
+    border-radius: 3px;
+    margin-bottom: 15px;
+}
+
+.stickerPage .numberBox {
+    background: #2c3e50;
+    color: #fff;
+    display: block;
+    font-size: 16px;
+    text-align: center;
+    margin-top: 15px;
+    padding: 10px 20px;
+    border-radius: 3px;
+}
+
+.stickerPage .numberBox:first-child {
+    margin-top: 0;
+}
+
+.stickerPage .numberBox strong {
+    font-size: 20px;
+    display: block;
+}
+
+.stickerPage .numberBox .btn {
+    margin-top: 10px;
+}
+
+.activity-box-container {
+    padding: 0;
+}
+
+.tasks {
+    .fonty();
+
+    font-size: 23px;
+    background-color: #f5f5f5;
+    margin: 0 auto;
+    padding: 0;
+    position: relative;
+    list-style: none;
+
+    // Adds the "ruled margin" down the left
+    &:before {
+        content: "";
+        display: block;
+        border-left: 1px solid @purple;
+        border-right: 1px solid @purple;
+        width: 3px;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 20px;
+    }
+
+    li {
+        border-bottom: 1px dotted #ccc;
+        -webkit-transition: all 0.2s;
+        -moz-transition: all 0.2s;
+        -ms-transition: all 0.2s;
+        -o-transition: all 0.2s;
+
+        a {
+            display: block;
+            padding: 10px 10px 0 35px;
+            position: relative;
+        }
+
+        &.header a {
+            padding-top: 30px;
+        }
+
+        &.complete a {
+            text-decoration: line-through;
+            color: #aaa;
+
+            &:after {
+                content: "Complete \2713";
+                float: right;
+                font-size: 15px;
+                padding-top: 4px;
+            }
+        }
+
+        &:hover {
+            background-color: #f0f0f0;
+        }
+
+    }
+}
+

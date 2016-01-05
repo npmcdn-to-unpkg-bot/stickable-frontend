@@ -1,0 +1,17 @@
+{
+  "name": "stickable-frontend",
+  "private": true,
+  "dependencies": {
+    "angular": "1.4.8",
+    "angular-ui-router": "~0.2.15",
+    "bootstrap": "~3.3.6",
+    "angular-local-storage": "~0.2.3",
+    "angular-resource": "1.4.8",
+    "angular-sanitize": "1.4.8",
+    "angular-animate": "1.4.8",
+    "angular-modal-service": "https://github.com/dwmkerr/angular-modal-service.git#f656ba4",
+    "md5": "https://gist.githubusercontent.com/PixnBits/8811212/raw/d73b52f9b942704030913a28edaae855fb40800d/md5.js",
+    "messenger": "https://github.com/HubSpot/messenger.git#~1.4.2",
+    "jasny-bootstrap": "~3.1.3"
+  }
+}

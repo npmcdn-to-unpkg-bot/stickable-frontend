@@ -1,0 +1,125 @@
+.btn {
+    text-transform: capitalize;
+    text-shadow: none;
+
+    font-size: @btn-font-size;
+    border-radius: @btn-border-radius;
+    padding: (@btn-padding / 2) @btn-padding;
+
+    // Stops buttons touching when they're on a line below each other
+    //margin-bottom: 3px;
+
+    i {
+        position: relative;
+        top: 2px;
+        margin-right: 5px;
+    }
+}
+
+button .fa {
+    top:0;
+}
+
+.btn-labeled {
+    padding-left:11px;
+    padding-top: 0;
+    padding-bottom: 0;
+
+    .btn-label {
+        padding:7px 12px;
+    }
+
+    i {
+        top: 0;
+        margin: 0;
+    }
+}
+
+.btn-block.btn-labeled {
+    position: relative;
+    padding: (@btn-padding / 2) @btn-padding (@btn-padding / 2) (@btn-padding + 34);
+
+    .btn-label {
+        position: absolute;
+        top:0;
+        left:0;
+    }
+}
+
+.btn-lg {
+    font-size: @btn-font-size-lg;
+    padding: (@btn-padding-lg / 2) @btn-padding-lg;
+
+    &.btn-block.btn-labeled {
+        padding: (@btn-padding-lg / 2) @btn-padding-lg (@btn-padding-lg / 2) (@btn-padding-lg + 43);
+
+        .btn-label {
+            padding: 10px 12px;
+        }
+    }
+
+    i {
+        top: 0;
+    }
+}
+
+.btn-sm {
+    font-size: @btn-font-size-sm;
+    padding: (@btn-padding-sm / 2) @btn-padding-sm;
+}
+
+.btn {
+    .button-variant(@btn-text-color, @blue, @blue);
+}
+
+.btn-primary {
+    .button-variant(@btn-text-color, @purple, @purple);
+}
+
+.btn-danger {
+    .button-variant(@btn-text-color, @red, @red);
+}
+
+.btn-success {
+    .button-variant(@btn-text-color, @green, @green);
+}
+
+.btn-warning {
+    .button-variant(@btn-text-color, @yellow, @yellow);
+}
+
+// Probably not used
+.btn-orange {
+    .button-variant(@btn-text-color, @orange, @orange);
+}
+
+@media (max-width: @screen-xs-max) {
+    .btn {
+        .btn-block();
+        margin-bottom: 14px;
+
+        &.btn-labeled {
+            .btn-block.btn-labeled()
+        }
+    }
+}
+
+.fa-add-action:after,
+.fa-remove-action:after {
+    display: block;
+    position: absolute;
+    font-size: .5em;
+    bottom: -.2em;
+    right: -.2em;
+    background: white;
+    width: .5em;
+    height: .5em;
+}
+
+.fa-add-action:after {
+    content: "\f067";
+}
+
+.fa-remove-action:after {
+    content: "\f068";
+}

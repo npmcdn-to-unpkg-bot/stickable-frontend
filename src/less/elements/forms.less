@@ -1,0 +1,54 @@
+.form-horizontal {
+
+    h1 {
+        margin-top: 0;
+        margin-bottom: 25px;
+    }
+
+    .form-group {
+        margin-bottom: 25px;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+
+    .control-label {
+        margin-bottom: 3px;
+        padding-top: 0;
+        padding-right: 0;
+
+        .fa {
+            margin-left: 10px;
+        }
+    }
+
+    .has-error label {
+        color: #a94442;
+    }
+
+    .help-block {
+        margin: 5px 14px 0 14px;
+        font-size: 12px;
+    }
+
+}
+
+@media (min-width: @screen-md-min) {
+
+    .form-horizontal .control-label {
+        position: relative;
+        top: 6px;
+    }
+
+}
+
+@media (max-width: @screen-sm-max) {
+
+    .form-horizontal .control-label .fa {
+        float: left;
+        margin-left: 0;
+        margin-right: 10px;
+    }
+
+}

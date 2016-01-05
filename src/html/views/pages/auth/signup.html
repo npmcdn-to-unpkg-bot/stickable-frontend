@@ -1,0 +1,49 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="panel panel-default">
+                <div class="panel-heading"><h1>Create An Account</h1></div>
+                <div class="panel-body">
+
+                    <form class="form-horizontal" role="form" ng-submit="signup()">
+
+                        <div class="form-group" ng-class="{'has-error': signupFormData.errors.username}">
+                            <label class="col-md-4 control-label">Username <i class="fa fa-user"></i></label>
+                            <div class="col-md-8">
+                                <input type="text" class="form-control" name="username" ng-model="signupFormData.username" required />
+                                <span ng-if="signupFormData.errors.username" class="help-block">{{ signupFormData.errors.username.join(' ') }}</span>
+                            </div>
+                        </div>
+
+                        <div class="form-group" ng-class="{'has-error': signupFormData.errors.email}">
+                            <label class="col-md-4 control-label">E-Mail Address <i class="fa fa-envelope"></i></label>
+                            <div class="col-md-8">
+                                <input type="email" class="form-control" name="email" ng-model="signupFormData.email" required />
+                                <span ng-if="signupFormData.errors.email" class="help-block">{{ signupFormData.errors.email.join(' ') }}</span>
+                            </div>
+                        </div>
+
+                        <div class="form-group" ng-class="{'has-error': signupFormData.errors.password}">
+                            <label class="col-md-4 control-label">Password <i class="fa fa-key"></i></label>
+                            <div class="col-md-8">
+                                <input type="password" class="form-control" name="password" ng-model="signupFormData.password" required />
+                                <span ng-if="signupFormData.errors.password" class="help-block">{{ signupFormData.errors.password.join(' ') }}</span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-8 col-md-offset-4">
+                                <button type="submit" class="btn btn-primary">
+                                    <i class="fa fa-user fa-fw" ng-hide="signupFormData.loading"></i><i class="fa fa-spinner fa-spin fa-fw" ng-show="signupFormData.loading"></i> Signup
+                                </button>
+                            </div>
+                        </div>
+
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

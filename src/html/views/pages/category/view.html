@@ -1,0 +1,33 @@
+<!--
+<style type="text/css">
+#main:before { background-image:url("{{ $category->getBackgroundUrl() }}"); }
+</style>
+-->
+
+
+<h1>{{ category.name }}</h1>
+
+<h2 ng-if="hasSubcategories">Subcategories</h2>
+<ul ng-if="hasSubcategories" class="category-list row">
+    <li class="col-sm-3 col-xs-6" ng-repeat="subcategory in category.subcategories">
+        <a href="/category/{{ subcategory.slug }}" ng-style="{'background-image':'url('+subcategory.imageUrl+')'}">
+            <span>{{ subcategory.name }}</span>
+        </a>
+    </li>
+</ul>
+
+<h2 ng-if="hasStickers">Stickers</h2>
+<ul ng-if="hasStickers"class="sticker-list row">
+
+    <li class="col-sm-3" ng-repeat="sticker in category.stickers">
+        <a href="/sticker/{{ sticker.slug }}">
+            <span class="sticker" img="{{ sticker.imageUrl }}"></span>
+            <br/>{{ sticker.name }}
+        </a>
+    </li>
+
+</ul>
+
+<div class="alert alert-danger" ng-if="category && !hasSubcategories && !hasStickers">
+    <p><i class="fa fa-frown-o"></i> There are no stickers in this category.</p>
+</div>

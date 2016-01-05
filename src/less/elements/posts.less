@@ -1,0 +1,30 @@
+.posts {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    li {
+        display: block;
+        margin-bottom: 15px;
+        border-radius: @border-radius-base;
+        padding: 10px 15px;
+        background-color: #fcfcfc;
+
+        &:nth-child(even) {
+            background-color: #f0f0f0;
+        }
+
+        p {
+            margin: 0 0 10px;
+            line-height: 1.5;
+        }
+
+        .title {
+            font-size: @font-size-larger;
+        }
+
+        .date {
+            font-size: @font-size-smaller;
+        }
+    }
+}

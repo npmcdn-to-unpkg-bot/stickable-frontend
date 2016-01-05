@@ -1,0 +1,146 @@
+header.navbar {
+    margin-bottom: 0;
+    background: @navbar-color;
+    min-height: 0;
+    border: 0;
+    border-radius: 0;
+    font-size: @font-size-smaller;
+
+    -o-transition: background-color 0.2s ease-out;
+    -moz-transition: background-color 0.2s ease-out;
+    -webkit-transition: background-color 0.2s ease-out; /* Android 2.1+, Chrome 1-25, iOS 3.2-6.1, Safari 3.2-6  */
+    transition: background-color 0.2s ease-out; /* Chrome 26, Firefox 16+, iOS 7+, IE 10+, Opera, Safari 6.1+  */
+
+    .navbar-toggle {
+        padding-top: 4px;
+        padding-bottom: 0;
+        color: #fff;
+        margin-top: 8px;
+
+        .fa {
+            font-size: 20px;
+            position: relative;
+            top: 2px;
+            margin-left: 5px;
+        }
+    }
+
+    .nav > li > a {
+        color: #fff;
+
+        &:hover,
+        &:focus,
+        &:active {
+            background: #3e4148;
+            opacity: 1;
+        }
+    }
+
+    .nav .dropdown-menu > li > a:link {
+        color: #333;
+        text-shadow: none;
+    }
+
+    a {
+        font-size: @font-size-smaller;
+    }
+}
+
+.state-login #header-username,
+.state-login #header-password,
+.state-login #header-login-btn {
+    display: none;
+}
+
+.navbar-form {
+    font-size: @font-size-smaller;
+
+    input {
+        font-size: @font-size-smaller;
+        line-height: 18px;
+    }
+
+    .btn {
+        padding: 6px 12px;
+        margin-bottom: 5px;
+    }
+
+    .btn .fa {
+        top: 0px;
+        margin-right: 0px;
+    }
+}
+
+.navbar-logo {
+    display: inline-block;
+    width: 100px;
+    height: 30px;
+    position: relative;
+    top: -6px;
+    background: url('/assets/img/stickable-header.png') no-repeat top left;
+    background-size: 100%;
+    .hide-text();
+    float: left;
+}
+
+@media (min-width: @screen-md-min) {
+    .navbar-form {
+        padding: 0;
+        margin-top: 8px;
+
+        .btn {
+            margin-bottom: 0;
+            margin-left: 1px;
+        }
+    }
+}
+
+// When nav is collapsed (mobile)
+@media (max-width: @grid-float-breakpoint-max) {
+
+    .navbar-header {
+        height: 50px;
+        text-align: center;
+    }
+
+    .navbar-brand {
+        float: none
+    }
+
+    .navbar-logo {
+        float: none;
+        top: 8px;
+    }
+
+    .navbar-toggle {
+        float: left;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+
+    .navbar-nav {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    .navbar-collapse.collapse.in {
+
+        .nav .dropdown-menu > li > a:link,
+        .nav li > a {
+            color: #fff;
+        }
+
+        .nav li > a:hover,
+        .nav li > a:active,
+        .nav li > a:focus {
+            color: #fff;
+            background: #3e4148;
+            opacity: 1;
+        }
+
+        .nav li.divider {
+            display: none;
+        }
+    }
+}

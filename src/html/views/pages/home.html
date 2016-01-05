@@ -1,0 +1,62 @@
+<div class="splash home-splash" ng-style="{ 'background-image': 'url(' + splashImage + ')'}">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4">
+                <img src="/assets/img/stickable.png" alt="Stickable" id="home-splash-logo" />
+            </div>
+            <div class="col-sm-8 text-shadow">
+                <h2>Discover new hobbies, achieve your goals, and and earn real-life stickers to show off your progress.</h2>
+                <a class="btn" href="/help"><i class="fa fa-info"></i> Learn More</a>
+            </div>
+
+        </div>
+
+        <p class="text-center">Pick a category that interests you to get started.
+        <br/><i class="fa fa-caret-down"></i></p>
+    </div>
+</div>
+
+<section>
+    <ul id="home-categories" class="category-list row">
+        <li class="col-lg-3 col-sm-4 col-xs-6" ng-repeat="category in categories">
+            <a href="/category/{{ category.slug }}" ng-style="{'background-image':'url('+category.imageUrl+')'}">
+                <span>{{ category.name }}</span>
+            </a>
+        </li>
+    </ul>
+</section>
+
+<section id="how-it-works">
+<div class="container">
+
+    <h2>How Stickable Works</h2>
+
+    <div class="row">
+
+        <div class="col-md-3">
+            <i class="fa fa-5x fa-trophy"></i>
+            <h3>Choose<span>Goals (Stickers) To Work Towards</span></h3>
+        </div>
+
+        <div class="col-md-3">
+            <i class="fa fa-5x fa-check-square-o"></i>
+            <h3>Do<span>The Tasks - Create, Visit, Achieve</span></h3>
+        </div>
+
+        <div class="col-md-3">
+            <i class="fa fa-5x fa-camera-retro"></i>
+            <h3>Submit<span>Photos Of You Doing The Tasks</span></h3>
+        </div>
+
+        <div class="col-md-3">
+            <i class="fa fa-5x fa-certificate"></i>
+            <h3>Receive<span>The Stickers</span></h3>
+        </div>
+
+        <div class="col-md-4">
+
+        </div>
+    </div>
+
+</div>
+</section>

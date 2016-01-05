@@ -1,0 +1,51 @@
+.splash {
+    background: #000 center;
+    background-size: cover;
+    position: relative;
+    overflow: hidden;
+    padding: 30px 0;
+    color: #fff;
+
+    .vertical-center();
+
+    h1, h2 {
+        color: #fff;
+    }
+
+    .container {
+        position: relative;
+        z-index: 2;
+    }
+}
+
+.splash:before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 1;
+    background: transparent;
+    background: -moz-radial-gradient(center, ellipse cover, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.8) 100%);
+    background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, rgba(0, 0, 0, 0.4)), color-stop(100%, rgba(0, 0, 0, 0.8)));
+    background: -webkit-radial-gradient(center, ellipse cover, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.8) 100%);
+    background: -o-radial-gradient(center, ellipse cover, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.8) 100%);
+    background: -ms-radial-gradient(center, ellipse cover, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.8) 100%);
+    background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.8) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#33000000', endColorstr='#b3000000', GradientType=1);
+
+}
+
+@media (min-width: @screen-lg-min) {
+    .splash {
+        padding: 60px 0;
+    }
+}
+
+@media (max-width: @screen-xs-max) {
+    .splash {
+        padding: 30px 15px;
+    }
+}

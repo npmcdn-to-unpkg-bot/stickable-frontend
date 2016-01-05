@@ -1,0 +1,8 @@
+<div class="container">
+    <h1>{{ user.username }}'s To Do List</h1>
+
+    <ul>
+        <li ng-repeat="task in tasks"><a href="/task/{{ task.slug }}">{{ task.name }}</a></li>
+    </ul>
+
+</div>

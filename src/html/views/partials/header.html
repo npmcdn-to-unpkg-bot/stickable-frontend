@@ -1,0 +1,55 @@
+<header class="navbar" id="top-bar">
+    <div class="container">
+
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle"><i class="fa fa-bars"></i></button>
+            <a href="/" class="navbar-brand"><span class="navbar-logo"></span></a>
+        </div>
+
+
+        <nav role="navigation" id="top-bar-nav">
+
+            <ul class="nav navbar-nav">
+                <!--<li><a href="/activity/new"><i class="fa fa-plus fa-fw"></i> New Activity</a></li>-->
+                <li><a href="/sticker/random"><i class="fa fa-random fa-fw"></i> Random Sticker</a></li>
+                <li><a href="/help"><i class="fa fa-question fa-fw"></i> Help</a></li>
+            </ul>
+
+            <ul class="nav navbar-nav navbar-right nav-logged-in" ng-if="currentUser">
+
+                <li><a href="/user/{{ currentUser.username }}/todo"><i class="fa fa-check-square-o fa-fw"></i> To Do List</a></li>
+                <li><a href="/user/{{ currentUser.username }}/stickers"><i class="fa fa-camera-retro fa-fw"></i> Your Submissions</a></li>
+                <li><a href="/user/{{ currentUser.username }}/stickers"><i class="fa fa-trophy fa-fw"></i> Your Stickers</a></li>
+
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user fa-fw"></i> {{ currentUser.username }} <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/user/{{ currentUser.username }}"><i class="fa fa-user fa-fw"></i> Profile</a></li>
+                        <li class="divider"></li>
+                        <li><a href="/settings"><i class="fa fa-cog fa-fw"></i> Settings</a></li>
+                        <li class="divider"></li>
+                        <li><a ng-click="logout()"><i class="fa fa-unlock-alt fa-fw"></i> Logout</a></li>
+                    </ul>
+                </li>
+            </ul>
+
+            <form class="navbar-form navbar-right visible-lg" ng-submit="login()" ng-if="currentUser === false">
+
+                <div class="form-group">
+                    <input id="header-username" type="text" class="form-control input-sm" name="username" placeholder="Username" ng-model="loginFormData.username" />
+                </div>
+                <div class="form-group">
+                    <input id="header-password" type="password" class="form-control input-sm" name="password" placeholder="Password" ng-model="loginFormData.password" />
+                </div>
+                <button id="header-login-btn" type="submit" class="btn btn-primary"><i class="fa fa-key fa-fw" ng-hide="loginFormData.loading"></i><i class="fa fa-spinner fa-spin fa-fw" ng-show="loginFormData.loading"></i> Login</button>
+                <a class="btn" href="/signup"><i class="fa fa-user fa-fw"></i> Signup</a>
+            </form>
+            <ul class="nav navbar-nav navbar-right nav-logged-out"  ng-if="currentUser === false">
+                <li class="hidden-lg"><a href="/login"><i class="fa fa-key fa-fw"></i> Login</a></li>
+                <li class="hidden-lg"><a href="/signup"><i class="fa fa-user fa-fw"></i> Signup</a></li>
+            </ul>
+
+
+        </nav>
+    </div>
+</header>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="stickable" class="no-js" ng-csp>
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Rancho|Lato:300" />
+    <link rel="stylesheet" type="text/css" href="@@cssUrl" />
+    <meta charset="utf-8" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, target-densitydpi=device-dpi" />
+    <base href="/" />
+    <title>Stickable</title>
+</head>
+<body ng-class="'state-' + $state.current.name">
+
+    <div id="canvas">
+        <!--<i ng-show="loading" id="loader" class="fa fa-spin"></i>-->
+
+        <ng-include src="'views/partials/header.html'" ng-controller="HeaderController"></ng-include>
+
+        <div id="main" class="view-container">
+            <div class="view" ui-view ng-class="'view-' + $state.current.name"></div>
+        </div>
+
+        <ng-include src="'views/partials/footer.html'"></ng-include>
+    </div>
+
+<script>
+var apiUrl = '@@apiUrl';
+</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script type="text/javascript" src="@@jsLibUrl"></script>
+<script type="text/javascript" src="@@jsUrl"></script>
+
+<!--<script src="https://api.ctrlv.in/upload.js" async></script>-->
+</body>
+</html>

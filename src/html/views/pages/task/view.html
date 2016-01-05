@@ -1,0 +1,95 @@
+<div class="container" id="task-page" ng-if="task">
+
+    <h3><a href="/sticker/{{ task.sticker.slug }}"><span class="sticker sticker-sm" img="{{ task.sticker.imageUrl }}"></span> {{ task.sticker.name }}</a></h3>
+    <h1>{{ task.name }}</h1>
+
+
+    <div id="task-btns">
+
+        <a class="btn btn-danger btn-remove-todo btn-labeled" href="#" ng-click="removeToDo()" ng-if="currentUser && isOnToDoList">
+            <span class="btn-label"><i class="fa fa-minus-square-o"></i></span>
+            Remove from your To Do List
+        </a>
+
+        <a class="btn btn-success btn-add-todo btn-labeled" href="#" ng-click="addToDo()" ng-if="currentUser && !isOnToDoList">
+            <span class="btn-label"><i class="fa fa-plus-square-o"></i></span>
+            Add to your To Do List
+        </a>
+
+    </div>
+
+    <div class="row">
+
+        <div class="col-md-6">
+
+            <ul id="task-details">
+                <li><strong>Cost</strong> <i class="fa fa-usd"></i><i class="fa fa-usd"></i><i class="fa fa-usd"></i></li>
+                <li><strong>Time</strong> 5 hours</li>
+                <li><strong>Type</strong> <i class="fa fa-user"></i> Alone <i class="fa fa-users"></i> Group <i class="fa fa-globe"></i> Travel</li>
+            </ul>
+
+            <p>{{ task.description }}</p>
+
+            <h2>Top Tips</h2>
+
+            <ul class="posts">
+                <li>
+                    <p class="title">
+                        <i class="fa fa-check-square-o"></i> <a href="#">Anthony</a> completed <a href="#">Visit the Forbidden City</a>.
+                        <span class="date">18 months ago.</span>
+                    </p>
+                    <p class="desc">&quot;3/10 would not recommend&quot;</p>
+                    <p><a class="btn btn-block btn-primary"><i class="fa fa-smile-o"></i> Way to go, Anthony</a></p>
+                </li>
+            </ul>
+        </div>
+
+        <div class="col-md-6">
+            <div class="well">
+                <h2>To Complete This Task</h2>
+                <p>{{ task.submission }}</p>
+                <!--@include('partials.submission-forms.' . strtolower($task->submissionType) )-->
+            </div>
+
+            <ul class="posts">
+                <li>
+                    <p class="title">
+                        <i class="fa fa-check-square-o"></i> <a href="#">Anthony</a> completed <a href="#">Visit the Forbidden City</a>.
+                        <span class="date">18 months ago.</span>
+                    </p>
+                    <p class="desc">&quot;3/10 would not recommend&quot;</p>
+                    <p><a class="btn btn-block btn-primary"><i class="fa fa-smile-o"></i> Way to go, Anthony</a></p>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+
+    <ul class="posts">
+        <li>
+            <p class="title">
+                <i class="fa fa-question-circle"></i> <a href="#">Steve</a> needs help to <a href="#">Visit the Great Wall of China</a>.
+                <span class="date">10 minutes ago.</span>
+            </p>
+            <p class="desc">&quot;How do I get there&quot;</p>
+            <p><a class="btn btn-block"><i class="fa fa-commenting"></i> Help Steve</a></p>
+        </li>
+        <li>
+            <p class="title">
+                <i class="fa fa-check-square-o"></i> <a href="#">Anthony</a> completed <a href="#">Visit the Forbidden City</a>.
+                <span class="date">18 months ago.</span>
+            </p>
+            <p class="desc">&quot;3/10 would not recommend&quot;</p>
+            <p><a class="btn btn-block btn-primary"><i class="fa fa-smile-o"></i> Way to go, Anthony</a></p>
+        </li>
+    </ul>
+</div>
+
+<script>
+$(document).on('click', '#settings-upload-picture-btn', function(){
+    ctrlv.upload(function(image){
+        $('input[name=picture]').val(image.urls.image);
+        $('#settings-picture').attr('src', image.urls.image);
+    });
+})
+</script>
