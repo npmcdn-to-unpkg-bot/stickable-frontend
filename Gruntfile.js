@@ -43,6 +43,7 @@ module.exports = function (grunt) {
                     'bower_components/angular-resource/angular-resource.min.js',
                     'bower_components/angular-sanitize/angular-sanitize.min.js',
                     'bower_components/angular-ui-router/release/angular-ui-router.min.js',
+                    'bower_components/fastclick/lib/fastclick.js',
                     'bower_components/bootstrap/dist/js/bootstrap.min.js',
                     'bower_components/md5/index.js',
                     'bower_components/messenger/build/js/messenger.min.js',

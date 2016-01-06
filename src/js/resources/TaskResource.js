@@ -16,6 +16,11 @@ app.factory(
                         data = angular.fromJson(data);
                         return data.task;
                     }
+                },
+
+                addSubmission: {
+                    method: 'POST',
+                    url: apiUrl + 'task/:slug/submissions'
                 }
             }
         );

@@ -3,7 +3,20 @@
  * instead of being at the top.
  */
 
+.nav .open>a {
+    background: none;
+}
+
 @media (max-width:@screen-xs-max) {
+
+    header.navbar .nav .dropdown-menu>li>a {
+        color:#fff !important;
+
+        &:hover {
+            background: #3e4148 !important;
+        }
+    }
+
     #top-bar-nav {
         //display: none;
         padding:10px;
@@ -33,6 +46,14 @@
         transition: all 0.2s ease-out;
 
         box-shadow: inset -3px -3px 15px 0px rgba(0,0,0,0.75);
+
+        li.divider {
+            display: none;
+        }
+
+        ul.dropdown-menu {
+            margin-left:10px;
+        }
     }
 
     .navbar-visible #top-bar-nav {

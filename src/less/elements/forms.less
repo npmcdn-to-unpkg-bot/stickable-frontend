@@ -14,12 +14,14 @@
     }
 
     .control-label {
-        margin-bottom: 3px;
+        margin-bottom: 5px;
         padding-top: 0;
         padding-right: 0;
 
         .fa {
-            margin-left: 10px;
+            margin-left: 5px;
+            position: relative;
+            top:2px;
         }
     }
 
@@ -51,4 +53,10 @@
         margin-right: 10px;
     }
 
+}
+
+@media (max-width: @screen-xs-max) {
+    .control-label {
+        display: block;
+    }
 }

@@ -11,18 +11,19 @@
     <title>Stickable</title>
 </head>
 <body ng-class="'state-' + $state.current.name">
+<div id="canvas">
 
-    <div id="canvas">
-        <!--<i ng-show="loading" id="loader" class="fa fa-spin"></i>-->
+    <!--<i ng-show="loading" id="loader" class="fa fa-spin"></i>-->
 
-        <ng-include src="'views/partials/header.html'" ng-controller="HeaderController"></ng-include>
+    <ng-include src="'views/partials/header.html'" ng-controller="HeaderController"></ng-include>
 
-        <div id="main" class="view-container">
-            <div class="view" ui-view ng-class="'view-' + $state.current.name"></div>
-        </div>
-
-        <ng-include src="'views/partials/footer.html'"></ng-include>
+    <div id="main" class="view-container">
+        <div class="view" ui-view ng-class="'view-' + $state.current.name"></div>
     </div>
+
+    <ng-include src="'views/partials/footer.html'"></ng-include>
+
+</div>
 
 <script>
 var apiUrl = '@@apiUrl';

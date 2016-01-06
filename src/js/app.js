@@ -1,7 +1,5 @@
 "use strict";
 
-// Initialize angular
-
 var app = angular.module('stickable', [
     'ui.router',
     'ngResource',
@@ -58,10 +56,7 @@ app.config(function($httpProvider, $locationProvider, $stateProvider, $urlRouter
         .state('help', {
             url: "/help",
             templateUrl: "views/pages/help.html",
-            controller: 'HelpController'
         })
-
-
 
         .state('signup', {
             url: "/signup",
@@ -96,9 +91,6 @@ app.config(function($httpProvider, $locationProvider, $stateProvider, $urlRouter
             templateUrl: "views/pages/settings/index.html",
             controller: 'SettingsController'
         })
-
-
-
 
         .state('user', {
             url: "/user/{username:string}",
@@ -139,6 +131,9 @@ app.config(function($httpProvider, $locationProvider, $stateProvider, $urlRouter
 });
 
 app.run(function($rootScope, $state, AuthService) {
+
+    FastClick.attach(document.body);
+
     $rootScope.$state = $state;
 
     AuthService.checkSession();
@@ -154,19 +149,30 @@ app.run(function($rootScope, $state, AuthService) {
     });
 
     $rootScope.$on('$stateChangeSuccess', function (ev, to, toParams, from) {
+        $('body').removeClass('navbar-visible');
         $('body').attr('data-previous', from.name);
+        document.body.scrollTop = document.documentElement.scrollTop = 0;
     });
 });
 
-
-$(document).on('click touchstart', '.navbar-toggle', function(e) {
+$(document).on('click touchstart', 'body:not(.navbar-visible) .navbar-toggle', function(e) {
     e.preventDefault();
-    $('body').toggleClass('navbar-visible');
+    $('body').addClass('navbar-visible');
 });
 
 $(document).on('click touchstart', '.navbar-visible #canvas', function(e) {
-    if (!$(e.target).closest('button').hasClass('navbar-toggle') && !$(e.target).hasClass('navbar-toggle')) {
+
+    console.log(e, e.type);
+
+    if ($(e.target).closest('#top-bar-nav').length > 0) {
+
+
+    } else if (
+        !$(e.target).closest('button').hasClass('navbar-toggle')
+        && !$(e.target).hasClass('navbar-toggle')
+    ) {
         e.preventDefault();
-        $('body').toggleClass('navbar-visible');
+        $('body').removeClass('navbar-visible');
     }
 });
+

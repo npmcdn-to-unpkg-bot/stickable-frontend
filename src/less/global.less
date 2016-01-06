@@ -58,57 +58,42 @@ img {
 }
 
 body {
+    // If fixed header is used
     //padding-top: @header-height;
-    overflow-x:hidden;
+    overflow-x: hidden;
+
+    // Makes fonts nicer on iOS
+    //-webkit-text-stroke: 0.1px;
 }
 
 #canvas {
     background: #fff;
     transition: all 0.2s ease-out;
     position: relative;
-    z-index:1;
-    height:100vh;
-    width:100%;
+    z-index: 1;
+    width: 100%;
     box-shadow: rgba(0, 0, 0, .5) 2px 2px;
 }
 
 #main {
     position: relative;
     min-height: ~"calc(100vh - @{header-height} - @{footer-height})";
-    overflow: hidden;
     background: #fff;
 
     > .view > .container {
         padding-top: 30px;
         padding-bottom: 30px;
         position: relative;
-        z-index:1;
-    }
-
-    // Background image on pages
-    &:before {
-        content: "";
-        display: block;
-        z-index: 0;
-        background: #fff;
-        position: absolute;
-        top: -20px;
-        left: -20px;
-        bottom: -20px;
-        right: -20px;
-        background-size: cover;
-        opacity: .4;
-        -webkit-filter: blur(10px);
-        -moz-filter: blur(10px);
-        -o-filter: blur(10px);
-        -ms-filter: blur(10px);
-        filter: blur(10px);
+        z-index: 1;
     }
 }
 
-section {
-    padding-top: 15px;
-    padding-bottom: 15px;
+@media (min-width: @screen-md-min) {
+    .fullscreen #main > .view {
+        height: ~"calc(100vh - @{header-height} - @{footer-height})";
+        overflow: auto;
+
+    }
 }
 
 @media (max-width: @screen-sm-max) {
@@ -130,7 +115,6 @@ section {
     }
 
     #main {
-        //min-height: 0;
         > .view > .container {
             padding-top: 15px;
             padding-bottom: 15px;
@@ -142,20 +126,82 @@ body.has-breadcrumbs #main {
     min-height: ~"calc(100vh - @{header-height} - @{footer-height} - 36px)";
 }
 
-body.state-help #main:before {
+.fullscreen .view {
+    background: #fff center no-repeat;
+    background-size:cover;
+    transition: all 0.2s ease-out;
+    -webkit-transform: translate3d(0, 0, 0);
+    -ms-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    position: absolute;
+    top:0;
+    left:0;
+    right:0;
+}
+
+.fullscreen .view.ng-enter {
+    -webkit-transform: translate3d(100%, 0, 0);
+    -ms-transform: translate3d(100%, 0, 0);
+    transform: translate3d(100%, 0, 0);
+}
+
+.fullscreen .view.ng-enter-active {
+    -webkit-transform: translate3d(0, 0, 0);
+    -ms-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+}
+
+.fullscreen .view.ng-leave {
+    -webkit-transform: translate3d(0, 0, 0);
+    -ms-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+}
+
+.fullscreen .view.ng-leave-active {
+    -webkit-transform: translate3d(-100%, 0, 0);
+    -ms-transform: translate3d(-100%, 0, 0);
+    transform: translate3d(-100%, 0, 0);
+}
+
+.fullscreen .panel-page {
+    height:100%;
+    padding:0;
+    overflow: hidden;
+}
+
+.fullscreen .panel {
+    height:100%;
+    overflow: auto;
+}
+
+.panel {
+    padding:15px;
+}
+
+
+
+// Page backgrounds
+.view-help {
     background-image: url(/assets/img/bg/about.jpg);
 }
 
-body.state-login #main:before,
-body.state-logout #main:before,
-body.state-forgot #main:before,
-body.state-reset #main:before {
+.view-login,
+.view-logout,
+.view-forgot,
+.view-reset {
     background-image: url(/assets/img/bg/login.jpg);
 }
 
-body.state-signup #main:before {
+.view-signup {
     background-image: url(/assets/img/bg/register.jpg);
 }
+
+
+section {
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
 
 p {
     margin: 0 0 15px;
@@ -197,21 +243,18 @@ p {
     }
 }
 
-
-
-
 .category-list {
     li {
-        height:200px;
-        margin:0;
+        height: 200px;
+        margin: 0;
 
         a {
             background-size: cover;
             background-position: center;
-            color:#fff;
+            color: #fff;
             display: block;
-            width:100%;
-            height:100%;
+            width: 100%;
+            height: 100%;
             position: relative;
             text-align: left;
 
@@ -222,39 +265,40 @@ p {
             span {
                 display: block;
                 position: absolute;
-                bottom:0;
-                left:0;
-                right:0;
-                padding:20px 15px 15px;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                padding: 20px 15px 15px;
 
-                background: -moz-linear-gradient(top,  rgba(0,0,0,0) 0%, rgba(0,0,0,0.65) 45%, rgba(0,0,0,0.65) 100%);
-                background: -webkit-linear-gradient(top,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.65) 45%,rgba(0,0,0,0.65) 100%);
-                background: linear-gradient(to bottom,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.65) 45%,rgba(0,0,0,0.65) 100%);
-                filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#a6000000',GradientType=0 );
+                background: -moz-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.65) 45%, rgba(0, 0, 0, 0.65) 100%);
+                background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.65) 45%, rgba(0, 0, 0, 0.65) 100%);
+                background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.65) 45%, rgba(0, 0, 0, 0.65) 100%);
+                filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#a6000000', GradientType=0);
             }
         }
     }
 }
 
+
+// TODO: Only one of these needs to be in a media query
 @media (max-width: @screen-xs-max) {
 
     .category-list {
-        margin:-15px 0 0 0;
+        margin: -15px 0 0 0;
 
         li {
-            margin:0;
-            padding:0;
+            margin: 0;
+            padding: 0;
 
             background: #000;
         }
     }
 }
 
-
 @media (min-width: @screen-sm-min) {
 
     .category-list {
-        margin-top:-8px;
+        margin-top: -8px;
         li {
             padding: 8px 8px;
         }

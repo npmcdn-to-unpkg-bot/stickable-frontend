@@ -41,5 +41,28 @@ app.controller(
                 }
             );
         };
+
+        $scope.submissionFormData = {
+            loading: false,
+            text: '',
+            image: ''
+        };
+
+        $scope.addSubmission = function () {
+            $scope.submissionFormData.loading = true;
+            TaskResource.addSubmission(
+                {slug: $scope.task.slug},
+                {
+                    text: $scope.submissionFormData.text,
+                    image: $scope.submissionFormData.image
+                },
+                function (response) {
+
+                },
+                function (response) {
+                    alertError(response.data.message);
+                }
+            );
+        }
     }
 );

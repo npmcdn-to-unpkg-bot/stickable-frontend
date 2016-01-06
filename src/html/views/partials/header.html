@@ -3,7 +3,7 @@
 
         <div class="navbar-header">
             <button type="button" class="navbar-toggle"><i class="fa fa-bars"></i></button>
-            <a href="/" class="navbar-brand"><span class="navbar-logo"></span></a>
+            <a ui-sref="home" class="navbar-brand"><span class="navbar-logo"></span></a>
         </div>
 
 
@@ -12,7 +12,7 @@
             <ul class="nav navbar-nav">
                 <!--<li><a href="/activity/new"><i class="fa fa-plus fa-fw"></i> New Activity</a></li>-->
                 <li><a href="/sticker/random"><i class="fa fa-random fa-fw"></i> Random Sticker</a></li>
-                <li><a href="/help"><i class="fa fa-question fa-fw"></i> Help</a></li>
+                <li><a ui-sref="help"><i class="fa fa-question fa-fw"></i> Help</a></li>
             </ul>
 
             <ul class="nav navbar-nav navbar-right nav-logged-in" ng-if="currentUser">
@@ -28,7 +28,7 @@
                         <li class="divider"></li>
                         <li><a href="/settings"><i class="fa fa-cog fa-fw"></i> Settings</a></li>
                         <li class="divider"></li>
-                        <li><a ng-click="logout()"><i class="fa fa-unlock-alt fa-fw"></i> Logout</a></li>
+                        <li><a href="#" ng-click="logout()"><i class="fa fa-unlock-alt fa-fw"></i> Logout</a></li>
                     </ul>
                 </li>
             </ul>
