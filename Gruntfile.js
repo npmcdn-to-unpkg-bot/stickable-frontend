@@ -24,7 +24,7 @@ module.exports = function (grunt) {
                     'src/less/stickable.less'
                 ],
                 dest: 'public/assets/build/' + buildNumber + '/css/stickable.min.css'
-            }
+            },
         },
 
         concat: {
@@ -38,6 +38,7 @@ module.exports = function (grunt) {
                 src: [
                     'bower_components/angular/angular.min.js',
                     'bower_components/angular-animate/angular-animate.min.js',
+                    'bower_components/angular-load/angular-load.min.js',
                     'bower_components/angular-local-storage/dist/angular-local-storage.min.js',
                     'bower_components/angular-modal-service/dst/angular-modal-service.min.js',
                     'bower_components/angular-resource/angular-resource.min.js',
@@ -65,7 +66,7 @@ module.exports = function (grunt) {
                 src: [
                     'src/js/app.js',
                     'src/js/templates.js',
-                    'src/js/**/*.js',
+                    'src/js/**/*.js'
                 ],
                 dest: 'public/assets/build/' + buildNumber + '/js/stickable.min.js'
             },
@@ -74,7 +75,11 @@ module.exports = function (grunt) {
         clean: {
             'pre-build': {
                 // Remove existing build files
-                src: ['public/assets/build/']
+                src: [
+                    'public/assets/build/',
+                    //'src/js/templates.js',
+                    //'src/js/admin-templates.js',
+                ]
             },
             'post-build': {
                 src: []
@@ -83,7 +88,10 @@ module.exports = function (grunt) {
 
         watch: {
             'build': {
-                files: ['src/**/*.*'],
+                files: [
+                    'src/**/*.*',
+                    '!src/less/admin/**/*'
+                ],
                 tasks: ['build']
             }
         },
@@ -104,25 +112,17 @@ module.exports = function (grunt) {
                 options: {
                     variables: {
                         env: 'dev',
-                        cssUrl: '/assets/build/' + buildNumber + '/css/stickable.min.css',
-                        jsLibUrl: '/assets/build/' + buildNumber + '/js/lib.min.js',
-                        jsUrl: '/assets/build/' + buildNumber + '/js/stickable.min.js',
-                        //apiUrl: 'http://api.local.stickable.io/v1/',
-                        apiUrl: '/api/v1/',
-
-                        baseUrl: '//local.stickable.io/'
+                        assetUrl: '/assets/build/' + buildNumber,
+                        apiUrl: '/api/',
                     }
                 }
             },
             'prod': {
                 options: {
                     variables: {
-                        env: 'dev',
-                        cssUrl: 'https://stickable.io/assets/build/' + buildNumber + '/css/stickable.min.css',
-                        jsLibUrl: 'https://stickable.io/assets/build/' + buildNumber + '/js/lib.min.js',
-                        jsUrl: 'https://stickable.io/assets/build/' + buildNumber + '/js/stickable.min.js',
-                        apiUrl: '/api/v1/',
-                        baseUrl: 'https://stickable.io/'
+                        env: 'prod',
+                        assetUrl: '/assets/build/' + buildNumber,
+                        apiUrl: '/api/',
                     }
                 }
             }
@@ -137,10 +137,9 @@ module.exports = function (grunt) {
                         {
                             json: {
                                 'env': '<%= grunt.config.get("env") %>',
+                                'assetUrl': '<%= grunt.config.get("assetUrl") %>',
+                                'assetVersion': buildNumber,
                                 'apiUrl': '<%= grunt.config.get("apiUrl") %>',
-                                'jsLibUrl': '<%= grunt.config.get("jsLibUrl") %>',
-                                'jsUrl': '<%= grunt.config.get("jsUrl") %>',
-                                'cssUrl': '<%= grunt.config.get("cssUrl") %>',
                             }
                         }
                     ]

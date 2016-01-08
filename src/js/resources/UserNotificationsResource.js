@@ -1,12 +1,10 @@
 app.factory(
-    'UserToDoResource',
+    'UserNotificationsResource',
     function ($resource, AuthService) {
         return $resource(
-            apiUrl + 'users/:username/todo',
+            apiUrl + 'users/:username/notifications/:id',
             {
                 username: '@username',
-                slug: '@slug',
-                taskId: '@taskId',
                 sessionToken: function() {
                     return AuthService.getSessionToken() || null;
                 }
@@ -14,15 +12,11 @@ app.factory(
             {
                 query: {
                     method: 'GET',
-                    /*transformResponse: function(data) {
+                    isArray: true,
+                    transformResponse: function(data) {
                         var data = angular.fromJson(data);
-                        return data.user;
-                    }*/
-                },
-
-                delete: {
-                    method: 'DELETE',
-                    url: apiUrl + 'users/:username/todo/:taskId'
+                        return data.notifications
+                    }
                 }
             }
         );

@@ -2,7 +2,7 @@ app.factory(
     'StickerResource',
     function ($resource, AuthService) {
         return $resource(
-            apiUrl + 'sticker/:slug',
+            apiUrl + 'stickers/:slug',
             {
                 slug: '@slug',
                 sessionToken: function() {

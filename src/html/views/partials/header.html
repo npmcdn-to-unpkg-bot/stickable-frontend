@@ -10,16 +10,30 @@
         <nav role="navigation" id="top-bar-nav">
 
             <ul class="nav navbar-nav">
-                <!--<li><a href="/activity/new"><i class="fa fa-plus fa-fw"></i> New Activity</a></li>-->
-                <li><a href="/sticker/random"><i class="fa fa-random fa-fw"></i> Random Sticker</a></li>
+                <li><a href="/bot"><i class="fa fa-android fa-fw"></i> Stickerbot</a></li>
+                <li><a href="/browse"><i class="fa fa-folder fa-fw"></i> Browse</a></li>
                 <li><a ui-sref="help"><i class="fa fa-question fa-fw"></i> Help</a></li>
             </ul>
 
             <ul class="nav navbar-nav navbar-right nav-logged-in" ng-if="currentUser">
 
+                <li ng-if="currentUser.admin"><a href="http://admin.local.stickable.io"><i class="fa fa-tachometer fa-fw"></i> Admin</a></li>
                 <li><a href="/user/{{ currentUser.username }}/todo"><i class="fa fa-check-square-o fa-fw"></i> To Do List</a></li>
                 <li><a href="/user/{{ currentUser.username }}/stickers"><i class="fa fa-camera-retro fa-fw"></i> Your Submissions</a></li>
                 <li><a href="/user/{{ currentUser.username }}/stickers"><i class="fa fa-trophy fa-fw"></i> Your Stickers</a></li>
+
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <span ng-show="notifications.length > 0" class="notification">{{ notifications.length }}</span>
+                        <i class="fa fa-envelope fa-fw"></i>
+                        <b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu notifications-dropdown">
+                        <li ng-repeat="notification in notifications">
+                            <a>{{ notification.text }}</a>
+                        </li>
+                    </ul>
+                </li>
 
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user fa-fw"></i> {{ currentUser.username }} <b class="caret"></b></a>

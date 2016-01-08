@@ -12,7 +12,7 @@ app.controller(
             $scope.category = category;
             $scope.hasSubcategories = category.subcategories.length > 0;
             $scope.hasStickers = category.stickers.length > 0;
-            $element.css('background-image', 'url('+category.backgroundUrl+')');
+            $element.css('background-image', 'url('+category.bgUrl+')');
         });
     }
 );

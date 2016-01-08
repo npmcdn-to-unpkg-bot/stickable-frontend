@@ -1,4 +1,4 @@
-header.navbar {
+.navbar {
     margin-bottom: 0;
     background: @navbar-color;
     min-height: 0;
@@ -43,6 +43,7 @@ header.navbar {
 
     a {
         font-size: @font-size-smaller;
+        position: relative;
     }
 }
 
@@ -81,6 +82,23 @@ header.navbar {
     background-size: 100%;
     .hide-text();
     float: left;
+}
+
+
+.navbar-nav .notification {
+    position: absolute;
+    background-color: @red;
+    text-align: center;
+    border-radius: 10px;
+    min-width: 18px;
+    padding: 0 5px;
+    height: 18px;
+    font-size: 12px;
+    color: #FFFFFF;
+    font-weight: bold;
+    line-height: 18px;
+    top: 7px;
+    left: 7px;
 }
 
 @media (min-width: @screen-md-min) {

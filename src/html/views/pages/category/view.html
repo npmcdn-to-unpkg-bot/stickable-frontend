@@ -10,7 +10,7 @@
 <h2 ng-if="hasSubcategories">Subcategories</h2>
 <ul ng-if="hasSubcategories" class="category-list row">
     <li class="col-sm-3 col-xs-6" ng-repeat="subcategory in category.subcategories">
-        <a href="/category/{{ subcategory.slug }}" ng-style="{'background-image':'url('+subcategory.imageUrl+')'}">
+        <a href="/category/{{ subcategory.slug }}" ng-style="{'background-image':'url('+subcategory.thumbUrl+')'}">
             <span>{{ subcategory.name }}</span>
         </a>
     </li>
@@ -21,7 +21,7 @@
 
     <li class="col-sm-3" ng-repeat="sticker in category.stickers">
         <a href="/sticker/{{ sticker.slug }}">
-            <span class="sticker" img="{{ sticker.imageUrl }}"></span>
+            <span class="sticker" img="{{ sticker.thumbUrl }}"></span>
             <br/>{{ sticker.name }}
         </a>
     </li>

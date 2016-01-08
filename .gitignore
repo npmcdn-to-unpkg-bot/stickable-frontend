@@ -1,3 +1,4 @@
 .idea
 node_modules
 src/js/templates.js
+src/admin/js/templates.js

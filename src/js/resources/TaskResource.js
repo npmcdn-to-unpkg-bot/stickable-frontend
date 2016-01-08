@@ -2,7 +2,7 @@ app.factory(
     'TaskResource',
     function ($resource, AuthService) {
         return $resource(
-            apiUrl + 'task/:slug',
+            apiUrl + 'tasks/:slug',
             {
                 slug: '@slug',
                 sessionToken: function() {
@@ -20,7 +20,17 @@ app.factory(
 
                 addSubmission: {
                     method: 'POST',
-                    url: apiUrl + 'task/:slug/submissions'
+                    url: apiUrl + 'tasks/:slug/submissions'
+                },
+
+                getComments: {
+                    method: 'GET',
+                    url: apiUrl + 'tasks/:slug/comments',
+                    isArray: true,
+                    transformResponse: function(data) {
+                        data = angular.fromJson(data);
+                        return data.comments;
+                    }
                 }
             }
         );

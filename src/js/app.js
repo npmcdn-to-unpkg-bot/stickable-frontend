@@ -6,7 +6,8 @@ var app = angular.module('stickable', [
     'ngSanitize',
     'LocalStorageModule',
     'angularModalService',
-    'ngAnimate'
+    'ngAnimate',
+    'angularLoad'
 ]);
 
 /**
@@ -56,6 +57,18 @@ app.config(function($httpProvider, $locationProvider, $stateProvider, $urlRouter
         .state('help', {
             url: "/help",
             templateUrl: "views/pages/help.html",
+        })
+
+        .state('browse', {
+            url: "/browse",
+            templateUrl: "views/pages/browse.html",
+            controller: 'BrowseController'
+        })
+
+        .state('bot', {
+            url: "/bot",
+            templateUrl: "views/pages/bot.html",
+            controller: 'BotController'
         })
 
         .state('signup', {
@@ -126,11 +139,10 @@ app.config(function($httpProvider, $locationProvider, $stateProvider, $urlRouter
             url: "/task/{slug:string}",
             templateUrl: "views/pages/task/view.html",
             controller: 'TaskController'
-        })
-
+        });
 });
 
-app.run(function($rootScope, $state, AuthService) {
+app.run(function($rootScope, $state, AuthService, UserNotificationsResource) {
 
     FastClick.attach(document.body);
 
@@ -139,9 +151,13 @@ app.run(function($rootScope, $state, AuthService) {
     AuthService.checkSession();
 
     $rootScope.currentUser = AuthService.getUser();
+    $rootScope.notifications = [];
 
     $rootScope.$on('login', function(event, args) {
         $rootScope.currentUser = args.user;
+
+        // Fetch notifications
+        $rootScope.notifications = UserNotificationsResource.query({username: args.user.username});
     });
 
     $rootScope.$on('logout', function() {

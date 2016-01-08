@@ -1,6 +1,6 @@
 app.controller(
     'TaskController',
-    function ($scope, $rootScope, $state, $stateParams, TaskResource, UserToDoResource) {
+    function ($scope, $rootScope, $element, $state, $stateParams, TaskResource, SubmissionResource, UserToDoResource) {
 
         $rootScope.loading = true;
 
@@ -11,7 +11,10 @@ app.controller(
             $rootScope.loading = false;
             $scope.task = task;
             $scope.isOnToDoList = $scope.task.isOnToDoList;
+            $element.css('background-image', 'url('+task.bgUrl+')');
         });
+
+        $scope.comments = TaskResource.getComments({slug: $stateParams.slug});
 
         $scope.addToDo = function () {
             console.log('addToDo');
@@ -50,9 +53,9 @@ app.controller(
 
         $scope.addSubmission = function () {
             $scope.submissionFormData.loading = true;
-            TaskResource.addSubmission(
-                {slug: $scope.task.slug},
+            SubmissionResource.save(
                 {
+                    taskId: $scope.task.id,
                     text: $scope.submissionFormData.text,
                     image: $scope.submissionFormData.image
                 },
@@ -63,6 +66,10 @@ app.controller(
                     alertError(response.data.message);
                 }
             );
+        };
+
+        $scope.addComment = function () {
+
         }
     }
 );

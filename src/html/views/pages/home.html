@@ -5,7 +5,8 @@
                 <img src="/assets/img/stickable.png" alt="Stickable" id="home-splash-logo" />
             </div>
             <div class="col-sm-8 text-shadow">
-                <h2>Discover new hobbies, achieve your goals, and and earn real-life stickers to show off your progress.</h2>
+                <h2>Try something new, get help from our community, and and earn real-life stickers to show off your progress.</h2>
+                <a class="btn btn-primary" href="/bot"><i class="fa fa-play-circle"></i> Find Something To Do</a>
                 <a class="btn" href="/help"><i class="fa fa-info"></i> Learn More</a>
             </div>
 
@@ -19,7 +20,7 @@
 <section>
     <ul id="home-categories" class="category-list row">
         <li class="col-lg-3 col-sm-4 col-xs-6" ng-repeat="category in categories">
-            <a href="/category/{{ category.slug }}" ng-style="{'background-image':'url('+category.imageUrl+')'}">
+            <a href="/category/{{ category.slug }}" ng-style="{'background-image':'url('+category.thumbUrl+')'}">
                 <span>{{ category.name }}</span>
             </a>
         </li>

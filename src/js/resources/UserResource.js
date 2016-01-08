@@ -2,7 +2,7 @@ app.factory(
     'UserResource',
     function ($resource, AuthService) {
         return $resource(
-            apiUrl + 'user/:username',
+            apiUrl + 'users',
             {
                 username: '@username',
                 sessionToken: function() {
@@ -11,6 +11,7 @@ app.factory(
             },
             {
                 get: {
+                    url: apiUrl + 'users/:username',
                     cache: true,
                     transformResponse: function(data) {
                         var data = angular.fromJson(data);
@@ -18,28 +19,33 @@ app.factory(
                     }
                 },
 
-                save: {
-                    method: 'POST',
-                    url: apiUrl + 'user'
-                },
-
                 update: {
                     method: 'PUT',
+                    url: apiUrl + 'users/:username'
+                },
+
+                save: {
+                    method: 'POST',
                 },
 
                 forgot: {
                     method: 'POST',
-                    url: apiUrl + 'user/forgot'
+                    url: apiUrl + 'users/forgot'
                 },
 
                 reset: {
                     method: 'POST',
-                    url: apiUrl + 'user/reset'
+                    url: apiUrl + 'users/reset'
                 },
 
                 getStickers: {
                     method: 'GET',
-                    url: apiUrl + 'user/:username/stickers'
+                    url: apiUrl + 'users/:username/stickers'
+                },
+
+                getSubmissions: {
+                    method: 'GET',
+                    url: apiUrl + 'users/:username/submissions'
                 }
             }
         );

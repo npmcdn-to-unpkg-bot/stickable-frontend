@@ -2,7 +2,7 @@ app.factory(
     'SessionResource',
     function ($resource) {
         return $resource(
-            apiUrl + 'session',
+            apiUrl + 'sessions',
             {
                 sessionToken: '@sessionToken',
             },

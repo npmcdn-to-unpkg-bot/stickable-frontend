@@ -1,31 +1,22 @@
 app.factory(
-    'CategoryResource',
+    'SubmissionResource',
     function ($resource, AuthService) {
         return $resource(
-            apiUrl + 'categories/:slug',
+            apiUrl + 'submissions/:id',
             {
-                slug: '@slug',
+                id: '@id',
                 sessionToken: function() {
                     return AuthService.getSessionToken() || null;
                 }
             },
             {
-                get: {
-                    cache: true,
-                    transformResponse: function(data) {
-                        data = angular.fromJson(data);
-                        return data.category;
-                    }
-                },
-
                 query:{
-                    cache: true,
                     isArray: true,
                     transformResponse: function(data) {
                         data = angular.fromJson(data);
-                        return data.categories;
+                        return data.submissions;
                     }
-                }
+                },
             }
         );
     }

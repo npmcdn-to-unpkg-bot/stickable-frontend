@@ -1,6 +1,6 @@
 app.service(
     'AuthService',
-    function (localStorageService, SessionResource, $q, $rootScope) {
+    function (localStorageService, SessionResource, $q, $rootScope, angularLoad) {
 
         var session = null;
         var sessionToken = null;
@@ -62,7 +62,6 @@ app.service(
 
                 // Tell everybody we're logged in
                 $rootScope.$broadcast('login', {user: newSession.user});
-
             },
 
             logout: function() {

@@ -1,7 +1,7 @@
 
-<div class="container-fluid panel-page" id="task-page" ng-if="task">
+<div class="container-fluid pane-page" id="task-page" ng-if="task">
 
-    <div class="col-md-5 panel">
+    <div class="col-md-5 pane">
 
     <h3><a href="/sticker/{{ task.sticker.slug }}"><span class="sticker sticker-sm" img="{{ task.sticker.imageUrl }}"></span> {{ task.sticker.name }}</a></h3>
     <h1>{{ task.name }}</h1>
@@ -39,7 +39,7 @@
 
     </div>
 
-    <div class="col-md-7 panel">
+    <div class="col-md-7 pane">
 
         <h2>Comments, Tips, and Questions</h2>
         <ng-include src="'views/pages/task/comments.html'"></ng-include>
