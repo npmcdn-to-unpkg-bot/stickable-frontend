@@ -16,8 +16,12 @@ app.service(
                         function (session) {
                             self.onLogin(session, sessionToken);
                         },
-                        function() {
-                            self.onLogout();
+                        function(response) {
+                            if (response.status === 400) {
+                                self.onLogout();
+                            } else {
+                                alertError("There was an error logging in to Stickable. Please refresh to try again.");
+                            }
                         }
                     );
                 } else {
