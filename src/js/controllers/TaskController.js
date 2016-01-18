@@ -2,6 +2,7 @@ app.controller(
     'TaskController',
     function ($scope, $rootScope, $element, $state, $stateParams, TaskResource, SubmissionResource, UserToDoResource) {
 
+        $rootScope.pageTitle = '';
         $rootScope.loading = true;
 
         $scope.task = null;
@@ -9,6 +10,7 @@ app.controller(
 
         TaskResource.get({slug: $stateParams.slug}, function (task) {
             $rootScope.loading = false;
+            $rootScope.pageTitle = task.name;
             $scope.task = task;
             $scope.isOnToDoList = $scope.task.isOnToDoList;
             $element.css('background-image', 'url('+task.bgUrl+')');

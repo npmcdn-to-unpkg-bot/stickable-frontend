@@ -64,22 +64,18 @@ body {
 
     // Makes fonts nicer on iOS
     //-webkit-text-stroke: 0.1px;
-}
 
-#canvas {
-    background: #fff;
+
+    // To allow menu to slide in
     transition: all 0.2s ease-out;
-    position: relative;
-    z-index: 1;
-    width: 100%;
-    //box-shadow: rgba(0, 0, 0, .5) 2px 2px;
 }
 
 #main {
     position: relative;
     background: #fff;
 
-    > .view > .container {
+    > .view > .container,
+    .content .container {
         padding-top: 30px;
         padding-bottom: 30px;
         position: relative;
@@ -185,7 +181,6 @@ body.has-breadcrumbs #main {
 }
 
 
-
 // Page backgrounds
 .view-help {
     background-image: url(/assets/img/bg/about.jpg);
@@ -230,7 +225,6 @@ p {
     font-size: @font-size-h3;
 }
 
-.category-list,
 .sticker-list {
     padding-left: 0;
     margin: 0;
@@ -246,67 +240,5 @@ p {
     .sticker {
         width: 90px;
         height: 90px;
-    }
-}
-
-.category-list {
-    li {
-        height: 200px;
-        margin: 0;
-
-        a {
-            background-size: cover;
-            background-position: center;
-            color: #fff;
-            display: block;
-            width: 100%;
-            height: 100%;
-            position: relative;
-            text-align: left;
-
-            &:hover {
-                opacity: .9;
-            }
-
-            span {
-                display: block;
-                position: absolute;
-                bottom: 0;
-                left: 0;
-                right: 0;
-                padding: 20px 15px 15px;
-
-                background: -moz-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.65) 45%, rgba(0, 0, 0, 0.65) 100%);
-                background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.65) 45%, rgba(0, 0, 0, 0.65) 100%);
-                background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.65) 45%, rgba(0, 0, 0, 0.65) 100%);
-                filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#a6000000', GradientType=0);
-            }
-        }
-    }
-}
-
-
-// TODO: Only one of these needs to be in a media query
-@media (max-width: @screen-xs-max) {
-
-    .category-list {
-        margin: -15px 0 0 0;
-
-        li {
-            margin: 0;
-            padding: 0;
-
-            background: #000;
-        }
-    }
-}
-
-@media (min-width: @screen-sm-min) {
-
-    .category-list {
-        margin-top: -8px;
-        li {
-            padding: 8px 8px;
-        }
     }
 }

@@ -11,18 +11,11 @@
     -webkit-transition: background-color 0.2s ease-out; /* Android 2.1+, Chrome 1-25, iOS 3.2-6.1, Safari 3.2-6  */
     transition: background-color 0.2s ease-out; /* Chrome 26, Firefox 16+, iOS 7+, IE 10+, Opera, Safari 6.1+  */
 
-    .navbar-toggle {
-        padding-top: 4px;
-        padding-bottom: 0;
-        color: #fff;
-        margin-top: 8px;
+    position: relative;
+    z-index: 10;
 
-        .fa {
-            font-size: 20px;
-            position: relative;
-            top: 2px;
-            margin-left: 5px;
-        }
+    h1 {
+        display: none;
     }
 
     .nav > li > a {
@@ -47,6 +40,83 @@
     }
 }
 
+.navbar-back {
+    display: none;
+}
+
+
+/**
+ * Menu Button
+ */
+.navbar-toggle {
+    display: none;
+    position: absolute;
+    top:15px;
+    right:15px;
+
+    padding: 0;
+    margin: 0;
+    border:0;
+    z-index:2;
+
+    width:20px;
+    height:20px;
+
+    transition: all 0.3s ease-out;
+}
+
+.navbar-toggle span,
+.navbar-toggle span:before,
+.navbar-toggle span:after {
+    border-radius: 1px;
+    height: 4px;
+    width: 20px;
+    background: #fff;
+    position: absolute;
+    top:8px;
+    display: block;
+    content: '';
+    transition: transform 0.4s ease-out, background 0.2s ease-out, width 0.3s ease-out;
+}
+
+.navbar-toggle span:before {
+    top: -8px;
+}
+
+.navbar-toggle span:after {
+    top:8px;
+}
+
+.navbar-visible {
+    .navbar-toggle {
+        right:5px;
+    }
+
+    .navbar-toggle span,
+    .navbar-toggle span:before,
+    .navbar-toggle span:after {
+        width: 15px;
+    }
+
+    .navbar-toggle span {
+        background-color: transparent;
+    }
+
+    .navbar-toggle span:before {
+        transform: rotate(-45deg) translateX(-6px);
+    }
+
+    .navbar-toggle span:after {
+        transform: rotate(45deg) translateX(-6px);
+    }
+}
+
+
+
+
+/**
+ * Hide the login form in the header when on the login page
+ */
 .state-login #header-username,
 .state-login #header-password,
 .state-login #header-login-btn {
@@ -113,6 +183,25 @@
     }
 }
 
+@media (max-width: @screen-xs-max) {
+
+    .navbar-header.has-title {
+        h1 {
+            color: #fff;
+            font-weight: normal;
+            font-size: 31px;
+            margin: 9px 0 0 0;
+            display: block;
+        }
+        .navbar-brand {
+            display: none;
+        }
+    }
+    #main h1 {
+        display: none;
+    }
+}
+
 // When nav is collapsed (mobile)
 @media (max-width: @grid-float-breakpoint-max) {
 
@@ -130,11 +219,23 @@
         top: 8px;
     }
 
-    .navbar-toggle {
-        float: left;
+    // TODO: Add this to app too
+    a.navbar-back {
+        display: block;
         position: absolute;
-        top: 0;
-        left: 0;
+        top: 10px;
+        left: 13px;
+        color: #fff;
+        font-size: 21px;
+        z-index: 2;
+    }
+
+    .state-home a.navbar-back {
+        display: none;
+    }
+
+    .navbar-toggle {
+        display:block;
     }
 
     .navbar-nav {

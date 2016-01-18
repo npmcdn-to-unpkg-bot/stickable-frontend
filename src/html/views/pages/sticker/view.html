@@ -1,10 +1,10 @@
-<div class="splash sticker-splash" ng-style="{ 'background-image': 'url(' + sticker.imageUrl + ')'}">
+<div class="splash sticker-splash" ng-style="{ 'background-image': sticker.bgUrl ? 'url(' + sticker.bgUrl + ')' : ''}">
     <div class="container">
         <div class="row">
 
-            <div class="col-lg-8 text-shadow">
+            <div class="col-lg-7 text-shadow">
 
-                <span class="sticker" img="{{ sticker.imageUrl }}"></span>
+                <span class="sticker" img="{{ sticker.design.imageUrl }}"></span>
 
                 <h1>{{ sticker.name }}</h1>
 
@@ -16,26 +16,18 @@
                 <p class="desc">{{ sticker.description }}</p>
             </div>
 
-            <div class="col-lg-4">
-                <div class="row">
+            <div class="col-lg-5">
 
-                    <div class="col-md-6 col-lg-12">
-                        <h2><i class="fa fa-check-square-o"></i> Tasks</h2>
-                        <p class="text-center">Complete <strong>{{ (sticker.requiredTasks ? sticker.requiredTasks : 'all') }}</strong> of these to earn the sticker.</p>
-                        <ul class="tasks">
-                            <li ng-repeat="task in sticker.tasks"><a href="/task/{{ task.slug }}">{{ task.name }}</a></li>
-                        </ul>
-                    </div>
+                <ul class="task-list">
+                    <li class="header"><h3>Complete {{ (sticker.requiredTasks ? sticker.requiredTasks : 'all') }} tasks to earn the sticker.</small></h3></li>
+                    <li ng-repeat="task in sticker.tasks"><a href="/task/{{ task.slug }}">{{ task.name }}</a></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
 
-                    <div class="col-md-6 col-lg-12">
-                        <h2><i class="fa fa-trophy"></i> Who's Got It</h2>
-                        <ul ng-if="hasEarners">
-                            <li><a href="/user/{{ user.username }}">{{ user.username }}</a></li>
-                        </ul>
-                        <p ng-if="!hasEarners" class="text-center"><i class="fa fa-frown-o"></i> Nobody yet!</p>
-                    </div>
-
-                </div>
             </div>
 
         </div>
@@ -45,7 +37,17 @@
 <div class="container">
 <div class="row">
 
-    <div class="col-lg-8">
+    <div class="col-lg-7">
+
+
+
+        <h2><i class="fa fa-trophy"></i> Who's Got It</h2>
+        <ul ng-if="hasEarners">
+            <li><a href="/user/{{ user.username }}">{{ user.username }}</a></li>
+        </ul>
+        <p ng-if="!hasEarners" class="text-center"><i class="fa fa-frown-o"></i> Nobody yet!</p>
+
+
 
         <ul class="posts">
             <li>
@@ -68,7 +70,7 @@
 
     </div>
 
-    <div class="col-lg-4">
+    <div class="col-lg-5">
         <h2>More {{ sticker.category.name }} Stickers</h2>
         <ul class="sticker-list small-sticker-list row">
 

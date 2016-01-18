@@ -2,14 +2,12 @@ app.controller(
     'UserSubmissionsController',
     function ($scope, $rootScope, $state, $stateParams, UserResource) {
 
-        $scope.username = $stateParams.username;
-
         $rootScope.loading = true;
-        $rootScope.title = $stateParams.username;
-        $rootScope.subtitle = '';
+        $rootScope.pageTitle = $stateParams.username;
 
-        $scope.user = null;
         $scope.submissions = [];
+        $scope.user = null;
+        $scope.username = $stateParams.username;
 
         UserResource.getSubmissions({username: $scope.username},
             function (result) {

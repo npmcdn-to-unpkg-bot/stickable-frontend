@@ -2,11 +2,10 @@ app.controller(
     'UserProfileController',
     function ($scope, $rootScope, $state, $stateParams, AuthService, UserResource) {
 
-        $scope.username = $stateParams.username;
-
         $rootScope.loading = true;
-        $rootScope.title = $stateParams.username;
-        $rootScope.subtitle = '';
+        $rootScope.pageTitle = $stateParams.username;
+
+        $scope.username = $stateParams.username;
 
         $scope.user = UserResource.get({username: $scope.username});
     }

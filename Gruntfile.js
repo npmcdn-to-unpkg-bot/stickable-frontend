@@ -50,6 +50,7 @@ module.exports = function (grunt) {
                     'bower_components/messenger/build/js/messenger.min.js',
                     'bower_components/messenger/build/js/messenger-theme-flat.min.js',
                     //'bower_components/jasny-bootstrap/dist/js/jasny-bootstrap.min.js',
+                    'bower_components/parallax.js/parallax.min.js',
                     'src/lib/stickerjs/sticker.js',
                 ],
                 dest: 'public/assets/build/' + buildNumber + '/js/lib.min.js'
@@ -77,8 +78,7 @@ module.exports = function (grunt) {
                 // Remove existing build files
                 src: [
                     'public/assets/build/',
-                    //'src/js/templates.js',
-                    //'src/js/admin-templates.js',
+                    'src/js/templates.js',
                 ]
             },
             'post-build': {
@@ -90,7 +90,6 @@ module.exports = function (grunt) {
             'build': {
                 files: [
                     'src/**/*.*',
-                    '!src/less/admin/**/*'
                 ],
                 tasks: ['build']
             }

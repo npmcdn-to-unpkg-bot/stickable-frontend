@@ -1,9 +1,13 @@
 <header class="navbar" id="top-bar">
     <div class="container">
 
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle"><i class="fa fa-bars"></i></button>
+        <div class="navbar-header" ng-class="{'has-title':pageTitle}">
+            <a href="#" ng-click="back()" class="navbar-back"><i class="fa fa-chevron-left"></i></a>
+            <button type="button" class="navbar-toggle">
+                <span></span>
+            </button>
             <a ui-sref="home" class="navbar-brand"><span class="navbar-logo"></span></a>
+            <h1>{{ pageTitle }}</h1>
         </div>
 
 

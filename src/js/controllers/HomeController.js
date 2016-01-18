@@ -2,8 +2,7 @@ app.controller(
     'HomeController',
     function ($scope, $rootScope, CategoryResource) {
 
-        $rootScope.title = '';
-        $rootScope.subtitle = '';
+        $rootScope.pageTitle = '';
 
         var splashImages = [
             'aurora',

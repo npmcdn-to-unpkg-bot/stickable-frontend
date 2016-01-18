@@ -147,6 +147,7 @@ app.run(function($rootScope, $state, AuthService, UserNotificationsResource) {
     FastClick.attach(document.body);
 
     $rootScope.$state = $state;
+    $rootScope.pageTitle = '';
 
     AuthService.checkSession();
 
@@ -171,17 +172,20 @@ app.run(function($rootScope, $state, AuthService, UserNotificationsResource) {
     });
 });
 
-$(document).on('click touchstart', 'body:not(.navbar-visible) .navbar-toggle', function(e) {
+$(document).on('click', 'body:not(.navbar-visible) .navbar-toggle', function(e) {
+    console.log(e);
     e.preventDefault();
     $('body').addClass('navbar-visible');
 });
 
-$(document).on('click touchstart', '.navbar-visible #canvas', function(e) {
+$(document).on('click', 'body.navbar-visible .navbar-toggle', function(e) {
+    e.preventDefault();
+    $('body').removeClass('navbar-visible');
+});
 
-    console.log(e, e.type);
-
+$(document).on('click', 'body.navbar-visible', function(e) {
     if ($(e.target).closest('#top-bar-nav').length > 0) {
-
+        // Ignore clicks on the nav itself
 
     } else if (
         !$(e.target).closest('button').hasClass('navbar-toggle')
@@ -192,3 +196,9 @@ $(document).on('click touchstart', '.navbar-visible #canvas', function(e) {
     }
 });
 
+
+
+var categoryHeight = 300;
+function calculateCategoryHeight() {
+
+}

@@ -2,6 +2,7 @@ app.controller(
     'StickerController',
     function ($scope, $rootScope, $state, $stateParams, StickerResource) {
 
+        $rootScope.pageTitle = 'Settings';
         $rootScope.loading = true;
 
         $scope.sticker = null;
@@ -9,6 +10,7 @@ app.controller(
 
         StickerResource.get({slug: $stateParams.slug}, function (sticker) {
             $rootScope.loading = false;
+            $rootScope.pageTitle = sticker.name;
             $scope.sticker = sticker;
             $scope.hasEarners = sticker.earners.length > 0;
         });

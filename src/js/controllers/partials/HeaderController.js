@@ -33,5 +33,9 @@ app.controller(
         $scope.logout = function() {
             AuthService.logout();
         };
+
+        $scope.back = function() {
+            window.history.go(-1);
+        }
     }
 );

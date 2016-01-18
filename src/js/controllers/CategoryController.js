@@ -7,12 +7,17 @@ app.controller(
         $scope.category = null;
         $scope.hasSubcategories = false;
         $scope.hasStickers = false;
+        $rootScope.pageTitle = '';
 
         CategoryResource.get({slug: $stateParams.slug}, function (category) {
+
             $scope.category = category;
+            $rootScope.pageTitle = category.name;
+
             $scope.hasSubcategories = category.subcategories.length > 0;
             $scope.hasStickers = category.stickers.length > 0;
             $element.css('background-image', 'url('+category.bgUrl+')');
+
         });
     }
 );

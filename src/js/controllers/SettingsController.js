@@ -5,6 +5,7 @@ app.controller(
 
         // FIXME: currentUser isn't loaded yet if the app is loaded on the settings page
 
+        $rootScope.pageTitle = 'Settings';
         $rootScope.loading = true;
 
         $scope.settingsFormData = {
