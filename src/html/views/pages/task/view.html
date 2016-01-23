@@ -1,41 +1,53 @@
-
 <div class="container-fluid pane-page" id="task-page" ng-if="task">
 
     <div class="col-md-5 pane">
 
-    <h3><a href="/sticker/{{ task.sticker.slug }}"><span class="sticker sticker-sm" img="{{ task.sticker.design.imageUrl }}"></span> {{ task.sticker.name }}</a></h3>
-    <h1>{{ task.name }}</h1>
+        <h3><a href="/sticker/{{ task.sticker.slug }}"><span class="sticker sticker-sm"
+                                                             img="{{ task.sticker.design.imageUrl }}"></span> {{
+            task.sticker.name }}</a></h3>
 
-    <div class="well">
-        <h2>To Complete This Task</h2>
-        <p>{{ task.submission }}</p>
-        <form ng-submit="addSubmission()">
-            <ng-include src="'views/partials/submission-forms/' + task.submissionType.toLowerCase() + '.html'"></ng-include>
-            <button type="submit">Submit</button>
-        </form>
-    </div>
+        <h1>{{ task.name }}</h1>
 
-    <div id="task-btns">
+        <div class="well">
+            <h2>To Complete This Task</h2>
 
-        <a class="btn btn-danger btn-remove-todo btn-labeled" href="#" ng-click="removeToDo()" ng-if="currentUser && isOnToDoList">
-            <span class="btn-label"><i class="fa fa-minus-square-o"></i></span>
-            Remove from your To Do List
-        </a>
+            <p>{{ task.submission }}</p>
 
-        <a class="btn btn-success btn-add-todo btn-labeled" href="#" ng-click="addToDo()" ng-if="currentUser && !isOnToDoList">
-            <span class="btn-label"><i class="fa fa-plus-square-o"></i></span>
-            Add to your To Do List
-        </a>
+            <form ng-submit="addSubmission()">
+                <ng-include src="'views/partials/submission-forms/' + task.submissionType.toLowerCase() + '.html'"></ng-include>
+                <button type="submit">Submit</button>
+            </form>
+        </div>
 
-    </div>
+        <div id="task-btns">
 
-    <ul id="task-details">
-        <li><strong>Cost</strong> <i class="fa fa-usd"></i><i class="fa fa-usd"></i><i class="fa fa-usd"></i></li>
-        <li><strong>Time</strong> 5 hours</li>
-        <li><strong>Type</strong> <i class="fa fa-user"></i> Alone <i class="fa fa-users"></i> Group <i class="fa fa-globe"></i> Travel</li>
-    </ul>
+            <a class="btn btn-danger btn-remove-todo btn-labeled"
+               href="#"
+               ng-click="removeToDo()"
+               ng-if="currentUser && isOnToDoList">
+                <span class="btn-label"><i class="fa fa-minus-square-o"></i></span>
+                Remove from your To Do List
+            </a>
 
-    <p>{{ task.description }}</p>
+            <a class="btn btn-success btn-add-todo btn-labeled"
+               href="#"
+               ng-click="addToDo()"
+               ng-if="currentUser && !isOnToDoList">
+                <span class="btn-label"><i class="fa fa-plus-square-o"></i></span>
+                Add to your To Do List
+            </a>
+
+        </div>
+
+        <ul id="task-details">
+            <li><strong>Cost</strong> <i class="fa fa-usd"></i><i class="fa fa-usd"></i><i class="fa fa-usd"></i></li>
+            <li><strong>Time</strong> 5 hours</li>
+            <li><strong>Type</strong> <i class="fa fa-user"></i> Alone <i class="fa fa-users"></i> Group
+                <i class="fa fa-globe"></i> Travel
+            </li>
+        </ul>
+
+        <p>{{ task.description }}</p>
 
     </div>
 
@@ -49,13 +61,11 @@
 </div>
 
 
-
-
 <script>
-$(document).on('click', '#settings-upload-picture-btn', function(){
-    ctrlv.upload(function(image){
-        $('input[name=picture]').val(image.urls.image);
-        $('#settings-picture').attr('src', image.urls.image);
-    });
-})
+    $(document).on('click', '#settings-upload-picture-btn', function () {
+        ctrlv.upload(function (image) {
+            $('input[name=picture]').val(image.urls.image);
+            $('#settings-picture').attr('src', image.urls.image);
+        });
+    })
 </script>

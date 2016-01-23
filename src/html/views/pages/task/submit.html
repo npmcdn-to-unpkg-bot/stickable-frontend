@@ -7,9 +7,11 @@
 @section('content')
 <div class="container">
     <h1>{{ $task->name }}</h1>
+
     <h2>Add Your Submission</h2>
+
     <p><strong>To complete this task you must:</strong><br/>
-    {{ $task->submission }}
+        {{ $task->submission }}
     </p>
 
     <form class="form-horizontal well" method="post" action="submit">
@@ -17,16 +19,22 @@
 
         <div class="form-group <?=($errors->get('picture') ? 'has-error' : '')?>">
             <label class="col-md-4 control-label">Picture <i class="fa fa-picture"></i></label>
+
             <div class="col-md-8">
-                <input type="hidden" class="form-control" name="picture" value="{{ old('picture') ? old('picture') : '' }}" required />
+                <input type="hidden"
+                       class="form-control"
+                       name="picture"
+                       value="{{ old('picture') ? old('picture') : '' }}"
+                       required/>
                 <?php
                 foreach ($errors->get('picture') as $error) {
-                    echo '<span class="help-block">' . $error . '</span>';
+                echo '<span class="help-block">' . $error . '</span>';
                 }
                 ?>
-                <a href="#" class="btn" id="task-submit-upload-picture-btn"><i class="fa fa-camera"></i> Upload a picture</a>
+                <a href="#" class="btn" id="task-submit-upload-picture-btn"><i class="fa fa-camera"></i> Upload a
+                    picture</a>
 
-                <img src="{{ old('picture') ? old('picture') : '' }}" id="task-submit-picture" />
+                <img src="{{ old('picture') ? old('picture') : '' }}" id="task-submit-picture"/>
 
             </div>
         </div>

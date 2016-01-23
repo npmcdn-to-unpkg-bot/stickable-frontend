@@ -9,27 +9,27 @@ app.controller(
             errors: {}
         };
 
-        $scope.login = function() {
+        $scope.login = function () {
 
             $scope.loginFormData.loading = true;
 
             AuthService
                 .login($scope.loginFormData.username, $scope.loginFormData.password)
                 .then(
-                    function (response) {
-                        $scope.loginFormData.loading = false;
-                        $state.go('home');
-                    },
-                    function (response) {
-                        $scope.loginFormData.loading = false;
-                        $scope.sortLoginErrors(response);
-                    }
-                );
+                function (response) {
+                    $scope.loginFormData.loading = false;
+                    $state.go('home');
+                },
+                function (response) {
+                    $scope.loginFormData.loading = false;
+                    $scope.sortLoginErrors(response);
+                }
+            );
 
             return false;
         };
 
-        $scope.sortLoginErrors = function(response) {
+        $scope.sortLoginErrors = function (response) {
             if (
                 response.messages
                 &&
@@ -55,5 +55,5 @@ app.controller(
         if ($stateParams.response) {
             $scope.sortLoginErrors($stateParams.response);
         }
-   }
+    }
 );

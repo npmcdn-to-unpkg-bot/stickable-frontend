@@ -1,13 +1,13 @@
 app.service(
     'AuthService',
-    function (localStorageService, SessionResource, $q, $rootScope, angularLoad) {
+    function (localStorageService, SessionResource, $q, $rootScope) {
 
         var session = null;
         var sessionToken = null;
 
         return {
 
-            checkSession: function() {
+            checkSession: function () {
                 var self = this;
 
                 if (sessionToken = localStorageService.get('sessionToken')) {
@@ -16,7 +16,7 @@ app.service(
                         function (session) {
                             self.onLogin(session, sessionToken);
                         },
-                        function(response) {
+                        function (response) {
                             if (response.status === 400) {
                                 self.onLogout();
                             } else {
@@ -34,15 +34,15 @@ app.service(
              * @param password
              * @returns $q
              */
-            login: function(username, password) {
+            login: function (username, password) {
                 var self = this;
 
-                return $q(function(resolve, reject) {
+                return $q(function (resolve, reject) {
 
                     SessionResource.save({
                         username: username,
                         password: password
-                    }, function(response) {
+                    }, function (response) {
 
                         self.onLogin(response.session, response.sessionToken);
 
@@ -56,7 +56,7 @@ app.service(
                 });
             },
 
-            onLogin: function(newSession, newSessionKey) {
+            onLogin: function (newSession, newSessionKey) {
 
                 session = newSession;
                 sessionToken = newSessionKey;
@@ -68,7 +68,7 @@ app.service(
                 $rootScope.$broadcast('login', {user: newSession.user});
             },
 
-            logout: function() {
+            logout: function () {
                 var self = this;
 
                 SessionResource.delete({
@@ -79,7 +79,7 @@ app.service(
 
             },
 
-            onLogout: function() {
+            onLogout: function () {
 
                 session = false;
                 sessionToken = false;
@@ -90,11 +90,11 @@ app.service(
 
             },
 
-            getSessionToken: function() {
+            getSessionToken: function () {
                 return sessionToken;
             },
 
-            getUser: function() {
+            getUser: function () {
                 if (session === null) {
                     return null;
                 }

@@ -38,7 +38,6 @@ module.exports = function (grunt) {
                 src: [
                     'bower_components/angular/angular.min.js',
                     'bower_components/angular-animate/angular-animate.min.js',
-                    'bower_components/angular-load/angular-load.min.js',
                     'bower_components/angular-local-storage/dist/angular-local-storage.min.js',
                     'bower_components/angular-modal-service/dst/angular-modal-service.min.js',
                     'bower_components/angular-resource/angular-resource.min.js',
@@ -49,8 +48,6 @@ module.exports = function (grunt) {
                     'bower_components/md5/index.js',
                     'bower_components/messenger/build/js/messenger.min.js',
                     'bower_components/messenger/build/js/messenger-theme-flat.min.js',
-                    //'bower_components/jasny-bootstrap/dist/js/jasny-bootstrap.min.js',
-                    'bower_components/parallax.js/parallax.min.js',
                     'src/lib/stickerjs/sticker.js',
                 ],
                 dest: 'public/assets/build/' + buildNumber + '/js/lib.min.js'
@@ -90,6 +87,7 @@ module.exports = function (grunt) {
             'build': {
                 files: [
                     'src/**/*.*',
+                    '!src/js/templates.js'
                 ],
                 tasks: ['build']
             }

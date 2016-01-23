@@ -9,19 +9,35 @@
 
                         <input type="hidden" name="token" ng-model="resetFormData.token">
 
-                        <div class="form-group" ng-class="{'has-error': resetFormData.errors.password}" ng-if="!success">
+                        <div class="form-group"
+                             ng-class="{'has-error': resetFormData.errors.password}"
+                             ng-if="!success">
                             <label for="password" class="col-md-4 control-label">Password</label>
+
                             <div class="col-md-6">
-                                <input type="password" class="form-control" id="password" name="password" ng-model="resetFormData.password" required>
+                                <input type="password"
+                                       class="form-control"
+                                       id="password"
+                                       name="password"
+                                       ng-model="resetFormData.password"
+                                       required>
 
                                 <span ng-if="resetFormData.errors.password" class="help-block">{{ resetFormData.errors.password.join(' ') }}</span>
                             </div>
                         </div>
 
-                        <div class="form-group" ng-class="{'has-error': resetFormData.errors.confirmPassword}" ng-if="!success">
+                        <div class="form-group"
+                             ng-class="{'has-error': resetFormData.errors.confirmPassword}"
+                             ng-if="!success">
                             <label for="confim-password" class="col-md-4 control-label">Confirm Password</label>
+
                             <div class="col-md-6">
-                                <input type="password" class="form-control" id="confim-password" name="confim-password" ng-model="resetFormData.confirmPassword" required>
+                                <input type="password"
+                                       class="form-control"
+                                       id="confim-password"
+                                       name="confim-password"
+                                       ng-model="resetFormData.confirmPassword"
+                                       required>
 
                                 <span ng-if="resetFormData.errors.confirmPassword" class="help-block">{{ resetFormData.errors.confirmPassword.join(' ') }}</span>
                             </div>
@@ -30,13 +46,18 @@
                         <div class="form-group" ng-if="!success">
                             <div class="col-md-6 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary">
-                                    <i class="fa fa-unlock-alt" ng-hide="resetFormData.loading"></i><i class="fa fa-spinner fa-spin" ng-show="resetFormData.loading"></i> Reset Password
+                                    <i class="fa fa-unlock-alt"
+                                       ng-hide="resetFormData.loading"></i><i class="fa fa-spinner fa-spin"
+                                                                              ng-show="resetFormData.loading"></i> Reset
+                                    Password
                                 </button>
                             </div>
                         </div>
 
                         <div class="alert alert-success" ng-if="success">
-                            <i class="fa fa-check"></i> Password changed. You can now <a class="btn" href="/login">Login</a> with the new password.
+                            <i class="fa fa-check"></i> Password changed. You can now <a class="btn"
+                                                                                         href="/login">Login</a> with
+                            the new password.
                         </div>
 
                     </form>

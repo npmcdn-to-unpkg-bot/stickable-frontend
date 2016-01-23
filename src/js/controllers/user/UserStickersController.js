@@ -12,7 +12,7 @@ app.controller(
         UserResource.getStickers({username: $scope.username},
             function (result) {
                 $scope.user = result.user,
-                $scope.stickers = result.stickers
+                    $scope.stickers = result.stickers
             }
         );
     }

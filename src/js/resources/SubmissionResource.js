@@ -5,14 +5,14 @@ app.factory(
             apiUrl + 'submissions/:id',
             {
                 id: '@id',
-                sessionToken: function() {
+                sessionToken: function () {
                     return AuthService.getSessionToken() || null;
                 }
             },
             {
-                query:{
+                query: {
                     isArray: true,
-                    transformResponse: function(data) {
+                    transformResponse: function (data) {
                         data = angular.fromJson(data);
                         return data.submissions;
                     }

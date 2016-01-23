@@ -6,16 +6,14 @@ var app = angular.module('stickable', [
     'ngSanitize',
     'LocalStorageModule',
     'angularModalService',
-    'ngAnimate',
-    'angularLoad'
+    'ngAnimate'
 ]);
 
-/**
- * Angular
- */
-
-// Routes
-app.config(function($httpProvider, $locationProvider, $stateProvider, $urlRouterProvider, localStorageServiceProvider) {
+app.config(function ($httpProvider,
+                     $locationProvider,
+                     $stateProvider,
+                     $urlRouterProvider,
+                     localStorageServiceProvider) {
 
     $locationProvider.html5Mode(true);
 
@@ -24,29 +22,9 @@ app.config(function($httpProvider, $locationProvider, $stateProvider, $urlRouter
         .setStorageType('localStorage')
         .setStorageCookie(0, '/');
 
-    // For any unmatched url, redirect to /
-    $urlRouterProvider.otherwise('/');
-
-    /*$httpProvider.interceptors.push(function($q) {
-      return {
-       'request': function(config) {
-
-        },
-
-       'response': function(response) {
-           // do something on success
-           return response || $q.when(response);
-        },
-        'responseError': function(rejection) {
-         // do something on error
-            alert('error');
-
-           return $q.reject(rejection);
-         }
-      };
-    });*/
-
-    // Now set up the states
+    /**
+     * States
+     */
     $stateProvider
         .state('home', {
             url: "/",
@@ -139,10 +117,20 @@ app.config(function($httpProvider, $locationProvider, $stateProvider, $urlRouter
             url: "/task/{slug:string}",
             templateUrl: "views/pages/task/view.html",
             controller: 'TaskController'
+        })
+
+        .state('post', {
+            url: "/task/{slug:string}/{postSlug:string}",
+            templateUrl: "views/pages/task/view.html",
+            controller: 'TaskController'
         });
+
+    // For any unmatched url, redirect to /
+    $urlRouterProvider.otherwise('/');
+
 });
 
-app.run(function($rootScope, $state, AuthService, UserNotificationsResource) {
+app.run(function ($rootScope, $state, AuthService, UserNotificationsResource) {
 
     FastClick.attach(document.body);
 
@@ -154,36 +142,35 @@ app.run(function($rootScope, $state, AuthService, UserNotificationsResource) {
     $rootScope.currentUser = AuthService.getUser();
     $rootScope.notifications = [];
 
-    $rootScope.$on('login', function(event, args) {
+    $rootScope.$on('login', function (event, args) {
         $rootScope.currentUser = args.user;
 
         // Fetch notifications
         $rootScope.notifications = UserNotificationsResource.query({username: args.user.username});
     });
 
-    $rootScope.$on('logout', function() {
+    $rootScope.$on('logout', function () {
         $rootScope.currentUser = false;
     });
 
     $rootScope.$on('$stateChangeSuccess', function (ev, to, toParams, from) {
-        $('body').removeClass('navbar-visible');
-        $('body').attr('data-previous', from.name);
+        $('body').removeClass('navbar-visible').attr('data-previous', from.name);
         document.body.scrollTop = document.documentElement.scrollTop = 0;
     });
 });
 
-$(document).on('click', 'body:not(.navbar-visible) .navbar-toggle', function(e) {
+$(document).on('click', 'body:not(.navbar-visible) .navbar-toggle', function (e) {
     console.log(e);
     e.preventDefault();
     $('body').addClass('navbar-visible');
 });
 
-$(document).on('click', 'body.navbar-visible .navbar-toggle', function(e) {
+$(document).on('click', 'body.navbar-visible .navbar-toggle', function (e) {
     e.preventDefault();
     $('body').removeClass('navbar-visible');
 });
 
-$(document).on('click', 'body.navbar-visible', function(e) {
+$(document).on('click', 'body.navbar-visible', function (e) {
     if ($(e.target).closest('#top-bar-nav').length > 0) {
         // Ignore clicks on the nav itself
 
@@ -195,10 +182,3 @@ $(document).on('click', 'body.navbar-visible', function(e) {
         $('body').removeClass('navbar-visible');
     }
 });
-
-
-
-var categoryHeight = 300;
-function calculateCategoryHeight() {
-
-}

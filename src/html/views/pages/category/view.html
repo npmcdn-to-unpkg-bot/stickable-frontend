@@ -1,4 +1,3 @@
-
 <h1>{{ category.name }}</h1>
 
 <ul ng-if="hasSubcategories" class="category-list row">
@@ -9,12 +8,12 @@
     </li>
 </ul>
 
-<ul ng-if="hasStickers"class="sticker-list row">
+<ul ng-if="hasStickers" class="sticker-list row">
 
-    <li class="col-sm-3" ng-repeat="sticker in category.stickers">
+    <li class="col-md-2" ng-repeat="sticker in category.stickers">
         <a href="/sticker/{{ sticker.slug }}">
             <span class="sticker" img="{{ sticker.design.imageUrl }}"></span>
-            <br/>{{ sticker.name }}
+            <h3>{{ sticker.name }}</h3>
         </a>
     </li>
 

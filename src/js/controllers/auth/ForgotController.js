@@ -10,7 +10,7 @@ app.controller(
 
         $scope.success = false;
 
-        $scope.submit = function() {
+        $scope.submit = function () {
 
             $scope.forgotFormData.loading = true;
 
@@ -42,5 +42,5 @@ app.controller(
 
             return false;
         };
-   }
+    }
 );

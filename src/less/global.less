@@ -1,20 +1,35 @@
-/* Fonty titles */
-/*@font-face {
-	font-family: 'RanchoUntittle';
-	font-style: normal;
-	font-weight: 400;
-	src: url(../fonts/RanchoUntittle.woff) format('woff');
-}*/
+body {
+    // If fixed header is used
+    //padding-top: @header-height;
+    overflow-x: hidden;
+    //-webkit-overflow-scrolling: touch;
+    //overflow-y:auto;
+
+    // Makes fonts nicer on iOS
+    //-webkit-text-stroke: 0.1px;
+
+    // To allow menu to slide in
+    transition: all 0.2s ease-out;
+
+    font-weight:300;
+}
+
+
+p {
+    font-family: @font-family-text;
+}
 
 h1, h2, h3, h4, h5 {
     color: @purple;
+    font-family: @font-family-headings;
     margin: 15px 0;
-    .fonty();
+    //.fonty();
+    font-weight:500;
     position: relative;
 }
 
-h3, h4 {
-    color: @purple;
+h4, h5 {
+    color: @blue;
 }
 
 h5 {
@@ -36,7 +51,7 @@ h5 {
 a:link,
 a:visited {
     color: @blue;
-    font-weight: bold;
+    //font-weight: bold;
 }
 
 a:hover,
@@ -57,18 +72,7 @@ img {
     max-width: 100%;
 }
 
-body {
-    // If fixed header is used
-    //padding-top: @header-height;
-    overflow-x: hidden;
 
-    // Makes fonts nicer on iOS
-    //-webkit-text-stroke: 0.1px;
-
-
-    // To allow menu to slide in
-    transition: all 0.2s ease-out;
-}
 
 #main {
     position: relative;
@@ -136,9 +140,9 @@ body.has-breadcrumbs #main {
     -ms-transform: translate3d(0, 0, 0);
     transform: translate3d(0, 0, 0);
     position: absolute;
-    top:0;
-    left:0;
-    right:0;
+    top: 0;
+    left: 0;
+    right: 0;
 }
 
 .fullscreen .view.ng-enter {
@@ -166,20 +170,19 @@ body.has-breadcrumbs #main {
 }
 
 .fullscreen .pane-page {
-    height:100%;
-    padding:0;
+    height: 100%;
+    padding: 0;
     overflow: hidden;
 }
 
 .fullscreen .pane {
-    height:100%;
+    height: 100%;
     overflow: auto;
 }
 
 .pane {
-    padding:15px;
+    padding: 15px;
 }
-
 
 // Page backgrounds
 .view-help {
@@ -197,12 +200,14 @@ body.has-breadcrumbs #main {
     background-image: url(/assets/img/bg/register.jpg);
 }
 
+.view > h1 {
+    padding: 15px 15px 0;
+}
 
 section {
     padding-top: 15px;
     padding-bottom: 15px;
 }
-
 
 p {
     margin: 0 0 15px;
@@ -231,9 +236,20 @@ p {
     list-style: none;
 
     li {
-        margin: 0 0 30px;
-        text-align: center;
+        margin: 0 0 15px;
+        text-align: left;
+        height:160px;
     }
+
+    .sticker {
+        float:left;
+    }
+
+    h3 {
+        margin:65px 0 0 15px;
+        float: left;
+    }
+
 }
 
 .small-sticker-list {

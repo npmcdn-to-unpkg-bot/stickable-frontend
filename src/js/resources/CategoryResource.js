@@ -5,23 +5,23 @@ app.factory(
             apiUrl + 'categories/:slug',
             {
                 slug: '@slug',
-                sessionToken: function() {
+                sessionToken: function () {
                     return AuthService.getSessionToken() || null;
                 }
             },
             {
                 get: {
                     cache: true,
-                    transformResponse: function(data) {
+                    transformResponse: function (data) {
                         data = angular.fromJson(data);
                         return data.category;
                     }
                 },
 
-                query:{
+                query: {
                     cache: true,
                     isArray: true,
-                    transformResponse: function(data) {
+                    transformResponse: function (data) {
                         data = angular.fromJson(data);
                         return data.categories;
                     }

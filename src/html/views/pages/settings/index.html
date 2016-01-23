@@ -5,21 +5,26 @@
 
         <div class="form-group" ng-class="{'has-error': settingsFormData.errors.picture}">
             <label class="col-md-4 control-label">Picture <i class="fa fa-picture"></i></label>
+
             <div class="col-md-8">
 
-                <input type="text" class="form-control" name="picture" ng-model="settingsFormData.picture"  />
+                <input type="text" class="form-control" name="picture" ng-model="settingsFormData.picture"/>
                 <span ng-if="settingsFormData.errors.picture" class="help-block">{{ settingsFormData.errors.picture.join(' ') }}</span>
 
-                <a href="#" class="btn" id="settings-upload-picture-btn" ng-click="uploadPicture()"><i class="fa fa-camera"></i> Upload new picture</a>
+                <a href="#"
+                   class="btn"
+                   id="settings-upload-picture-btn"
+                   ng-click="uploadPicture()"><i class="fa fa-camera"></i> Upload new picture</a>
 
 
-                <img ng-src="{{ settingsFormData.picture }} id="settings-picture" />
+                <img ng-src="{{ settingsFormData.picture }} id=" settings-picture" />
 
             </div>
         </div>
 
         <div class="form-group" ng-class="{'has-error': settingsFormData.errors.about}">
             <label class="col-md-4 control-label">About Me <i class="fa fa-about"></i></label>
+
             <div class="col-md-8">
                 <textarea class="form-control" name="about" ng-model="settingsFormData.about"></textarea>
                 <span ng-if="settingsFormData.errors.about" class="help-block">{{ settingsFormData.errors.about.join(' ') }}</span>

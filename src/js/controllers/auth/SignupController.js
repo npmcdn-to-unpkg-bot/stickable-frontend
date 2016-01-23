@@ -21,22 +21,22 @@ app.controller(
                 username: $scope.signupFormData.username,
                 password: $scope.signupFormData.password,
                 email: $scope.signupFormData.email,
-            }, function(response) {
+            }, function (response) {
 
                 AuthService
                     .login($scope.signupFormData.username, $scope.signupFormData.password)
                     .then(
-                        function (response) {
-                            $scope.signupFormData.loading = false;
-                            $state.go('home');
-                        },
-                        function (response) {
-                            $scope.signupFormData.loading = false;
-                            $scope.signupFormData.errors = {
-                                general: response.message
-                            };
-                        }
-                    );
+                    function (response) {
+                        $scope.signupFormData.loading = false;
+                        $state.go('home');
+                    },
+                    function (response) {
+                        $scope.signupFormData.loading = false;
+                        $scope.signupFormData.errors = {
+                            general: response.message
+                        };
+                    }
+                );
 
             }, function (response) {
                 $scope.signupFormData.loading = false;

@@ -5,7 +5,7 @@ app.factory(
             apiUrl + 'users/:username/notifications/:id',
             {
                 username: '@username',
-                sessionToken: function() {
+                sessionToken: function () {
                     return AuthService.getSessionToken() || null;
                 }
             },
@@ -13,7 +13,7 @@ app.factory(
                 query: {
                     method: 'GET',
                     isArray: true,
-                    transformResponse: function(data) {
+                    transformResponse: function (data) {
                         var data = angular.fromJson(data);
                         return data.notifications
                     }

@@ -6,8 +6,7 @@ Messenger.options = {
     //}
 };
 
-function alertSuccess(message)
-{
+function alertSuccess(message) {
     Messenger().post({
         message: message,
         type: 'success',
@@ -16,8 +15,7 @@ function alertSuccess(message)
     });
 }
 
-function alertError(message)
-{
+function alertError(message) {
     Messenger().post({
         message: message,
         type: 'error',

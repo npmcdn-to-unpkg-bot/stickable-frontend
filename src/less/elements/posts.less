@@ -5,26 +5,55 @@
 
     li {
         display: block;
-        margin-bottom: 15px;
-        border-radius: @border-radius-base;
-        padding: 10px 15px;
-        background-color: #fcfcfc;
+        background-color: rgba(0,0,0,.03);
+        position: relative;
+        margin:0;
+        padding: 10px;
 
         &:nth-child(even) {
-            background-color: #f0f0f0;
+            background-color: rgba(0,0,0,.07);
         }
+    }
 
-        p {
-            margin: 0 0 10px;
-            line-height: 1.5;
+    h4 {
+        font-size:12px;
+        margin: 0 0 5px 0;
+        color:@blue;
+    }
+
+    h3 {
+        font-size: 22px;
+        margin:0 0 15px 0;
+
+        a {
+            color:@purple;
         }
+    }
 
-        .title {
-            font-size: @font-size-larger;
-        }
+    .media-left {
+        min-width:110px;
+    }
 
-        .date {
-            font-size: @font-size-smaller;
+    .media-object {
+        width:100px;
+        height:100px;
+    }
+
+    .media-body {
+
+    }
+
+    .details {
+        font-size: 12px;
+        color: @grey;
+        vertical-align: text-top;
+
+        i {
+            margin-left:5px;
+            margin-right:3px;
+            &:first-child {
+                margin-left:0;
+            }
         }
     }
 }

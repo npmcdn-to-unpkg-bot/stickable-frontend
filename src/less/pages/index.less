@@ -2,12 +2,32 @@
     text-align: center;
 
     h2 {
-        font-size: 39px;
+        font-size: 30px;
         margin-bottom: 30px;
     }
 
     p {
-        margin-top:15px;
+        margin-top: 15px;
+    }
+
+    .btn-row > div:first-child {
+        padding-right:5px;
+    }
+
+    .btn-row > div:last-child {
+        padding-left:5px;
+    }
+
+    .btn {
+        font-size:14px;
+    }
+}
+
+// Make buttons fit on small mobiles
+@media (max-width: 340px) {
+    .home-splash .btn {
+        font-size:13px;
+        padding:7px 7px 5px;
     }
 }
 
@@ -15,22 +35,13 @@
     display: none;
 }
 
-#how-it-works {
-    text-align: center;
-    padding:30px 0 45px;
 
-    h2 {
-        margin-bottom:30px;
+@media (max-width: @screen-sm-max) {
+    #main .view-home .content .container {
+        width:auto;
+        padding:0;
     }
 
-    h3 {
-        color:@blue;
-    }
-
-    span {
-        display: block;
-        font-size:70%;
-    }
 }
 
 @media (min-width: @screen-sm-min) {
@@ -38,29 +49,44 @@
     .home-splash {
 
         &:before {
-            opacity: .3;
+            opacity: .9;
         }
         padding: 60px 0;
 
         h2 {
-            line-height: 55px;
-            font-size: 50px;
-            margin-top: -3px;
+            //line-height: 55px;
+            font-size: 38px;
+            line-height: 1.3;
+            //margin-top: -3px;
         }
         .btn {
             .btn-lg();
         }
-        .row {
+        .container > .row {
             display: -webkit-flex;
             display: -ms-flexbox;
             display: flex;
+
+            > div:first-child {
+                .vertical-center();
+            }
         }
-        .row > div:first-child {
-            .vertical-center();
+
+        .btn-row {
+            margin:0;
+            padding:0;
+            text-align: center;
+
+            > div {
+                float:none;
+                display: inline;
+                padding:0;
+                width:auto;
+            }
         }
 
         p {
-            margin-top:60px;
+            margin-top: 60px;
         }
     }
 
@@ -72,8 +98,7 @@
     }
 
     #home-categories {
-        margin-left:7px;
-        margin-right:7px;
+        margin-left: 7px;
+        margin-right: 7px;
     }
-
 }

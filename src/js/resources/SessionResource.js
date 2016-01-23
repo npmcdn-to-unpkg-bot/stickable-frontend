@@ -8,7 +8,7 @@ app.factory(
             },
             {
                 get: {
-                    transformResponse: function(data) {
+                    transformResponse: function (data) {
                         data = angular.fromJson(data);
                         return data.session;
                     }

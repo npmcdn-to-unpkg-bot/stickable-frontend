@@ -2,23 +2,36 @@
 
 @brand-primary: @blue;
 
-@font-family-sans-serif: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+// Set the bootstrap variable
+//@font-family-sans-serif: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
+@font-family-sans-serif: 'Roboto', sans-serif;
+
+@font-family-headings: 'Roboto Slab', serif;
+@font-family-text: @font-family-sans-serif;
+
+@font-size-lg: 22px;
 @font-size-base: 16px;
-@font-size-larger: 18px;
-@font-size-smaller: 14px;
+@font-size-sm: 14px;
 @font-size-xs: 12px;
 
-@font-size-h1: 60px;
-@font-size-h2: ceil((@font-size-h1 * .7));
-@font-size-h3: ceil((@font-size-h2 * .7));
-@font-size-h4: ceil((@font-size-h3 * .7));
-@font-size-h5: ceil((@font-size-h4 * .7));
+@font-size-h1: 40px;
+@font-size-h2: ceil((@font-size-h1 * .8));
+@font-size-h3: @font-size-lg; //23px; //ceil((@font-size-h2 * .8));
+
+@font-size-h4: ceil((@font-size-h3 * .8));
+@font-size-h5: ceil((@font-size-h4 * .8));
 
 // Smaller headings on mobile
-@font-size-h1-sm: @font-size-h2;
+/*@font-size-h1-sm: @font-size-h2;
 @font-size-h2-sm: @font-size-h3;
 @font-size-h3-sm: @font-size-h4;
-@font-size-h4-sm: @font-size-h5;
+@font-size-h4-sm: @font-size-h5;*/
+
+@font-size-h1-sm: @font-size-h1;
+@font-size-h2-sm: @font-size-h2;
+@font-size-h3-sm: @font-size-h3;
+@font-size-h4-sm: @font-size-h4;
 
 @text-shadow: 1px 1px 2px rgba(0, 0, 0, .9);
 
@@ -36,11 +49,11 @@
 
 @btn-border-radius: 2px;
 
-@btn-font-size: @font-size-smaller;
+@btn-font-size: @font-size-sm;
 @btn-font-size-sm: ceil((@btn-font-size * .7));
-@btn-font-size-lg: @font-size-larger;
+@btn-font-size-lg: ceil((@btn-font-size * 1.4));
 
-@btn-padding: @font-size-smaller;
+@btn-padding: @font-size-sm;
 @btn-padding-sm: ceil((@btn-padding * .7));
 @btn-padding-lg: ceil((@btn-padding * 1.4));
 
@@ -49,5 +62,6 @@
 @panel-heading-padding: (@standard-padding / 2) @standard-padding;
 @panel-body-padding: @standard-padding;
 
-//@breadcrumb-separator: "SEPPY";
 @breadcrumb-separator: "\00bb";
+
+@grid-float-breakpoint: @screen-lg-min;

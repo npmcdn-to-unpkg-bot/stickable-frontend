@@ -5,14 +5,14 @@ app.factory(
             apiUrl + 'tasks/:slug',
             {
                 slug: '@slug',
-                sessionToken: function() {
+                sessionToken: function () {
                     return AuthService.getSessionToken() || null;
                 }
             },
             {
                 get: {
                     cache: true,
-                    transformResponse: function(data) {
+                    transformResponse: function (data) {
                         data = angular.fromJson(data);
                         return data.task;
                     }
@@ -27,7 +27,7 @@ app.factory(
                     method: 'GET',
                     url: apiUrl + 'tasks/:slug/comments',
                     isArray: true,
-                    transformResponse: function(data) {
+                    transformResponse: function (data) {
                         data = angular.fromJson(data);
                         return data.comments;
                     }

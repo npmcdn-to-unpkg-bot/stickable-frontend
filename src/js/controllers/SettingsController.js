@@ -27,12 +27,12 @@ app.controller(
 
         });
 
-        $scope.uploadPicture = function() {
+        $scope.uploadPicture = function () {
             alert('CtrlV upload would go here/');
             /*ctrlv.upload(function(image){
-                $('input[name=picture]').val(image.urls.image);
-                $('#settings-picture').attr('src', image.urls.image);
-            });*/
+             $('input[name=picture]').val(image.urls.image);
+             $('#settings-picture').attr('src', image.urls.image);
+             });*/
         };
 
         $scope.submit = function () {

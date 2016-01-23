@@ -4,7 +4,7 @@
     min-height: 0;
     border: 0;
     border-radius: 0;
-    font-size: @font-size-smaller;
+    font-size: @font-size-sm;
 
     -o-transition: background-color 0.2s ease-out;
     -moz-transition: background-color 0.2s ease-out;
@@ -35,7 +35,7 @@
     }
 
     a {
-        font-size: @font-size-smaller;
+        font-size: @font-size-sm;
         position: relative;
     }
 }
@@ -44,75 +44,78 @@
     display: none;
 }
 
-
 /**
  * Menu Button
  */
 .navbar-toggle {
     display: none;
     position: absolute;
-    top:15px;
-    right:15px;
-
+    top: 0;
+    right: 0;
+    bottom:0;
+    width:50px;
     padding: 0;
     margin: 0;
-    border:0;
-    z-index:2;
+    border: 0;
+    z-index: 2;
+}
 
-    width:20px;
-    height:20px;
+.navbar-toggle-icon {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+
+    width: 20px;
+    height: 20px;
 
     transition: all 0.3s ease-out;
 }
 
-.navbar-toggle span,
-.navbar-toggle span:before,
-.navbar-toggle span:after {
+.navbar-toggle-icon span,
+.navbar-toggle-icon span:before,
+.navbar-toggle-icon span:after {
     border-radius: 1px;
     height: 4px;
     width: 20px;
     background: #fff;
     position: absolute;
-    top:8px;
+    top: 8px;
     display: block;
     content: '';
     transition: transform 0.4s ease-out, background 0.2s ease-out, width 0.3s ease-out;
 }
 
-.navbar-toggle span:before {
+.navbar-toggle-icon span:before {
     top: -8px;
 }
 
-.navbar-toggle span:after {
-    top:8px;
+.navbar-toggle-icon span:after {
+    top: 8px;
 }
 
 .navbar-visible {
-    .navbar-toggle {
-        right:5px;
+    .navbar-toggle-icon {
+        right: 5px;
     }
 
-    .navbar-toggle span,
-    .navbar-toggle span:before,
-    .navbar-toggle span:after {
+    .navbar-toggle-icon span,
+    .navbar-toggle-icon span:before,
+    .navbar-toggle-icon span:after {
         width: 15px;
     }
 
-    .navbar-toggle span {
+    .navbar-toggle-icon span {
         background-color: transparent;
     }
 
-    .navbar-toggle span:before {
+    .navbar-toggle-icon span:before {
         transform: rotate(-45deg) translateX(-6px);
     }
 
-    .navbar-toggle span:after {
+    .navbar-toggle-icon span:after {
         transform: rotate(45deg) translateX(-6px);
     }
 }
-
-
-
 
 /**
  * Hide the login form in the header when on the login page
@@ -124,10 +127,10 @@
 }
 
 .navbar-form {
-    font-size: @font-size-smaller;
+    font-size: @font-size-sm;
 
     input {
-        font-size: @font-size-smaller;
+        font-size: @font-size-sm;
         line-height: 18px;
     }
 
@@ -153,7 +156,6 @@
     .hide-text();
     float: left;
 }
-
 
 .navbar-nav .notification {
     position: absolute;
@@ -190,13 +192,15 @@
             color: #fff;
             font-weight: normal;
             font-size: 31px;
-            margin: 9px 0 0 0;
+            margin: 8px 50px 0;
             display: block;
+            .fonty();
         }
         .navbar-brand {
             display: none;
         }
     }
+
     #main h1 {
         display: none;
     }
@@ -223,8 +227,10 @@
     a.navbar-back {
         display: block;
         position: absolute;
-        top: 10px;
-        left: 13px;
+        top: 0;
+        left: 0;
+        bottom:0;
+        padding: 10px 13px;
         color: #fff;
         font-size: 21px;
         z-index: 2;
@@ -235,7 +241,7 @@
     }
 
     .navbar-toggle {
-        display:block;
+        display: block;
     }
 
     .navbar-nav {

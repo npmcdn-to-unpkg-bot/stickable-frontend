@@ -4,13 +4,11 @@ app.factory(
         return $resource(
             apiUrl + 'comments',
             {
-                sessionToken: function() {
+                sessionToken: function () {
                     return AuthService.getSessionToken() || null;
                 }
             },
-            {
-
-            }
+            {}
         );
     }
 );

@@ -9,8 +9,11 @@
                 <h1>{{ sticker.name }}</h1>
 
                 <ul class="sticker-info">
-                    <li ng-if="sticker.category"><i class="fa fa-folder"></i> Part of the <a href="/category/{{ sticker.category.slug }}"> {{ sticker.category.name }}</a> category</li>
-                    <li ng-if="sticker.creator"><i class="fa fa-user"></i> Added by <a href="/user/{{ sticker.creator.url }}">{{ sticker.creator.username }}</a></li>
+                    <li ng-if="sticker.category"><i class="fa fa-folder"></i> Part of the
+                        <a href="/category/{{ sticker.category.slug }}"> {{ sticker.category.name }}</a> category
+                    </li>
+                    <li ng-if="sticker.creator"><i class="fa fa-user"></i> Added by
+                        <a href="/user/{{ sticker.creator.url }}">{{ sticker.creator.username }}</a></li>
                 </ul>
 
                 <p class="desc">{{ sticker.description }}</p>
@@ -19,7 +22,8 @@
             <div class="col-lg-5">
 
                 <ul class="task-list">
-                    <li class="header"><h3>Complete {{ (sticker.requiredTasks ? sticker.requiredTasks : 'all') }} tasks to earn the sticker.</small></h3></li>
+                    <li class="header"><h3>Complete {{ (sticker.requiredTasks ? sticker.requiredTasks : 'all') }} tasks
+                        to earn the sticker.</small></h3></li>
                     <li ng-repeat="task in sticker.tasks"><a href="/task/{{ task.slug }}">{{ task.name }}</a></li>
                     <li></li>
                     <li></li>
@@ -35,54 +39,60 @@
 </div>
 
 <div class="container">
-<div class="row">
+    <div class="row">
 
-    <div class="col-lg-7">
-
-
-
-        <h2><i class="fa fa-trophy"></i> Who's Got It</h2>
-        <ul ng-if="hasEarners">
-            <li><a href="/user/{{ user.username }}">{{ user.username }}</a></li>
-        </ul>
-        <p ng-if="!hasEarners" class="text-center"><i class="fa fa-frown-o"></i> Nobody yet!</p>
+        <div class="col-lg-7">
 
 
+            <h2><i class="fa fa-trophy"></i> Who's Got It</h2>
+            <ul ng-if="hasEarners">
+                <li><a href="/user/{{ user.username }}">{{ user.username }}</a></li>
+            </ul>
+            <p ng-if="!hasEarners" class="text-center"><i class="fa fa-frown-o"></i> Nobody yet!</p>
 
-        <ul class="posts">
-            <li>
-                <p class="title">
-                    <i class="fa fa-question-circle"></i> <a href="#">Steve</a> needs help to <a href="#">Visit the Great Wall of China</a>.
-                    <span class="date">10 minutes ago.</span>
-                </p>
-                <p class="desc">&quot;How do I get there&quot;</p>
-                <p><a class="btn btn-block"><i class="fa fa-commenting"></i> Help Steve</a></p>
-            </li>
-            <li>
-                <p class="title">
-                    <i class="fa fa-check-square-o"></i> <a href="#">Anthony</a> completed <a href="#">Visit the Forbidden City</a>.
-                    <span class="date">18 months ago.</span>
-                </p>
-                <p class="desc">&quot;3/10 would not recommend&quot;</p>
-                <p><a class="btn btn-block btn-primary"><i class="fa fa-smile-o"></i> Way to go, Anthony</a></p>
-            </li>
-        </ul>
+
+            <ul class="posts">
+                <li>
+                    <p class="title">
+                        <i class="fa fa-question-circle"></i> <a href="#">Steve</a> needs help to <a href="#">Visit the
+                        Great Wall of China</a>.
+                        <span class="date">10 minutes ago.</span>
+                    </p>
+
+                    <p class="desc">&quot;How do I get there&quot;</p>
+
+                    <p><a class="btn btn-block"><i class="fa fa-commenting"></i> Help Steve</a></p>
+                </li>
+                <li>
+                    <p class="title">
+                        <i class="fa fa-check-square-o"></i> <a href="#">Anthony</a> completed <a href="#">Visit the
+                        Forbidden City</a>.
+                        <span class="date">18 months ago.</span>
+                    </p>
+
+                    <p class="desc">&quot;3/10 would not recommend&quot;</p>
+
+                    <p><a class="btn btn-block btn-primary"><i class="fa fa-smile-o"></i> Way to go, Anthony</a></p>
+                </li>
+            </ul>
+
+        </div>
+
+        <div class="col-lg-5">
+            <h2>More {{ sticker.category.name }} Stickers</h2>
+            <ul class="sticker-list small-sticker-list row">
+
+                <li class="col-xs-4 col-sm-3 col-lg-4"
+                    ng-repeat="catSticker in sticker.category.stickers"
+                    ng-if="catsticker.id != sticker.id">
+                    <a href="/sticker/{{ catSticker.slug }}">
+                        <span class="sticker" img="{{ catSticker.imageUrl }}"></span>
+                        <br/>{{ catSticker.name }}
+                    </a>
+                </li>
+
+            </ul>
+        </div>
 
     </div>
-
-    <div class="col-lg-5">
-        <h2>More {{ sticker.category.name }} Stickers</h2>
-        <ul class="sticker-list small-sticker-list row">
-
-            <li class="col-xs-4 col-sm-3 col-lg-4" ng-repeat="catSticker in sticker.category.stickers" ng-if="catsticker.id != sticker.id">
-                <a href="/sticker/{{ catSticker.slug }}">
-                    <span class="sticker" img="{{ catSticker.imageUrl }}"></span>
-                    <br/>{{ catSticker.name }}
-                </a>
-            </li>
-
-        </ul>
-    </div>
-
-</div>
 </div>

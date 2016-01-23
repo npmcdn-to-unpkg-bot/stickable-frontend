@@ -2,11 +2,17 @@
     <div class="container">
 
         <div class="navbar-header" ng-class="{'has-title':pageTitle}">
+
             <a href="#" ng-click="back()" class="navbar-back"><i class="fa fa-chevron-left"></i></a>
+
             <button type="button" class="navbar-toggle">
-                <span></span>
+                <span class="navbar-toggle-icon">
+                    <span></span>
+                </span>
             </button>
+
             <a ui-sref="home" class="navbar-brand"><span class="navbar-logo"></span></a>
+
             <h1>{{ pageTitle }}</h1>
         </div>
 
@@ -21,10 +27,14 @@
 
             <ul class="nav navbar-nav navbar-right nav-logged-in" ng-if="currentUser">
 
-                <li ng-if="currentUser.admin"><a href="http://admin.local.stickable.io"><i class="fa fa-tachometer fa-fw"></i> Admin</a></li>
-                <li><a href="/user/{{ currentUser.username }}/todo"><i class="fa fa-check-square-o fa-fw"></i> To Do List</a></li>
-                <li><a href="/user/{{ currentUser.username }}/stickers"><i class="fa fa-camera-retro fa-fw"></i> Your Submissions</a></li>
-                <li><a href="/user/{{ currentUser.username }}/stickers"><i class="fa fa-trophy fa-fw"></i> Your Stickers</a></li>
+                <li ng-if="currentUser.admin">
+                    <a href="http://admin.local.stickable.io"><i class="fa fa-tachometer fa-fw"></i> Admin</a></li>
+                <li><a href="/user/{{ currentUser.username }}/todo"><i class="fa fa-check-square-o fa-fw"></i> To Do
+                    List</a></li>
+                <li><a href="/user/{{ currentUser.username }}/stickers"><i class="fa fa-camera-retro fa-fw"></i> Your
+                    Submissions</a></li>
+                <li><a href="/user/{{ currentUser.username }}/stickers"><i class="fa fa-trophy fa-fw"></i> Your Stickers</a>
+                </li>
 
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
@@ -40,7 +50,8 @@
                 </li>
 
                 <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user fa-fw"></i> {{ currentUser.username }} <b class="caret"></b></a>
+                    <a class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user fa-fw"></i> {{
+                        currentUser.username }} <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li><a href="/user/{{ currentUser.username }}"><i class="fa fa-user fa-fw"></i> Profile</a></li>
                         <li class="divider"></li>
@@ -54,15 +65,29 @@
             <form class="navbar-form navbar-right visible-lg" ng-submit="login()" ng-if="currentUser === false">
 
                 <div class="form-group">
-                    <input id="header-username" type="text" class="form-control input-sm" name="username" placeholder="Username" ng-model="loginFormData.username" />
+                    <input id="header-username"
+                           type="text"
+                           class="form-control input-sm"
+                           name="username"
+                           placeholder="Username"
+                           ng-model="loginFormData.username"/>
                 </div>
                 <div class="form-group">
-                    <input id="header-password" type="password" class="form-control input-sm" name="password" placeholder="Password" ng-model="loginFormData.password" />
+                    <input id="header-password"
+                           type="password"
+                           class="form-control input-sm"
+                           name="password"
+                           placeholder="Password"
+                           ng-model="loginFormData.password"/>
                 </div>
-                <button id="header-login-btn" type="submit" class="btn btn-primary"><i class="fa fa-key fa-fw" ng-hide="loginFormData.loading"></i><i class="fa fa-spinner fa-spin fa-fw" ng-show="loginFormData.loading"></i> Login</button>
+                <button id="header-login-btn" type="submit" class="btn btn-primary"><i class="fa fa-key fa-fw"
+                                                                                       ng-hide="loginFormData.loading"></i><i
+                        class="fa fa-spinner fa-spin fa-fw"
+                        ng-show="loginFormData.loading"></i> Login
+                </button>
                 <a class="btn" href="/signup"><i class="fa fa-user fa-fw"></i> Signup</a>
             </form>
-            <ul class="nav navbar-nav navbar-right nav-logged-out"  ng-if="currentUser === false">
+            <ul class="nav navbar-nav navbar-right nav-logged-out" ng-if="currentUser === false">
                 <li class="hidden-lg"><a href="/login"><i class="fa fa-key fa-fw"></i> Login</a></li>
                 <li class="hidden-lg"><a href="/signup"><i class="fa fa-user fa-fw"></i> Signup</a></li>
             </ul>

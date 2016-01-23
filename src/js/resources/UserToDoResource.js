@@ -7,7 +7,7 @@ app.factory(
                 username: '@username',
                 slug: '@slug',
                 taskId: '@taskId',
-                sessionToken: function() {
+                sessionToken: function () {
                     return AuthService.getSessionToken() || null;
                 }
             },
@@ -15,9 +15,9 @@ app.factory(
                 query: {
                     method: 'GET',
                     /*transformResponse: function(data) {
-                        var data = angular.fromJson(data);
-                        return data.user;
-                    }*/
+                     var data = angular.fromJson(data);
+                     return data.user;
+                     }*/
                 },
 
                 delete: {

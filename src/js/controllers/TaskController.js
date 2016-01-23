@@ -13,7 +13,7 @@ app.controller(
             $rootScope.pageTitle = task.name;
             $scope.task = task;
             $scope.isOnToDoList = $scope.task.isOnToDoList;
-            $element.css('background-image', 'url('+task.bgUrl+')');
+            $element.css('background-image', 'url(' + task.bgUrl + ')');
         });
 
         $scope.comments = TaskResource.getComments({slug: $stateParams.slug});
@@ -34,7 +34,7 @@ app.controller(
         };
 
         $scope.removeToDo = function () {
-           UserToDoResource.delete(
+            UserToDoResource.delete(
                 {username: $rootScope.currentUser.username},
                 {taskId: $scope.task.id},
                 function (result) {

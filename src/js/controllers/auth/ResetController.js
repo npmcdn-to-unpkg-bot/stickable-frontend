@@ -12,7 +12,7 @@ app.controller(
 
         $scope.success = false;
 
-        $scope.submit = function() {
+        $scope.submit = function () {
 
             if ($scope.resetFormData.password != $scope.resetFormData.confirmPassword) {
                 $scope.resetFormData.errors = {
@@ -54,5 +54,5 @@ app.controller(
 
             return false;
         };
-   }
+    }
 );
