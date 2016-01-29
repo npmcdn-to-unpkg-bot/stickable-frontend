@@ -1,6 +1,14 @@
 app.controller(
     'TaskController',
-    function ($scope, $rootScope, $element, $state, $stateParams, TaskResource, SubmissionResource, UserToDoResource) {
+    function ($scope,
+              $rootScope,
+              $element,
+              $state,
+              $stateParams,
+              TaskResource,
+              SubmissionResource,
+              UserToDoResource,
+              PostResource) {
 
         $rootScope.pageTitle = '';
         $rootScope.loading = true;
@@ -16,7 +24,9 @@ app.controller(
             $element.css('background-image', 'url(' + task.bgUrl + ')');
         });
 
-        $scope.comments = TaskResource.getComments({slug: $stateParams.slug});
+        $scope.showPostTasks = false;
+        $scope.postType = null;
+        $scope.posts = PostResource.getTaskPosts({taskSlug: $stateParams.slug}, {type: $scope.postType});
 
         $scope.addToDo = function () {
             console.log('addToDo');

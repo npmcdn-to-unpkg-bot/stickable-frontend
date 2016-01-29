@@ -1,0 +1,131 @@
+#main {
+    //position: relative;
+    //background: #fff;
+
+    > .view > .container,
+    .content .container {
+        //padding: 0;
+        //padding-top: 30px;
+        //padding-bottom: 30px;
+        position: relative;
+        z-index: 1;
+    }
+}
+
+@media (min-width: @screen-sm-min) {
+    #main .content .container {
+        padding:15px 0;
+    }
+}
+
+@media (min-width: @screen-md-min) {
+    #main .content .container {
+        padding:30px 0;
+    }
+}
+
+.view {
+    background: #fff center no-repeat;
+    background-size: cover;
+}
+
+.content {
+    position: relative;
+    z-index: 3;
+}
+
+@media (min-width: @screen-md-min) {
+    #main > .view {
+        min-height: ~"calc(100vh - @{header-height} - @{footer-height})";
+    }
+}
+
+@media (min-width: @screen-md-min) {
+    .fullscreen #main > .view {
+        height: ~"calc(100vh - @{header-height} - @{footer-height})";
+        overflow: auto;
+
+    }
+}
+
+.fullscreen .view {
+    transition: all 0.2s ease-out;
+    -webkit-transform: translate3d(0, 0, 0);
+    -ms-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+
+.fullscreen .view.ng-enter {
+    -webkit-transform: translate3d(100%, 0, 0);
+    -ms-transform: translate3d(100%, 0, 0);
+    transform: translate3d(100%, 0, 0);
+}
+
+.fullscreen .view.ng-enter-active {
+    -webkit-transform: translate3d(0, 0, 0);
+    -ms-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+}
+
+.fullscreen .view.ng-leave {
+    -webkit-transform: translate3d(0, 0, 0);
+    -ms-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+}
+
+.fullscreen .view.ng-leave-active {
+    -webkit-transform: translate3d(-100%, 0, 0);
+    -ms-transform: translate3d(-100%, 0, 0);
+    transform: translate3d(-100%, 0, 0);
+}
+
+.fullscreen .pane-page {
+    height: 100%;
+    padding: 0;
+    overflow: hidden;
+}
+
+.fullscreen .pane {
+    height: 100%;
+    overflow: auto;
+}
+
+.pane {
+    padding: 15px;
+}
+
+section {
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+
+
+.container .to-edge {
+    margin-left:-15px;
+    margin-right:-15px;
+}
+
+@media (min-width: @screen-sm-min) {
+
+    .container .to-edge {
+        margin-left:0;
+        margin-right:0;
+    }
+
+}
+
+.container-fluid {
+    padding:0;
+}
+
+@media (min-width: @screen-lg-min) {
+    .container-fluid {
+        width: 1170px;
+        padding:15px;
+    }
+}

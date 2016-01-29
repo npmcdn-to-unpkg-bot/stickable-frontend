@@ -1,61 +1,57 @@
-<div class="container-fluid pane-page" id="task-page" ng-if="task">
+<div class="content">
+<div class="container pane-page" id="task-page" ng-if="task">
 
-    <div class="col-md-5 pane">
+    <div class="row">
+        <div class="col-md-5">
 
-        <h3><a href="/sticker/{{ task.sticker.slug }}"><span class="sticker sticker-sm"
-                                                             img="{{ task.sticker.design.imageUrl }}"></span> {{
-            task.sticker.name }}</a></h3>
+            <h3 class="task-title-sticker">
+                <a href="/sticker/{{ task.sticker.slug }}">
+                    <span class="sticker sticker-sm" img="{{ task.sticker.design.imageUrl }}"></span>
+                    {{task.sticker.name }} Sticker
+                </a>
+            </h3>
 
-        <h1>{{ task.name }}</h1>
+            <h1 class="task-title">{{ task.name }}</h1>
 
-        <div class="well">
-            <h2>To Complete This Task</h2>
+            <div id="task-btns" class="pull-right">
 
-            <p>{{ task.submission }}</p>
+                <a class="btn btn-danger btn-remove-todo btn-labeled"
+                   href="#"
+                   ng-click="removeToDo()"
+                   ng-if="currentUser && isOnToDoList">
+                    <span class="btn-label"><i class="fa fa-minus-square-o"></i></span>
+                    Remove from your To Do List
+                </a>
 
-            <form ng-submit="addSubmission()">
-                <ng-include src="'views/partials/submission-forms/' + task.submissionType.toLowerCase() + '.html'"></ng-include>
-                <button type="submit">Submit</button>
-            </form>
+                <a class="btn btn-success btn-add-todo btn-labeled"
+                   href="#"
+                   ng-click="addToDo()"
+                   ng-if="currentUser && !isOnToDoList">
+                    <span class="btn-label"><i class="fa fa-plus-square-o"></i></span>
+                    Add to your To Do List
+                </a>
+
+            </div>
+
+            <ul id="task-details">
+                <li><strong>Cost</strong> <i class="fa fa-usd"></i><i class="fa fa-usd"></i><i class="fa fa-usd"></i>
+                </li>
+                <li><strong>Time</strong> 5 hours</li>
+                <li><strong>Type</strong> <i class="fa fa-user"></i> Alone <i class="fa fa-users"></i> Group
+                    <i class="fa fa-globe"></i> Travel
+                </li>
+            </ul>
+
+            <p>{{ task.description }}</p>
+
         </div>
 
-        <div id="task-btns">
-
-            <a class="btn btn-danger btn-remove-todo btn-labeled"
-               href="#"
-               ng-click="removeToDo()"
-               ng-if="currentUser && isOnToDoList">
-                <span class="btn-label"><i class="fa fa-minus-square-o"></i></span>
-                Remove from your To Do List
-            </a>
-
-            <a class="btn btn-success btn-add-todo btn-labeled"
-               href="#"
-               ng-click="addToDo()"
-               ng-if="currentUser && !isOnToDoList">
-                <span class="btn-label"><i class="fa fa-plus-square-o"></i></span>
-                Add to your To Do List
-            </a>
-
+        <div class="col-md-7">
+            <div class="posts-container">
+                <div ng-include="'views/partials/post-form.html'" ng-controller="PostFormController"></div>
+                <div ng-include="'views/partials/post-list.html'"></div>
+            </div>
         </div>
-
-        <ul id="task-details">
-            <li><strong>Cost</strong> <i class="fa fa-usd"></i><i class="fa fa-usd"></i><i class="fa fa-usd"></i></li>
-            <li><strong>Time</strong> 5 hours</li>
-            <li><strong>Type</strong> <i class="fa fa-user"></i> Alone <i class="fa fa-users"></i> Group
-                <i class="fa fa-globe"></i> Travel
-            </li>
-        </ul>
-
-        <p>{{ task.description }}</p>
-
-    </div>
-
-    <div class="col-md-7 pane">
-
-        <h2>Comments, Tips, and Questions</h2>
-        <ng-include src="'views/pages/task/comments.html'"></ng-include>
-
     </div>
 
 </div>
@@ -69,3 +65,4 @@
         });
     })
 </script>
+</div>

@@ -16,6 +16,12 @@
 
     h1 {
         display: none;
+        color: #fff;
+        font-weight: normal;
+        font-size: 31px;
+        margin: 8px 50px 0;
+        padding:0;
+        .fonty();
     }
 
     .nav > li > a {
@@ -40,20 +46,40 @@
     }
 }
 
-.navbar-back {
-    display: none;
+.navbar-logo {
+    display: inline-block;
+    width: 100px;
+    height: 30px;
+    position: relative;
+    top: -6px;
+    background: url('/assets/img/stickable-header.png') no-repeat top left;
+    background-size: 100%;
+    .hide-text();
+    float: left;
+}
+
+a.navbar-back {
+    display: none; // visible < lg
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    padding: 10px 13px;
+    color: #fff;
+    font-size: 21px;
+    z-index: 2;
 }
 
 /**
  * Menu Button
  */
 .navbar-toggle {
-    display: none;
+    display: none; // visible < lg
     position: absolute;
     top: 0;
     right: 0;
-    bottom:0;
-    width:50px;
+    bottom: 0;
+    width: 50px;
     padding: 0;
     margin: 0;
     border: 0;
@@ -93,6 +119,7 @@
     top: 8px;
 }
 
+// Change hamburger to back arrow when menu is open
 .navbar-visible {
     .navbar-toggle-icon {
         right: 5px;
@@ -118,6 +145,29 @@
 }
 
 /**
+ * Login form in header (visible-lg)
+ */
+.navbar-form {
+    font-size: @font-size-sm;
+    padding: 0;
+    margin-top: 8px;
+
+    input {
+        font-size: @font-size-sm;
+        line-height: 18px;
+    }
+
+    .btn {
+        padding: 6px 12px 5px;
+        margin:0 0 0 1px;
+
+        i {
+            margin:0;
+        }
+    }
+}
+
+/**
  * Hide the login form in the header when on the login page
  */
 .state-login #header-username,
@@ -126,37 +176,9 @@
     display: none;
 }
 
-.navbar-form {
-    font-size: @font-size-sm;
-
-    input {
-        font-size: @font-size-sm;
-        line-height: 18px;
-    }
-
-    .btn {
-        padding: 6px 12px;
-        margin-bottom: 5px;
-    }
-
-    .btn .fa {
-        top: 0px;
-        margin-right: 0px;
-    }
-}
-
-.navbar-logo {
-    display: inline-block;
-    width: 100px;
-    height: 30px;
-    position: relative;
-    top: -6px;
-    background: url('/assets/img/stickable-header.png') no-repeat top left;
-    background-size: 100%;
-    .hide-text();
-    float: left;
-}
-
+/**
+ * User notifications
+ */
 .navbar-nav .notification {
     position: absolute;
     background-color: @red;
@@ -173,28 +195,14 @@
     left: 7px;
 }
 
-@media (min-width: @screen-md-min) {
-    .navbar-form {
-        padding: 0;
-        margin-top: 8px;
-
-        .btn {
-            margin-bottom: 0;
-            margin-left: 1px;
-        }
-    }
-}
-
+/**
+ * Show h1 (page title) in header instead of body on mobile
+ */
 @media (max-width: @screen-xs-max) {
 
     .navbar-header.has-title {
         h1 {
-            color: #fff;
-            font-weight: normal;
-            font-size: 31px;
-            margin: 8px 50px 0;
             display: block;
-            .fonty();
         }
         .navbar-brand {
             display: none;
@@ -206,7 +214,9 @@
     }
 }
 
-// When nav is collapsed (mobile)
+/**
+ * When nav is collapsed (< lg)
+ */
 @media (max-width: @grid-float-breakpoint-max) {
 
     .navbar-header {
@@ -223,17 +233,9 @@
         top: 8px;
     }
 
-    // TODO: Add this to app too
     a.navbar-back {
         display: block;
-        position: absolute;
-        top: 0;
-        left: 0;
-        bottom:0;
-        padding: 10px 13px;
-        color: #fff;
-        font-size: 21px;
-        z-index: 2;
+
     }
 
     .state-home a.navbar-back {

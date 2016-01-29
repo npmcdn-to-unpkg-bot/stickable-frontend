@@ -17,21 +17,6 @@ app.factory(
                         return data.task;
                     }
                 },
-
-                addSubmission: {
-                    method: 'POST',
-                    url: apiUrl + 'tasks/:slug/submissions'
-                },
-
-                getComments: {
-                    method: 'GET',
-                    url: apiUrl + 'tasks/:slug/comments',
-                    isArray: true,
-                    transformResponse: function (data) {
-                        data = angular.fromJson(data);
-                        return data.comments;
-                    }
-                }
             }
         );
     }

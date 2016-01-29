@@ -1,0 +1,49 @@
+<div class="form-group tabs tabs-style-linemove to-edge">
+    <nav>
+        <ul>
+            <li ng-class="{'tab-current': type === 'submission' }">
+                <a href="#" ng-click="setType('submission')" class="icon icon-home">
+                    <span><i class="fa fa-fw fa-check-square"></i> Submissions</span>
+                </a>
+            </li>
+            <li ng-class="{'tab-current': type === 'tip' }">
+                <a href="#" ng-click="setType('tip')" class="icon icon-box">
+                    <span><i class="fa fa-fw fa-info-circle"></i> Tips</span>
+                </a>
+            </li>
+            <li ng-class="{'tab-current': type === 'question' }">
+                <a href="#" ng-click="setType('question')" class="icon icon-display">
+                    <span><i class="fa fa-fw fa-question-circle"></i> Questions</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</div>
+
+<div ng-show="!type || type === 'submission'" class="ng-hide alert alert-info to-edge">
+    <label><i class="fa fa-check-square"></i> To complete this task and earn credit towards the <strong>{{ task.sticker.name }}</strong> sticker, {{ task.submission }}</label>
+    <a class="btn btn-block">Submit Your Photo</a>
+</div>
+
+<div ng-show="type === 'tip'" class="ng-hide alert alert-info to-edge">
+    <a class="btn btn-block">Add A Tip</a>
+</div>
+
+<div ng-show="type === 'question'" class="ng-hide alert alert-info to-edge">
+    <a class="btn btn-block">Need Help? Ask A Question</a>
+</div>
+
+
+<!--<form class="ng-hide post-form form to-edge" ng-submit="submit()" ng-show="type">
+
+    <div ng-if="type === 'submission'" ng-include="'views/partials/submission-forms/' + task.submissionType.toLowerCase() + '.html'"></div>
+
+    <div ng-if="type" class="form-group">
+        <textarea class="form-control" ng-model="formData.comment" placeholder="Comment goes here"></textarea>
+    </div>
+
+    <div ng-if="type" class="form-group text-right">
+        <button class="btn btn-primary">Submit</button>
+    </div>
+
+</form> -->

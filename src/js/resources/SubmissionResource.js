@@ -2,20 +2,18 @@ app.factory(
     'SubmissionResource',
     function ($resource, AuthService) {
         return $resource(
-            apiUrl + 'submissions/:id',
+            apiUrl + 'submissions/:submissionId',
             {
-                id: '@id',
+                submissionId: '@submissionId',
+                taskSlug: '@taskSlug',
                 sessionToken: function () {
                     return AuthService.getSessionToken() || null;
                 }
             },
             {
-                query: {
-                    isArray: true,
-                    transformResponse: function (data) {
-                        data = angular.fromJson(data);
-                        return data.submissions;
-                    }
+                save: {
+                    method: 'POST',
+                    url: apiUrl + 'tasks/:taskSlug/submissions'
                 },
             }
         );

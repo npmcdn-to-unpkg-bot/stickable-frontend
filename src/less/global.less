@@ -11,29 +11,7 @@ body {
     // To allow menu to slide in
     transition: all 0.2s ease-out;
 
-    font-weight:300;
-}
-
-
-p {
-    font-family: @font-family-text;
-}
-
-h1, h2, h3, h4, h5 {
-    color: @purple;
-    font-family: @font-family-headings;
-    margin: 15px 0;
-    //.fonty();
-    font-weight:500;
-    position: relative;
-}
-
-h4, h5 {
-    color: @blue;
-}
-
-h5 {
-    margin: 0 0 10px 0;
+    font-weight: 300;
 }
 
 :first-child {
@@ -48,59 +26,38 @@ h5 {
     display: none !important;
 }
 
-a:link,
-a:visited {
-    color: @blue;
-    //font-weight: bold;
-}
-
-a:hover,
-a:active,
-a:focus {
-    color: darken(@blue, 33%);
-    text-decoration: none;
-}
-
-a.btn {
-    color: #fff;
-    font-weight: normal !important;
-    text-decoration: none;
-    opacity: 1;
-}
-
 img {
     max-width: 100%;
 }
 
+p {
+    font-family: @font-family-text;
+    margin: 0 0 15px;
+    line-height: 1.9;
+}
 
+h1 {
+    padding: 15px 15px 0;
+}
 
-#main {
+h1, h2, h3, h4, h5 {
+    color: @purple;
+    font-family: @font-family-headings;
+    margin: 15px 0;
+    //.fonty();
+    font-weight: 500;
     position: relative;
-    background: #fff;
-
-    > .view > .container,
-    .content .container {
-        padding-top: 30px;
-        padding-bottom: 30px;
-        position: relative;
-        z-index: 1;
-    }
 }
 
-#main > .view {
-    min-height: ~"calc(100vh - @{header-height} - @{footer-height})";
+h4, h5 {
+    color: @blue;
 }
 
-@media (min-width: @screen-md-min) {
-    .fullscreen #main > .view {
-        height: ~"calc(100vh - @{header-height} - @{footer-height})";
-        overflow: auto;
-
-    }
+h5 {
+    margin: 0 0 10px 0;
 }
 
 @media (max-width: @screen-sm-max) {
-
     h1 {
         font-size: @font-size-h1-sm;
     }
@@ -117,71 +74,26 @@ img {
         font-size: @font-size-h4-sm;
     }
 
-    #main {
-        > .view > .container {
-            padding-top: 15px;
-            padding-bottom: 15px;
-        }
+    .alert {
+        border-radius: 0;
+        border-left:0;
+        border-right:0;
+        margin:0;
+        font-size:@font-size-sm;
     }
 }
 
-body.has-breadcrumbs #main {
-    min-height: ~"calc(100vh - @{header-height} - @{footer-height} - 36px)";
+a:link,
+a:visited {
+    color: @blue;
+    //font-weight: bold;
 }
 
-.view {
-    background: #fff center no-repeat;
-    background-size: cover;
-}
-
-.fullscreen .view {
-    transition: all 0.2s ease-out;
-    -webkit-transform: translate3d(0, 0, 0);
-    -ms-transform: translate3d(0, 0, 0);
-    transform: translate3d(0, 0, 0);
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-}
-
-.fullscreen .view.ng-enter {
-    -webkit-transform: translate3d(100%, 0, 0);
-    -ms-transform: translate3d(100%, 0, 0);
-    transform: translate3d(100%, 0, 0);
-}
-
-.fullscreen .view.ng-enter-active {
-    -webkit-transform: translate3d(0, 0, 0);
-    -ms-transform: translate3d(0, 0, 0);
-    transform: translate3d(0, 0, 0);
-}
-
-.fullscreen .view.ng-leave {
-    -webkit-transform: translate3d(0, 0, 0);
-    -ms-transform: translate3d(0, 0, 0);
-    transform: translate3d(0, 0, 0);
-}
-
-.fullscreen .view.ng-leave-active {
-    -webkit-transform: translate3d(-100%, 0, 0);
-    -ms-transform: translate3d(-100%, 0, 0);
-    transform: translate3d(-100%, 0, 0);
-}
-
-.fullscreen .pane-page {
-    height: 100%;
-    padding: 0;
-    overflow: hidden;
-}
-
-.fullscreen .pane {
-    height: 100%;
-    overflow: auto;
-}
-
-.pane {
-    padding: 15px;
+a:hover,
+a:active,
+a:focus {
+    color: darken(@blue, 33%);
+    text-decoration: none;
 }
 
 // Page backgrounds
@@ -200,18 +112,8 @@ body.has-breadcrumbs #main {
     background-image: url(/assets/img/bg/register.jpg);
 }
 
-.view > h1 {
-    padding: 15px 15px 0;
-}
-
-section {
-    padding-top: 15px;
-    padding-bottom: 15px;
-}
-
 p {
-    margin: 0 0 15px;
-    line-height: 1.9;
+
 }
 
 .red {
@@ -238,15 +140,15 @@ p {
     li {
         margin: 0 0 15px;
         text-align: left;
-        height:160px;
+        height: 160px;
     }
 
     .sticker {
-        float:left;
+        float: left;
     }
 
     h3 {
-        margin:65px 0 0 15px;
+        margin: 65px 0 0 15px;
         float: left;
     }
 

@@ -1,0 +1,20 @@
+<ul class="posts media-list to-edge">
+    <li class="media" ng-repeat="post in posts.posts" ng-class="{'with-task': !!showPostTasks}">
+        <span class="media-left media-middle">
+            <a href="/task/{{ post.task.slug }}/{{ post.slug }}">
+                <img class="media-object" ng-src="{{ post.image }}"/>
+            </a>
+        </span>
+        <span class="media-body media-middle">
+            <h4 ng-if="showPostTasks"><i class="fa fa-check-square-o"></i> {{ post.task.name }}</h4>
+            <h3>
+                <a href="/task/{{ post.task.slug }}/{{ post.slug }}">{{ post.title }}</a>
+            </h3>
+            <span class="details">
+                <i class="fa fa-user"></i> {{ post.user.username }}
+                <i class="fa fa-comment"></i> {{ post.commentCount }} comments
+                <i class="fa fa-heart"></i> {{ post.likeCount }} likes
+            </span>
+        </span>
+    </li>
+</ul>
