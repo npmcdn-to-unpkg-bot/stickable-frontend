@@ -1,20 +1,39 @@
 <ul class="posts media-list to-edge">
-    <li class="media" ng-repeat="post in posts.posts" ng-class="{'with-task': !!showPostTasks}">
-        <span class="media-left media-middle">
-            <a href="/task/{{ post.task.slug }}/{{ post.slug }}">
-                <img class="media-object" ng-src="{{ post.image }}"/>
+
+    <li class="post media"
+        ng-repeat="thisPost in posts.posts"
+        ng-class="{'with-task': !!showPostTasks, 'liked': !!thisPost.liked, 'like-clicked': !!thisPost.likeClicked}"
+            ng-if="!post || post.id != thisPost.id">
+
+        <span class="media-left media-middle" ng-if="thisPost.image">
+            <a href="/task/{{ (thisPost.task ? thisPost.task.slug : (task ? task.slug : ''))}}/{{ thisPost.slug }}"
+               ng-click="goToPost($event, thisPost)">
+                <img class="media-object" ng-src="{{ thisPost.image }}"/>
             </a>
         </span>
         <span class="media-body media-middle">
-            <h4 ng-if="showPostTasks"><i class="fa fa-check-square-o"></i> {{ post.task.name }}</h4>
-            <h3>
-                <a href="/task/{{ post.task.slug }}/{{ post.slug }}">{{ post.title }}</a>
-            </h3>
+
+            <a class="like-btn" ng-click="likePost($event, thisPost)" href="#">
+                <span><i class="fa fa-heart-o"></i> {{ thisPost.likeCount }}</span>
+            </a>
+
+            <span class="task" ng-if="showPostTasks"><i class="fa fa-check-square-o"></i> {{ thisPost.task.name }}</span>
+
+            <a class="title"
+               href="/task/{{ (thisPost.task ? thisPost.task.slug : (task ? task.slug : ''))}}/{{ thisPost.slug }}"
+               ng-click="goToPost($event, thisPost)">{{ thisPost.title }}</a>
+
             <span class="details">
-                <i class="fa fa-user"></i> {{ post.user.username }}
-                <i class="fa fa-comment"></i> {{ post.commentCount }} comments
-                <i class="fa fa-heart"></i> {{ post.likeCount }} likes
+
+                <i class="fa"
+                   ng-class="{'fa-check-circle': thisPost.type === 'SUBMISSION', 'fa-question-circle' : thisPost.type === 'QUESTION', 'fa-info-circle' : thisPost.type === 'TIP'}"></i>
+                {{ thisPost.type.capitalizeFirstLetter() }}
+
+                <i class="fa fa-user"></i> {{ thisPost.user.username }}
+                <i class="fa fa-comment"></i> {{ thisPost.commentCount }}
             </span>
         </span>
+
     </li>
+
 </ul>

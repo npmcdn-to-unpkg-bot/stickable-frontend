@@ -27,7 +27,10 @@ a.btn {
     padding-left: 11px;
     padding-top: 0;
     padding-bottom: 0;
+}
 
+.btn-labeled,
+.btn-labeled-lg {
     .btn-label {
         padding: 7px 12px;
     }
@@ -35,6 +38,38 @@ a.btn {
     i {
         top: 0;
         margin: 0;
+    }
+}
+
+/**
+ * Buttons with label only on lg+
+ */
+.btn-labeled-lg .btn-label,
+.btn-labeled-md .btn-label{
+    display: none;
+}
+
+@media (min-width: @screen-md-min) {
+    .btn-labeled-md {
+        padding-left: 11px;
+        padding-top: 0;
+        padding-bottom: 0;
+
+        .btn-label {
+            display: inline-block;
+        }
+    }
+}
+
+@media (min-width: @screen-lg-min) {
+    .btn-labeled-lg {
+        padding-left: 11px;
+        padding-top: 0;
+        padding-bottom: 0;
+
+        .btn-label {
+            display: inline-block;
+        }
     }
 }
 
@@ -104,6 +139,10 @@ a.btn {
     .btn {
         .btn-block();
         margin-bottom: 14px;
+
+        &:last-child {
+            margin-bottom:0;
+        }
 
         &.btn-labeled {
             .btn-block.btn-labeled()

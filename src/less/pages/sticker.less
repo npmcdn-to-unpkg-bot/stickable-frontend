@@ -11,46 +11,46 @@
     }
 }
 
+.sticker-title {
+    float:left;
+    margin: 38px 0 0 0;
+
+    a {
+        color: #fff;
+    }
+}
+
+.sticker-desc {
+    clear:both;
+}
+
 // xs
 @media (max-width: @screen-xs-max) {
-    .sticker-splash h1,
-    .sticker-splash h2,
-    .sticker-info {
+
+    .sticker-title {
+        float:none;
+        margin:-170px 0 30px;
+
+        h1:before {
+            color:#fff !important;
+        }
+
+        h1 {
+            padding-top:210px !important;
+        }
+    }
+
+    // Bump the sticker between the h3 and h1
+    .sticker-splash .sticker {
+        top:50px;
+    }
+
+    .sticker-splash {
         text-align: center;
     }
 }
 
-// xs, sm, md
-// Below lg everything is in one column - add top margins to headings
-@media (max-width: @screen-md-max) {
-    .sticker-splash h2:first-child {
-        margin-top: 15px;
-    }
-}
-
-// sm, md, lg
-// Sticker floated left
-@media (min-width: @screen-sm-min) {
-    .sticker-splash h1 {
-        font-size: @font-size-h1;
-        margin-top: 0;
-        padding-top: 26px;
-    }
-
-    .sticker-splash .sticker {
-        float: left;
-        margin: 0 15px 15px 0;
-    }
-}
-
-@media (min-width: @screen-lg-min) {
-
-    // Who's got it section
-    .sticker-splash .row .row > :last-child {
-        margin-top: 30px;
-    }
-}
-
+.post-info,
 .sticker-info {
     font-size: @font-size-xs;
     list-style: none;
@@ -70,49 +70,19 @@
     }
 }
 
-.stickerPage .stickerImage {
-    border-radius: 3px;
-    margin-bottom: 15px;
-}
-
-.stickerPage .numberBox {
-    background: #2c3e50;
-    color: #fff;
-    display: block;
-    font-size: 16px;
-    text-align: center;
-    margin-top: 15px;
-    padding: 10px 20px;
-    border-radius: 3px;
-}
-
-.stickerPage .numberBox:first-child {
-    margin-top: 0;
-}
-
-.stickerPage .numberBox strong {
-    font-size: 20px;
-    display: block;
-}
-
-.stickerPage .numberBox .btn {
-    margin-top: 10px;
-}
-
-.activity-box-container {
-    padding: 0;
-}
-
 .task-list {
-    .fonty();
+    //.fonty();
+    //font-size: 30px;
 
-    font-size: 30px;
+    font-size: 19px;
     background-color: #f5f5f5;
-    margin: 0 auto -60px;
+    margin: 0 auto;
     padding: 0;
     position: relative;
     list-style: none;
     min-height: 400px;
+    text-align: left;
+    color:@default-text-color;
 
     // Adds the "ruled margin" down the left
     &:before {
@@ -135,23 +105,33 @@
         -o-transition: all 0.2s;
         min-height: 45px;
 
-        a {
+        > a,
+        > span {
             display: block;
-            padding: 15px 10px 0 35px;
+            padding: 15px 12px 0 35px;
             position: relative;
             margin-bottom: -5px;
             font-weight: normal;
+
+            > i {
+                margin-right: 10px;
+            }
         }
 
+        > span {
+            padding-bottom:15px;
+        }
+
+
+
         &.header {
-            padding: 30px 10px 0 35px;
+            padding: 30px 10px 0 33px;
             margin-bottom: 10px;
 
             h3 {
                 margin-bottom: -5px;
                 color: @purple;
                 font-weight: bold;
-                text-align: left;
             }
         }
 
@@ -172,5 +152,52 @@
         }
 
     }
+}
+
+// xs, sm, md
+// Below lg everything is in one column - add top margins to headings
+@media (max-width: @screen-md-max) {
+    .sticker-splash h2:first-child {
+        margin-top: 15px;
+    }
+}
+
+// sm, md, lg
+// Sticker floated left
+@media (min-width: @screen-sm-min) {
+    /*.sticker-splash h1 {
+        font-size: @font-size-h1;
+        margin-top: 0;
+        padding-top: 26px;
+    }*/
+
+    .sticker-splash .sticker {
+        float: left;
+        margin: 0 15px 15px 0;
+    }
+}
+
+@media (min-width: @screen-lg-min) {
+
+    // Who's got it section
+    .sticker-splash .row .row > :last-child {
+        margin-top: 30px;
+    }
+
+    .sticker-splash {
+        padding: 30px 0;
+    }
+
+    .task-list {
+        position: relative;
+        top: 60px;
+    }
+
+    .view-sticker .col-lg-7 {
+        h2:not(:first-child) {
+            margin-top: 60px;
+        }
+    }
+
 }
 

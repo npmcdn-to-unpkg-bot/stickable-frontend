@@ -1,0 +1,123 @@
+.titlecrumbs {
+    .transition-all();
+    margin-bottom:30px;
+
+    h1, h2, h3 {
+        margin:0;
+        padding:0;
+    }
+
+    /*h1 {
+        font-size:40px;
+    }*/
+
+    h2 {
+        font-size: 26px;
+    }
+
+    h3 {
+        font-size:18px;
+    }
+
+    // h1 always or h2 with 2 titles
+    h1,
+    h3 + h2 {
+        position: relative;
+
+        padding: 15px 15px 0 37px;
+
+        // Bump it up so the line goes into the sticker
+        //margin: -18px 0 0 0;
+
+        //font-size: 32px;
+
+        // Line to sticker / task
+        &:before {
+            content: "";
+            position: absolute;
+            left: 13px;
+            top: 5px;
+            border-left: 1px @grey solid;
+            border-bottom: 1px @grey solid;
+            width: 15px;
+            height: 30px;
+        }
+    }
+
+    // h2 with 3 titles
+    h3 + h2:before {
+        left: 9px;
+    }
+
+    // h1 with 3 titles
+    h3 + h2 + h1 {
+        margin-left:37px;
+    }
+
+    // h1 with 2 titles but a smaller first tirle (h3)
+    h3 + h1 {
+
+        padding-left:32px;
+        padding-top:11px;
+
+        &:before {
+            left:9px;
+        }
+    }
+
+     h1:first-child {
+        padding:0;
+        &:before {
+            display: none !important;
+        }
+    }
+}
+
+@media (max-width:@screen-xs-max) {
+
+    .titlecrumbs {
+        float:none;
+        text-align:center;
+
+        h1,
+        h2,
+        h3 {
+            padding:0;
+            margin:0;
+        }
+
+        h1,
+        h3 + h2,
+        h3 + h1,
+        h3 + h2 + h1 {
+
+            padding: 30px 0 0 0;
+            margin:0;
+
+            // Chevron
+            &:before {
+                border:0;
+                left:0;
+                right:0;
+                top:10px;
+
+                font-family: FontAwesome;
+                content: "\f078";
+                font-size:12px;
+                display: block;
+                width: auto;
+                height: auto;
+                color:#777;
+            }
+        }
+
+        h1:first-child {
+            padding:0;
+            &:before {
+                display: none !important;
+            }
+        }
+
+    }
+}
+

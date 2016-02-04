@@ -1,0 +1,76 @@
+<div class="modal">
+
+    <div class="modal-content">
+
+        <div class="modal-header">
+            <button ng-click="close()" class="modal-close-btn">
+                <i class="fa fa-times"></i>
+            </button>
+
+            <h4 class="modal-title">Add A Post</h4>
+        </div>
+
+        <form class="form" ng-submit="submit()">
+
+            <div class="modal-body">
+
+            <div class="form-group">
+                <nav class="tabs tabs-style-linemove tabs-3 post-order-tabs">
+                    <ul>
+                        <li ng-class="{'tab-current': postType === 'submission' }">
+                            <a href="#" ng-click="setPostType($event, 'submission')">
+                                <span><i class="fa fa-fw fa-bars"></i> Submission</span>
+                            </a>
+                        </li>
+
+                        <li ng-class="{'tab-current': postType === 'tip' }">
+                            <a href="#" ng-click="setPostType($event, 'tip')">
+                                <span><i class="fa fa-fw fa-info-circle"></i> Tip</span>
+                            </a>
+                        </li>
+
+                        <li ng-class="{'tab-current': postType === 'question' }">
+                            <a href="#" ng-click="setPostType($event, 'question')">
+                                <span><i class="fa fa-fw fa-plus-circle"></i> Question</span>
+                            </a>
+                        </li>
+
+                    </ul>
+                </nav>
+
+            </div>
+
+            <div class="form-group ng-hide" ng-show="postType === 'submission'">
+                <div ng-include="'views/partials/submission-forms/' + task.submissionType.toLowerCase() + '.html'"></div>
+            </div>
+
+            <div class="form-group">
+                <label for="post-title">Title</label>
+                <input type="text" class="form-control" ng-model="formData.title" id="post-title" placeholder="Give your post a title." />
+            </div>
+
+            <div class="form-group">
+                <label for="post-text">Content</label>
+                <textarea class="form-control" ng-model="formData.text" placeholder="Write your tip, question, or other post here." id="post-text"></textarea>
+            </div>
+
+            </div>
+
+            <div class="modal-footer">
+
+                <button ng-click="close()" type="button" class="btn btn-danger btn-labeled pull-left hidden-xs hidden-sm">
+                    <span class="btn-label"><i class="fa fa-trash"></i></span>
+                    Cancel
+                </button>
+
+                <button class="btn btn-primary btn-labeled">
+                    <span class="btn-label"><i class="fa fa-save"></i></span>
+                    Submit
+                </button>
+            </div>
+
+        </form>
+
+    </div>
+
+</div>

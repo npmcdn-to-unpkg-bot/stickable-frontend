@@ -1,8 +1,9 @@
+<div class="container-md">
 <ul class="category-list row">
-    <li class="col-sm-3 col-xs-6" ng-repeat="category in categories">
+    <li class="col-sm-4 col-xs-6" ng-repeat="category in categories">
         <a href="/category/{{ category.slug }}" ng-style="{'background-image':'url('+category.thumbUrl+')'}">
             <span>{{ category.name }}</span>
         </a>
     </li>
 </ul>
-
+</div>

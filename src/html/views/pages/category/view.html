@@ -1,26 +1,43 @@
-<h1>{{ category.name }}</h1>
+<div class="content">
+<div class="container">
 
-<ul ng-if="hasSubcategories" class="category-list row">
-    <li class="col-sm-3 col-xs-6" ng-repeat="subcategory in category.subcategories">
-        <a href="/category/{{ subcategory.slug }}" ng-style="{'background-image':'url('+subcategory.thumbUrl+')'}">
-            <span>{{ subcategory.name }}</span>
-        </a>
-    </li>
-</ul>
-
-<ul ng-if="hasStickers" class="sticker-list row">
-
-    <li class="col-md-2" ng-repeat="sticker in category.stickers">
-        <a href="/sticker/{{ sticker.slug }}">
-            <span class="sticker" img="{{ sticker.design.imageUrl }}"></span>
-            <h3>{{ sticker.name }}</h3>
-        </a>
-    </li>
-
-</ul>
-
-<div ng-if="category && !hasSubcategories && !hasStickers" class="container">
-    <div class="alert alert-danger">
-        <p><i class="fa fa-frown-o"></i> There's nothing in this category yet.</p>
+    <div class="titlecrumbs">
+        <h2 ng-if="category.parentCategory"><a href="/category/{{ category.parentCategory.slug }}"><i class="fa fa-folder"></i> {{ category.parentCategory.name }}</a></h2>
+        <h1><i class="fa fa-folder-open"></i> {{ category.name }}</h1>
     </div>
+
+    <div ng-if="hasSubcategories" class="alert alert-info">
+        <p><i class="fa fa-folder-open"></i> These are the subcategories in <strong>{{category.name}}</strong>. Pick one of these more specific subcategories to find stickers.</p>
+    </div>
+
+    <ul ng-if="hasSubcategories" class="category-list row">
+        <li class="col-sm-3 col-xs-6" ng-repeat="subcategory in category.subcategories">
+            <a href="/category/{{ subcategory.slug }}" ng-style="{'background-image':'url('+subcategory.thumbUrl+')'}">
+                <span>{{ subcategory.name }}</span>
+            </a>
+        </li>
+    </ul>
+
+    <div ng-if="hasStickers" class="alert alert-info">
+        <p><i class="fa fa-trophy"></i> These are <strong>{{category.name}}</strong> stickers. Pick one of them to see how you can earn it.</p>
+    </div>
+
+    <ul ng-if="hasStickers" class="sticker-list row">
+
+        <li class="col-md-3" ng-repeat="sticker in category.stickers">
+            <a href="/sticker/{{ sticker.slug }}">
+                <span class="sticker" img="{{ sticker.design.imageUrl }}"></span>
+
+                <h3>{{ sticker.name }}</h3>
+            </a>
+        </li>
+
+    </ul>
+
+    <div ng-if="category && !hasSubcategories && !hasStickers">
+        <div class="alert alert-danger">
+            <p><i class="fa fa-frown-o"></i> There's no stickers or subcategories of <strong>{{category.name}}</strong> yet. Something will be here soon!</p>
+        </div>
+    </div>
+</div>
 </div>

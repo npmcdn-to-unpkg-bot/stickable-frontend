@@ -1,68 +1,165 @@
 <div class="content">
-<div class="container pane-page" id="task-page" ng-if="task">
+    <div class="container task-page" ng-if="task" ng-class="{'post-page': !!post}">
 
-    <div class="row">
-        <div class="col-md-5">
 
-            <h3 class="task-title-sticker">
+        <div class="titlecrumbs task-title" ng-if="!post">
+            <h2 class="sticker-name">
+                <a href="/sticker/{{ task.sticker.slug }}">
+                    <span class="sticker sticker-sm" img="{{ task.sticker.design.imageUrl }}"></span>
+                    {{task.sticker.name }} Sticker
+                </a>
+            </h2>
+
+            <h1 class="task-name">
+                <i class="fa fa-check-square"></i> {{ task.name }}
+            </h1>
+        </div>
+
+        <div class="titlecrumbs post-title" ng-if="post">
+            <h3 class="sticker-name">
                 <a href="/sticker/{{ task.sticker.slug }}">
                     <span class="sticker sticker-sm" img="{{ task.sticker.design.imageUrl }}"></span>
                     {{task.sticker.name }} Sticker
                 </a>
             </h3>
 
-            <h1 class="task-title">{{ task.name }}</h1>
-
-            <div id="task-btns" class="pull-right">
-
-                <a class="btn btn-danger btn-remove-todo btn-labeled"
-                   href="#"
-                   ng-click="removeToDo()"
-                   ng-if="currentUser && isOnToDoList">
-                    <span class="btn-label"><i class="fa fa-minus-square-o"></i></span>
-                    Remove from your To Do List
+            <h2 class="task-name">
+                <a href="/task/{{task.slug}}" ng-click="goToTask($event, task)">
+                    <i class="fa fa-check-square"></i> {{ task.name }}
                 </a>
+            </h2>
 
-                <a class="btn btn-success btn-add-todo btn-labeled"
-                   href="#"
-                   ng-click="addToDo()"
-                   ng-if="currentUser && !isOnToDoList">
-                    <span class="btn-label"><i class="fa fa-plus-square-o"></i></span>
-                    Add to your To Do List
-                </a>
+            <h1 class="post-name">
+                <i class="fa fa-file-text-o"></i> {{ post.title }}
+            </h1>
+        </div>
+
+        <div id="task-btns" ng-if="currentUser">
+            <div class="row">
+
+                <div class="col-xs-6">
+                    <a class="btn btn-danger btn-remove-todo btn-labeled-md btn-block"
+                       href="#"
+                       ng-click="removeToDo()"
+                       ng-if="isOnToDoList">
+                        <span class="btn-label"><i class="fa fa-minus-circle"></i></span>
+                        Remove from To-Do <span class="hidden-xs">List</span>
+                    </a>
+
+                    <a class="btn btn-success btn-add-todo btn-labeled-md btn-block"
+                       href="#"
+                       ng-click="addToDo()"
+                       ng-if="!isOnToDoList">
+                        <span class="btn-label"><i class="fa fa-plus-circle"></i></span>
+                        Add to To-Do <span class="hidden-xs">List</span>
+                    </a>
+                </div>
+                <div class="col-xs-6">
+                     <a ng-click="showPostForm()" class="new-post-btn btn btn-labeled-md btn-block">
+                        <span class="btn-label"><i class="fa fa-plus-circle"></i></span>
+                        Add A <span class="hidden-xs">Tip / Question</span><span class="visible-xs-inline">Post</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="row clear">
+
+            <div class="content-col" ng-class="{'col-md-6': !post, 'col-md-8': !!post}">
+
+                <div ng-if="post">
+
+                    <div class="single-post" ng-controller="PostsController" ng-class="{'liked': !!post.liked, 'like-clicked': !!post.likeClicked}">
+
+                        <a class="like-btn" ng-click="likePost($event, post)" href="#">
+                            <span><i class="fa fa-heart-o"></i> {{ post.likeCount }}</span>
+                        </a>
+
+                        <p>{{ post.text }}</p>
+                        <p>Images go here</p>
+                    </div>
+
+                    <ul class="post-info">
+                        <li><i class="fa fa-user"></i> {{post.user.username}}</li>
+                        <li><i class="fa fa-clock-o"></i> <span am-time-ago="post.createdAt"></span></li>
+                    </ul>
+
+                    <a class="btn btn-block btn-labeled add-comment-btn" href="#" ng-click="showCommentForm($event)" ng-hide="commentFormVisible">
+                        <span class="btn-label"><i class="fa fa-comment"></i></span>
+                        Add A Comment
+                    </a>
+
+                    <h2 class="hidden-sm hidden-xs">Comments</h2>
+
+                    <div ng-include="'views/partials/comment-form.html'" ng-if="commentFormVisible"></div>
+                    <div ng-include="'views/partials/comment-list.html'" ng-controller="CommentsController"></div>
+
+                </div>
+
+                <div ng-if="!post">
+
+                    <div class="alert alert-info text-center">
+                        <small><i class="fa fa-check-square"></i> To complete this task and earn credit towards the <strong>{{
+                            task.sticker.name }}</strong> sticker:</small>
+
+                        <p>{{ task.submission }}</p>
+
+                        <p>
+                            <a class="btn btn-block btn-labeled" ng-click="showPostForm('submission')">
+                                <span class="btn-label"><i class="fa fa-camera-retro"></i></span>
+                                Submit Photo
+                            </a>
+                        </p>
+                    </div>
+
+                    <ul id="task-details" class="clearfix">
+                        <li><strong>Cost</strong>
+                            <i class="fa fa-usd"></i><i class="fa fa-usd"></i><i class="fa fa-usd"></i>
+                        </li>
+                        <li><strong>Time</strong> 5 hours</li>
+                        <li><strong>Type</strong> <i class="fa fa-user"></i> Alone <i class="fa fa-users"></i> Group
+                            <i class="fa fa-globe"></i> Travel
+                        </li>
+                    </ul>
+
+                    <p>{{ task.description }}</p>
+
+                </div>
 
             </div>
 
-            <ul id="task-details">
-                <li><strong>Cost</strong> <i class="fa fa-usd"></i><i class="fa fa-usd"></i><i class="fa fa-usd"></i>
-                </li>
-                <li><strong>Time</strong> 5 hours</li>
-                <li><strong>Type</strong> <i class="fa fa-user"></i> Alone <i class="fa fa-users"></i> Group
-                    <i class="fa fa-globe"></i> Travel
-                </li>
-            </ul>
+            <div class="posts-col" ng-class="{'col-md-6': !post, 'col-md-4': !!post}">
+                <div class="posts-container">
+                    <nav class="tabs tabs-style-linemove tabs-2 post-order-tabs" ng-if="!post">
+                        <ul>
+                            <li ng-class="{'tab-current': postsOrder === 'newest' }">
+                                <a href="#" ng-click="setPostsOrder('newest')">
+                                    <span><i class="fa fa-fw fa-bars"></i> Recent <strong class="visible-lg-inline">Posts</strong></span>
+                                </a>
+                            </li>
+                            <li ng-class="{'tab-current': postsOrder === 'featured' }">
+                                <a href="#" ng-click="setPostsOrder('featured')">
+                                    <span><i class="fa fa-fw fa-star"></i> Featured <strong class="visible-lg-inline">Posts</strong></span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
 
-            <p>{{ task.description }}</p>
-
-        </div>
-
-        <div class="col-md-7">
-            <div class="posts-container">
-                <div ng-include="'views/partials/post-form.html'" ng-controller="PostFormController"></div>
-                <div ng-include="'views/partials/post-list.html'"></div>
+                    <div ng-include="'views/partials/post-list.html'" ng-controller="PostsController"></div>
+                </div>
             </div>
+
+
         </div>
+
     </div>
 
-</div>
-
-
-<script>
-    $(document).on('click', '#settings-upload-picture-btn', function () {
-        ctrlv.upload(function (image) {
-            $('input[name=picture]').val(image.urls.image);
-            $('#settings-picture').attr('src', image.urls.image);
-        });
-    })
-</script>
+    <script>
+        $(document).on('click', '#settings-upload-picture-btn', function () {
+            ctrlv.upload(function (image) {
+                $('input[name=picture]').val(image.urls.image);
+                $('#settings-picture').attr('src', image.urls.image);
+            });
+        })
+    </script>
 </div>

@@ -1,0 +1,20 @@
+<div class="comments">
+    <div class="comment comment-form">
+        <form ng-submit="addComment()">
+            <p>
+                <textarea class="form-control" ng-model="commentFormData.comment"></textarea>
+            </p>
+
+            <span class="author">
+                <i class="fa fa-user"></i> {{ currentUser.username }}
+            </span>
+
+            <span class="action">
+                <button type="submit" class="btn btn-primary btn-labeled">
+                    <span class="btn-label"><i class="fa fa-plus-circle"></i></span>
+                    Add Comment
+                </button>
+            </span>
+        </form>
+    </div>
+</div>

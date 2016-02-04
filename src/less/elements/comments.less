@@ -1,0 +1,96 @@
+.comments {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.comment {
+    position: relative;
+    margin-bottom:40px;
+
+    p {
+        position: relative;
+        padding: 10px 15px;
+
+        color: #000;
+
+        /*background: #f3961c;
+        background: -webkit-gradient(linear, 0 0, 0 100%, from(#f9d835), to(#f3961c));
+        background: -moz-linear-gradient(#f9d835, #f3961c);
+        background: -o-linear-gradient(#f9d835, #f3961c);
+        background: linear-gradient(#f9d835, #f3961c);*/
+
+        background: #fff;
+        border-radius: @border-radius-base;
+
+        &:after {
+            content: '';
+            bottom: -19px;
+            left: 28px;
+            position: absolute;
+            border: 0 solid;
+            display: block;
+            width: 38px;
+            height: 26px;
+            background-color: transparent;
+            border-bottom-left-radius: 50%;
+            border-bottom-right-radius: 50%;
+            box-shadow: -21px 9px 0 8px #fff;
+            transform: rotate(73deg);
+            z-index: -1;
+        }
+    }
+
+    .author {
+        position: absolute;
+        bottom: -25px;
+        left: 45px;
+        font-size: 12px;
+    }
+
+    .replies,
+    .action {
+        position: absolute;
+        bottom: -25px;
+        right: 15px;
+        font-size: 12px;
+    }
+
+    .like-btn {
+        font-size:14px;
+        padding:2px 0;
+
+        i {
+            font-size:16px;
+        }
+    }
+}
+
+
+@media (max-width: @screen-sm-max) {
+
+    .comment {
+        margin-bottom:33px;
+    }
+
+    .comment p {
+        margin-bottom: 30px;
+    }
+
+    .comment .author,
+    .comment .replies {
+        font-size:12px;
+    }
+}
+
+.comment-form {
+    margin-bottom:60px;
+
+    textarea {
+        min-height:100px;
+    }
+
+    .action {
+        bottom:-45px;
+    }
+}

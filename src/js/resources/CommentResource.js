@@ -11,19 +11,32 @@ app.factory(
                 }
             },
             {
+                save: {
+                    method: 'POST',
+                    url: apiUrl + 'posts/:postId/comments',
+                },
 
                 getPostsComments: {
                     method: 'GET',
                     url: apiUrl + 'posts/:postId/comments',
-                    isArray: true
+                    //isArray: true
                 },
 
                 getCommentReplies: {
                     method: 'GET',
                     url: apiUrl + 'comments/:commentId/replies',
-                    isArray: true
-                }
+                    //isArray: true
+                },
 
+                likeComment: {
+                    url: apiUrl + 'comments/:commentId/likes',
+                    method:'POST'
+                },
+
+                unlikeComment: {
+                    url: apiUrl + 'comments/:commentId/likes',
+                    method:'DELETE'
+                }
 
             }
         );

@@ -1,36 +1,122 @@
+.task-page {
 
-#task-page {
+    padding-bottom: 0 !important;
 
-    position: relative;
-
-    .task-title {
-        padding-left: 40px;
-        margin-top: -10px;
-        position: relative;
-
-        &:before {
-            content: "";
-            position: absolute;
-            left: 16px;
-            top: 5px;
-            border-left: 1px #777 solid;
-            border-bottom: 1px #777 solid;
-            width: 15px;
-            height: 30px;
-
-        }
+    .content-col,
+    .posts-col {
+        .transition-all();
     }
 
-    .task-title-sticker {
+}
+
+.task-title,
+.post-title {
+
+    float: left;
+
+    .sticker-name {
+        margin-top: 0;
+        // Indent for the sticker
         padding-left: 45px;
 
         .sticker-sm {
             position: absolute;
-            top: -3px;
+            top: -7px;
             left: -3px;
         }
     }
 
+    .task-name {
+        &:before {
+            left: 16px;
+        }
+    }
+}
+
+@media (max-width: @screen-xs-max) {
+
+    .task-title,
+    .post-title {
+        float: none;
+
+        .sticker-name {
+            margin-top: -14px;
+            padding: 0;
+
+            .sticker-sm {
+                position: relative;
+                left: 0;
+                top: 14px;
+            }
+        }
+
+        .task-name {
+            &:before {
+                left: 0;
+                right: 0;
+            }
+        }
+    }
+}
+
+.post-order-tabs {
+    margin-top: -12px;
+}
+
+.posts-col h2 {
+    display: none;
+}
+
+.post-page {
+
+    .posts-col h2 {
+        display: block;
+    }
+
+    .post-order-tabs {
+        margin-top: 0;
+    }
+
+    #task-btns {
+        display: none;
+    }
+}
+
+#task-btns {
+    clear: both;
+    margin-bottom: 15px;
+
+    .col-xs-6:first-child {
+        padding-right: 7px;
+    }
+
+    .col-xs-6:last-child {
+        padding-left: 7px;
+    }
+
+    .btn {
+        margin-bottom: 0;
+    }
+}
+
+@media (min-width: @screen-md-min) {
+    #task-btns {
+        clear: none;
+        float: right;
+
+        .row > div {
+            width: auto;
+            padding: 0 0 0 15px;
+        }
+    }
+
+    .add-comment-btn {
+        display: inline-block;
+        float: right;
+        width: auto;
+        z-index:2;
+        top:-1px;
+    }
 }
 
 #task-details {
@@ -51,15 +137,29 @@
     font-size: 12px;
 }
 
-/*@media (min-width:@screen-md-min) {
+.add-comment-btn {
+    margin-bottom: 15px;
+}
 
-        #task-page h1 {
-            margin-right:250px;
-        }
+// Hide "Post" word in tabs on post page
+.post-page {
+    .post-order-tabs strong {
+        display: none !important;
+    }
+}
 
-        #task-btns {
-            position: absolute;
-            right:15px;
-            top:80px;
-        }
+// Hide post list on mobile
+@media (max-width: @screen-sm-max) {
+    .posts-container {
+        margin-top: 15px;
+    }
+
+    .post-page .posts-col {
+        margin-top: 0px;
+        padding-top: 15px;
+    }
+
+    /*.post-page .posts-container {
+        display: none;
     }*/
+}

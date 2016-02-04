@@ -9,6 +9,15 @@
     text-indent: 100%;
 }
 
+
+.text-shadow {
+    text-shadow: @text-shadow;
+}
+
+.round-corners {
+    border-radius: @border-radius-base;
+}
+
 .vertical-center {
     // Vertical centering
     display: -ms-flexbox;
@@ -20,10 +29,6 @@
     align-items: center;
 }
 
-.text-shadow {
-    text-shadow: @text-shadow;
-}
-
-.round-corners {
-    border-radius: @border-radius-base;
+.transition-all(@speed: @standard-transition-speed) {
+    transition: all @speed @standard-transition-easing;
 }

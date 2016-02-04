@@ -6,7 +6,8 @@ var app = angular.module('stickable', [
     'ngSanitize',
     'LocalStorageModule',
     'angularModalService',
-    'ngAnimate'
+    'ngAnimate',
+    'angularMoment'
 ]);
 
 app.config(function ($httpProvider,

@@ -43,9 +43,28 @@
 
     .category-list {
         padding: 7px;
+        text-align: center;
 
         li {
-            height: ~"calc((100vh - @{header-height} - @{footer-height} - 14px)/2)";
+            //height: ~"calc((100vh - @{header-height} - @{footer-height} - 14px)/2)";
+            height:250px;
+            padding: 7px;
+
+            float:none;
+            display: inline-block;
+        }
+    }
+
+}
+
+
+@media (min-width: @screen-lg-min) {
+    .category-list {
+        margin:-7px;
+        padding:0;
+
+        li {
+            height: 250px;
             padding: 7px;
         }
     }
