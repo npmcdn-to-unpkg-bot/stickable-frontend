@@ -128,18 +128,21 @@ a.like-btn {
     }
 }
 
-.liked .like-btn {
+.post.liked .like-btn,
+.comment.liked > p .like-btn {
     i {
         color: @red;
     }
 }
 
-.liked .like-btn i:before,
+.post.liked .like-btn i:before,
+.comment.liked > p .like-btn i:before,
 .like-btn:hover i:before {
     content:"\f004";
 }
 
-.liked.like-clicked .like-btn span:after {
+.post.liked.like-clicked .like-btn span:after,
+.comment.liked.like-clicked > p .like-btn span:after {
     font-family: FontAwesome;
     content: "\f004";
     color: @red;

@@ -5,24 +5,22 @@
 }
 
 .comment {
+    .clearfix();
+    clear:both;
     position: relative;
-    margin-bottom:40px;
+
+    // Space between comments
+    margin-bottom:20px;
 
     p {
         position: relative;
         padding: 10px 15px;
-
+        margin:0 0 10px 0;
         color: #000;
-
-        /*background: #f3961c;
-        background: -webkit-gradient(linear, 0 0, 0 100%, from(#f9d835), to(#f3961c));
-        background: -moz-linear-gradient(#f9d835, #f3961c);
-        background: -o-linear-gradient(#f9d835, #f3961c);
-        background: linear-gradient(#f9d835, #f3961c);*/
-
         background: #fff;
         border-radius: @border-radius-base;
 
+        // Comment speech arrow
         &:after {
             content: '';
             bottom: -19px;
@@ -41,19 +39,27 @@
         }
     }
 
-    .author {
-        position: absolute;
-        bottom: -25px;
-        left: 45px;
+    .author,
+    .actions {
         font-size: 12px;
+
+        a {
+            margin-left: 10px;
+
+            &:first-child {
+                margin-left:0;
+            }
+        }
     }
 
-    .replies,
-    .action {
-        position: absolute;
-        bottom: -25px;
-        right: 15px;
-        font-size: 12px;
+    .author {
+        float:left;
+        margin-left:45px;
+    }
+
+    .actions {
+        float:right;
+        margin-right: 15px;
     }
 
     .like-btn {
@@ -66,31 +72,67 @@
     }
 }
 
-
-@media (max-width: @screen-sm-max) {
-
-    .comment {
-        margin-bottom:33px;
-    }
-
-    .comment p {
-        margin-bottom: 30px;
-    }
-
-    .comment .author,
-    .comment .replies {
-        font-size:12px;
-    }
-}
-
 .comment-form {
-    margin-bottom:60px;
-
     textarea {
         min-height:100px;
     }
+}
 
-    .action {
-        bottom:-45px;
+/**
+ * Comment Replies
+ */
+.comment .comments {
+    clear:both;
+    // Indent comments
+    margin-left: 45px;
+
+    > .comment:first-child,
+    > .comment-include:first-child {
+        padding-top:20px;
+    }
+
+    > .comment:last-child,
+    > .comment-include:last-child > .comment {
+        margin-bottom:0;
+    }
+}
+
+// Make comment replies darker
+.comment-depth (@i) {
+    .comment-replies-@{i} .comment p {
+        background: darken(#fff, 100% * ((@i+1)/20));
+        &:after {
+            box-shadow: -21px 9px 0 8px darken(#fff, 100% * ((@i+1)/20));
+        }
+    }
+}
+
+.comment-depth(0);
+.comment-depth(1);
+.comment-depth(2);
+.comment-depth(3);
+.comment-depth(4);
+
+
+@media (max-width: @screen-sm-max) {
+    .comment {
+        // Adjust comment speech bubble
+        p:after {
+            left:17px;
+            transform: rotate(73deg) scale(.6);
+        }
+
+        .author {
+            margin-left:35px;
+        }
+
+        .author,
+        .actions {
+            font-size:11px;
+        }
+    }
+
+    .comment .comments {
+        margin-left: 30px;
     }
 }

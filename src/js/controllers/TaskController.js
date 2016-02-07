@@ -150,31 +150,94 @@ app.controller(
          */
 
         $scope.commentFormVisible = false;
-        $scope.showCommentForm = function($event) {
+        $scope.showCommentForm = function($event, replyToComment) {
             preventDefault($event);
+
+            if (replyToComment) {
+                $scope.commentFormData.replyTo = replyToComment;
+                // Move comment form to reply hole
+                $('.comment[data-commentid='+replyToComment.id+'] > .replies').prepend($('.comment-form'));
+            } else {
+                $scope.commentFormData.replyTo = null;
+                // Move comment form to top level hole
+                $('.comment-form-container').prepend($('.comment-form'));
+            }
+
             $scope.commentFormVisible = true;
         };
 
-        $scope.commentFormData = {
-            loading: false,
-            comment: ''
+        $scope.hideCommentForm = function (clear) {
+            if (clear) {
+                $scope.commentFormData.comment = '';
+            }
+            $scope.commentFormVisible = false;
+            $('.comment-form-container').prepend($('.comment-form'));
         };
 
-        $scope.addComment = function () {
-            $scope.commentFormData.loading = true;
-            CommentResource.save(
+        $scope.loadCommentReplies = function ($event, comment) {
+            preventDefault($event);
+            CommentResource.getCommentReplies(
                 {
-                    postId: $scope.post.id,
-                    comment: $scope.commentFormData.comment,
+                    'commentId': comment.id
                 },
                 function (response) {
-                    $scope.comments.comments.unshift(response.comment);
-                    $scope.commentFormVisible = false;
+                    comment.replies = response.comments
                 },
                 function (response) {
                     alertError(response.data.message);
                 }
-            );
+            )
+        };
+
+        $scope.commentFormData = {
+            loading: false,
+            replyTo: null,
+            comment: ''
+        };
+
+        $scope.addComment = function () {
+
+            $scope.commentFormData.loading = true;
+
+            if ($scope.commentFormData.replyTo) {
+
+                CommentResource.saveReply(
+                    {
+                        commentId: $scope.commentFormData.replyTo.id,
+                        //postId: $scope.post.id,
+                        comment: $scope.commentFormData.comment,
+                    },
+                    function (response) {
+                        if (!$scope.commentFormData.replyTo.replies) {
+                            $scope.commentFormData.replyTo.replies = [];
+                        }
+                        $scope.commentFormData.replyTo.replies.unshift(response.comment);
+                        $scope.commentFormData.replyTo.replyCount += 1;
+                        $scope.hideCommentForm(true);
+                    },
+                    function (response) {
+                        alertError(response.data.message);
+                    }
+                );
+
+            } else {
+
+                CommentResource.save(
+                    {
+                        postId: $scope.post.id,
+                        comment: $scope.commentFormData.comment,
+                    },
+                    function (response) {
+                        $scope.comments.comments.unshift(response.comment);
+                        $scope.hideCommentForm(true);
+                    },
+                    function (response) {
+                        alertError(response.data.message);
+                    }
+                );
+
+            }
+
         };
     }
 );

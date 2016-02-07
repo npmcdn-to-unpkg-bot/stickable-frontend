@@ -1,0 +1,35 @@
+<div class="comment" ng-class="{'liked': !!comment.liked, 'like-clicked': !!comment.likeClicked}" data-commentid="{{comment.id}}">
+    <p>
+        <a class="like-btn" ng-click="likeComment($event, comment)" href="#">
+            <span><i class="fa fa-heart-o"></i> {{ comment.likeCount }}</span>
+        </a>
+        {{ comment.comment }}
+    </p>
+
+    <span class="author">
+        <a href="/user/{{ comment.user.username }}"><i class="fa fa-user"></i> {{ comment.user.username }}</a>
+        <!-- TODO: Permalink -->
+        <a href="#"><i class="fa fa-clock-o"></i> <span am-time-ago="comment.createdAt"></span></a>
+    </span>
+
+    <span class="actions">
+
+        <!--{{ comment.replies.length }} loaded / {{ comment.replyCount }} replies-->
+
+        <span ng-switch on="(comment.replyCount > 0 && !comment.replies) || comment.replies.length < comment.replyCount">
+
+            <a ng-switch-when="true" href="#" ng-click="loadCommentReplies($event, comment)">
+                <i class="fa fa-comments"></i> Load {{ comment.replyCount - (comment.replies ? comment.replies.length : 0) }} more replies
+            </a>
+
+            <a ng-switch-default href="#" ng-click="showCommentForm($event, comment)"><i class="fa fa-commenting"></i> Add Reply</a>
+
+        </span>
+
+
+    </span>
+
+    <div class="comments replies comment-replies-{{comment.depth}}">
+        <div class="comment-include" ng-repeat="comment in comment.replies" ng-include="'views/partials/comment.html'"></div>
+    </div>
+</div>

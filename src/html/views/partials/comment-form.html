@@ -1,20 +1,25 @@
-<div class="comments">
-    <div class="comment comment-form">
-        <form ng-submit="addComment()">
-            <p>
-                <textarea class="form-control" ng-model="commentFormData.comment"></textarea>
-            </p>
+<div class="comments comment-form-container">
 
-            <span class="author">
-                <i class="fa fa-user"></i> {{ currentUser.username }}
-            </span>
+    <form ng-submit="addComment()" class="comment comment-form ng-hide" ng-show="commentFormVisible">
+        <p>
+            <textarea class="form-control" ng-model="commentFormData.comment"></textarea>
+        </p>
 
-            <span class="action">
-                <button type="submit" class="btn btn-primary btn-labeled">
-                    <span class="btn-label"><i class="fa fa-plus-circle"></i></span>
-                    Add Comment
-                </button>
-            </span>
-        </form>
-    </div>
+        <span class="author">
+            <i class="fa fa-user"></i> {{ currentUser.username }}
+        </span>
+
+        <span class="actions">
+            <a class="btn btn-danger btn-labeled" ng-click="hideCommentForm()">
+                <span class="btn-label"><i class="fa fa-times"></i></span>
+                Close
+            </a>
+
+            <button type="submit" class="btn btn-primary btn-labeled">
+                <span class="btn-label"><i class="fa fa-plus-circle"></i></span>
+                Add Comment
+            </button>
+        </span>
+    </form>
+
 </div>

@@ -1,22 +1,8 @@
 <div class="comments">
+    <ng-include ng-repeat="comment in comment.replies" src="'views/partials/comment.html'"></ng-include>
 
-    <div ng-repeat="comment in comments.comments" class="comment" ng-class="{'liked': !!comment.liked, 'like-clicked': !!comment.likeClicked}">
-
-        <p>
-            <a class="like-btn" ng-click="likeComment($event, comment)" href="#">
-                <span><i class="fa fa-heart-o"></i> {{ comment.likeCount }}</span>
-            </a>
-
-            {{ comment.comment }}
-        </p>
-
-        <span class="author">
-            <i class="fa fa-user"></i> {{ comment.user.username }}
-            &nbsp;
-            <span am-time-ago="comment.createdAt"></span>
-        </span>
-
-        <span class="replies"><a href="#"><i class="fa fa-comments"></i> See {{ comment.replyCount }} replies</a></span>
+    <div ng-repeat="comment in comments.comments">
+        <ng-include src="'views/partials/comment.html'"></ng-include>
     </div>
 
 </div>

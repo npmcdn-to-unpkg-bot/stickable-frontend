@@ -16,6 +16,11 @@ app.factory(
                     url: apiUrl + 'posts/:postId/comments',
                 },
 
+                saveReply: {
+                    method: 'POST',
+                    url: apiUrl + 'comments/:commentId/replies',
+                },
+
                 getPostsComments: {
                     method: 'GET',
                     url: apiUrl + 'posts/:postId/comments',
