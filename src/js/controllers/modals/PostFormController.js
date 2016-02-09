@@ -18,6 +18,7 @@ app.controller(
 
             $scope.postType = postType === $scope.postType ? '' : postType;
         };
+        ;
 
         $scope.submit = function () {
 

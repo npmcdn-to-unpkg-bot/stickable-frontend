@@ -160,6 +160,12 @@ app.run(function ($rootScope, $state, AuthService, UserNotificationsResource) {
     });
 });
 
+
+(function() {
+
+})();
+
+
 $(document).on('click', 'body:not(.navbar-visible) .navbar-toggle', function (e) {
     console.log(e);
     e.preventDefault();

@@ -1,0 +1,84 @@
+.quill {
+    border: 1px solid #ccc;
+    border-radius: @border-radius-base;
+}
+
+.ql-toolbar {
+    position: relative;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+    padding: 6px;
+    border-bottom: 1px solid #ccc;
+
+    a {
+        display: inline-block;
+        text-align: center;
+        width: 30px;
+        height: 30px;
+        margin: 0;
+        border: 1px solid transparent;
+        border-radius: 3px;
+        color:@default-text-color;
+        cursor: pointer;
+        opacity:.7;
+
+        &:before {
+            line-height: 30px;
+            position: relative;
+            top: -1px;
+        }
+
+        &.ql-active,
+        &:hover {
+            background: #fcfcfc;
+            border-color: #ccc;
+            opacity:1;
+        }
+
+        &.ql-active {
+            background: #efefef;
+        }
+    }
+
+    hr {
+        display: inline;
+        border-left: 1px solid #ccc;
+        color: transparent;
+        margin: 0 6px;
+    }
+}
+
+.quill-editor-container {
+    position: relative;
+}
+
+.ql-container {
+    font-family: inherit;
+    font-size: inherit;
+    padding:12px;
+    box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
+    overflow-y:auto;
+    height:300px;
+    position: static;
+}
+
+.ql-tooltip {
+    font-size:12px;
+    border-color: #ccc;
+    border-radius: @border-radius-base;
+}
+
+.ql-image-tooltip {
+    top: -1px !important;
+}
+
+.ql-editor a {
+    text-decoration: none;
+}
+
+.ql-image-tooltip a {
+    .btn();
+}

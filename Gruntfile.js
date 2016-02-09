@@ -50,6 +50,9 @@ module.exports = function (grunt) {
                     'bower_components/messenger/build/js/messenger-theme-flat.min.js',
                     'bower_components/moment/moment.js',
                     'bower_components/angular-moment/angular-moment.min.js',
+
+                    'bower_components/quill/dist/quill.min.js',
+
                     'src/lib/stickerjs/sticker.js',
                 ],
                 dest: 'public/assets/build/' + buildNumber + '/js/lib.min.js'

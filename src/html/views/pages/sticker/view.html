@@ -41,24 +41,23 @@
                             </a>
                         </li>
 
-                        <li class="header">
+                        <li class="header" ng-hide="sticker.isOnToDoList">
                             <h3>Want this sticker?</h3>
                         </li>
-
-                        <li>
+                        <li ng-hide="sticker.isOnToDoList">
                             <span>
-                                <a class="btn btn-primary btn-block btn-labeled">
+                                <a class="btn btn-primary btn-block btn-labeled" ng-click="addToDo()">
                                     <span class="btn-label"><i class="fa fa-plus-circle"></i></span>
                                     Add To To-Do List
                                 </a>
                             </span>
                         </li>
 
-                        <li class="header">
+                        <li class="header ng-hide" ng-show="sticker.isOnToDoList">
                             <h3>Your progress:</h3>
                         </li>
 
-                        <li>
+                        <li class="ng-hide" ng-show="sticker.isOnToDoList">
                             <span>
                                 <span class="progress">
                                   <span class="progress-bar progress-bar-success"
@@ -75,20 +74,19 @@
                             </span>
                         </li>
 
-                        <li>
+                        <li class="ng-hide" ng-show="sticker.isOnToDoList">
                             <span>
                                 <span class="label label-success">6</span> Tasks Completed
                             </span>
                         </li>
 
-                        <li>
+                        <li class="ng-hide" ng-show="sticker.isOnToDoList">
                             <span>
                                 <span class="label label-warning">2</span> Tasks Pending Approval
                             </span>
                         </li>
 
-
-                        <li>
+                        <li class="ng-hide" ng-show="sticker.isOnToDoList">
                             <span>
                                 <span class="label label-danger">4</span> More Tasks Needed
                             </span>
