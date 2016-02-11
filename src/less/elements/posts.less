@@ -20,7 +20,6 @@
                 background: darken(#F1F1F2, 2%);
             }
         }
-
     }
 
     .task {
@@ -72,8 +71,8 @@
 
     .like-btn {
         padding: 15px;
-        margin-top:-10px;
-        margin-right:-10px;
+        margin-top: -10px;
+        margin-right: -10px;
     }
 }
 
@@ -94,26 +93,59 @@
 }
 
 .single-post {
-    padding:15px;
+    padding: 15px;
     border-radius: @border-radius-base;
     background: rgba(255, 255, 255, .3);
+    margin-bottom: 15px;
 
     .like-btn {
-        padding-top:2px;
+        padding-top: 4px;
+    }
+}
+
+.single-post-images {
+    margin:15px 0;
+
+    > div {
+        margin-bottom: 15px;
+        position: static !important;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+
+    img {
+        border-radius: @border-radius-base;
+    }
+
+}
+
+@media (min-width: @screen-md-min) {
+    .single-post-images {
+        margin: -7px;
+
+        > div {
+            position: absolute !important;
+            margin: 0;
+            width: 50%;
+            padding: 7px;
+        }
     }
 }
 
 .post-info {
-    margin: 10px 15px 15px 15px;
-    font-size:14px;
+    margin: 0 0 5px 0;
+    font-size: 14px;
+
+    a {
+        color: @grey;
+    }
 }
-
-
 
 /**
  * Like Button
  */
-
 
 a.like-btn {
     float: right;
@@ -138,7 +170,7 @@ a.like-btn {
 .post.liked .like-btn i:before,
 .comment.liked > p .like-btn i:before,
 .like-btn:hover i:before {
-    content:"\f004";
+    content: "\f004";
 }
 
 .post.liked.like-clicked .like-btn span:after,

@@ -73,6 +73,25 @@ app.controller(
             $scope.postsOrder = order;
         };
 
+        $scope.showSubmissionForm = function() {
+            ModalService.showModal({
+                templateUrl: 'views/modals/submission-form.html',
+                controller: 'SubmissionFormController',
+                inputs: {
+                    task: $scope.task,
+                }
+            }).then(function(modal) {
+
+                modal.close.then(function (post) {
+                    if (post) {
+                        $scope.posts.posts.unshift(post);
+                    }
+                });
+
+            });
+
+        };
+
         $scope.showPostForm = function(type) {
             ModalService.showModal({
                 templateUrl: 'views/modals/post-form.html',
@@ -153,6 +172,8 @@ app.controller(
         $scope.showCommentForm = function($event, replyToComment) {
             preventDefault($event);
 
+            $scope.commentFormVisible = true;
+
             if (replyToComment) {
                 $scope.commentFormData.replyTo = replyToComment;
                 // Move comment form to reply hole
@@ -163,7 +184,6 @@ app.controller(
                 $('.comment-form-container').prepend($('.comment-form'));
             }
 
-            $scope.commentFormVisible = true;
         };
 
         $scope.hideCommentForm = function (clear) {
@@ -171,7 +191,7 @@ app.controller(
                 $scope.commentFormData.comment = '';
             }
             $scope.commentFormVisible = false;
-            $('.comment-form-container').prepend($('.comment-form'));
+            //$('.comment-form-container').prepend($('.comment-form'));
         };
 
         $scope.loadCommentReplies = function ($event, comment) {
@@ -197,6 +217,7 @@ app.controller(
 
         $scope.addComment = function () {
 
+            //CKEDITOR.instances['comment-text'].fire('change');
             $scope.commentFormData.loading = true;
 
             if ($scope.commentFormData.replyTo) {

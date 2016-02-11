@@ -1,0 +1,23 @@
+{
+  "name": "stickable-assets",
+  "homepage": "https://github.com/antriver/stickable-frontend",
+  "authors": [
+    "Anthony Kuske <anthonykuske@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "moduleType": [],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "ckeditor-markdown-plugin": "*",
+    "ckeditor-image-button": "~1.0.0"
+  }
+}

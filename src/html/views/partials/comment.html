@@ -1,10 +1,11 @@
 <div class="comment" ng-class="{'liked': !!comment.liked, 'like-clicked': !!comment.likeClicked}" data-commentid="{{comment.id}}">
-    <p>
+    <div class="inner">
         <a class="like-btn" ng-click="likeComment($event, comment)" href="#">
             <span><i class="fa fa-heart-o"></i> {{ comment.likeCount }}</span>
         </a>
-        {{ comment.comment }}
-    </p>
+
+        <div ng-bind-html="comment.comment | markdown"></div>
+    </div>
 
     <span class="author">
         <a href="/user/{{ comment.user.username }}"><i class="fa fa-user"></i> {{ comment.user.username }}</a>
@@ -25,7 +26,6 @@
             <a ng-switch-default href="#" ng-click="showCommentForm($event, comment)"><i class="fa fa-commenting"></i> Add Reply</a>
 
         </span>
-
 
     </span>
 

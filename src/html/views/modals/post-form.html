@@ -15,33 +15,20 @@
             <div class="modal-body">
 
                 <div class="form-group">
-                    <nav class="tabs tabs-style-linemove tabs-3 post-order-tabs">
-                        <ul>
-                            <li ng-class="{'tab-current': postType === 'submission' }">
-                                <a href="#" ng-click="setPostType($event, 'submission')">
-                                    <span><i class="fa fa-fw fa-bars"></i> Submission</span>
-                                </a>
-                            </li>
 
-                            <li ng-class="{'tab-current': postType === 'tip' }">
-                                <a href="#" ng-click="setPostType($event, 'tip')">
-                                    <span><i class="fa fa-fw fa-info-circle"></i> Tip</span>
-                                </a>
-                            </li>
+                    <ul class="tabs tabs-2">
+                        <li ng-class="{'tab-current': postType === 'tip' }">
+                            <a href="#" ng-click="setPostType($event, 'tip')">
+                                <i class="fa fa-fw fa-info-circle"></i> Tip
+                            </a>
+                        </li>
+                        <li ng-class="{'tab-current': postType === 'question' }">
+                            <a href="#" ng-click="setPostType($event, 'question')">
+                                <i class="fa fa-fw fa-question-circle"></i> Question
+                            </a>
+                        </li>
+                    </ul>
 
-                            <li ng-class="{'tab-current': postType === 'question' }">
-                                <a href="#" ng-click="setPostType($event, 'question')">
-                                    <span><i class="fa fa-fw fa-plus-circle"></i> Question</span>
-                                </a>
-                            </li>
-
-                        </ul>
-                    </nav>
-
-                </div>
-
-                <div class="form-group ng-hide" ng-show="postType === 'submission'">
-                    <div ng-include="'views/partials/submission-forms/' + task.submissionType.toLowerCase() + '.html'"></div>
                 </div>
 
                 <div class="form-group">
@@ -54,12 +41,8 @@
                 </div>
 
                 <div class="form-group">
-
-                    <label for="post-text">Content</label>
-
-                    <div class="quill" id="post-text" ng-model="formData.text"></div>
-
-                    <!--<textarea class="form-control" ng-model="formData.text" placeholder="Write your tip, question, or other post here." id="post-text" quill></textarea>-->
+                    <label for="post-text">Post</label>
+                    <textarea class="form-control" id="post-text" ng-model="formData.text" placeholder="Write your tip, question, or other post here."></textarea>
                 </div>
 
             </div>

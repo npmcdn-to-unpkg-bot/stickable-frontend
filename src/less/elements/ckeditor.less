@@ -1,0 +1,67 @@
+.cke {
+
+    &.cke_chrome {
+        border: 1px solid #ccc;
+        border-radius: @border-radius-base;
+        box-shadow: none;
+    }
+
+    .cke_top,
+    .cke_toolgroup {
+        background: none !important;
+        box-shadow: none;
+    }
+
+    .cke_top {
+        padding: 6px;
+        border-bottom: 1px solid #ccc;
+    }
+
+    .cke_toolgroup {
+        border:0;
+        margin:0 6px 0 0;
+        padding:0 6px 0 0;
+        border-right: 1px solid #ccc;
+    }
+
+    .cke_toolbar:last-child .cke_toolgroup {
+        border:0;
+    }
+
+    a.cke_button {
+        cursor: pointer;
+        border-radius: 3px !important;
+        border: 1px solid transparent;
+        opacity:.7;
+
+        &.cke_button_on,
+        &:hover {
+            background: #fcfcfc;
+            border-color: #ccc;
+            opacity:1;
+            box-shadow: none;
+        }
+
+        &.cke_button_on {
+            background: #efefef;
+        }
+    }
+}
+
+.cke_editable {
+    box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
+    padding:12px;
+}
+
+.cke_editable img {
+    height: auto !important;
+}
+
+/**
+ * Hide the original image button.
+ * It needs to be on the toolbar to make pasting and dragging work for some reason.
+ * But we don't want users to use it.
+ */
+.cke_toolbar:nth-child(3) .cke_button:nth-child(2) {
+    display: none;
+}

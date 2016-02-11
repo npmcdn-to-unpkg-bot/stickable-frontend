@@ -1,0 +1,78 @@
+.dots {
+    position: relative;
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    cursor: default;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.dots li {
+    position: relative;
+    display: inline-block;
+    margin: 0 12px;
+    width: 12px;
+    height: 12px;
+
+    -webkit-perspective: 1000px;
+    perspective: 1000px;
+}
+
+.dots li a {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    outline: none;
+    border-radius: 50%;
+    background-color: #fff;
+    background-color: rgba(255, 255, 255, 0.3);
+    text-indent: -9999px; /* make the text accessible to screen readers */
+    position: absolute;
+    background-color: transparent;
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    -webkit-transition: -webkit-transform 0.3s ease, opacity 0.3s ease;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.dots li a:focus {
+    outline: none;
+}
+
+.dots li a::before,
+.dots li a::after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background-color: #e5e5e5;
+    content: '';
+    text-indent: 0;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+
+.dots li a::after {
+    background-color: @grey;
+    -webkit-transform: rotateY(180deg);
+    transform: rotateY(180deg);
+}
+
+.dots li a:hover,
+.dots li a:focus {
+    opacity: 0.8;
+}
+
+.dots li.active a {
+    -webkit-transform: rotateY(180deg) scale(1.1);
+    transform: rotateY(180deg) scale(1.1);
+}

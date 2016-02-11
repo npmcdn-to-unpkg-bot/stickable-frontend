@@ -6,13 +6,8 @@
     position: relative;
     overflow: hidden;
     margin: 0 auto;
-    //width: 100%;
-    font-weight: 300;
-    font-size: 1.25em;
     text-align: center;
-}
 
-.tabs ul {
     position: relative;
     display: -ms-flexbox;
     display: -webkit-flex;
@@ -35,7 +30,7 @@
     justify-content: center;
 }
 
-.tabs ul li {
+.tabs li {
     position: relative;
     z-index: 1;
     display: block;
@@ -53,17 +48,12 @@
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-    line-height: 2.5;
-}
-
-.tabs a span {
-    vertical-align: middle;
-    font-size: 0.7em;
-}
-
-@media (min-width: @screen-sm-min) {tabs nav a span {
-        font-size:0.8em;
-    }
+    font-size:14px;
+    padding:0 0 15px 0;
+    font-weight: 700;
+    color: @blue;
+    -webkit-transition: color 0.3s, -webkit-transform 0.3s;
+    transition: color 0.3s, transform 0.3s;
 }
 
 .tabs li.tab-current a {
@@ -78,7 +68,7 @@
 /* Moving Line */
 /*****************************/
 
-.tabs-style-linemove li:last-child::before {
+.tabs li:last-child::before {
     position: absolute;
     bottom: 0;
     left: 0;
@@ -92,41 +82,27 @@
     transform: translate3d(110%, 0, 0);
 }
 
-.tabs-style-linemove li:last-child.tab-current::before {
+.tabs li:last-child.tab-current::before {
     -webkit-transform: translate3d(0, 0, 0);
     transform: translate3d(0, 0, 0);
 }
 
 /* Move the line */
-.tabs-style-linemove li:first-child.tab-current ~ li:last-child::before {
+.tabs li:first-child.tab-current ~ li:last-child::before {
     -webkit-transform: translate3d(-200%, 0, 0);
     transform: translate3d(-200%, 0, 0);
 }
 
-.tabs-style-linemove li:nth-child(2).tab-current ~ li:last-child::before {
+.tabs li:nth-child(2).tab-current ~ li:last-child::before {
     -webkit-transform: translate3d(-100%, 0, 0);
     transform: translate3d(-100%, 0, 0);
 }
 
-.tabs-style-linemove a {
-    padding: 6px 0 1em 0;
-    color: @blue;
-    line-height: 1;
-    -webkit-transition: color 0.3s, -webkit-transform 0.3s;
-    transition: color 0.3s, transform 0.3s;
-}
-
-.tabs-style-linemove li.tab-current a {
+.tabs li.tab-current a {
     color: @purple;
-    -webkit-transform: translate3d(0, 8px, 0);
-    transform: translate3d(0, 8px, 0);
+    //-webkit-transform: translate3d(0, 2px, 0);
+    //transform: translate3d(0, 2px, 0);
 }
-
-.tabs-style-linemove a span {
-    font-weight: 700;
-}
-
-
 
 /* Move the line */
 .tabs-2 li:first-child.tab-current ~ li:last-child::before {

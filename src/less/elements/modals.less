@@ -21,6 +21,7 @@
     width: 800px;
     padding: 15px;
     max-width: 100%;
+    overflow: auto;
     margin:auto;
 
     label {
@@ -39,6 +40,21 @@
         margin-bottom:15px;
     }
 }
+
+.modal-close-btn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 9px 15px;
+    margin: 0;
+    border: 0;
+    z-index: 2;
+    color:@navbar-color;
+    background: none;
+    outline: none;
+    font-size: 23px;
+}
+
 
 .modal-header {
     background: @navbar-color;
@@ -59,23 +75,31 @@
         padding:8px 0;
         .fonty();
     }
+
+    .modal-close-btn {
+        color:#fff;
+        bottom: 0;
+    }
 }
 
+.modal-footer {
+    position: relative;
 
-.modal-close-btn {
+    .btn {
+        position: relative;
+        z-index:2;
+    }
+}
+
+.modal-dots {
     position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    padding: 9px 15px;
-    margin: 0;
-    border: 0;
-    z-index: 2;
-    color:#fff;
-    background: none;
-    outline: none;
-    font-size: 23px;
+    left:0;
+    right:0;
+    padding: 7px 0;
+    text-align: center;
+    z-index:0;
 }
+
 
 .modal.ng-enter {
     opacity: 0;
@@ -94,14 +118,33 @@
 }
 
 @media (max-width: @screen-sm-max) {
+
+    .modal {
+        padding: 10px;
+    }
+
     .modal-content {
         height:100%;
+    }
+
+    .modal-body {
+        padding:0;
+    }
+
+    .modal-footer {
+        padding:0;
+        margin-top:15px;
     }
 
     .modal-footer .btn {
         margin:0 0 15px 0 !important;
     }
 
+    .modal-footer .btn:last-child {
+        margin-bottom:0 !important;
+    }
+
+    // Slide up from bottom
     .modal.ng-enter {
         transform: translate3d(0, 100%, 0);
         opacity:1;
@@ -111,6 +154,7 @@
         transform: translate3d(0, 0, 0);
     }
 
+    // Slide down to bottom
     .modal.ng-leave {
         transform: translate3d(0, 0, 0);
     }

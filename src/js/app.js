@@ -7,7 +7,10 @@ var app = angular.module('stickable', [
     'LocalStorageModule',
     'angularModalService',
     'ngAnimate',
-    'angularMoment'
+    'angularMoment',
+    'ngCkeditor',
+    'markdown',
+    'masonry'
 ]);
 
 app.config(function ($httpProvider,
@@ -135,6 +138,34 @@ app.run(function ($rootScope, $state, AuthService, UserNotificationsResource) {
 
     FastClick.attach(document.body);
 
+    marked.setOptions({
+        renderer: new marked.Renderer(),
+        gfm: true,
+        tables: false,
+        breaks: true,
+        pedantic: false,
+        sanitize: true,
+        smartLists: true,
+        smartypants: false
+    });
+
+    Dropzone.autoDiscover = false;
+
+    $rootScope.dropzoneConfig = {
+        options: {
+            autoProcessQueue: false,
+            uploadMultiple: true,
+            addRemoveLinks: true,
+            url: '/api/images'
+        },
+        'eventHandlers': {
+            'sending': function (file, xhr, formData) {
+            },
+            'success': function (file, response) {
+            }
+        }
+    };
+
     $rootScope.$state = $state;
     $rootScope.pageTitle = '';
 
@@ -159,12 +190,6 @@ app.run(function ($rootScope, $state, AuthService, UserNotificationsResource) {
         document.body.scrollTop = document.documentElement.scrollTop = 0;
     });
 });
-
-
-(function() {
-
-})();
-
 
 $(document).on('click', 'body:not(.navbar-visible) .navbar-toggle', function (e) {
     console.log(e);

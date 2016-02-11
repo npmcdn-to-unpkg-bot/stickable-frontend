@@ -45,13 +45,22 @@ module.exports = function (grunt) {
                     'bower_components/angular-ui-router/release/angular-ui-router.min.js',
                     'bower_components/fastclick/lib/fastclick.js',
                     'bower_components/bootstrap/dist/js/bootstrap.min.js',
-                    'bower_components/md5/index.js',
+                    //'bower_components/md5/index.js',
                     'bower_components/messenger/build/js/messenger.min.js',
                     'bower_components/messenger/build/js/messenger-theme-flat.min.js',
                     'bower_components/moment/moment.js',
                     'bower_components/angular-moment/angular-moment.min.js',
 
-                    'bower_components/quill/dist/quill.min.js',
+                    // To markdown
+                    'bower_components/to-markdown/dist/to-markdown.js',
+
+                    // From markdown
+                    'bower_components/marked/marked.min.js',
+
+                    'bower_components/dropzone/dist/min/dropzone.min.js',
+
+                    'bower_components/imagesloaded/imagesloaded.pkgd.min.js',
+                    'bower_components/masonry/dist/masonry.pkgd.min.js',
 
                     'src/lib/stickerjs/sticker.js',
                 ],
@@ -62,16 +71,24 @@ module.exports = function (grunt) {
         uglify: {
             options: {
                 mangle: false,
-                sourceMap: true,
-                sourceMapIncludeSources: true
             },
             'build-js': {
+                options: {
+                    sourceMap: true,
+                    sourceMapIncludeSources: true
+                },
                 src: [
                     'src/js/app.js',
                     'src/js/templates.js',
                     'src/js/**/*.js'
                 ],
                 dest: 'public/assets/build/' + buildNumber + '/js/stickable.min.js'
+            },
+            'minify-lib': {
+                src: [
+                    'public/assets/build/' + buildNumber + '/js/lib.min.js',
+                ],
+                dest: 'public/assets/build/' + buildNumber + '/js/lib.min.js'
             },
         },
 
@@ -205,6 +222,10 @@ module.exports = function (grunt) {
         grunt.task.run(['less:build-less']);
 
         grunt.task.run(['concat:build-libraries']);
+
+        if (env !== 'dev') {
+            grunt.task.run(['uglify:minify-lib']);
+        }
 
         // JS -> minified js
         grunt.task.run(['uglify:build-js']);

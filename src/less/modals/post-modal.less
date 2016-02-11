@@ -1,3 +1,94 @@
 #post-text {
-//    min-height:200px;
+    //    min-height:200px;
 }
+
+.submission-form-modal .submission-stage {
+
+    .dropzone {
+        margin: 15px 0 15px 0;
+    }
+
+    .btn {
+        border-radius: 6px;
+        padding: 12px 20px 7px;
+        line-height: 32px;
+        margin: 15px 0;
+    }
+
+}
+
+.submission-help {
+    font-size: 13px;
+    text-align: center;
+    color: @grey;
+}
+
+@media (min-width: @screen-md-min) {
+    .alert-submission-info {
+        position: relative;
+
+        &:after {
+            border: 0;
+            top: 50%;
+            right: -20px;
+            margin-top: -9px;
+            position: absolute;
+            font-family: FontAwesome;
+            content: "\f054";
+            font-size: 12px;
+            display: block;
+            color: #777;
+        }
+    }
+}
+
+
+.rating {
+    unicode-bidi: bidi-override;
+    direction: rtl;
+    font-size: 30px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+
+    li {
+        font-family: FontAwesome;
+        display: inline-block;
+        cursor: pointer;
+        width:80px;
+        font-size:10px;
+        direction: ltr;
+
+        &::before {
+            content: "\f006";
+            display: block;
+            font-size:30px;
+            color: #777777;
+        }
+    }
+}
+
+.rating li.active:before,
+.rating li:hover:before,
+.rating li:hover ~ li:before,
+.rating li.active ~ li:before {
+    color: #e3cf7a;
+}
+
+.rating-star li.active:before,
+.rating-star li:hover:before,
+.rating-star li:hover ~ li:before,
+.rating-star li.active ~ li:before {
+    content: "\f005";
+}
+
+.rating-time li:before {
+   content: "\f017";
+}
+
+.rating-price li:before {
+   content: "\f155";
+}
+
+

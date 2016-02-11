@@ -1,0 +1,23 @@
+{
+  "name": "ckeditor-image-button",
+  "homepage": "https://github.com/antriver/ckeditor-image-button",
+  "authors": [
+    "Anthony Kuske <anthonykuske@gmail.com>"
+  ],
+  "description": "A very simple way to upload images in CKEditor.",
+  "main": "",
+  "moduleType": [],
+  "keywords": [
+    "ckditor",
+    "image",
+    "upload"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

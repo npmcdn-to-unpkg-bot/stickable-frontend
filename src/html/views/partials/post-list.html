@@ -8,7 +8,7 @@
         <span class="media-left media-middle" ng-if="thisPost.image">
             <a href="/task/{{ (thisPost.task ? thisPost.task.slug : (task ? task.slug : ''))}}/{{ thisPost.slug }}"
                ng-click="goToPost($event, thisPost)">
-                <img class="media-object" ng-src="{{ thisPost.image }}"/>
+                <img class="media-object" ng-src="{{ thisPost.image.thumbUrl }}"/>
             </a>
         </span>
         <span class="media-body media-middle">
