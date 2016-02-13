@@ -105,6 +105,12 @@ app.config(function ($httpProvider,
             controller: 'UserStickersController'
         })
 
+        .state('user-submissions', {
+            url: "/user/{username:string}/submissions",
+            templateUrl: "views/pages/user/submissions.html",
+            controller: 'UserSubmissionsController'
+        })
+
         .state('category', {
             url: "/category/{slug:string}",
             templateUrl: "views/pages/category/view.html",
@@ -134,9 +140,27 @@ app.config(function ($httpProvider,
 
 });
 
-app.run(function ($rootScope, $state, AuthService, UserNotificationsResource) {
+app.run(function ($rootScope, $state, AuthService, UserNotificationsResource, moment) {
 
     FastClick.attach(document.body);
+
+    moment.locale('en', {
+        relativeTime : {
+            future: "in %s",
+            past:   "%s",
+            s:  "s",
+            m:  "1m",
+            mm: "%dm",
+            h:  "1h",
+            hh: "%dh",
+            d:  "1d",
+            dd: "%dd",
+            M:  "1mo",
+            MM: "%dmo",
+            y:  "1y",
+            yy: "%dy"
+        }
+    });
 
     marked.setOptions({
         renderer: new marked.Renderer(),

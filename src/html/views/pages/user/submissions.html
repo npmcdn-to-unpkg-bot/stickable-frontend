@@ -1,0 +1,10 @@
+<div class="container">
+    <h1>{{ user.username }}'s Submissions</h1>
+
+    <ul>
+        <li ng-repeat="submission in submissions">
+            {{ submission | json }}
+        </li>
+    </ul>
+
+</div>

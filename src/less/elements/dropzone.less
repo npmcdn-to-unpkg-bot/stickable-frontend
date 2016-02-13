@@ -219,10 +219,6 @@
     padding: 20px 20px;
 }*/
 
-.dropzone {
-    text-align: center;
-}
-
 .dropzone.dz-clickable {
     cursor: pointer;
 }
@@ -260,7 +256,6 @@
     position: relative;
     display: inline-block;
     vertical-align: top;
-    margin: 15px 0 0 15px
 }
 
 .dropzone .dz-preview:hover {
@@ -374,20 +369,20 @@
     filter: blur(8px);
 }*/
 
-.dropzone .dz-preview .dz-image {
-    border-radius: 6px;
+.dz-image {
+    border-radius: @border-radius-base;
     overflow: hidden;
-    width: 96px;
-    height: 96px;
+    width: 100px;
+    height: 100px;
     background: linear-gradient(to bottom, #eee, #ddd);
     position: relative;
     display: block;
     z-index: 10;
     box-shadow: 1px 2px 4px rgba(0,0,0,0.05);
-}
 
-.dropzone .dz-preview .dz-image img {
-    display: block;
+     img {
+        display: block;
+    }
 }
 
 .dropzone .dz-preview.dz-success .dz-success-mark {

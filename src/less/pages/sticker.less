@@ -116,12 +116,12 @@
             > i {
                 margin-right: 10px;
             }
+
         }
 
         > span {
             padding-bottom:15px;
         }
-
 
 
         &.header {
@@ -135,22 +135,43 @@
             }
         }
 
-        &.complete a {
+        &.task .label {
+            float:right;
+            font-size:14px;
+            padding:6px 0;
+            background: none;
+
+            i {
+                margin-left:3px;
+            }
+        }
+
+        &.task .label-success {
+            color:@green;
+        }
+
+        &.task .label-warning {
+            color:@yellow;
+        }
+
+        &.task .label-danger {
+            color:@red;
+        }
+
+        &.completed a {
             text-decoration: line-through;
             color: #aaa;
-
-            &:after {
-                content: "Complete \2713";
-                float: right;
-                font-size: 15px;
-                padding-top: 4px;
-            }
         }
 
         &:hover {
             background-color: #f0f0f0;
         }
+    }
 
+    .sticker-name {
+        font-size:12px;
+        display: block;
+        margin-left:32px;
     }
 }
 

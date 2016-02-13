@@ -5,10 +5,11 @@ app.controller(
               $element,
               $state,
               $stateParams,
+              $timeout,
               ModalService,
               TaskResource,
               SubmissionResource,
-              UserToDoResource,
+              ToDoResource,
               PostResource,
               CommentResource) {
 
@@ -19,6 +20,7 @@ app.controller(
          * Task
          */
         $scope.task = null;
+        $scope.doers = null;
         $scope.isOnToDoList = false;
 
         function onTaskLoad(task) {
@@ -58,8 +60,33 @@ app.controller(
                 $rootScope.loading = false;
                 //$rootScope.pageTitle = task.name;
                 onTaskLoad(task);
+
+                $scope.loadDoers();
             });
         }
+
+        $scope.loadDoers = function() {
+            TaskResource.getDoers({slug: $scope.task.slug}, function (result) {
+                $scope.doers = result;
+            });
+        };
+
+        $scope.likeDoer = function($event, doer) {
+            preventDefault($event);
+
+            doer.likeClicked = true;
+            doer.pivot.liked = doer.pivot.liked ? false : true;
+
+            if (doer.pivot.liked) {
+                doer.pivot.likeCount = parseInt(doer.pivot.likeCount) + 1;
+                ToDoResource.likeDoer({toDoId: doer.pivot.id});
+            } else {
+                doer.pivot.likeCount = parseInt(doer.pivot.likeCount) - 1;
+                ToDoResource.unlikeDoer({toDoId: doer.pivot.id});
+            }
+
+            doer.likeCount = doer.pivot.likeCount;
+        };
 
         $scope.goToTask = function($event, task) {
             /*preventDefault($event);
@@ -114,12 +141,13 @@ app.controller(
 
         $scope.addToDo = function () {
             console.log('addToDo');
-            UserToDoResource.save(
+            ToDoResource.save(
                 {username: $rootScope.currentUser.username},
                 {taskId: $scope.task.id},
                 function (result) {
                     alertSuccess('Added to To Do List');
                     $scope.isOnToDoList = true;
+                    $scope.loadDoers();
                 },
                 function (result) {
                     alertError(result.data.message);
@@ -128,12 +156,13 @@ app.controller(
         };
 
         $scope.removeToDo = function () {
-            UserToDoResource.delete(
+            ToDoResource.delete(
                 {username: $rootScope.currentUser.username},
                 {taskId: $scope.task.id},
                 function (result) {
                     alertSuccess('Removed from To Do List');
                     $scope.isOnToDoList = false;
+                    $scope.loadDoers();
                 },
                 function (result) {
                     alertError(result.data.message);
@@ -177,11 +206,11 @@ app.controller(
             if (replyToComment) {
                 $scope.commentFormData.replyTo = replyToComment;
                 // Move comment form to reply hole
-                $('.comment[data-commentid='+replyToComment.id+'] > .replies').prepend($('.comment-form'));
+                $('.comment[data-commentid=' + replyToComment.id + '] > .replies').prepend($('#comment-form-include'));
             } else {
                 $scope.commentFormData.replyTo = null;
                 // Move comment form to top level hole
-                $('.comment-form-container').prepend($('.comment-form'));
+                $('#comment-form-container').prepend($('#comment-form-include'));
             }
 
         };
@@ -191,7 +220,7 @@ app.controller(
                 $scope.commentFormData.comment = '';
             }
             $scope.commentFormVisible = false;
-            //$('.comment-form-container').prepend($('.comment-form'));
+            $('#comment-form-container').prepend($('#comment-form-include'));
         };
 
         $scope.loadCommentReplies = function ($event, comment) {

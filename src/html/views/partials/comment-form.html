@@ -1,25 +1,21 @@
-<div class="comments comment-form-container">
+<form ng-submit="addComment()" class="comment comment-form" ng-if="commentFormVisible">
+    <div class="inner">
+        <textarea id="comment-text" class="form-control" ng-model="commentFormData.comment"></textarea>
+    </div>
 
-    <form ng-submit="addComment()" class="comment comment-form" ng-if="commentFormVisible">
-        <div class="inner">
-            <textarea id="comment-text" class="form-control" ng-model="commentFormData.comment"></textarea>
-        </div>
+    <span class="author">
+        <i class="fa fa-user"></i> {{ currentUser.username }}
+    </span>
 
-        <span class="author">
-            <i class="fa fa-user"></i> {{ currentUser.username }}
-        </span>
+    <span class="actions">
+        <a class="btn btn-danger btn-labeled" ng-click="hideCommentForm()">
+            <span class="btn-label"><i class="fa fa-times"></i></span>
+            Cancel
+        </a>
 
-        <span class="actions">
-            <a class="btn btn-danger btn-labeled" ng-click="hideCommentForm()">
-                <span class="btn-label"><i class="fa fa-times"></i></span>
-                Cancel
-            </a>
-
-            <button type="submit" class="btn btn-primary btn-labeled">
-                <span class="btn-label"><i class="fa fa-plus-circle"></i></span>
-                Add Comment
-            </button>
-        </span>
-    </form>
-
-</div>
+        <button type="submit" class="btn btn-primary btn-labeled">
+            <span class="btn-label"><i class="fa fa-plus-circle"></i></span>
+            Add Comment
+        </button>
+    </span>
+</form>

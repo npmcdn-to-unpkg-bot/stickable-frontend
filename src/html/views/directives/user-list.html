@@ -1,0 +1,19 @@
+
+    <div class="user" ng-repeat="user in data.users" ng-class="{'liked': !!user.pivot.liked, 'like-clicked': !!user.likeClicked}">
+
+        <a href="/user/{{ user.username }}">
+            <span class="pic" ng-style="{'background-image':user.image?'url('+user.image.thumbUrl+')' : ''}">
+                <span>
+                    {{ user.username }}
+                    <small>
+                        <i class="fa fa-clock-o"></i> <span am-time-ago="user.pivot.createdAt"></span>
+                    </small>
+                </span>
+            </span>
+        </a>
+
+        <a class="like-btn like-thumb" ng-click="like($event, user)" href="#">
+            <span><i class="fa fa-thumbs-up"></i> <strong ng-bind="user.pivot.likeCount"></strong></span>
+        </a>
+    </div>
+

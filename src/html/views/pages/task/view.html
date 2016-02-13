@@ -77,7 +77,10 @@
                         </a>
 
                         <ul class="post-info">
-                            <li><a href="/user/{{post.user.username}}"><i class="fa fa-user"></i> {{post.user.username}}</a>
+                            <li>
+                                <a href="/user/{{post.user.username}}">
+                                    <img ng-if="post.user.image" ng-src="{{post.user.image.thumbUrl}}" class="user-image" />
+                                    <i ng-if="!post.user.image" class="fa fa-user"></i> {{post.user.username}}</a>
                             </li>
                             <li><a href="/task/{{post.task.slug}}/{{post.slug}}"><i class="fa fa-clock-o"></i> <span
                                     am-time-ago="post.createdAt"></span></a></li>
@@ -112,7 +115,9 @@
 
                     <h2 class="hidden-sm hidden-xs">Comments</h2>
 
-                    <div ng-include="'views/partials/comment-form.html'"></div>
+                    <div class="comments" id="comment-form-container">
+                        <div ng-include="'views/partials/comment-form.html'" id="comment-form-include"></div>
+                    </div>
 
                     <div class="comments" ng-controller="CommentsController">
                         <div class="comment-include"
@@ -152,6 +157,9 @@
 
                     <p>{{ task.description }}</p>
 
+                    <h2><i class="fa fa-users"></i> Working On It</h2>
+                    <div class="user-list" data="doers" like="likeDoer"></div>
+
                 </div>
 
             </div>
@@ -159,7 +167,7 @@
             <div class="posts-col" ng-class="{'col-md-6': !post, 'col-md-4': !!post}">
                 <div class="posts-container">
 
-                    <ul class="tabs tabs-2 post-order-tabs" ng-if="!post">
+                    <!--<ul class="tabs tabs-2 post-order-tabs" ng-if="!post">
                         <li ng-class="{'tab-current': postsOrder === 'newest' }">
                             <a href="#" ng-click="setPostsOrder('newest')">
                                 <i class="fa fa-fw fa-bars"></i> Recent <strong class="visible-lg-inline">Posts</strong>
@@ -171,7 +179,7 @@
                                 <strong class="visible-lg-inline">Posts</strong>
                             </a>
                         </li>
-                    </ul>
+                    </ul>-->
 
                     <div ng-include="'views/partials/post-list.html'" ng-controller="PostsController"></div>
                 </div>

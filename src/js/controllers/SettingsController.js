@@ -1,55 +1,103 @@
 app.controller(
     'SettingsController',
-    function ($scope, $rootScope, $state, $stateParams, AuthService, UserResource) {
+    function ($scope, $rootScope, $state, $stateParams, AuthService, UserResource, $timeout) {
 
+        $scope.hasNewImage = false;
 
-        // FIXME: currentUser isn't loaded yet if the app is loaded on the settings page
+        var dropzone;
+        $timeout(function () {
+            dropzone = new Dropzone("#settings-image", {
+                acceptedFiles: "image/*",
+                maxFiles: 1,
+                autoProcessQueue: false,
+                url: '/api/images?sessionToken=' + AuthService.getSessionToken(),
+                clickable: '.dropzone-btn',
+                thumbnailWidth: 100,
+            });
 
-        $rootScope.pageTitle = 'Settings';
-        $rootScope.loading = true;
+            dropzone.on("addedfile", function () {
+                if (dropzone.files[1] != null) {
+                    dropzone.removeFile(dropzone.files[0]);
+                }
+                $scope.hasNewImage = dropzone.files.length > 0;
+                $scope.$apply();
+            });
 
-        $scope.settingsFormData = {
-            loading: false,
+            dropzone.on('success', function (file) {
+                console.log(file);
+                var response = JSON.parse(file.xhr.response);
+                console.log('response');
+                if (response && response.hasOwnProperty('image')) {
+                    $scope.formData.imageId = response.image.id;
+                }
+                console.log('$scope.formData', $scope.formData);
+                $scope.finishSubmit();
+            });
 
+            dropzone.on('error', function (file, errorMessage) {
+                alertError('Unable to save avatar. ' + errorMessage.message);
+            });
+
+            dropzone.on("removedfile", function () {
+                $scope.hasNewImage = dropzone.files.length > 0;
+                $scope.formData.imageId = false;
+                try {
+                    if(!$scope.$$phase) {
+                        $scope.$apply();
+                    }
+                } catch (e) {
+
+                }
+            });
+
+        }, 10);
+
+        $scope.formData = {
             about: '',
-            picture: ''
+            imageId: ''
         };
-
         $scope.user = null;
 
-        UserResource.get({username: $rootScope.currentUser.username}, function (user) {
+        $scope.init = function () {
 
-            $rootScope.loading = false;
-            $scope.user = user;
+            if (!$rootScope.currentUser) {
+                return false;
+            }
 
-            $scope.settingsFormData.about = user.profile.about;
-            $scope.settingsFormData.picture = user.picture;
-
-        });
-
-        $scope.uploadPicture = function () {
-            alert('CtrlV upload would go here/');
-            /*ctrlv.upload(function(image){
-             $('input[name=picture]').val(image.urls.image);
-             $('#settings-picture').attr('src', image.urls.image);
-             });*/
+            UserResource.get({username: $rootScope.currentUser.username}, function (user) {
+                console.log(user);
+                $scope.user = user;
+                $scope.formData.about = user.profile.about;
+            });
         };
 
-        $scope.submit = function () {
+        $rootScope.$on('login', function () {
+            $scope.init();
+        });
 
-            $scope.settingsFormData.loading = true;
+        $scope.init();
+
+        $scope.submit = function () {
+            if ($scope.hasNewImage) {
+                // Send avatar to server
+                dropzone.processQueue();
+            } else {
+                $scope.finishSubmit();
+            }
+        };
+
+        $scope.finishSubmit = function () {
             UserResource.update(
                 {username: $rootScope.currentUser.username},
-                {
-                    picture: $scope.settingsFormData.picture,
-                    about: $scope.settingsFormData.about
-                },
+                $scope.formData,
                 function (response) {
-                    $scope.settingsFormData.loading = false;
+                    $scope.user = response.user;
+                    $scope.hasNewImage = false;
+                    dropzone.removeAllFiles();
                     alertSuccess("Changes saved");
                 },
                 function (response) {
-                    $scope.settingsFormData.loading = false;
+                    $scope.formData.loading = false;
 
                     if (
                         response.data.messages
@@ -60,7 +108,7 @@ app.controller(
                             response.data.messages.hasOwnProperty('about')
                         )
                     ) {
-                        $scope.settingsFormData.errors = response.data.messages;
+                        $scope.formData.errors = response.data.messages;
                     } else {
 
                         alertError(response.data.message);

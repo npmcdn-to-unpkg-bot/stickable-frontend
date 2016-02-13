@@ -34,8 +34,7 @@ app.controller(
         var dropzone;
         $timeout(function() {
             dropzone = new Dropzone("#post-file", {
-                //autoProcessQueue: false,
-                //uploadMultiple: true,
+                acceptedFiles: "image/*",
                 addRemoveLinks: true,
                 url: '/api/images?sessionToken=' + AuthService.getSessionToken(),
                 clickable: '.dropzone-btn',

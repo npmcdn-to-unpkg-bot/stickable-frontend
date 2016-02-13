@@ -1,5 +1,5 @@
 app.factory(
-    'UserToDoResource',
+    'ToDoResource',
     function ($resource, AuthService) {
         return $resource(
             apiUrl + 'users/:username/todo',
@@ -7,6 +7,7 @@ app.factory(
                 username: '@username',
                 slug: '@slug',
                 taskId: '@taskId',
+                toDoId: '@toDoId',
                 sessionToken: function () {
                     return AuthService.getSessionToken() || null;
                 }
@@ -23,6 +24,21 @@ app.factory(
                 delete: {
                     method: 'DELETE',
                     url: apiUrl + 'users/:username/todo/:taskId'
+                },
+
+                getLikes: {
+                    method: 'GET',
+                    url: apiUrl + 'todo/:toDoId/likes'
+                },
+
+                likeDoer: {
+                    method: 'POST',
+                    url: apiUrl + 'todo/:toDoId/likes'
+                },
+
+                unlikeDoer: {
+                    method: 'DELETE',
+                    url: apiUrl + 'todo/:toDoId/likes'
                 }
             }
         );

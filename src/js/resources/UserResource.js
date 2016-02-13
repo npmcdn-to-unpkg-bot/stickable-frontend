@@ -43,6 +43,11 @@ app.factory(
                     url: apiUrl + 'users/:username/stickers'
                 },
 
+                getPosts: {
+                    method: 'GET',
+                    url: apiUrl + 'users/:username/posts'
+                },
+
                 getSubmissions: {
                     method: 'GET',
                     url: apiUrl + 'users/:username/submissions'

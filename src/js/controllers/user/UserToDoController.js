@@ -1,6 +1,6 @@
 app.controller(
     'UserToDoController',
-    function ($scope, $rootScope, $state, $stateParams, UserResource, UserToDoResource) {
+    function ($scope, $rootScope, $state, $stateParams, UserResource, ToDoResource) {
 
         $rootScope.loading = true;
         $rootScope.pageTitle = $stateParams.username;
@@ -9,7 +9,7 @@ app.controller(
         $scope.user = null;
         $scope.username = $stateParams.username;
 
-        UserToDoResource.query({username: $scope.username},
+        ToDoResource.query({username: $scope.username},
             function (result) {
                 $scope.user = result.user,
                     $scope.tasks = result.tasks

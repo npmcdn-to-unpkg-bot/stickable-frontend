@@ -17,6 +17,11 @@ app.factory(
                         return data.task;
                     }
                 },
+
+                getDoers: {
+                    method: 'GET',
+                    url: apiUrl + 'tasks/:slug/doers'
+                },
             }
         );
     }

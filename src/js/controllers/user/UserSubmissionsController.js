@@ -11,8 +11,8 @@ app.controller(
 
         UserResource.getSubmissions({username: $scope.username},
             function (result) {
-                $scope.user = result.user,
-                    $scope.submissions = result.submissions
+                $scope.user = result.user;
+                $scope.submissions = result.submissions;
             }
         );
     }

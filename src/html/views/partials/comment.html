@@ -8,7 +8,11 @@
     </div>
 
     <span class="author">
-        <a href="/user/{{ comment.user.username }}"><i class="fa fa-user"></i> {{ comment.user.username }}</a>
+        <a href="/user/{{ comment.user.username }}">
+            <img ng-if="comment.user.image" ng-src="{{comment.user.image.thumbUrl}}" class="user-image" />
+            <i ng-if="!comment.user.image" class="fa fa-user"></i> {{ comment.user.username }}
+        </a>
+
         <!-- TODO: Permalink -->
         <a href="#"><i class="fa fa-clock-o"></i> <span am-time-ago="comment.createdAt"></span></a>
     </span>

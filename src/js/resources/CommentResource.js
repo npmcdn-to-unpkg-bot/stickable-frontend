@@ -33,6 +33,11 @@ app.factory(
                     //isArray: true
                 },
 
+                getLikes: {
+                    url: apiUrl + 'comments/:commentId/likes',
+                    method:'GET'
+                },
+
                 likeComment: {
                     url: apiUrl + 'comments/:commentId/likes',
                     method:'POST'

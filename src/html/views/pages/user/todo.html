@@ -1,8 +1,19 @@
+<div class="content">
 <div class="container">
+
     <h1>{{ user.username }}'s To Do List</h1>
 
-    <ul>
-        <li ng-repeat="task in tasks"><a href="/task/{{ task.slug }}">{{ task.name }}</a></li>
+
+
+    <ul class="task-list">
+        <li ng-repeat="task in tasks">
+            <a href="/task/{{ task.slug }}">
+                <span class="sticker-name">{{ task.sticker.name }}</span>
+                <i class="fa fa-circle"></i>
+                {{ task.name }}
+            </a>
+        </li>
     </ul>
 
+</div>
 </div>

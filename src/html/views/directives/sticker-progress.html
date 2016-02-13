@@ -1,0 +1,12 @@
+<span class="progress">
+  <span
+        class="progress-bar progress-bar-success"
+        ng-style="{'width': progress.percent+'%'}">
+      {{progress.completed}} completed
+  </span>
+  <span
+        class="progress-bar progress-bar-white"
+        ng-style="{'width': (100-progress.percent)+'%'}">
+      {{progress.remaining}} needed
+  </span>
+</span>
