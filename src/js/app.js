@@ -148,7 +148,7 @@ app.run(function ($rootScope, $state, AuthService, UserNotificationsResource, mo
         relativeTime : {
             future: "in %s",
             past:   "%s",
-            s:  "s",
+            s:  "1s",
             m:  "1m",
             mm: "%dm",
             h:  "1h",

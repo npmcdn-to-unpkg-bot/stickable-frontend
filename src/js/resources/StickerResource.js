@@ -12,7 +12,7 @@ app.factory(
             },
             {
                 get: {
-                    cache: true,
+                    //cache: true,
                     transformResponse: function (data) {
                         data = angular.fromJson(data);
                         return data.sticker;
