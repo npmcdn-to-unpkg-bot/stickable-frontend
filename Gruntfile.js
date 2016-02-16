@@ -133,6 +133,7 @@ module.exports = function (grunt) {
                         env: 'dev',
                         assetUrl: '/assets/build/' + buildNumber,
                         apiUrl: '/api/',
+                        socketUrl: '',
                     }
                 }
             },
@@ -142,6 +143,7 @@ module.exports = function (grunt) {
                         env: 'prod',
                         assetUrl: '/assets/build/' + buildNumber,
                         apiUrl: '/api/',
+                        socketUrl: ''
                     }
                 }
             }

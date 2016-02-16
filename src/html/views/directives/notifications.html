@@ -1,0 +1,8 @@
+<ul class="dropdown-menu notifications-dropdown notification-list">
+    <li ng-repeat="notification in notifications">
+        <a href="#" ng-click="goTo($event, notification)">
+            <i class="fa" ng-class="'fa-'+notification.icon"></i>
+            {{ notification.text }}
+        </a>
+    </li>
+</ul>

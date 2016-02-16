@@ -273,3 +273,24 @@ h1 .user-image,
         }
     }
 }
+
+.notification-list {
+    padding:0;
+
+    > li:nth-child(even) {
+        a {
+            background: @light-grey-bg;
+        }
+    }
+
+    > li > a {
+        padding:10px 15px;
+        &:hover {
+            background: @grey-hover-bg;
+        }
+    }
+
+    .fa {
+        margin-right:5px;
+    }
+}

@@ -13,3 +13,9 @@
 * Stickerbot
 * Delete / edit posts
 * Delete / edit comments
+* Change password / email / username
+* Ability to assign roles / admin
+
+## Bugs
+* Right menu bg goes white in Safari sometimes
+* Deleting a submission doesn't delete the post about that submission
