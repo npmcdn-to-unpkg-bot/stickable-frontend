@@ -143,7 +143,7 @@ module.exports = function (grunt) {
                         env: 'prod',
                         assetUrl: '/assets/build/' + buildNumber,
                         apiUrl: '/api/',
-                        socketUrl: ''
+                        socketUrl: 'https://socket.stickable.io'
                     }
                 }
             }
@@ -161,6 +161,7 @@ module.exports = function (grunt) {
                                 'assetUrl': '<%= grunt.config.get("assetUrl") %>',
                                 'assetVersion': buildNumber,
                                 'apiUrl': '<%= grunt.config.get("apiUrl") %>',
+                                'socketUrl': '<%= grunt.config.get("socketUrl") %>',
                             }
                         }
                     ]
