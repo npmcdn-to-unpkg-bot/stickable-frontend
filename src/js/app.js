@@ -203,6 +203,13 @@ app.run(function ($rootScope, $state, AuthService, UserNotificationsResource, mo
 
         // Fetch notifications
         $rootScope.notifications = UserNotificationsResource.query({username: args.user.username});
+
+        // Preliminary super sucky socket setup
+        var socket = io(socketUrl);
+        socket.on('user-notifications.'+args.user.id+':NewNotification', function(message) {
+            console.log(message);
+            alertSuccess(message.notification.text);
+        });
     });
 
     $rootScope.$on('logout', function () {
@@ -213,6 +220,7 @@ app.run(function ($rootScope, $state, AuthService, UserNotificationsResource, mo
         $('body').removeClass('navbar-visible').attr('data-previous', from.name);
         document.body.scrollTop = document.documentElement.scrollTop = 0;
     });
+
 });
 
 $(document).on('click', 'body:not(.navbar-visible) .navbar-toggle', function (e) {

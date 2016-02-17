@@ -133,7 +133,7 @@ module.exports = function (grunt) {
                         env: 'dev',
                         assetUrl: '/assets/build/' + buildNumber,
                         apiUrl: '/api/',
-                        socketUrl: '',
+                        socketUrl: 'https://socket.local.stickable.io:4433',
                     }
                 }
             },
