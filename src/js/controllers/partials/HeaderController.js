@@ -36,6 +36,14 @@ app.controller(
 
         $scope.back = function () {
             window.history.go(-1);
-        }
+        };
+
+        $scope.notificationsOpen = false;
+        $scope.toggleNotifications = function ($event) {
+            preventDefault($event);
+            $scope.notificationsOpen = !$scope.notificationsOpen;
+            console.log($scope.notificationsOpen);
+        };
+
     }
 );

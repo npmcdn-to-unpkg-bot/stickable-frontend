@@ -7,9 +7,9 @@
     background: none;
 }
 
-@media (max-width: @screen-md-max) {
+@media (max-width: (@grid-float-breakpoint - 1)) {
 
-    header.navbar .nav .dropdown-menu > li > a {
+    header.navbar > .nav .dropdown-menu > li > a {
         color: #fff !important;
 
         &:hover {

@@ -1,8 +1,30 @@
 <ul class="dropdown-menu notifications-dropdown notification-list">
-    <li ng-repeat="notification in notifications">
-        <a href="#" ng-click="goTo($event, notification)">
-            <i class="fa" ng-class="'fa-'+notification.icon"></i>
-            {{ notification.text }}
+    <li ng-if="notifications.length < 1" class="no-notifications">
+        No unread notifications
+    </li>
+    <li
+            ng-if="notifications.length > 0"
+            ng-repeat="(index, notification) in notifications"
+            ng-class="{'new-notification': notification.new}"
+            >
+        <a href="#" ng-click="goTo($event, index)" class="media">
+
+            <span class="media-left">
+                <span>
+                    <img ng-src="{{notification.image}}" />
+                </span>
+            </span>
+
+            <span class="media-body media-middle">
+                <i class="fa" ng-class="'fa-'+notification.icon"></i>
+                <span ng-bind-html="notification.text | markdown"></span>
+            </span>
+
+            <span class="media-right media-middle" ng-click="clear($event, index)">
+                <span class="time" am-time-ago="notification.createdAt"></span>
+                <i class="btn-clear fa fa-times-circle-o"></i>
+            </span>
+
         </a>
     </li>
 </ul>

@@ -56,16 +56,16 @@ app.service(
                 });
             },
 
-            onLogin: function (newSession, newSessionKey) {
+            onLogin: function (newSession, newSessionToken) {
 
                 session = newSession;
-                sessionToken = newSessionKey;
-                localStorageService.set('sessionToken', newSessionKey);
+                sessionToken = newSessionToken;
+                localStorageService.set('sessionToken', newSessionToken);
 
                 console.log('onLogin', newSession);
 
                 // Tell everybody we're logged in
-                $rootScope.$broadcast('login', {user: newSession.user});
+                $rootScope.$broadcast('login', {user: newSession.user, token:newSessionToken});
             },
 
             logout: function () {

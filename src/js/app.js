@@ -87,6 +87,12 @@ app.config(function ($httpProvider,
             controller: 'SettingsController'
         })
 
+        .state('notifications', {
+            url: "/notifications",
+            templateUrl: "views/pages/notifications/index.html",
+            controller: 'NotificationsController'
+        })
+
         .state('user', {
             url: "/user/{username:string}",
             templateUrl: "views/pages/user/view.html",
@@ -140,7 +146,7 @@ app.config(function ($httpProvider,
 
 });
 
-app.run(function ($rootScope, $state, AuthService, UserNotificationsResource, moment) {
+app.run(function ($rootScope, $state, AuthService, UserNotificationsResource, NotificationService, moment) {
 
     FastClick.attach(document.body);
 
@@ -196,20 +202,12 @@ app.run(function ($rootScope, $state, AuthService, UserNotificationsResource, mo
     AuthService.checkSession();
 
     $rootScope.currentUser = AuthService.getUser();
+    $rootScope.notificationsPreview = 0;
     $rootScope.notifications = [];
 
     $rootScope.$on('login', function (event, args) {
         $rootScope.currentUser = args.user;
-
-        // Fetch notifications
-        $rootScope.notifications = UserNotificationsResource.query({username: args.user.username});
-
-        // Preliminary super sucky socket setup
-        var socket = io(socketUrl);
-        socket.on('user-notifications.'+args.user.id+':NewNotification', function(message) {
-            console.log(message);
-            alertSuccess(message.notification.text);
-        });
+        NotificationService.onLogin(args.user, args.token);
     });
 
     $rootScope.$on('logout', function () {

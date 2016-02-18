@@ -1,16 +1,34 @@
-app.directive('notifications', function () {
+app.directive('stNotifications', function () {
     return {
         templateUrl: 'views/directives/notifications.html',
-        replace: true,
-        controller: function ($scope, $state) {
+        //replace: true,
+        scope: {
+            notifications: '=',
+            toggle: '='
+        },
+        controller: function ($scope, $rootScope, $state, UserNotificationsResource) {
 
-            $scope.goTo = function ($event, notification) {
+            $scope.clear = function ($event, index) {
                 preventDefault($event);
+                var notification = $scope.notifications[index];
+                console.log('clear', index, notification);
+                $scope.notifications.splice(index, 1);
+
+                UserNotificationsResource.delete({username: $rootScope.currentUser.username, id: notification.id});
+
+            };
+
+            $scope.goTo = function ($event, index) {
+                preventDefault($event);
+                var notification = $scope.notifications[index];
+
+                $scope.clear($event, index);
+                $scope.toggle($event);
 
                 switch (notification.destination.type) {
                     case 'comment':
                         $state.go('post', {
-                            slug: notification.destination.post.slug,
+                            slug: notification.destination.task.slug,
                             postSlug: notification.destination.post.slug,
                             commentId: notification.commentId
                         });

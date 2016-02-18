@@ -46,6 +46,14 @@
     }
 }
 
+.navbar-nav,
+.navbar-header {
+    // So the notification list slides behind the nav
+    position: relative;
+    z-index:1001;
+    background: @navbar-color;
+}
+
 .navbar-brand {
 
     padding:8px 15px 10px;
@@ -56,6 +64,11 @@
         height: 32px;
     }
 }
+
+.navbar-right {
+    margin:0;
+}
+
 
 a.navbar-back {
     display: none; // visible < lg
@@ -154,10 +167,11 @@ a.navbar-back {
     input {
         font-size: @font-size-sm;
         line-height: 18px;
+        height: 32px;
     }
 
     .btn {
-        padding: 6px 12px 5px;
+        padding: 6px 12px;
         margin: 0 0 0 1px;
 
         i {
@@ -178,6 +192,8 @@ a.navbar-back {
 /**
  * User notifications
  */
+
+// Red circle on top of envelope
 .navbar-nav .notification {
     position: absolute;
     background-color: @red;
@@ -193,6 +209,111 @@ a.navbar-back {
     top: 7px;
     left: 7px;
 }
+
+
+.header-notifications,
+.header-notifications .notification-list {
+    .transition-all(.2s);
+}
+
+.header-notifications {
+    &.ng-enter .notification-list {
+        transform: translate3d(0, -100%, 0);
+    }
+
+    &.ng-enter-active .notification-list,
+    &.ng-leave .notification-list {
+        transform: translate3d(0, 0, 0);
+    }
+
+    &.ng-leave-active .notification-list {
+        transform: translate3d(0, -100%, 0);
+    }
+}
+
+.notification-list {
+    padding: 0;
+    margin: 0;
+    max-width: 100%;
+    max-height: ~"calc(100vh - 115px)";
+    overflow: auto;
+    display: block;
+    border-top: 0;
+
+    > li:nth-child(even) {
+        a {
+            background: @light-grey-bg;
+        }
+    }
+
+    > li > a {
+        padding: 10px;
+        white-space: normal;
+        &:hover {
+            background: @grey-hover-bg;
+        }
+    }
+
+    // Markdown wraps in a <p>
+    p {
+        display: inline;
+    }
+
+    .media-left span {
+        width: 50px;
+        height: 50px;
+        display: block;
+
+        img {
+            width: 50px;
+            height: 50px;
+        }
+    }
+
+    .media-right {
+        color: @light-grey;
+    }
+
+    .media-right {
+        i {
+            display: none;
+            font-size: 18px;
+        }
+
+        &:hover i:before {
+            content:"\f057";
+        }
+    }
+
+    li:hover .media-right {
+        .time {
+            display: none;
+        }
+        i {
+            display: inline-block;
+        }
+    }
+
+    .no-notifications {
+        color: #777;
+        text-align: center;
+        font-size: 12px;
+        padding: 10px;
+    }
+}
+
+.notifications-preview li:not(.new-notification) {
+    display: none;
+}
+
+@media (min-width: @grid-float-breakpoint) {
+    .notification-list {
+        left: auto;
+        right: 14px;
+        width:500px;
+    }
+}
+
 
 /**
  * Show h1 (page title) in header instead of body on mobile
@@ -213,10 +334,6 @@ a.navbar-back {
     }
 }
 
-// Show dropdown menus on hover
-li.dropdown:hover .dropdown-menu {
-    display: block;
-}
 
 /**
  * When nav is collapsed (< lg)
@@ -274,5 +391,31 @@ li.dropdown:hover .dropdown-menu {
         .nav li.divider {
             display: none;
         }
+    }
+
+
+    .notification-nav {
+        position: absolute;
+        top: 5px;
+        right: 50px;
+        width:40px;
+
+        .fa {
+            font-size:20px;
+        }
+
+        > li > a {
+            padding-right:5px;
+            background: none !important;
+        }
+
+        .open .dropdown-menu {
+            background: #fff;
+        }
+
+        &:not(.has-notification) {
+            display:none;
+        }
+
     }
 }

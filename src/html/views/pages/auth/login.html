@@ -1,7 +1,6 @@
 <div class="container">
-
     <div class="row">
-        <div class="col-md-8 col-md-offset-2">
+
             <div class="panel panel-default">
                 <div class="panel-heading"><h1>Login</h1></div>
                 <div class="panel-body">
@@ -13,15 +12,15 @@
                             <label class="col-md-4 control-label">Username <i class="fa fa-user"></i></label>
 
                             <div class="col-md-8">
+                                <span ng-if="!loginFormData.errors.username" class="help-block">Up to 30 characters and can only contain letters, numbers, hyphens, or underscores.</span>
+                                <span ng-if="loginFormData.errors.username" class="help-block">{{ loginFormData.errors.username.join(' ') }}</span>
                                 <input type="username"
                                        class="form-control"
                                        name="username"
                                        value=""
                                        required
-                                       ng-model="loginFormData.username"/>
-
-                                <span ng-if="loginFormData.errors.username" class="help-block">{{ loginFormData.errors.username.join(' ') }}</span>
-
+                                       ng-model="loginFormData.username"
+                                        />
                             </div>
                         </div>
 
@@ -29,26 +28,28 @@
                             <label class="col-md-4 control-label">Password <i class="fa fa-key"></i></label>
 
                             <div class="col-md-8">
+                                <span ng-if="!loginFormData.errors.password" class="help-block">Minimum 5 characters.</span>
+                                <span ng-if="loginFormData.errors.password" class="help-block">{{ loginFormData.errors.password.join(' ') }}</span>
                                 <input type="password"
                                        class="form-control"
                                        name="password"
                                        required
-                                       ng-model="loginFormData.password"/>
-
-                                <span ng-if="loginFormData.errors.password" class="help-block">{{ loginFormData.errors.password.join(' ') }}</span>
-
+                                       ng-model="loginFormData.password"
+                                        />
                             </div>
                         </div>
 
                         <div class="form-group">
                             <div class="col-md-8 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
-                                    <i class="fa fa-key"
-                                       ng-hide="loginFormData.loading"></i><i class="fa fa-spinner fa-spin"
-                                                                              ng-show="loginFormData.loading"></i> Login
+                                <button type="submit" class="btn btn-primary btn-labeled" ng-class="{'btn-loading': loginFormData.loading}">
+                                    <span class="btn-label"><i class="fa fa-key"></i></span>
+                                    Login
                                 </button>
 
-                                <a href="/forgot" class="btn">Forgot Details?</a>
+                                <a href="/forgot" class="btn btn-labeled">
+                                    <span class="btn-label"><i class="fa fa-question"></i></span>
+                                    Forgot Details
+                                </a>
                             </div>
                         </div>
 
@@ -56,7 +57,6 @@
 
                 </div>
             </div>
-        </div>
-    </div>
 
+    </div>
 </div>

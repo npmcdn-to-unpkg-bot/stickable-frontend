@@ -1,32 +1,29 @@
 <div class="container">
     <div class="row">
-        <div class="col-md-8 col-md-offset-2">
+
             <div class="panel panel-default">
-                <div class="panel-heading"><h1>Forgotten Login Details</h1></div>
+                <div class="panel-heading"><h1>Forgotten Details</h1></div>
                 <div class="panel-body">
 
                     <form class="form-horizontal" role="form" ng-submit="submit()">
 
                         <div class="form-group" ng-class="{'has-error': forgotFormData.errors.email}" ng-if="!success">
-                            <label class="col-md-4 control-label">E-Mail Address</label>
+                            <label class="col-md-4 control-label">Enter Your E-Mail Address <i class="fa fa-envelope"></i></label>
 
                             <div class="col-md-6">
+                                <span ng-if="forgotFormData.errors.email" class="help-block">{{ forgotFormData.errors.email.join(' ') }}</span>
                                 <input type="email"
                                        class="form-control"
                                        name="email"
                                        required
                                        ng-model="forgotFormData.email"/>
-
-                                <span ng-if="forgotFormData.errors.email" class="help-block">{{ forgotFormData.errors.email.join(' ') }}</span>
                             </div>
                         </div>
 
                         <div class="form-group" ng-if="!success">
                             <div class="col-md-6 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
-                                    <i class="fa fa-envelope"
-                                       ng-hide="forgotFormData.loading"></i><i class="fa fa-spinner fa-spin"
-                                                                               ng-show="forgotFormData.loading"></i>
+                                <button type="submit" class="btn btn-primary" ng-class="{'btn-loading': forgotFormData.loading}">
+                                    <i class="fa fa-envelope"></i>
                                     Send Password Reset Link
                                 </button>
                             </div>
@@ -40,6 +37,6 @@
                     </form>
                 </div>
             </div>
-        </div>
+
     </div>
 </div>

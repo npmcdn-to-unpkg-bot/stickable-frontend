@@ -1,6 +1,6 @@
 <div class="container">
     <div class="row">
-        <div class="col-md-8 col-md-offset-2">
+
             <div class="panel panel-default">
                 <div class="panel-heading"><h1>Create An Account</h1></div>
                 <div class="panel-body">
@@ -11,12 +11,14 @@
                             <label class="col-md-4 control-label">Username <i class="fa fa-user"></i></label>
 
                             <div class="col-md-8">
+                                <span ng-if="!signupFormData.errors.username" class="help-block">Up to 30 characters and can only contain letters, numbers, hyphens, or underscores.</span>
+                                <span ng-if="signupFormData.errors.username" class="help-block">{{ signupFormData.errors.username.join(' ') }}</span>
                                 <input type="text"
                                        class="form-control"
                                        name="username"
                                        ng-model="signupFormData.username"
-                                       required/>
-                                <span ng-if="signupFormData.errors.username" class="help-block">{{ signupFormData.errors.username.join(' ') }}</span>
+                                       required
+                                       placeholder="" />
                             </div>
                         </div>
 
@@ -24,12 +26,14 @@
                             <label class="col-md-4 control-label">E-Mail Address <i class="fa fa-envelope"></i></label>
 
                             <div class="col-md-8">
+                                <span ng-if="signupFormData.errors.email" class="help-block">{{ signupFormData.errors.email.join(' ') }}</span>
                                 <input type="email"
                                        class="form-control"
                                        name="email"
                                        ng-model="signupFormData.email"
-                                       required/>
-                                <span ng-if="signupFormData.errors.email" class="help-block">{{ signupFormData.errors.email.join(' ') }}</span>
+                                       required
+                                        placeholder=""
+                                        />
                             </div>
                         </div>
 
@@ -37,21 +41,22 @@
                             <label class="col-md-4 control-label">Password <i class="fa fa-key"></i></label>
 
                             <div class="col-md-8">
+                                <span ng-if="!signupFormData.errors.password" class="help-block">Minimum 5 characters.</span>
+                                <span ng-if="signupFormData.errors.password" class="help-block">{{ signupFormData.errors.password.join(' ') }}</span>
                                 <input type="password"
                                        class="form-control"
                                        name="password"
                                        ng-model="signupFormData.password"
-                                       required/>
-                                <span ng-if="signupFormData.errors.password" class="help-block">{{ signupFormData.errors.password.join(' ') }}</span>
+                                       required
+                                        placeholder=""
+                                        />
                             </div>
                         </div>
 
                         <div class="form-group">
                             <div class="col-md-8 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
-                                    <i class="fa fa-user fa-fw"
-                                       ng-hide="signupFormData.loading"></i><i class="fa fa-spinner fa-spin fa-fw"
-                                                                               ng-show="signupFormData.loading"></i>
+                                <button type="submit" class="btn btn-primary btn-labeled" ng-class="{'btn-loading': signupFormData.loading}">
+                                    <span class="btn-label"><i class="fa fa-user fa-fw"></i></span>
                                     Signup
                                 </button>
                             </div>
@@ -61,7 +66,7 @@
 
                 </div>
             </div>
-        </div>
+
     </div>
 </div>
 

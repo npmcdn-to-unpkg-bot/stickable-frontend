@@ -1,6 +1,6 @@
 <div class="container">
     <div class="row">
-        <div class="col-md-8 col-md-offset-2">
+
             <div class="panel panel-default">
                 <div class="panel-heading"><h1>Create A New Password</h1></div>
                 <div class="panel-body">
@@ -45,24 +45,21 @@
 
                         <div class="form-group" ng-if="!success">
                             <div class="col-md-6 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
-                                    <i class="fa fa-unlock-alt"
-                                       ng-hide="resetFormData.loading"></i><i class="fa fa-spinner fa-spin"
-                                                                              ng-show="resetFormData.loading"></i> Reset
-                                    Password
+                                <button type="submit" class="btn btn-primary" ng-class="{'btn-loading': forgotFormData.loading}">
+                                    <i class="fa fa-unlock-alt"></i>
+                                    Change Password
                                 </button>
                             </div>
                         </div>
 
                         <div class="alert alert-success" ng-if="success">
-                            <i class="fa fa-check"></i> Password changed. You can now <a class="btn"
-                                                                                         href="/login">Login</a> with
-                            the new password.
+                            <i class="fa fa-check"></i>
+                            Password changed. You can now <a class="btn" href="/login">Login</a> with the new password.
                         </div>
 
                     </form>
                 </div>
             </div>
-        </div>
+
     </div>
 </div>

@@ -1,10 +1,10 @@
 app.directive('avatar', function factory() {
     return {
         scope: {
-            img: '='
+            user: '='
         },
         template: function($scope) {
-            return '<img ng-if="img" class="user-image" ng-src="{{img.thumbUrl}}" /><span ng-if="!img" class="user-image default-user-image"></span>';
+            return '<img ng-if="user && user.image" class="user-image" ng-src="{{user.image.thumbUrl}}" /><span ng-if="!user || !user.image" class="user-image default-user-image"></span>';
         }
     };
 });
