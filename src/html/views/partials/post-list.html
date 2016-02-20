@@ -29,15 +29,15 @@
 
             <span class="details">
 
-                <span ng-if="showPostApproval && thisPost.submission.approved === 1" class="green">
+                <span ng-if="showPostApproval && thisPost.submission.approved === true" class="green">
                     <i class="fa fa-check-circle"></i> Approved Submission
                 </span>
 
-                <span ng-if="showPostApproval && thisPost.submission.approved === 0" class="orange">
+                <span ng-if="showPostApproval && thisPost.submission.approved === null" class="orange">
                     <i class="fa fa-pause-circle"></i> Pending Submission
                 </span>
 
-                <span ng-if="showPostApproval && thisPost.submission.approved === -1" class="red">
+                <span ng-if="showPostApproval && thisPost.submission.approved === false" class="red">
                     <i class="fa fa-times-circle"></i> Rejected Submission
                 </span>
 
