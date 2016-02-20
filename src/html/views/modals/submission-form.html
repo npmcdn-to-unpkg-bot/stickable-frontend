@@ -20,7 +20,7 @@
 
                 <div ng-show="stage === 2">
 
-                    <h2 class="text-center">Post Your Submission</h2>
+                    <h2 class="text-center">{{ (hasFirstStage ? 'Post Your Submission' : task.submission) }}</h2>
 
                     <!--<div class="form-group">
 
@@ -40,7 +40,7 @@
 
                     </div>-->
 
-                    <p class="submission-help submission-post-help" ng-show="formData.private === 0">
+                    <p class="submission-help submission-post-help" ng-show="formData.private === 0 && submissionType === 'image'">
                         <i class="fa fa-star"></i> Tell the story of how you completed this task. Did you find it interesting? Can you share some tips to help others?
                         <br/><i class="fa fa-info-circle"></i> Your photo(s) from the previous page and story you enter below will appear on the page for the task. Other members can like and comment on your post.
                     </p>
@@ -62,8 +62,7 @@
                     </div>
 
                     <div class="form-group" ng-show="formData.private === 0">
-                        <label for="post-text">Content</label>
-                        <textarea class="form-control" id="post-text" ng-model="formData.text" placeholder="Write your tip, question, or other post here."></textarea>
+                        <textarea class="form-control" id="post-text" ng-model="formData.text" placeholder="Write your post."></textarea>
                     </div>
 
                 </div>
@@ -100,7 +99,7 @@
             <div class="modal-footer">
 
                 <ul class="dots modal-dots">
-                    <li ng-class="{'active': stage === 1}"><a href="#" ng-click="toStage(1)"></a></li>
+                    <li ng-if="hasFirstStage" ng-class="{'active': stage === 1}"><a href="#" ng-click="toStage(1)"></a></li>
                     <li ng-class="{'active': stage === 2}"><a href="#" ng-click="toStage(2)"></a></li>
                     <li ng-class="{'active': stage === 3}"><a href="#" ng-click="toStage(3)"></a></li>
                 </ul>

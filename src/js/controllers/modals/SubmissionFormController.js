@@ -3,10 +3,13 @@ app.controller(
     function ($scope, SubmissionResource, task, close, $timeout, AuthService) {
 
         $scope.task = task;
+        $scope.submissionType = task.submissionType.toLowerCase();
         $scope.close = close;
 
-        $scope.stage = 1;
-        $scope.nextEnabled = false;
+        $scope.hasFirstStage = $scope.submissionType === 'image';
+
+        $scope.stage = $scope.hasFirstStage ? 1 : 2;
+        $scope.nextEnabled = $scope.hasFirstStage ? false : true;
 
         $scope.formData = {
             imageIds: [],
@@ -32,32 +35,35 @@ app.controller(
         }
 
         var dropzone;
-        $timeout(function() {
-            dropzone = new Dropzone("#post-file", {
-                acceptedFiles: "image/*",
-                addRemoveLinks: true,
-                url: '/api/images?sessionToken=' + AuthService.getSessionToken(),
-                clickable: '.dropzone-btn',
-                thumbnailWidth: 96,
-            });
 
-            dropzone.on('sending', function(){
-                $scope.nextEnabled = false;
-                $scope.$apply();
-            });
+        if ($scope.submissionType === 'image') {
+            $timeout(function () {
+                dropzone = new Dropzone("#post-file", {
+                    acceptedFiles: "image/*",
+                    addRemoveLinks: true,
+                    url: '/api/images?sessionToken=' + AuthService.getSessionToken(),
+                    clickable: '.dropzone-btn',
+                    thumbnailWidth: 96,
+                });
 
-            dropzone.on('complete', function(){
-                console.log('getFilesWithStatus', dropzone.getFilesWithStatus('success'));
-                $scope.nextEnabled = dropzone.getFilesWithStatus('success').length > 0;
-                $scope.$apply();
-            });
+                dropzone.on('sending', function () {
+                    $scope.nextEnabled = false;
+                    $scope.$apply();
+                });
 
-            dropzone.on('removedfile', function(){
-                $scope.nextEnabled = dropzone.getFilesWithStatus('success').length > 0;
-                $scope.$apply();
-            });
+                dropzone.on('complete', function () {
+                    console.log('getFilesWithStatus', dropzone.getFilesWithStatus('success'));
+                    $scope.nextEnabled = dropzone.getFilesWithStatus('success').length > 0;
+                    $scope.$apply();
+                });
 
-        }, 10);
+                dropzone.on('removedfile', function () {
+                    $scope.nextEnabled = dropzone.getFilesWithStatus('success').length > 0;
+                    $scope.$apply();
+                });
+
+            }, 10);
+        }
 
         $scope.toStage = function (stage) {
             //if (stage > $scope.stage) {
@@ -70,8 +76,10 @@ app.controller(
 
             switch ($scope.stage) {
                 case 1:
-                    dropzone.processQueue();
-                    $scope.formData.imageIds = getImageIds();
+                    if ($scope.submissionType === 'image') {
+                        dropzone.processQueue();
+                        $scope.formData.imageIds = getImageIds();
+                    }
                     break;
 
                 case 2:
