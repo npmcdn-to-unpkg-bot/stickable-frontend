@@ -19,6 +19,10 @@
         font-size:18px;
     }
 
+    a {
+        .white();
+    }
+
     // h1 always or h2 with 2 titles
     h1,
     h3 + h2 {
@@ -37,8 +41,8 @@
             position: absolute;
             left: 13px;
             top: 5px;
-            border-left: 1px @grey solid;
-            border-bottom: 1px @grey solid;
+            border-left: 1px @light-grey-bg solid;
+            border-bottom: 1px @light-grey-bg solid;
             width: 15px;
             height: 30px;
         }
@@ -116,7 +120,7 @@
                 display: block;
                 width: auto;
                 height: auto;
-                color:#777;
+                color:@light-grey-bg;
             }
         }
 

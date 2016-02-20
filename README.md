@@ -13,6 +13,7 @@
 * Delete / edit posts
 * Change password / email / username
 * Ability to assign roles / admin
+* Show on task page if completed and accepted. Add "I've done it again" button
 
 ## Bugs
 * Right menu bg goes white in Safari sometimes

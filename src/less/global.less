@@ -44,6 +44,10 @@ p {
 
 h1 {
     padding: 15px 0;
+
+    &:first-child {
+        padding-top:0;
+    }
 }
 
 h1, h2, h3, h4, h5 {
@@ -70,6 +74,13 @@ h5 {
 .white {
     color:#fff;
     .text-shadow();
+}
+
+.dark-page {
+    h1, h2, h3, h4, h5 {
+        color:#fff;
+        .text-shadow();
+    }
 }
 
 @media (max-width: @screen-sm-max) {
@@ -145,6 +156,14 @@ a:focus {
 
 .red {
     color: @red;
+}
+
+.orange {
+    color: @orange;
+}
+
+.yellow {
+    color: @yellow;
 }
 
 .green {

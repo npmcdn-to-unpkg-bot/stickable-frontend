@@ -33,7 +33,7 @@
                     <i class="fa fa-check-circle"></i> Approved Submission
                 </span>
 
-                <span ng-if="showPostApproval && thisPost.submission.approved === null" class="orange">
+                <span ng-if="showPostApproval && thisPost.submission.approved === null" class="yellow">
                     <i class="fa fa-pause-circle"></i> Pending Submission
                 </span>
 
@@ -41,7 +41,7 @@
                     <i class="fa fa-times-circle"></i> Rejected Submission
                 </span>
 
-                <span ng-if="!showPostApproval">
+                <span ng-if="!showPostApproval && thisPost.type === 'SUBMISSION'">
                     <i class="fa"
                    ng-class="{'fa-check-circle': thisPost.type === 'SUBMISSION', 'fa-question-circle' : thisPost.type === 'QUESTION', 'fa-info-circle' : thisPost.type === 'TIP'}"></i>
                     {{ thisPost.type.capitalizeFirstLetter() }}

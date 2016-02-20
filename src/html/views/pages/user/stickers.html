@@ -1,10 +1,8 @@
 <div class="content">
 <div class="container">
     <h1>{{ user.username }}'s Stickers</h1>
-
-    <ul>
-        <li ng-repeat="sticker in stickers"><a href="/sticker/{{ sticker.slug }}">{{ sticker.name }}</a></li>
-    </ul>
-
+    <a ng-repeat="sticker in stickers" href="/sticker/{{ sticker.slug }}">
+        <span class="sticker" data-sticker-img="{{ sticker.design.imageUrl }}"></span>
+    </a>
 </div>
 </div>

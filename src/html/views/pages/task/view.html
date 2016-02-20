@@ -1,4 +1,4 @@
-<div class="content">
+<div class="content dark-page">
     <div class="container task-page" ng-if="task" ng-class="{'post-page': !!post}">
 
 
@@ -6,7 +6,7 @@
             <h2 class="sticker-name">
                 <a href="/sticker/{{ task.sticker.slug }}">
                     <span class="sticker sticker-sm" img="{{ task.sticker.design.imageUrl }}"></span>
-                    {{task.sticker.name }} Sticker
+                    {{task.sticker.name }}
                 </a>
             </h2>
 
@@ -51,7 +51,7 @@
                     <h3 class="sticker-name">
                         <a href="/sticker/{{ task.sticker.slug }}">
                             <span class="sticker sticker-sm" img="{{ task.sticker.design.imageUrl }}"></span>
-                            {{task.sticker.name }} Sticker
+                            {{ task.sticker.name }}
                         </a>
                     </h3>
 
@@ -155,10 +155,15 @@
                         </li>
                     </ul>-->
 
-                    <p>{{ task.description }}</p>
+                    <p class="white">{{ task.description }}</p>
 
-                    <h2><i class="fa fa-users"></i> Working On It</h2>
-                    <div class="user-list" data="doers" like="likeDoer"></div>
+                    <div class="trans-box">
+                        <h2><i class="fa fa-users"></i> Working On It</h2>
+                        <div ng-if="doers.users.length > 0" class="user-list" data="doers" like="likeDoer"></div>
+                        <p class="text-center" ng-if="!(doers.users.length > 0)">
+                            Nobody has this on their to-do list yet.
+                        </p>
+                    </div>
 
                 </div>
 

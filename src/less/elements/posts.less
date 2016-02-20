@@ -93,9 +93,7 @@
 }
 
 .single-post {
-    padding: 15px;
-    border-radius: @border-radius-base;
-    background: rgba(255, 255, 255, .3);
+    .trans-box();
     margin-bottom: 15px;
 
     .like-btn {
@@ -140,9 +138,10 @@
 .post-info {
     margin: 0 0 5px 0;
     font-size: 14px;
+    color:@light-white;
 
     a {
-        color: @grey;
+        color: @light-white;
     }
 }
 
@@ -163,6 +162,11 @@ a.like-btn {
     }
 }
 
+.single-post a.like-btn,
+.trans-box a.like-btn {
+    color:@light-white;
+}
+
 // Like heart when hovering
 // (switch to filled icon)
 .post.liked .like-btn i:before,
@@ -180,7 +184,7 @@ a.like-btn {
 }
 
 .like-thumb i {
-    color:#aaa;
+    color:@light-white;
     -webkit-transform: rotateY(180deg);
     transform: rotateY(180deg);
     .transition-all();
@@ -188,7 +192,7 @@ a.like-btn {
 
 // Like thumb when hovering
 .like-thumb:hover i {
-    color:@grey;
+    color:@light-grey;
 
     &:before {
         content: "\f164";

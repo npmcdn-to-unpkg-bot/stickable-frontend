@@ -23,6 +23,24 @@
 
 <div class="content">
     <div class="container-lg">
-        <ng-include src="'views/partials/post-list.html'" ng-controller="PostsController"></ng-include>
+
+        <div class="row">
+
+            <div class="col-md-4">
+                <a class="featured-sticker" href="/sticker/example-sticker">
+                    <span>
+                        <h4>Sticker of the week</h4>
+                        Example Sticker
+                    </span>
+                </a>
+            </div>
+
+
+            <div class="col-md-8">
+                <h2>Featured Posts</h2>
+                <ng-include src="'views/partials/post-list.html'" ng-controller="PostsController"></ng-include>
+            </div>
+
+        </div>
     </div>
 </div>
