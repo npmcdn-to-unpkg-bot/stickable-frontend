@@ -99,10 +99,10 @@ app.config(function ($httpProvider,
             controller: 'UserProfileController'
         })
 
-        .state('user-todo', {
-            url: "/user/{username:string}/todo",
-            templateUrl: "views/pages/user/todo.html",
-            controller: 'UserToDoController'
+        .state('user-planner', {
+            url: "/user/{username:string}/planner",
+            templateUrl: "views/pages/user/planner.html",
+            controller: 'UserPlannerController'
         })
 
         .state('user-stickers', {

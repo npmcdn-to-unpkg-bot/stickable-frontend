@@ -3,11 +3,35 @@ footer {
     color: #fff;
     padding: 15px 0;
     height: 50px;
-    font-size: @font-size-sm;
+    font-size: @font-size-xs;
     position: relative;
     z-index: 10;
 
-    a {
-        color: #fff !important;
+    .pull-right {
+        a {
+            margin-left:30px;
+            color: #fff !important;
+        }
+    }
+}
+
+@media (max-width:@screen-sm-max) {
+    footer .pull-left,
+    footer .pull-right {
+        float:none !important;
+    }
+
+    footer {
+        text-align: center;
+        height:auto;
+    }
+
+    footer .pull-left {
+        margin: 0 0 15px;
+    }
+
+    footer a {
+        display: block;
+        margin:15px;
     }
 }

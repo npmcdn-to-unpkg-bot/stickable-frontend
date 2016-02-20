@@ -1,0 +1,62 @@
+<div class="content">
+    <div class="container">
+
+        <h1 class="white">{{ user.username }}'s Planner</h1>
+
+        <div class="row">
+
+            <div class="todo-list col-md-6">
+
+                <h2 class="white">To Do List</h2>
+
+                <div ng-repeat="sticker in stickers" class="todo-item">
+                    <div class="media">
+
+                        <ul class="task-list">
+
+                            <li class="header">
+                                <a href="/sticker/{{sticker.slug}}">
+                                <span class="media-left">
+                                    <span class="sticker" img="{{ sticker.design.imageUrl }}"></span>
+                                </span>
+
+                                <span class="media-body">
+                                    <h3>{{ sticker.name }}</h3>
+                                    <span class="sticker-progress" progress="sticker.progress"></span>
+                                </span>
+                                </a>
+                            </li>
+
+                            <li ng-repeat="task in sticker.todoTasks" class="task" ng-class="{
+                                'completed': task.hasCompleted,
+                                }">
+                                <a href="/task/{{ task.slug }}">
+
+                                    <span ng-if="progress && progress.pendingIds.indexOf(task.id) !== -1" class="label label-warning">Submitted</span>
+                                    <span ng-if="progress && progress.rejectedIds.indexOf(task.id) !== -1" class="label label-danger">Rejected</span>
+                                    <span ng-if="task.hasCompleted" class="label label-success">Completed</span>
+
+                                    <i class="fa" ng-class="{'fa-circle': !task.hasCompleted, 'fa-check-circle': task.hasCompleted}"></i>{{ task.name }}
+                                </a>
+                            </li>
+                        </ul>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="submission-list col-md-6">
+
+                <h2 class="white">Submissions</h2>
+
+                 <ng-include src="'views/partials/post-list.html'" ng-controller="PostsController"></ng-include>
+
+            </div>
+
+
+        </div>
+
+    </div>
+</div>
