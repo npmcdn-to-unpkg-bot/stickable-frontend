@@ -16,7 +16,7 @@
 
                     <div class="alert alert-success clear text-center" ng-if="sticker.hasCompleted">
                         <p><i class="fa fa-trophy"></i> Congratulations, you've earnt this sticker!</p>
-                        <p><a class="btn btn-success">See it in your Sticker Book</a></p>
+                        <p><a class="btn btn-success" href="/user/{{currentUser.username}}/stickers">See it in your Sticker Book</a></p>
                     </div>
 
                     <p class="sticker-desc" ng-bind-html="sticker.description | markdown"></p>

@@ -3,15 +3,12 @@
     <h1><img class="user-image" ng-src="{{user.image.thumbUrl}}" ng-if="user.image" />{{ user.username }}</h1>
 
     <h2 ng-if="user.profile.about">About {{ user.username }}</h2>
-    <p ng-if="user.profile.about">{{ user.profile.about }}</png-if>
+    <p ng-if="user.profile.about">{{ user.profile.about }}</p>
 
     <h2>Stickers</h2>
-    <span ng-repeat="sticker in stickers.stickers" class="sticker" img="{{ sticker.design.imageUrl }}"></span>
-
-    <h2>To Do</h2>
-    <ul>
-        <li ng-repeat="task in todo"><a href="/task/{{ task.slug }}">{{ task.name }}</a></li>
-    </ul>
+    <a ng-repeat="sticker in stickers.stickers" href="/sticker/{{sticker.slug}}">
+        <span class="sticker" img="{{ sticker.design.imageUrl }}"></span>
+    </a>
 
     <h2>Posts</h2>
     <ng-include src="'views/partials/post-list.html'" ng-controller="PostsController"></ng-include>
