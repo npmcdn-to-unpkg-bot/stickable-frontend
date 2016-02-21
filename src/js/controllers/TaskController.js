@@ -200,7 +200,6 @@ app.controller(
         $scope.commentFormVisible = false;
         $scope.showCommentForm = function($event, replyToComment) {
             preventDefault($event);
-
             $scope.commentFormVisible = true;
 
             if (replyToComment) {
@@ -221,21 +220,6 @@ app.controller(
             }
             $scope.commentFormVisible = false;
             $('#comment-form-container').prepend($('#comment-form-include'));
-        };
-
-        $scope.loadCommentReplies = function ($event, comment) {
-            preventDefault($event);
-            CommentResource.getCommentReplies(
-                {
-                    'commentId': comment.id
-                },
-                function (response) {
-                    comment.replies = response.comments
-                },
-                function (response) {
-                    alertError(response.data.message);
-                }
-            )
         };
 
         $scope.commentFormData = {
@@ -289,5 +273,6 @@ app.controller(
             }
 
         };
+
     }
 );

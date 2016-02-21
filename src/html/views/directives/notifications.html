@@ -9,7 +9,7 @@
             >
         <a href="#" ng-click="goTo($event, index)" class="media">
 
-            <span class="media-left">
+            <span class="media-left" ng-if="notification.image">
                 <span>
                     <img ng-src="{{notification.image}}" />
                 </span>

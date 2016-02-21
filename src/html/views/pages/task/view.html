@@ -119,11 +119,7 @@
                         <div ng-include="'views/partials/comment-form.html'" id="comment-form-include"></div>
                     </div>
 
-                    <div class="comments" ng-controller="CommentsController">
-                        <div class="comment-include"
-                             ng-repeat="comment in comments.comments"
-                             ng-include="'views/partials/comment.html'"></div>
-                    </div>
+                    <div class="comments" comments="comments.comments" show-comment-form="showCommentForm"></div>
 
                 </div>
 
@@ -186,7 +182,10 @@
                         </li>
                     </ul>-->
 
-                    <div ng-include="'views/partials/post-list.html'" ng-controller="PostsController"></div>
+                    <div ng-if="posts.posts.length > 0" ng-include="'views/partials/post-list.html'" ng-controller="PostsController"></div>
+                    <div ng-if="posts.posts.length < 1" class="text-center trans-box">
+                        <p>No posts yet.</p>
+                    </div>
                 </div>
             </div>
 
