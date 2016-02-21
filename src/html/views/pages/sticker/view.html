@@ -19,7 +19,9 @@
                         <p><a class="btn btn-success" href="/user/{{currentUser.username}}/stickers">See it in your Sticker Book</a></p>
                     </div>
 
-                    <p class="sticker-desc" ng-bind-html="sticker.description | markdown"></p>
+                    <div class="padded-box">
+                        <p class="sticker-desc" ng-bind-html="sticker.description | markdown"></p>
+                    </div>
 
                     <ul class="sticker-info">
                         <li ng-if="sticker.creator">
@@ -82,26 +84,34 @@
         </div>
     </div>
 
+    <div class="white-bg">
     <div class="container">
         <div class="row">
 
             <div class="col-lg-6">
 
-                <h2><i class="fa fa-trophy"></i> Who's Got It</h2>
-                <div class="user-list" data="earners" like="likeEarner"></div>
+                <h2 ng-if="earners.users.length > 0"><i class="fa fa-trophy"></i> Who's Got It</h2>
+                <div ng-if="earners.users.length > 0" class="user-list" data="earners" like="likeEarner"></div>
 
                 <h2><i class="fa fa-users"></i> Working On It</h2>
                 <div class="user-list" data="doers" like="likeDoer"></div>
+                <div ng-if="doers.users.length < 1" class="text-center text-muted">
+                    Nobody has this on their to do list yet.
+                    <br/>
+                    <a class="btn btn-primary btn-labeled" ng-click="addToDo()">
+                        <span class="btn-label"><i class="fa fa-plus-circle"></i></span>
+                        Add To Your To-Do List
+                    </a>
+                </div>
 
             </div>
 
             <div class="col-lg-6">
 
-                <h2>More {{ sticker.category.name }} Stickers</h2>
+                <h2><i class="fa fa-folder-open"></i> More {{ sticker.category.name }} Stickers</h2>
 
-                <ul class="sticker-list small-sticker-list row">
-
-                    <li class="col-xs-4 col-sm-3 col-lg-4"
+                <ul class="small-sticker-list">
+                    <li
                         ng-repeat="catSticker in sticker.category.stickers"
                         ng-if="catSticker.id != sticker.id">
                         <a href="/sticker/{{ catSticker.slug }}">
@@ -115,4 +125,6 @@
 
         </div>
     </div>
+    </div>
+
 </div>

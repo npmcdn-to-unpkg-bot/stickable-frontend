@@ -1,7 +1,7 @@
 app.controller(
     'HelpController',
-    function ($scope, $rootScope, CategoryResource) {
+    function ($element, $scope, $rootScope) {
         $rootScope.pageTitle = '';
-        $.backstretch('/assets/img/bg/about.jpg');
+        setBg($element, '/assets/img/bg/about.jpg');
     }
 );

@@ -21,7 +21,7 @@
 
         <!--{{ comment.replies.length }} loaded / {{ comment.replyCount }} replies-->
 
-        <a class="btn btn-sm btn-danger delete-comment-btn" ng-if="$root.currentUser && $root.currentUser.id === comment.userId" ng-click="deleteComment($event, index, comment)" href="#"><i class="fa fa-trash"></i></a>
+        <a class="btn btn-sm btn-danger icn-btn" ng-if="$root.currentUser && $root.currentUser.id === comment.userId" ng-click="deleteComment($event, index, comment)" href="#"><i class="fa fa-trash"></i></a>
 
         <span ng-switch on="(comment.replyCount > 0 && !comment.replies) || comment.replies.length < comment.replyCount">
 
@@ -29,7 +29,7 @@
                 <i class="fa fa-comments"></i> Load {{ comment.replyCount - (comment.replies ? comment.replies.length : 0) }} more replies
             </a>
 
-            <a class="btn btn-sm" ng-switch-default href="#" ng-click="showCommentForm($event, comment)"><i class="fa fa-commenting"></i> Add Reply</a>
+            <a class="btn btn-sm" ng-switch-default href="#" ng-click="showCommentForm($event, comment)"><i class="fa fa-commenting"></i> Reply</a>
 
         </span>
 

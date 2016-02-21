@@ -76,39 +76,12 @@
     }
 }
 
-#task-btns {
-    clear: both;
-    margin-bottom: 15px;
-
-    .col-xs-6:first-child {
-        padding-right: 7px;
-    }
-
-    .col-xs-6:last-child {
-        padding-left: 7px;
-    }
-
-    .btn {
-        margin-bottom: 0;
-    }
-}
-
 .add-comment-btn {
     margin-bottom: 15px;
 }
 
 
 @media (min-width: @screen-md-min) {
-    #task-btns {
-        clear: none;
-        float: right;
-
-        .row > div {
-            width: auto;
-            padding: 0 0 0 15px;
-        }
-    }
-
     .add-comment-btn {
         display: inline-block;
         float: right;
@@ -133,6 +106,13 @@
     }
 }
 
+.task-doers {
+    h2 {
+        margin-top:0;
+    }
+}
+
+
 // Hide "Post" word in tabs on post page
 .post-page {
     .post-order-tabs strong {
@@ -142,6 +122,12 @@
 
 // Hide post list on mobile
 @media (max-width: @screen-sm-max) {
+
+    .task-doers h2 {
+        text-align:left;
+        margin-top:4px;
+    }
+
     .posts-container {
         margin-top: 15px;
     }

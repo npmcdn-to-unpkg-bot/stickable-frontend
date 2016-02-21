@@ -20,18 +20,30 @@ app.service(
                     percent: 0
                 };
 
+                var taskIds = [];
+
                 progress.completed = sticker.progress.completed.length;
 
                 for (var i = 0; i < sticker.progress.completed.length; i++) {
-                    progress.completedIds.push(sticker.progress.completed[i].id);
+                    var taskId = sticker.progress.completed[i].id;
+                    progress.completedIds.push(taskId);
+                    taskIds.push(taskId);
                 }
 
                 for (var i = 0; i < sticker.progress.pending.length; i++) {
-                    progress.pendingIds.push(sticker.progress.pending[i].id);
+                    var taskId = sticker.progress.pending[i].id;
+                    if (taskIds.indexOf(taskId) === -1) {
+                        progress.pendingIds.push(taskId);
+                        taskIds.push(taskId);
+                    }
                 }
 
                 for (var i = 0; i < sticker.progress.rejected.length; i++) {
-                    progress.rejectedIds.push(sticker.progress.rejected[i].id);
+                    var taskId = sticker.progress.rejected[i].id;
+                    if (taskIds.indexOf(taskId) === -1) {
+                        progress.rejectedIds.push(taskId);
+                        taskIds.push(taskId);
+                    }
                 }
 
                 progress.pending = sticker.progress.pending.length;

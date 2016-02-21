@@ -76,12 +76,12 @@
     }
 }
 
+.new-post-btn {
+    margin-bottom:15px;
+}
+
 .posts-container {
     //min-height: ~"calc(100vh + 5px - @{footer-height})";
-
-    .btn {
-        margin: 0;
-    }
 
     .alert {
         padding: 20px;
@@ -183,11 +183,18 @@ a.like-btn {
     }
 }
 
-.like-thumb i {
-    color:@light-white;
-    -webkit-transform: rotateY(180deg);
-    transform: rotateY(180deg);
-    .transition-all();
+.like-thumb {
+    color:@grey;
+
+    i {
+        -webkit-transform: rotateY(180deg);
+        transform: rotateY(180deg);
+        .transition-all();
+    }
+}
+
+.trans-box .like-thumb {
+    color:#fff;
 }
 
 // Like thumb when hovering
@@ -212,7 +219,6 @@ a.like-btn {
 }
 
 .user-list .like-clicked.liked .like-btn i {
-
     -webkit-animation: like-thumb .3s ease-out;
     animation: like-thumb .3s ease-out;
 }

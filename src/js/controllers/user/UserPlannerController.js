@@ -1,10 +1,10 @@
 app.controller(
     'UserPlannerController',
-    function ($scope, $rootScope, $state, $stateParams, UserResource, ToDoResource, ProgressService) {
+    function ($element, $scope, $rootScope, $state, $stateParams, UserResource, ToDoResource, ProgressService) {
 
         $rootScope.loading = true;
         $rootScope.pageTitle = $stateParams.username;
-        $.backstretch('/assets/img/bg/planner.jpg');
+        setBg($element, '/assets/img/bg/planner.jpg');
 
         $scope.stickers = [];
         $scope.submissions = [];

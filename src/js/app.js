@@ -149,6 +149,8 @@ app.config(function ($httpProvider,
 
 app.run(function ($rootScope, $state, AuthService, UserNotificationsResource, NotificationService, moment) {
 
+    $rootScope.iOS = iOS;
+
     FastClick.attach(document.body);
 
     moment.locale('en', {

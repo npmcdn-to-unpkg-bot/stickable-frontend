@@ -80,6 +80,7 @@ module.exports = function (grunt) {
                     sourceMapIncludeSources: true
                 },
                 src: [
+                    'src/js/functions.js',
                     'src/js/app.js',
                     'src/js/templates.js',
                     'src/js/**/*.js'

@@ -1,8 +1,8 @@
 app.controller(
     'ForgotController',
-    function ($scope, $state, $stateParams, UserResource) {
+    function ($element, $scope, $state, $stateParams, UserResource) {
 
-        $.backstretch('/assets/img/bg/login.jpg');
+        setBg($element, '/assets/img/bg/login.jpg');
 
         $scope.forgotFormData = {
             loading: false,

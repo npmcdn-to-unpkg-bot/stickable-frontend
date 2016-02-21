@@ -17,34 +17,6 @@
             </h1>
         </div>
 
-        <div id="task-btns" ng-if="currentUser">
-            <div class="row">
-                <div class="col-xs-6">
-                    <a ng-click="showPostForm()" class="new-post-btn btn btn-labeled btn-block">
-                        <span class="btn-label"><i class="fa fa-plus-circle"></i></span>
-                        Add A <span class="hidden-xs">Tip / Question</span><span class="visible-xs-inline">Post</span>
-                    </a>
-                </div>
-                <div class="col-xs-6">
-                    <a class="btn btn-danger btn-remove-todo btn-labeled btn-block"
-                       href="#"
-                       ng-click="removeToDo()"
-                       ng-if="isOnToDoList">
-                        <span class="btn-label"><i class="fa fa-minus-circle"></i></span>
-                        Remove <span class="hidden-xs">from </span>To-Do <span class="hidden-xs">List</span>
-                    </a>
-
-                    <a class="btn btn-success btn-add-todo btn-labeled btn-block"
-                       href="#"
-                       ng-click="addToDo()"
-                       ng-if="!isOnToDoList">
-                        <span class="btn-label"><i class="fa fa-plus-circle"></i></span>
-                        Add <span class="hidden-xs">to </span>To-Do <span class="hidden-xs">List</span>
-                    </a>
-                </div>
-            </div>
-        </div>
-
         <div class="row clear">
 
             <div class="content-col" ng-class="{'col-md-6': !post, 'col-md-8': !!post}">
@@ -127,11 +99,8 @@
 
                 <div ng-if="!post">
 
-                    <div class="alert alert-info text-center">
-                        <small><i class="fa fa-check-square"></i> To complete this task and earn credit towards the
-                            <strong>{{
-                                task.sticker.name }}</strong> sticker:
-                        </small>
+                    <div class="trans-box text-center">
+                        <h2>To Complete This Task</h2>
 
                         <p>{{ task.submission }}</p>
 
@@ -153,10 +122,29 @@
                         </li>
                     </ul>-->
 
-                    <p class="white">{{ task.description }}</p>
+                    <div class="padded-box">
+                        <p class="white">{{ task.description }}</p>
+                    </div>
 
-                    <div class="trans-box">
-                        <h2><i class="fa fa-users"></i> Working On It</h2>
+                    <div class="trans-box task-doers">
+
+                        <a class="btn btn-danger btn-remove-todo btn-labeled pull-right"
+                           href="#"
+                           ng-click="removeToDo()"
+                           ng-if="isOnToDoList">
+                            <span class="btn-label"><i class="fa fa-minus-circle"></i></span>
+                            Remove <span class="hidden-xs">from To-Do</span>
+                        </a>
+
+                        <a class="btn btn-primary btn-add-todo btn-labeled  pull-right"
+                           href="#"
+                           ng-click="addToDo()"
+                           ng-if="!isOnToDoList">
+                            <span class="btn-label"><i class="fa fa-plus-circle"></i></span>
+                            Add <span class="hidden-xs">to </span>To-Do <span class="hidden-xs">List</span>
+                        </a>
+
+                        <h2><i class="fa fa-users fa-fw"></i> Working On It</h2>
                         <div ng-if="doers.users.length > 0" class="user-list" data="doers" like="likeDoer"></div>
                         <p class="text-center" ng-if="!(doers.users.length > 0)">
                             Nobody has this on their to-do list yet.
@@ -183,6 +171,11 @@
                             </a>
                         </li>
                     </ul>-->
+
+                    <a ng-click="showPostForm()" class="new-post-btn btn btn-labeled btn-block">
+                        <span class="btn-label"><i class="fa fa-plus-circle"></i></span>
+                        Post A Tip or Question
+                    </a>
 
                     <div ng-if="posts.posts.length > 0" ng-include="'views/partials/post-list.html'" ng-controller="PostsController"></div>
                     <div ng-if="posts.posts.length < 1" class="text-center trans-box">

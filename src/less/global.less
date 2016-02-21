@@ -60,7 +60,7 @@ h1, h2, h3, h4, h5 {
 }
 
 h2 {
-    margin: 30px 0;
+    margin: 30px 0 15px;
 }
 
 /*h4, h5 {
@@ -88,12 +88,14 @@ h5 {
 }
 
 @media (max-width: @screen-sm-max) {
-    /*h1 {
+    h1 {
         font-size: @font-size-h1-sm;
+        text-align:center;
     }
 
     h2 {
         font-size: @font-size-h2-sm;
+        text-align:center;
     }
 
     h3 {
@@ -102,7 +104,8 @@ h5 {
 
     h4 {
         font-size: @font-size-h4-sm;
-    }*/
+    }
+
     .to-edge .alert {
         border-radius: 0;
         border-left: 0;
@@ -238,12 +241,13 @@ h1 .user-image,
 
 .user-list {
     .clearfix();
+    text-align: center;
 
     .user {
         width: 100px;
         text-align: center;
-        float: left;
-        margin-right: 15px;
+        display: inline-block;
+        margin: 0 7px;
     }
 
     .pic {
@@ -318,41 +322,3 @@ h1 .user-image,
     }
 }
 
-
-@keyframes bounceIn {
-  from, 20%, 40%, 60%, 80%, to {
-    animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
-  }
-
-  0% {
-    opacity: 0;
-    transform: scale3d(.3, .3, .3);
-  }
-
-  20% {
-    transform: scale3d(1.1, 1.1, 1.1);
-  }
-
-  40% {
-    transform: scale3d(.9, .9, .9);
-  }
-
-  60% {
-    opacity: 1;
-    transform: scale3d(1.03, 1.03, 1.03);
-  }
-
-  80% {
-    transform: scale3d(.97, .97, .97);
-  }
-
-  to {
-    opacity: 1;
-    transform: scale3d(1, 1, 1);
-  }
-}
-
-.messenger-message-slot {
-
-    animation: bounceIn .3s ease-out;
-}

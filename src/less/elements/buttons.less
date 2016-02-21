@@ -6,6 +6,8 @@ a.btn {
 }
 
 .btn {
+    position: relative;
+    z-index:2;
     text-shadow: none;
 
     font-size: @btn-font-size;
@@ -21,10 +23,14 @@ a.btn {
     }
 }
 
-.delete-comment-btn {
+.icn-btn {
     i {
         margin:0;
     }
+}
+
+.btn-label {
+    border-radius: @border-radius-base 0 0 @border-radius-base;
 }
 
 .btn-labeled {
@@ -35,8 +41,11 @@ a.btn {
 
 .btn-labeled,
 .btn-labeled-lg {
+
     .btn-label {
-        padding: 7px 12px;
+        top:-1px;
+        margin-bottom:-2px;
+        padding: 8px 12px;
     }
 
     i {
@@ -83,8 +92,8 @@ a.btn {
 
     .btn-label {
         position: absolute;
-        top: 0;
-        left: 0;
+        left: -1px;
+        margin-bottom:0;
     }
 }
 
@@ -141,8 +150,8 @@ a.btn {
 
 @media (max-width: @screen-xs-max) {
     .btn {
-        .btn-block();
-        margin-bottom: 14px;
+       // .btn-block();
+        //margin-bottom: 14px;
 
         &:last-child {
             margin-bottom:0;
