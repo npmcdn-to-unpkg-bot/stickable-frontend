@@ -149,9 +149,9 @@ a.btn {
 }
 
 @media (max-width: @screen-xs-max) {
-    .btn {
-       // .btn-block();
-        //margin-bottom: 14px;
+    .btn:not(.no-block) {
+        .btn-block();
+        margin-bottom: 14px;
 
         &:last-child {
             margin-bottom:0;
