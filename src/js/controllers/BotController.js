@@ -33,6 +33,10 @@ app.controller(
         };
 
         $scope.findTask = function () {
+            if ($scope.loading) {
+                return false;
+            }
+
             $scope.loading = true;
             $scope.task = null;
             TaskResource.query(
@@ -44,7 +48,9 @@ app.controller(
                     $scope.loading = false;
                     $scope.task = task;
                     clearBg();
-                    setBg($element, task.bgUrl);
+                    if (task.bgUrl) {
+                        setBg($element, task.bgUrl);
+                    }
 
                     skipMessages.shuffle();
                     $scope.skipMessage = skipMessages[0];
