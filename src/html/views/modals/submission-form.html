@@ -18,7 +18,7 @@
 
                 </div>
 
-                <div ng-show="stage === 2">
+                <div ng-show="stage === 2" class="submission-stage">
 
                     <h2 class="text-center">{{ (hasFirstStage ? 'Post Your Submission' : task.submission) }}</h2>
 
@@ -67,7 +67,7 @@
 
                 </div>
 
-                <div ng-show="stage === 3">
+                <div ng-show="stage === 3" class="submission-stage">
 
                     <h2 class="text-center">Rate The Task</h2>
 
@@ -78,19 +78,19 @@
                     <ul
                             class="rating rating-price"
                             model="formData.cost"
-                            values="['Free', '< $10', '$10 - $50', '$50 - $200', '> $200']"></ul>
+                            values="costs"></ul>
 
                     <label>How long did it take?</label>
                     <ul
                             class="rating rating-time"
                             model="formData.time"
-                            values="['< 15 mins', '< 1 hr', '1 - 4 hrs', '1 day', '> 1 day']"></ul>
+                            values="times"></ul>
 
                     <label>How much did you enjoy it?</label>
                     <ul
                             class="rating rating-star"
                             model="formData.rating"
-                            values="['Sucked', 'Meh', 'Good', 'Great', 'Life Changing']"></ul>
+                            values="ratings"></ul>
 
                 </div>
 

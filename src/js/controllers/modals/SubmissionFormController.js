@@ -16,9 +16,9 @@ app.controller(
             title: '',
             text: '',
             private: 0,
-            cost: 2,
-            time: 3,
-            rating:5
+            cost: null,
+            time: null,
+            rating: null
         };
 
         function getImageIds() {

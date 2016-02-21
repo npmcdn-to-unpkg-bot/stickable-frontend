@@ -38,8 +38,10 @@
 
             <ul class="nav navbar-nav">
                 <li class="hidden-lg hidden-md"><a href="/"><i class="fa fa-home fa-fw"></i> Front Page</a></li>
-                <li><a href="/bot"><i class="fa fa-android fa-fw"></i> Stickerbot</a></li>
+                <li><a href="/bot"><i class="fa fa-search fa-fw"></i> Find</a></li>
                 <li><a href="/browse"><i class="fa fa-folder fa-fw"></i> Browse</a></li>
+                <li><a href="/new"><i class="fa fa-newspaper-o fa-fw"></i> Live</a></li>
+                <li ng-if="currentUser"><a href="/moderate"><i class="fa fa-gavel fa-fw"></i> Moderate</a></li>
                 <li><a ui-sref="help"><i class="fa fa-question fa-fw"></i> Help</a></li>
             </ul>
 

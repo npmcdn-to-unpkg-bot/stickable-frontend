@@ -10,6 +10,14 @@ app.factory(
                 }
             },
             {
+                query: {
+                    isArray: false,
+                    transformResponse: function (data) {
+                        data = angular.fromJson(data);
+                        return data.task;
+                    }
+                },
+
                 get: {
                     cache: true,
                     transformResponse: function (data) {

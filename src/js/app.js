@@ -54,6 +54,18 @@ app.config(function ($httpProvider,
             controller: 'BotController'
         })
 
+        .state('new', {
+            url: "/new",
+            templateUrl: "views/pages/new.html",
+            controller: 'NewController'
+        })
+
+        .state('moderate', {
+            url: "/moderate",
+            templateUrl: "views/pages/moderate.html",
+            controller: 'ModerateController'
+        })
+
         .state('signup', {
             url: "/signup",
             templateUrl: "views/pages/auth/signup.html",
@@ -218,14 +230,17 @@ app.run(function ($rootScope, $state, AuthService, UserNotificationsResource, No
     });
 
     $rootScope.$on('$stateChangeStart', function (ev, to, toParams, from) {
-        $('.splash').backstretch('destroy');
-        $.backstretch('destroy');
+        clearBg();
     });
 
     $rootScope.$on('$stateChangeSuccess', function (ev, to, toParams, from) {
         $('body').removeClass('navbar-visible').attr('data-previous', from.name);
         document.body.scrollTop = document.documentElement.scrollTop = 0;
     });
+
+    $rootScope.costs = ['Free', '< $10', '$10 - $50', '$50 - $200', '> $200'];
+    $rootScope.times = ['< 15 mins', '< 1 hr', '1 - 4 hrs', '1 day', '> 1 day'];
+    $rootScope.ratings = ['Sucked', 'Meh', 'Good', 'Great', 'Life Changing'];
 
 });
 
@@ -252,3 +267,4 @@ $(document).on('click', 'body.navbar-visible', function (e) {
         $('body').removeClass('navbar-visible');
     }
 });
+

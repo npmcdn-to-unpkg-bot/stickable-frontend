@@ -21,6 +21,13 @@
 
                     <div class="padded-box">
                         <p class="sticker-desc" ng-bind-html="sticker.description | markdown"></p>
+
+                        <h4 ng-if="sticker.time || sticker.cost || sticker.rating" class="white">Average Task Ratings</h4>
+                        <ul class="task-ratings white">
+                            <li ng-if="sticker.time"><strong>Time Needed</strong> <i class="fa fa-fw fa-clock-o" ng-repeat="n in [] | range:sticker.time"></i> <small>{{ times[(sticker.time - 1)] }}</small></li>
+                            <li ng-if="sticker.cost"><strong>Cost</strong> <i class="fa fa-fw fa-usd" ng-repeat="n in [] | range:sticker.cost"></i> <small>{{ costs[(sticker.cost - 1)] }}</small></li>
+                            <li ng-if="sticker.rating"><strong>Rating</strong> <i class="fa fa-fw fa-star" ng-repeat="n in [] | range:sticker.rating"></i> <small>{{ ratings[(sticker.rating - 1)] }}</small></li>
+                        </ul>
                     </div>
 
                     <ul class="sticker-info">

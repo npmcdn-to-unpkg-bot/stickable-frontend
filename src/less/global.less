@@ -162,15 +162,15 @@ a:focus {
 }
 
 .red {
-    color: @red;
+    color: @red !important;
 }
 
 .orange {
-    color: @orange;
+    color: @orange !important;
 }
 
 .yellow {
-    color: @yellow;
+    color: @yellow !important;
 }
 
 .green {
@@ -322,3 +322,44 @@ h1 .user-image,
     }
 }
 
+.view-bot:before {
+    content:"";
+    display: block;
+    position: fixed;
+    top:0;
+    left:0;
+    bottom:0;
+    right:0;
+    background: rgba(0,0,0,.3);
+}
+
+.view-bot {
+    .results {
+        margin: 15px 0;
+
+        h2 {
+            margin: 15px;
+        }
+
+        .sticker h2 {
+            margin-top: 5px;
+        }
+
+        .btn {
+            margin-top: 30px;
+        }
+    }
+    .ratings {
+        text-align: center;
+        white-space: nowrap;
+
+        .rating li {
+            .white();
+            width:70px;
+
+            &:before {
+                color:#fff;
+            }
+        }
+    }
+}

@@ -7,7 +7,7 @@ app.directive('rating', function factory() {
             }
         },
         scope: {
-            model: '@',
+            model: '=',
             values: '='
         },
         template: function () {

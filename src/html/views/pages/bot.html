@@ -1,15 +1,76 @@
-<div class="content">
+<div class="content dark-page">
 <div class="container">
+
     <h2>Hi, I'm Stickerbot</h2>
 
-    <p>I'll help you find something to do and stickers to work towards from your budget and available time.</p>
+    <p class="white">I'll help you find something to do and stickers to work towards from your budget and available time.</p>
 
-    <div class="alert alert-danger">
-        <p>Stickerbot hasn't been made yet. But you can find example stickers in the <a href="/category/china">China</a> category.</p>
+    <div class="row">
+
+        <div class="col-md-8">
+
+            <div class="text-center trans-box results" ng-if="!loading && task">
+
+                <p>Why Don't You...</p>
+
+                <a class="task" href="/task/{{ task.slug }}"><h2>{{ task.name }}</h2></a>
+
+                <p>and earn the sticker...</p>
+
+                <a class="sticker" href="/sticker/{{ task.sticker.slug }}">
+                    <span class="sticker" img="{{task.sticker.design.imageUrl}}"></span> <h2>{{ task.sticker.name }}</h2>
+                </a>
+
+                <p>
+                    <a class="btn btn-danger btn-labeled" ng-click="findTask()">
+                        <span class="btn-label"><i class="fa fa-random"></i></span>
+                        {{ skipMessage }}
+                    </a>
+
+                    &nbsp;
+
+                    <a class="btn btn-success btn-labeled" href="/task/{{task.slug}}">
+                        <span class="btn-label"><i class="fa fa-arrow-right"></i></span>
+                        {{ goMessage }}
+                    </a>
+                </p>
+
+            </div>
+
+            <div class="text-center trans-box" ng-if="loading">
+                <i class="fa fa-spinner fa-spin"></i>
+            </div>
+
+            <div class="text-center trans-box" ng-if="!loading && !task">
+                <p>I couldn't find any tasks that meet your criteria. Try being less picky.</p>
+            </div>
+
+            <div class="ratings">
+
+                <h3>How long do you have?</h3>
+                <ul
+                        class="rating rating-time"
+                        model="formData.time"
+                        values="times"></ul>
+
+
+                <h3>How much can you spend?</h3>
+                <ul
+                        class="rating rating-price"
+                        model="formData.cost"
+                        values="costs"></ul>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-4">
+
+            <img src="/assets/img/bot-white.png"/>
+        </div>
+
+
     </div>
 
-    <img src="/assets/img/bot.png"/>
-
-    <p>//TODO</p>
 </div>
 </div>

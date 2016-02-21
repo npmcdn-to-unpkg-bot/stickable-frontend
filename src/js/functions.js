@@ -14,3 +14,8 @@ function setBg($element, url) {
         }
     }, 1);
 }
+
+function clearBg() {
+    $('.splash').backstretch('destroy');
+    $.backstretch('destroy');
+}

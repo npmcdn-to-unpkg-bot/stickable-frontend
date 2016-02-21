@@ -107,7 +107,7 @@
                         <p>
                             <a class="btn btn-block btn-labeled" ng-click="showSubmissionForm()">
                                 <span class="btn-label"><i class="fa fa-check-circle"></i></span>
-                                I've Done It!
+                                Done It! Add Submission
                             </a>
                         </p>
                     </div>
@@ -124,6 +124,12 @@
 
                     <div class="padded-box">
                         <p class="white">{{ task.description }}</p>
+                        <ul class="task-ratings white">
+                            <li ng-if="task.time"><strong>Time Needed</strong> <i class="fa fa-fw fa-clock-o" ng-repeat="n in [] | range:task.time"></i> <small>{{ times[(task.time - 1)] }}</small></li>
+                            <li ng-if="task.cost"><strong>Cost</strong> <i class="fa fa-fw fa-usd" ng-repeat="n in [] | range:task.cost"></i> <small>{{ costs[(task.cost - 1)] }}</small></li>
+                            <li ng-if="task.rating"><strong>Rating</strong> <i class="fa fa-fw fa-star" ng-repeat="n in [] | range:task.rating"></i> <small>{{ ratings[(task.rating - 1)] }}</small></li>
+                            <li ng-if="task.ratings"><small>Based on {{ task.ratings }} {{'rating'|plural:task.ratings}}</small></li>
+                        </ul>
                     </div>
 
                     <div class="trans-box task-doers">
