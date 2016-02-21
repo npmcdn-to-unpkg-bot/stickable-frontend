@@ -2,6 +2,8 @@ app.controller(
     'LoginController',
     function ($scope, $state, $stateParams, AuthService) {
 
+        $.backstretch('/assets/img/bg/login.jpg');
+
         $scope.loginFormData = {
             loading: false,
             username: '',

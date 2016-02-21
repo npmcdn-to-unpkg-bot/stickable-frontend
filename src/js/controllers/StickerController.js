@@ -14,6 +14,10 @@ app.controller(
             $scope.sticker = sticker;
             $scope.progress = ProgressService.getProgress(sticker);
 
+            setTimeout(function () {
+                $('.sticker-splash').backstretch(sticker.bgUrl);
+            }, 1);
+
             $scope.loadDoers();
             $scope.earners = StickerResource.getEarners({slug: sticker.slug});
         });

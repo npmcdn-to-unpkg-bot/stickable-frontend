@@ -62,6 +62,8 @@ module.exports = function (grunt) {
                     'bower_components/imagesloaded/imagesloaded.pkgd.min.js',
                     'bower_components/masonry/dist/masonry.pkgd.min.js',
 
+                    'bower_components/jquery-backstretch-2/jquery.backstretch.min.js',
+
                     'src/lib/stickerjs/sticker.js',
                 ],
                 dest: 'public/assets/build/' + buildNumber + '/js/lib.min.js'

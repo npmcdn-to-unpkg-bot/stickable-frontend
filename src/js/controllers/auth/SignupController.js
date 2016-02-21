@@ -2,6 +2,8 @@ app.controller(
     'SignupController',
     function ($scope, $state, AuthService, UserResource) {
 
+        $.backstretch('/assets/img/bg/register.jpg');
+
         $scope.signupFormData = {
             loading: false,
             username: '',

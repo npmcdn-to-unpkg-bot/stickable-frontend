@@ -4,6 +4,7 @@ app.controller(
 
         $rootScope.loading = true;
         $rootScope.pageTitle = $stateParams.username;
+        $.backstretch('/assets/img/bg/planner.jpg');
 
         $scope.stickers = [];
         $scope.submissions = [];

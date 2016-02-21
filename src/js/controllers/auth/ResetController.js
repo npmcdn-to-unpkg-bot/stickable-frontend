@@ -2,6 +2,8 @@ app.controller(
     'ResetController',
     function ($scope, $state, $stateParams, UserResource) {
 
+        $.backstretch('/assets/img/bg/login.jpg');
+
         $scope.resetFormData = {
             loading: false,
             token: $stateParams.token,

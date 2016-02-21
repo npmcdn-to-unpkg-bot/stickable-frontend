@@ -26,7 +26,9 @@ app.controller(
         function onTaskLoad(task) {
             $scope.task = task;
             $scope.isOnToDoList = $scope.task.isOnToDoList;
-            $element.css('background-image', 'url(' + task.bgUrl + ')');
+
+            $.backstretch(task.bgUrl);
+            //$element.css('background-image', 'url(' + task.bgUrl + ')');
         }
 
         /**

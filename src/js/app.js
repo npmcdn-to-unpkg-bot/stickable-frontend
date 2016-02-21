@@ -39,6 +39,7 @@ app.config(function ($httpProvider,
         .state('help', {
             url: "/help",
             templateUrl: "views/pages/help.html",
+            controller: 'HelpController'
         })
 
         .state('browse', {
@@ -212,6 +213,11 @@ app.run(function ($rootScope, $state, AuthService, UserNotificationsResource, No
 
     $rootScope.$on('logout', function () {
         $rootScope.currentUser = false;
+    });
+
+    $rootScope.$on('$stateChangeStart', function (ev, to, toParams, from) {
+        $('.splash').backstretch('destroy');
+        $.backstretch('destroy');
     });
 
     $rootScope.$on('$stateChangeSuccess', function (ev, to, toParams, from) {
