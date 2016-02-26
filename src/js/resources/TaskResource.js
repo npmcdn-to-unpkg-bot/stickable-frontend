@@ -18,6 +18,15 @@ app.factory(
                     }
                 },
 
+                search: {
+                    url: apiUrl + 'tasks/search',
+                    isArray: true,
+                    transformResponse: function (data) {
+                        data = angular.fromJson(data);
+                        return data.tasks;
+                    }
+                },
+
                 get: {
                     cache: true,
                     transformResponse: function (data) {

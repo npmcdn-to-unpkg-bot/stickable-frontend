@@ -1,0 +1,47 @@
+<div class="modal submission-form-modal">
+
+    <div class="modal-content">
+
+        <button ng-click="close()" class="modal-close-btn">
+            <i class="fa fa-times"></i>
+        </button>
+
+        <form class="form" ng-submit="submit()">
+
+            <div class="modal-body">
+
+                <h2 class="text-center">Create A Task</h2>
+
+                <div class="form-group">
+                    <label for="task-title">Task Name</label>
+                    <input type="text"
+                           class="form-control"
+                           ng-model="formData.name"
+                           id="task-title"
+                           placeholder="Give your task a title."/>
+                </div>
+
+                <div class="form-group">
+                    <label for="task-submission">Requirement</label>
+                    <span class="help-block">What do you need to do to show you completed the task? e.g. take a photo of what you did.</span>
+
+                    <label><input type="radio" name="task-submission-type" ng-model="formData.submissionType" value="IMAGE" /> Take A Picture</label>
+                    <label><input type="radio" name="task-submission-type" ng-model="formData.submissionType" value="TEXT" /> Write Something</label>
+
+                    <textarea class="form-control" id="task-submission" ng-model="formData.submission" placeholder="What's needed?" style="min-height:0"></textarea>
+                </div>
+
+            </div>
+
+            <div class="modal-footer">
+                <button class="btn btn-primary btn-labeled">
+                    <span class="btn-label"><i class="fa fa-save"></i></span>
+                    Submit
+                </button>
+            </div>
+
+        </form>
+
+    </div>
+
+</div>

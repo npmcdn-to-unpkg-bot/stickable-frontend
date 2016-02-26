@@ -1,11 +1,9 @@
-
-
 <div class="content dark-page">
     <div class="container task-page" ng-if="task" ng-class="{'post-page': !!post}">
 
 
         <div class="titlecrumbs task-title" ng-if="!post">
-            <h2 class="sticker-name">
+            <h2 class="sticker-name" ng-if="task.sticker">
                 <a href="/sticker/{{ task.sticker.slug }}">
                     <span class="sticker sticker-sm" img="{{ task.sticker.design.imageUrl }}"></span>
                     {{task.sticker.name }}

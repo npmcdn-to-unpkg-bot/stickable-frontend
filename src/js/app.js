@@ -10,7 +10,9 @@ var app = angular.module('stickable', [
     'angularMoment',
     'ngCkeditor',
     'markdown',
-    'masonry'
+    'masonry',
+    'angucomplete-alt',
+    //'rt.debounce'
 ]);
 
 app.config(function ($httpProvider,
@@ -40,6 +42,11 @@ app.config(function ($httpProvider,
             url: "/help",
             templateUrl: "views/pages/help.html",
             controller: 'HelpController'
+        })
+
+        .state('design', {
+            url: "/design",
+            templateUrl: "views/pages/design.html",
         })
 
         .state('browse', {

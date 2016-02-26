@@ -46,6 +46,7 @@ module.exports = function (grunt) {
                     'bower_components/fastclick/lib/fastclick.js',
                     'bower_components/bootstrap/dist/js/bootstrap.min.js',
                     //'bower_components/md5/index.js',
+                    //'bower_components/angular-debounce/dist/angular-debounce.min.js',
                     'bower_components/messenger/build/js/messenger.min.js',
                     'bower_components/messenger/build/js/messenger-theme-flat.min.js',
                     'bower_components/moment/moment.js',
@@ -63,6 +64,8 @@ module.exports = function (grunt) {
                     'bower_components/masonry/dist/masonry.pkgd.min.js',
 
                     'bower_components/jquery-backstretch-2/jquery.backstretch.min.js',
+
+                    'bower_components/angucomplete-alt/angucomplete-alt.js',
 
                     'src/lib/stickerjs/sticker.js',
                 ],

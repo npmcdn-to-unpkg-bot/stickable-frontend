@@ -7,10 +7,15 @@ var iOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
 
 function setBg($element, url) {
     setTimeout(function() {
-        if (iOS) {
-            $element.css('background-image', 'url(' + url + ')');
+        if (url) {
+            $element.removeClass('dark-bg');
+            if (iOS) {
+                $element.css('background-image', 'url(' + url + ')');
+            } else {
+                $.backstretch(url);
+            }
         } else {
-            $.backstretch(url);
+            $element.addClass('dark-bg');
         }
     }, 1);
 }

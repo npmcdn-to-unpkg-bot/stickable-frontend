@@ -21,6 +21,8 @@
     "dropzone": "~4.2.0",
     "masonry": "~4.0.0",
     "imagesloaded": "~4.1.0",
-    "jquery-backstretch-2": "~2.1.6"
+    "jquery-backstretch-2": "~2.1.6",
+    "angucomplete-alt": "~2.2.0",
+    "angular-debounce": "~1.0.3"
   }
 }

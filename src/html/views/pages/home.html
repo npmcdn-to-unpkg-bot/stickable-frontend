@@ -1,47 +1,108 @@
-<div class="splash home-splash">
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-4">
-                <img src="/assets/img/stickable.svg" alt="Stickable" id="home-splash-logo"/>
-            </div>
-            <div class="col-sm-8 text-shadow">
-                <h2>Discover new hobbies. Get help from our community. Earn real-life stickers for your progress.</h2>
+<div ng-class="{'task-search-visible': taskResultsVisible}">
 
-                <div class="row btn-row">
-                    <div class="col-xs-7">
-                        <a class="btn btn-primary" href="/bot"><i class="fa fa-play-circle"></i> Find Something To
-                            Do</a>
-                    </div>
-                    <div class="col-xs-5">
-                        <a class="btn" href="/help"><i class="fa fa-info"></i> Learn More</a>
-                    </div>
+    <div class="splash home-splash">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-3">
+                    <img src="/assets/img/stickable.svg" alt="Stickable" id="home-splash-logo"/>
+                </div>
+                <div class="col-sm-9 white">
+                    <h2>Discover new hobbies. Get help from our community. Earn real-life stickers for your
+                        progress.</h2>
+                    <a class="btn btn-lg no-block btn-labeled" href="/help">
+                        <span class="btn-label"><i class="fa fa-fw fa-info"></i></span>
+                        Learn More
+                    </a>
                 </div>
             </div>
         </div>
     </div>
-</div>
 
-<div class="content white-bg">
-    <div class="container">
+    <div class="content">
 
-        <div class="row">
+        <div class="black-bg dark-page">
+            <div class="container home-task-search">
 
-            <div class="col-md-4">
-                <a class="featured-sticker" href="/sticker/example-sticker">
+                <div class="text-center">
+                    <h2>Start Building Your To Do List</h2>
+
+                    <div class="row">
+
+                        <div class="col-md-8">
+                            <div class="help-block white">Type something you want to do or a goal to achieve.</div>
+
+                            <!--<input
+                                    type="text"
+                                    class="form-control input-lg"
+                                    ng-keyup="searchTasks()"
+                                    ng-model="taskSearchData.value"
+                                    placeholder="I want to..."/>-->
+
+                            <angucomplete-alt
+                                placeholder="I want to..."
+                                pause="400"
+                                selected-object="onTaskSelect"
+                                remote-url="{{ taskSearchUrl }}"
+                                remote-url-data-field="tasks"
+                                input-class="form-control input-lg"
+                                template-url="views/partials/tasks-autocomplete.html"
+                                ></angucomplete-alt>
+
+                        </div>
+                        <div class="col-md-4">
+                            <div class="help-block white">Can't think of something?</div>
+                            <a class="btn btn-primary btn-block btn-lg btn-labeled" href="/bot">
+                                <span class="btn-label"><i class="fa fa-fw fa-search"></i></span>
+                                Try The Task Finder
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--<div class="white-bg task-search-results">
+            <div class="container">
+
+                <ul>
+                   <li ng-repeat="task in taskResults">
+                       {{ task.name }}
+                   </li>
+                </ul>
+
+            </div>
+        </div>-->
+
+        <div class="home-content">
+
+
+            <div class="white-bg">
+                <div class="container">
+
+                    <div class="row">
+
+                        <div class="col-md-4">
+                            <a class="featured-sticker" href="/sticker/example-sticker">
                     <span>
                         <h4>Sticker of the week</h4>
                         Example Sticker
                     </span>
-                </a>
-            </div>
+                            </a>
+                        </div>
 
 
-            <div class="col-md-8">
-                <h2>Featured Posts</h2>
-                <ng-include src="'views/partials/post-list.html'" ng-controller="PostsController"></ng-include>
+                        <div class="col-md-8">
+                            <h2>Featured Posts</h2>
+                            <ng-include src="'views/partials/post-list.html'"
+                                        ng-controller="PostsController"></ng-include>
+                        </div>
+
+                    </div>
+                </div>
             </div>
 
         </div>
+
     </div>
 </div>
 
