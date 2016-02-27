@@ -1,14 +1,28 @@
 app.controller(
     'TaskFormController',
-    function ($scope, SubmissionResource, name, close, TaskResource) {
+    function ($scope, sticker, close, TaskResource) {
 
         $scope.close = close;
 
         $scope.formData = {
-            name: name,
+            stickerId: sticker.id,
+            name: '',
             submission: '',
             submissionType: 'IMAGE'
         };
+
+        $scope.submissionTypes = [
+            {
+                value: 'IMAGE',
+                icon: 'camera',
+                label: 'Take A Picture'
+            },
+            {
+                value: 'TEXT',
+                icon: 'pencil',
+                label: 'Write Something'
+            }
+        ];
 
         $scope.submit = function () {
             TaskResource.save(

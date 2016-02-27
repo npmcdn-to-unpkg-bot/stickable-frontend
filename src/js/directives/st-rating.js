@@ -1,6 +1,6 @@
-app.directive('rating', function factory() {
+app.directive('stRating', function factory() {
     return {
-        restrict: 'C',
+        restrict: 'E',
         controller: function($scope) {
             $scope.setValue = function(val) {
                 $scope.model = val;
@@ -11,11 +11,11 @@ app.directive('rating', function factory() {
             values: '='
         },
         template: function () {
-            var t = '';
+            var t = '<ul class="rating">';
             for (var i = 5; i > 0; i--) {
                 t += '<li ng-class="{\'active\': model === ' + i + '}" ng-click="setValue(' + i + ')">{{ values['+(i-1)+'] }}</li>';
             }
-            console.log(t);
+            t += '</ul>';
             return t;
         }
     };

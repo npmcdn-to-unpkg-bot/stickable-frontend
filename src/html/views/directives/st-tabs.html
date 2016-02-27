@@ -1,0 +1,9 @@
+<ul class="tabs tabs-{{ values.length }}">
+
+    <li ng-repeat="value in values" ng-class="{'tab-current': model === value.value}">
+        <a href="#" ng-click="onChange($event, value.value)">
+            <i class="fa fa-fw fa-{{ value.icon }}"></i> {{ value.label }}
+        </a>
+    </li>
+
+</ul>

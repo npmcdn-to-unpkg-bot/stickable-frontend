@@ -5,7 +5,7 @@
 
                 <div class="col-lg-6 text-shadow">
 
-                    <span class="sticker" img="{{ sticker.design.imageUrl }}"></span>
+                    <st-sticker sticker="sticker"></st-sticker>
 
                     <div class="titlecrumbs sticker-title">
                         <h3><a href="/category/{{ sticker.category.slug }}"><i class="fa fa-folder"></i> {{
@@ -16,17 +16,29 @@
 
                     <div class="alert alert-success clear text-center" ng-if="sticker.hasCompleted">
                         <p><i class="fa fa-trophy"></i> Congratulations, you've earnt this sticker!</p>
-                        <p><a class="btn btn-success" href="/user/{{currentUser.username}}/stickers">See it in your Sticker Book</a></p>
+
+                        <p><a class="btn btn-success" href="/user/{{currentUser.username}}/stickers">See it in your
+                            Sticker Book</a></p>
                     </div>
 
                     <div class="padded-box">
                         <p class="sticker-desc" ng-bind-html="sticker.description | markdown"></p>
 
-                        <h4 ng-if="sticker.time || sticker.cost || sticker.rating" class="white">Average Task Ratings</h4>
+                        <h4 ng-if="sticker.time || sticker.cost || sticker.rating" class="white">Average Task
+                            Ratings</h4>
                         <ul class="task-ratings white">
-                            <li ng-if="sticker.time"><strong>Time Needed</strong> <i class="fa fa-fw fa-clock-o" ng-repeat="n in [] | range:sticker.time"></i> <small>{{ times[(sticker.time - 1)] }}</small></li>
-                            <li ng-if="sticker.cost"><strong>Cost</strong> <i class="fa fa-fw fa-usd" ng-repeat="n in [] | range:sticker.cost"></i> <small>{{ costs[(sticker.cost - 1)] }}</small></li>
-                            <li ng-if="sticker.rating"><strong>Rating</strong> <i class="fa fa-fw fa-star" ng-repeat="n in [] | range:sticker.rating"></i> <small>{{ ratings[(sticker.rating - 1)] }}</small></li>
+                            <li ng-if="sticker.time"><strong>Time Needed</strong> <i class="fa fa-fw fa-clock-o"
+                                                                                     ng-repeat="n in [] | range:sticker.time"></i>
+                                <small>{{ times[(sticker.time - 1)] }}</small>
+                            </li>
+                            <li ng-if="sticker.cost"><strong>Cost</strong> <i class="fa fa-fw fa-usd"
+                                                                              ng-repeat="n in [] | range:sticker.cost"></i>
+                                <small>{{ costs[(sticker.cost - 1)] }}</small>
+                            </li>
+                            <li ng-if="sticker.rating"><strong>Rating</strong> <i class="fa fa-fw fa-star"
+                                                                                  ng-repeat="n in [] | range:sticker.rating"></i>
+                                <small>{{ ratings[(sticker.rating - 1)] }}</small>
+                            </li>
                         </ul>
                     </div>
 
@@ -48,23 +60,47 @@
                                 of these tasks to earn the sticker:</h3>
                         </li>
 
-                        <li class="ng-hide" ng-show="sticker.isOnToDoList">
-                           <span class="sticker-progress" progress="progress"></span>
+                        <li class="ng-hide" ng-show="sticker.isOnToDoList && sticker.tasks.length > 0">
+                            <span>
+                                <st-progress progress="progress"></st-progress>
+                            </span>
                         </li>
 
+                        <li class="ng-hide text-center" ng-show=" sticker.tasks.length < 1">
+                            <span>No tasks here yet.</span>
+                        </li>
 
                         <li ng-repeat="task in sticker.tasks" class="task" ng-class="{
                             'completed': task.hasCompleted,
                             }">
                             <a href="/task/{{ task.slug }}">
 
-                                <span ng-if="progress && progress.pendingIds.indexOf(task.id) !== -1" class="label label-warning">Submitted</span>
-                                <span ng-if="progress && progress.rejectedIds.indexOf(task.id) !== -1" class="label label-danger">Rejected</span>
+                                <span ng-if="progress && progress.pendingIds.indexOf(task.id) !== -1"
+                                      class="label label-warning">Submitted</span>
+                                <span ng-if="progress && progress.rejectedIds.indexOf(task.id) !== -1"
+                                      class="label label-danger">Rejected</span>
                                 <span ng-if="task.hasCompleted" class="label label-success">Completed</span>
 
-                                <i class="fa" ng-class="{'fa-circle': !task.hasCompleted, 'fa-check-circle': task.hasCompleted}"></i>{{ task.name }}
+                                <i class="fa"
+                                   ng-class="{'fa-circle': !task.hasCompleted, 'fa-check-circle': task.hasCompleted}"></i>{{
+                                task.name }}
                             </a>
                         </li>
+
+                        <li class="text-right">
+                            <span>
+                                <a
+                                        class="btn btn-labeled"
+                                        ng-class="{
+                                            'btn-block': sticker.tasks.length < 1,
+                                        }"
+                                        ng-click="addTask($event)" href="#">
+                                    <span class="btn-label"><i class="fa fa-plus-circle"></i></span>
+                                    Add {{ (sticker.tasks.length < 1 ? 'A' : 'Another') }} Task
+                                </a>
+                            </span>
+                        </li>
+
 
                         <li class="header" ng-hide="sticker.isOnToDoList">
                             <h3>Want this sticker?</h3>
@@ -92,46 +128,49 @@
     </div>
 
     <div class="white-bg">
-    <div class="container">
-        <div class="row">
+        <div class="container">
+            <div class="row">
 
-            <div class="col-lg-6">
+                <div class="col-lg-6">
 
-                <h2 ng-if="earners.users.length > 0"><i class="fa fa-trophy"></i> Who's Got It</h2>
-                <div ng-if="earners.users.length > 0" class="user-list" data="earners" like="likeEarner"></div>
+                    <h2 ng-if="earners.users.length > 0"><i class="fa fa-trophy"></i> Who's Got It</h2>
 
-                <h2><i class="fa fa-users"></i> Working On It</h2>
-                <div class="user-list" data="doers" like="likeDoer"></div>
-                <div ng-if="doers.users.length < 1" class="text-center text-muted">
-                    Nobody has this on their to do list yet.
-                    <br/>
-                    <a class="btn btn-primary btn-labeled" ng-click="addToDo()">
-                        <span class="btn-label"><i class="fa fa-plus-circle"></i></span>
-                        Add To Your To-Do List
-                    </a>
+                    <st-users ng-if="earners.users.length > 0" data="earners" like="likeEarner"></st-users>
+
+                    <h2><i class="fa fa-users"></i> Working On It</h2>
+
+                    <st-users data="doers" like="likeDoer"></st-users>
+
+                    <div ng-if="doers.users.length < 1" class="text-center text-muted">
+                        Nobody has this on their to do list yet.
+                        <br/>
+                        <a class="btn btn-primary btn-labeled sticker-add-todo-btn-nobody" ng-click="addToDo()">
+                            <span class="btn-label"><i class="fa fa-plus-circle"></i></span>
+                            Add To Your To-Do List
+                        </a>
+                    </div>
+
+                </div>
+
+                <div class="col-lg-6">
+
+                    <h2><i class="fa fa-folder-open"></i> Similar Stickers</h2>
+
+                    <ul class="small-sticker-list">
+                        <li
+                                ng-repeat="catSticker in sticker.category.stickers"
+                                ng-if="catSticker.id != sticker.id">
+                            <a href="/sticker/{{ catSticker.slug }}">
+                                <st-sticker sticker="catSticker"></st-sticker>
+                                <br/>{{ catSticker.name }}
+                            </a>
+                        </li>
+                    </ul>
+
                 </div>
 
             </div>
-
-            <div class="col-lg-6">
-
-                <h2><i class="fa fa-folder-open"></i> More {{ sticker.category.name }} Stickers</h2>
-
-                <ul class="small-sticker-list">
-                    <li
-                        ng-repeat="catSticker in sticker.category.stickers"
-                        ng-if="catSticker.id != sticker.id">
-                        <a href="/sticker/{{ catSticker.slug }}">
-                            <span class="sticker" img="{{ catSticker.design.imageUrl }}"></span>
-                            <br/>{{ catSticker.name }}
-                        </a>
-                    </li>
-                </ul>
-
-            </div>
-
         </div>
-    </div>
     </div>
 
 </div>

@@ -1,6 +1,6 @@
 app.directive('stNotifications', function () {
     return {
-        templateUrl: 'views/directives/notifications.html',
+        templateUrl: 'views/directives/st-notifications.html',
         //replace: true,
         scope: {
             notifications: '=',

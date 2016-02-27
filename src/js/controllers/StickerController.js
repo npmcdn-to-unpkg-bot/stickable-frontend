@@ -1,6 +1,6 @@
 app.controller(
     'StickerController',
-    function ($scope, $rootScope, $state, $stateParams, StickerResource, ToDoResource, ProgressService) {
+    function ($scope, $rootScope, $state, $stateParams, StickerResource, ToDoResource, ProgressService, ModalService) {
 
         $rootScope.loading = true;
 
@@ -12,7 +12,9 @@ app.controller(
             //$rootScope.pageTitle = sticker.name;
 
             $scope.sticker = sticker;
-            $scope.progress = ProgressService.getProgress(sticker);
+            if (sticker.progress) {
+                $scope.progress = ProgressService.getProgress(sticker);
+            }
 
             setBg($('.sticker-splash'), sticker.bgUrl);
 
@@ -90,5 +92,27 @@ app.controller(
 
             doer.likeCount = doer.pivot.likeCount;
         };
+
+        $scope.addTask = function ($event) {
+            preventDefault($event);
+
+            ModalService.showModal({
+                templateUrl: 'views/modals/task-form.html',
+                controller: 'TaskFormController',
+                inputs: {
+                    sticker: $scope.sticker
+                }
+            }).then(function(modal) {
+
+                 modal.close.then(function (task) {
+                    if (task) {
+                        $state.go('task', {slug: task.slug});
+                    }
+                });
+
+            });
+
+        };
+
     }
 );

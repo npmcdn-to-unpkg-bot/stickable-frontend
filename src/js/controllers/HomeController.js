@@ -1,6 +1,12 @@
 app.controller(
     'HomeController',
-    function ($state, $scope, $rootScope, CategoryResource, PostResource, TaskResource, ModalService) {
+    function ($state, $scope, $rootScope, $filter, CategoryResource, PostResource, StickerResource, ModalService, debounce) {
+
+        $scope.setBg = function () {
+            setBg($('.home-splash'), '/assets/img/splash/badges.png');
+        };
+
+        setTimeout($scope.setBg(), 1);
 
         $rootScope.pageTitle = '';
 
@@ -18,35 +24,73 @@ app.controller(
 
         //$scope.categories = CategoryResource.query();
 
-        /*$scope.taskSearchData = {
+        /**
+         * Sticker Search
+         */
+
+        $scope.searchData = {
             value: ''
         };
-        $scope.taskResults = [];
-        $scope.taskResultsVisible = false;
-        $scope.taskResultsLoading = false;
+        $scope.searchResults = [];
+        $scope.searchResultsVisible = false;
+        $scope.searchResultsLoading = false;
 
-        var debouncedTaskSearch = debounce(300, function() {
-            if ($scope.taskSearchData.value) {
-                $scope.taskResultsVisible = true;
-                $scope.taskResultsLoading = true;
+        var debouncedSearch = debounce(300, function() {
+            if ($scope.searchData.value) {
+                $scope.searchResultsVisible = true;
+                $scope.searchResultsLoading = true;
 
-                TaskResource.search(
-                    {q: $scope.taskSearchData.value},
-                    function (tasks) {
-                        $scope.taskResults = tasks;
+                StickerResource.search(
+                    {
+                        q: $scope.searchData.value
+                    },
+                    function (results) {
+                        $scope.searchResultsLoading = false;
+                        $scope.searchResults = results;
                     }
-                )
+                );
 
-            } else {
-                $scope.taskResultsVisible = false;
             }
         });
 
-        $scope.searchTasks = function () {
-            debouncedTaskSearch();
-        };*/
+        $scope.search = function () {
+            debouncedSearch();
+        };
 
-        $scope.taskSearchUrl = apiUrl + '/tasks/search?q=';
+        $scope.searchFocus = function () {
+            $scope.searchResultsVisible = true;
+            $scope.setBg();
+        };
+
+        $scope.searchBlur = function () {
+            if (!$scope.searchData.value) {
+                $scope.searchResultsVisible = false;
+            }
+        };
+
+        $scope.newSticker = function (name) {
+
+            name = $filter('titlecase')(name);
+
+            ModalService.showModal({
+                templateUrl: 'views/modals/sticker-form.html',
+                controller: 'StickerFormController',
+                inputs: {
+                    name: name,
+                }
+            }).then(function(modal) {
+
+                 modal.close.then(function (sticker) {
+                    if (sticker) {
+                        $state.go('sticker', {slug: sticker.slug});
+                    }
+                });
+
+            });
+        };
+
+
+        /*$scope.taskSearchUrl = apiUrl + '/tasks/search?q=';
 
         $scope.onTaskSelect = function (object) {
             console.log(object);
@@ -71,8 +115,11 @@ app.controller(
             } else {
                 $state.go('task', {slug: object.originalObject.slug});
             }
-        };
+        };*/
 
+        /**
+         * Recent Posts
+         */
         $scope.showPostTasks = true;
         $scope.posts = PostResource.query();
     }

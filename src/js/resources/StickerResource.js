@@ -19,6 +19,12 @@ app.factory(
                     }
                 },
 
+                search: {
+                    cache: true,
+                    url: apiUrl + 'stickers/search',
+                },
+
+
                 getDoers: {
                     method: 'GET',
                     url: apiUrl + 'stickers/:slug/doers'

@@ -1,4 +1,27 @@
-@import "colors.less";
+@default-text-color: #333;
+
+@purple: #56435e;
+@blue: #1c6a81;
+
+@red: #c0392b;
+@yellow: #f4ac42;
+@green: #27ae60;
+@orange: #f6624a;
+
+@light-white: #eee;
+
+@grey: #777;
+@light-grey: #aaa;
+
+@light-grey-bg: #f8f8f8;
+@darker-grey-bg: #f2f2f2;
+@grey-hover-bg: #f0f0f0;
+
+@input-bg: #f9f9fa;
+
+@navbar-color: rgba(49, 49, 57, 1);
+@navbar-trans-color: rgba(49, 49, 57, .2);
+
 
 @brand-primary: @blue;
 @brand-success: @green;
@@ -6,10 +29,7 @@
 @brand-danger: @red;
 
 
-// Set the bootstrap variable
-//@font-family-sans-serif: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
-@font-family-sans-serif: 'Roboto', sans-serif;
-
+@font-family-sans-serif: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
 @font-family-headings: 'Roboto Slab', serif;
 @font-family-text: @font-family-sans-serif;
 
@@ -34,6 +54,9 @@
 
 @text-shadow: 1px 1px 2px rgba(0, 0, 0, .9);
 
+@input-color: @default-text-color;
+@input-color-placeholder: @light-grey;
+
 @border-radius-base: 2px;
 @border-radius-large: 2px;
 @border-radius-small: 2px;
@@ -45,19 +68,16 @@
 // Buttons
 
 @btn-text-color: #fff;
-
 @btn-border-radius: 2px;
-
 @btn-font-size: @font-size-sm;
 @btn-font-size-sm: ceil((@btn-font-size * .7));
 @btn-font-size-lg: 18px;
-
 @btn-padding: @font-size-sm;
 @btn-padding-sm: ceil((@btn-padding * .7));
 @btn-padding-lg: ceil((@btn-padding * 1.4));
 
 // Panels
-
+@heading-bg-color: @input-bg;
 @panel-heading-padding: (@standard-padding / 2) @standard-padding;
 @panel-body-padding: @standard-padding;
 

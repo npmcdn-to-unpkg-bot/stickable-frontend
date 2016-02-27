@@ -18,6 +18,15 @@ app.factory(
                     }
                 },
 
+                getList: {
+                    cache: true,
+                    url: apiUrl + 'categories/list',
+                    transformResponse: function (data) {
+                        data = angular.fromJson(data);
+                        return data.categories;
+                    }
+                },
+
                 query: {
                     cache: true,
                     isArray: true,

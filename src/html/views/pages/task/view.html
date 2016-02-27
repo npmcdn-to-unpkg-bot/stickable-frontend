@@ -5,7 +5,7 @@
         <div class="titlecrumbs task-title" ng-if="!post">
             <h2 class="sticker-name" ng-if="task.sticker">
                 <a href="/sticker/{{ task.sticker.slug }}">
-                    <span class="sticker sticker-sm" img="{{ task.sticker.design.imageUrl }}"></span>
+                    <st-sticker sticker="task.sticker"></st-sticker>
                     {{task.sticker.name }}
                 </a>
             </h2>
@@ -22,7 +22,7 @@
                 <div class="titlecrumbs post-title" ng-if="post">
                     <h3 class="sticker-name">
                         <a href="/sticker/{{ task.sticker.slug }}">
-                            <span class="sticker sticker-sm" img="{{ task.sticker.design.imageUrl }}"></span>
+                            <st-sticker sticker="task.sticker"></st-sticker>
                             {{ task.sticker.name }}
                         </a>
                     </h3>
@@ -91,7 +91,7 @@
                         <div ng-include="'views/partials/comment-form.html'" id="comment-form-include"></div>
                     </div>
 
-                    <div class="comments" comments="comments.comments" show-comment-form="showCommentForm"></div>
+                    <st-comments class="comments" comments="comments.comments" show-comment-form="showCommentForm"></st-comments>
 
                 </div>
 
@@ -149,7 +149,9 @@
                         </a>
 
                         <h2><i class="fa fa-users fa-fw"></i> Working On It</h2>
-                        <div ng-if="doers.users.length > 0" class="user-list" data="doers" like="likeDoer"></div>
+
+                        <st-users ng-if="doers.users.length > 0" data="doers" like="likeDoer"></st-users>
+
                         <p class="text-center" ng-if="!(doers.users.length > 0)">
                             Nobody has this on their to-do list yet.
                         </p>

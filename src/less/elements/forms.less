@@ -1,16 +1,19 @@
+.form-control {
+    color:@default-text-color;
+}
+
+.form-group {
+    margin-bottom:30px;
+    &:last-child {
+        margin-bottom: 0;
+    }
+}
+
 .form-horizontal {
 
     h1 {
         margin-top: 0;
         margin-bottom: 25px;
-    }
-
-    .form-group {
-        margin-bottom: 25px;
-
-        &:last-child {
-            margin-bottom: 0;
-        }
     }
 
     .control-label {
@@ -29,11 +32,15 @@
         color: #a94442;
     }
 
-    .help-block {
-        margin: 8px 14px 5px 5px;
-        font-size: 12px;
-    }
+}
 
+.help-block {
+    margin: 8px 14px 5px 5px;
+    font-size: 12px;
+
+    &.pull-right {
+        margin:2px 15px 0 0;
+    }
 }
 
 @media (min-width: @screen-md-min) {
@@ -60,3 +67,15 @@
         display: block;
     }
 }
+
+/*input.loading:after {
+    display: block;
+    position: absolute;
+    right:0;
+    top:0;
+    font: normal normal normal 14px/1 FontAwesome;
+    content: "\f110";
+    -webkit-animation: fa-spin 2s infinite linear;
+    animation: fa-spin 2s infinite linear;
+    color:@grey;
+}*/

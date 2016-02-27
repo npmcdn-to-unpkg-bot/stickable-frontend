@@ -11,8 +11,8 @@ var app = angular.module('stickable', [
     'ngCkeditor',
     'markdown',
     'masonry',
-    'angucomplete-alt',
-    //'rt.debounce'
+    //'angucomplete-alt',
+    'rt.debounce'
 ]);
 
 app.config(function ($httpProvider,

@@ -26,7 +26,7 @@
 
         <li class="col-md-3" ng-repeat="sticker in category.stickers">
             <a href="/sticker/{{ sticker.slug }}">
-                <span class="sticker" img="{{ sticker.design.imageUrl }}"></span>
+                <st-sticker sticker="sticker"></st-sticker>
 
                 <h3>{{ sticker.name }}</h3>
             </a>

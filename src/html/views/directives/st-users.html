@@ -1,4 +1,4 @@
-
+<div class="user-list">
     <div class="user" ng-repeat="user in data.users" ng-class="{'liked': !!user.pivot.liked, 'like-clicked': !!user.likeClicked}">
 
         <a href="/user/{{ user.username }}">
@@ -16,4 +16,4 @@
             <span><i class="fa fa-thumbs-up"></i> <strong ng-bind="user.pivot.likeCount"></strong></span>
         </a>
     </div>
-
+</div>

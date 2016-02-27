@@ -9,20 +9,42 @@
     position: relative;
     z-index: 5;
 
-    .sticker-img {
-        background-size: cover;
-        border: 3px #fff solid;
-        border-radius: 100%;
-    }
+}
 
-    .sticker-shadow {
-        opacity: 0.6;
-    }
+.sticker .sticker-img,
+.sticker-initials {
+    background-size: cover;
+    border: 3px #fff solid;
+    border-radius: 100%;
+}
+
+.sticker .sticker-shadow {
+    opacity: 0.6;
 }
 
 .sticker-sm {
     width: 40px;
     height: 40px;
+}
+
+.sticker-initials {
+    text-shadow: none;
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+    background: @navbar-color;
+    color:#fff;
+    line-height:30px;
+    letter-spacing: 3px;
+    white-space: nowrap;
+
+    span {
+        position: absolute;
+        top:50%;
+        left:0;
+        right:0;
+        margin-top:-15px;
+    }
 }
 
 // Fake sticker with no peeling

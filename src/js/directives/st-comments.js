@@ -1,5 +1,6 @@
-app.directive('comments', function factory() {
+app.directive('stComments', function factory() {
     return {
+        restrict: 'E',
         scope: {
             comments: '=',
             showCommentForm: '='

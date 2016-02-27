@@ -7,7 +7,7 @@
 
     <h2>Stickers</h2>
     <a ng-repeat="sticker in stickers.stickers" href="/sticker/{{sticker.slug}}">
-        <span class="sticker" img="{{ sticker.design.imageUrl }}"></span>
+        <st-sticker sticker="sticker"></st-sticker>
     </a>
 
     <h2>Posts</h2>
