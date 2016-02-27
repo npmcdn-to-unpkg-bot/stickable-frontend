@@ -21,7 +21,12 @@ app.factory(
 
                 search: {
                     cache: true,
+                    isArray:true,
                     url: apiUrl + 'stickers/search',
+                    transformResponse: function (data) {
+                        data = angular.fromJson(data);
+                        return data.results;
+                    }
                 },
 
 

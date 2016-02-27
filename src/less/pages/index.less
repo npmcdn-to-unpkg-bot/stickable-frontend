@@ -17,9 +17,9 @@
 
 .view-home {
     .search-results {
-        overflow: hidden;
-        max-height:0;
-        .transition-all();
+        //overflow: hidden;
+        //max-height:0;
+        //.transition-all();
     }
 
     .search-results-visible {
@@ -29,7 +29,7 @@
         }
 
         .search-results {
-            max-height:300px;
+            //max-height:300px;
         }
     }
 }
@@ -114,14 +114,36 @@
         margin: 15px;
     }
 
-    .sticker-result {
+    .result {
         a {
-            padding: 0 15px 0 0;
+            .clearfix();
             display: inline-block;
             box-shadow: 1px 1px 1px rgba(0, 0, 0, .05);
             background: #fff;
             border-radius: 80px;
             font-size: 18px;
+        }
+
+        .result-text {
+            float:left;
+            display: block;
+            padding-top:26px;
+            padding-left:15px;
+            padding-right:15px;
+        }
+
+        small {
+            display: block;
+        }
+    }
+
+    .task-result {
+        a {
+            background: @darker-grey-bg;
+        }
+
+        .result-text {
+            padding-top:16px;
         }
     }
 
@@ -130,6 +152,7 @@
         width:80px;
         height:80px;
         vertical-align: middle;
+        float:left;
     }
 
     .sticker-create-icon {

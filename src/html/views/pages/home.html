@@ -67,21 +67,35 @@
                 </div>
 
                 <div class="text-center search-results-none"
-                     ng-show="!searchResultsLoading && searchResults.stickers.length < 1">
+                     ng-show="!searchResultsLoading && searchResults.length < 1">
                     No existing stickers found
                 </div>
 
                 <ul>
-                    <li ng-repeat="sticker in searchResults.stickers" class="sticker-result">
-                        <a href="/sticker/{{sticker.slug}}">
-                            <st-sticker sticker="sticker"></st-sticker>
-                            {{ sticker.name }}
+                    <li
+                            ng-repeat="result in searchResults"
+                            class="result"
+                            ng-class="{'sticker-result': result.type === 'sticker', 'task-result': result.type === 'task'}"
+                            >
+
+                        <a href="/sticker/{{result.sticker.slug}}">
+                            <st-sticker sticker="result.sticker"></st-sticker>
+
+                            <span class="result-text" ng-if="result.type === 'task'">
+                                {{ result.task.name }}
+                                <small>A task for the <strong>{{ result.sticker.name }}</strong> sticker</small>
+                            </span>
+
+                            <span class="result-text" ng-if="result.type === 'sticker'">{{ result.sticker.name }}</span>
                         </a>
                     </li>
-                    <li class="sticker-result">
+
+                    <li class="result sticker-result">
                         <a href="#" ng-click="newSticker(searchData.value)">
                             <span class="sticker-create-icon"><i class="fa fa-plus"></i></span>
-                            Create a new sticker called <strong>{{ searchData.value | titlecase }}</strong>
+                            <span class="result-text">
+                                Create a new sticker called <strong>{{ searchData.value | titlecase }}</strong>
+                            </span>
                         </a>
                     </li>
                 </ul>
