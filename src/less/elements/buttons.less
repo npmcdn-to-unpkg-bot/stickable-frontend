@@ -14,29 +14,28 @@ a.btn {
     border-radius: @btn-border-radius;
     padding: (@btn-padding / 2) @btn-padding;
 
-    // Stops buttons touching when they're on a line below each other
-    //margin-bottom: 3px;
-
     i {
         top:0;
         margin-right: 5px;
     }
 }
 
+// For buttons that are only an icon
 .icn-btn {
     i {
         margin:0;
     }
 }
 
-.btn-label {
-    border-radius: @border-radius-base 0 0 @border-radius-base;
-}
-
+// Buttons with a darker label BG on the left (from jasny bootstrap)
 .btn-labeled {
     padding-left: 11px;
     padding-top: 0;
     padding-bottom: 0;
+
+    .btn-label {
+        border-radius: @border-radius-base 0 0 @border-radius-base;
+    }
 }
 
 .btn-labeled,
@@ -49,7 +48,6 @@ a.btn {
     }
 
     i {
-        top: 0;
         margin: 0;
     }
 }
@@ -87,7 +85,6 @@ a.btn {
 }
 
 .btn-block.btn-labeled {
-    position: relative;
     padding: (@btn-padding / 2) @btn-padding (@btn-padding / 2) (@btn-padding + 34);
 
     .btn-label {
@@ -113,6 +110,34 @@ a.btn {
         top: 0;
     }
 }
+
+// Make buttons block on xs
+@media (max-width: @screen-xs-max) {
+    .btn:not(.no-block) {
+        .btn-block();
+        margin-bottom: 14px;
+
+        &:last-child {
+            margin-bottom:0;
+        }
+
+        /*&.btn-labeled {
+            .btn-block.btn-labeled()
+        }*/
+    }
+
+    .btn-labeled:not(.no-block) {
+        padding: (@btn-padding / 2) @btn-padding (@btn-padding / 2) (@btn-padding + 34);
+
+        .btn-label {
+            position: absolute;
+            left: -1px;
+            margin-bottom:0;
+        }
+    }
+}
+
+
 
 .btn-sm {
     font-size: @btn-font-size-sm;
@@ -154,21 +179,6 @@ a.btn {
     background: none;
 }
 
-@media (max-width: @screen-xs-max) {
-    .btn:not(.no-block) {
-        .btn-block();
-        margin-bottom: 14px;
-
-        &:last-child {
-            margin-bottom:0;
-        }
-
-        /*&.btn-labeled {
-            .btn-block.btn-labeled()
-        }*/
-    }
-}
-
 .fa-add-action:after,
 .fa-remove-action:after {
     display: block;
@@ -189,7 +199,7 @@ a.btn {
     content: "\f068";
 }
 
-.btn-loading .fa{
+.btn-loading .fa {
 
     -webkit-animation: fa-spin 2s infinite linear;
     animation: fa-spin 2s infinite linear;
