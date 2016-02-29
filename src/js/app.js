@@ -252,12 +252,12 @@ app.run(function ($rootScope, $state, AuthService, UserNotificationsResource, No
 
 });
 
-var previousScrollY = 0;
+//var previousScrollY = 0;
 
 $(document).on('click', 'body:not(.navbar-visible) .navbar-toggle', function (e) {
     e.preventDefault();
-    previousScrollY = window.scrollY;
-    window.scrollTo(0,0);
+    //previousScrollY = window.scrollY;
+    //window.scrollTo(0,0);
     $('body').addClass('navbar-visible');
 });
 
@@ -267,7 +267,7 @@ $(document).on('click', 'body.navbar-visible .navbar-toggle', function (e) {
 });
 
 $(document).on('click', 'body.navbar-visible', function (e) {
-    if ($(e.target).closest('#top-bar-nav').length > 0) {
+    if ($(e.target).closest('#sidenav').length > 0) {
         // Ignore clicks on the nav itself
 
     } else if (
@@ -280,6 +280,6 @@ $(document).on('click', 'body.navbar-visible', function (e) {
 });
 
 function closeNav() {
-    window.scrollTo(0, previousScrollY);
+    //window.scrollTo(0, previousScrollY);
     $('body').removeClass('navbar-visible');
 }

@@ -1,0 +1,97 @@
+/**
+ * On mobile and on all size apps the menu goes the left
+ * instead of being at the top.
+ */
+
+#sidenav,
+#sidenav-closer {
+    display: none;
+}
+
+@media (max-width: @grid-float-breakpoint-max) {
+
+    #top-bar-nav {
+        display: none;
+    }
+
+    #main,
+    header,
+    #sidenav,
+    footer {
+        .transition-all();
+    }
+
+    body.navbar-visible {
+        #main,
+        header,
+        #sidenav,
+        footer {
+            -webkit-transform: translate3d(-200px, 0, 0);
+            -ms-transform: translate3d(-200px, 0, 0);
+            transform: translate3d(-200px, 0, 0);
+        }
+
+        // Blocks clicks on elements in #main
+        #sidenav-closer {
+            display: block;
+            position: fixed;
+            top:0;
+            left:0;
+            bottom:0;
+            right:200px;
+            z-index:1000;
+        }
+    }
+
+    #sidenav {
+        display: block;
+        padding: 10px;
+
+        background: @navbar-color;
+        background: rgb(0, 0, 0);
+        background: rgb(37, 37, 43);
+        background: -moz-linear-gradient(left, rgba(37, 37, 43, 1) 0%, rgba(49, 49, 57, 1) 16%, rgba(49, 49, 57, 1) 100%);
+        background: -webkit-linear-gradient(left, rgba(37, 37, 43, 1) 0%, rgba(49, 49, 57, 1) 16%, rgba(49, 49, 57, 1) 100%);
+        background: linear-gradient(to right, rgba(37, 37, 43, 1) 0%, rgba(49, 49, 57, 1) 16%, rgba(49, 49, 57, 1) 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#25252b', endColorstr='#313139', GradientType=1);
+
+        position: fixed;
+        top: 0;
+        right: -200px;
+        bottom: 0;
+        width: 200px;
+        z-index: 1000;
+
+        ul {
+            margin: 0;
+        }
+
+        li {
+            float: none;
+            clear: both;
+            font-size:14px;
+            a {
+                padding: 10px;
+                color: #fff;
+
+                &:hover,
+                &:active,
+                &:focus {
+                    background: #3e4148;
+                }
+            }
+        }
+
+        li.divider {
+            display: none;
+        }
+
+        ul.dropdown-menu {
+            margin-left: 10px;
+        }
+    }
+
+
+
+}
+
