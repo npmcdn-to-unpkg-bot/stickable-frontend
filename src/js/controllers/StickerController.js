@@ -6,7 +6,6 @@ app.controller(
 
         $scope.sticker = null;
         $scope.progress = null;
-
         StickerResource.get({slug: $stateParams.slug}, function (sticker) {
             $rootScope.loading = false;
             //$rootScope.pageTitle = sticker.name;
@@ -28,13 +27,47 @@ app.controller(
             });
         };
 
-        $scope.addToDo = function () {
+        $scope.toggleToDo = function () {
+
+            if ($scope.sticker.isOnToDoList) {
+                $scope.sticker.isOnToDoList = false;
+                ToDoResource.delete(
+                    {username: $rootScope.currentUser.username},
+                    {stickerId: $scope.sticker.id},
+                    function (result) {
+                        alertSuccess('Removed ' + $scope.sticker.name + ' from your To Do List');
+                        //$scope.sticker.isOnToDoList = false;
+                        $scope.loadDoers();
+                    },
+                    function (result) {
+                        alertError(result.data.message);
+                    }
+                );
+            } else {
+                $scope.sticker.isOnToDoList = true;
+                ToDoResource.save(
+                    {username: $rootScope.currentUser.username},
+                    {stickerId: $scope.sticker.id},
+                    function (result) {
+                        alertSuccess('Added ' + $scope.sticker.name + ' to your To Do List');
+                        //$scope.task.isOnToDoList = true;
+                        $scope.loadDoers();
+                    },
+                    function (result) {
+                        alertError(result.data.message);
+                    }
+                );
+            }
+
+        };
+
+        /*$scope.addToDo = function () {
             console.log('addToDo');
             ToDoResource.save(
                 {username: $rootScope.currentUser.username},
                 {stickerId: $scope.sticker.id},
                 function (result) {
-                    alertSuccess('Added to To Do List');
+                    alertSuccess('Added ' + $scope.sticker.name + ' to your To Do List');
                     $scope.sticker.isOnToDoList = true;
                     $scope.loadDoers();
                 },
@@ -49,7 +82,7 @@ app.controller(
                 {username: $rootScope.currentUser.username},
                 {stickerId: $scope.sticker.id},
                 function (result) {
-                    alertSuccess('Removed from To Do List');
+                    alertSuccess('Removed ' + $scope.sticker.name + ' from your To Do List');
                     $scope.sticker.isOnToDoList = false;
                     $scope.loadDoers();
                 },
@@ -57,7 +90,7 @@ app.controller(
                     alertError(result.data.message);
                 }
             );
-        };
+        };*/
 
         $scope.likeEarner = function($event, earner) {
             preventDefault($event);

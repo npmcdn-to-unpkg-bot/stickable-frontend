@@ -1,4 +1,5 @@
 .navbar {
+
     margin-bottom: 0;
     background: @navbar-color;
     min-height: 0;
@@ -6,10 +7,7 @@
     border-radius: 0;
     font-size: @font-size-sm;
 
-    -o-transition: background-color 0.2s ease-out;
-    -moz-transition: background-color 0.2s ease-out;
-    -webkit-transition: background-color 0.2s ease-out; /* Android 2.1+, Chrome 1-25, iOS 3.2-6.1, Safari 3.2-6  */
-    transition: background-color 0.2s ease-out; /* Chrome 26, Firefox 16+, iOS 7+, IE 10+, Opera, Safari 6.1+  */
+    .transition-all();
 
     position: fixed;
     top:0;

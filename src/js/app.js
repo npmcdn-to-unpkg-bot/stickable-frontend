@@ -237,6 +237,7 @@ app.run(function ($rootScope, $state, AuthService, UserNotificationsResource, No
     });
 
     $rootScope.$on('$stateChangeStart', function (ev, to, toParams, from) {
+        $rootScope.searchOpen = false;
         clearBg();
     });
 
@@ -251,15 +252,18 @@ app.run(function ($rootScope, $state, AuthService, UserNotificationsResource, No
 
 });
 
+var previousScrollY = 0;
+
 $(document).on('click', 'body:not(.navbar-visible) .navbar-toggle', function (e) {
-    console.log(e);
     e.preventDefault();
+    previousScrollY = window.scrollY;
+    window.scrollTo(0,0);
     $('body').addClass('navbar-visible');
 });
 
 $(document).on('click', 'body.navbar-visible .navbar-toggle', function (e) {
     e.preventDefault();
-    $('body').removeClass('navbar-visible');
+    closeNav();
 });
 
 $(document).on('click', 'body.navbar-visible', function (e) {
@@ -271,7 +275,11 @@ $(document).on('click', 'body.navbar-visible', function (e) {
         && !$(e.target).hasClass('navbar-toggle')
     ) {
         e.preventDefault();
-        $('body').removeClass('navbar-visible');
+        closeNav();
     }
 });
 
+function closeNav() {
+    window.scrollTo(0, previousScrollY);
+    $('body').removeClass('navbar-visible');
+}

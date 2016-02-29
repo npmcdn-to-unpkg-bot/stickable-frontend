@@ -7,6 +7,7 @@ app.factory(
                 username: '@username',
                 slug: '@slug',
                 taskId: '@taskId',
+                stickerId: '@stickerId',
                 toDoId: '@toDoId',
                 sessionToken: function () {
                     return AuthService.getSessionToken() || null;
@@ -23,7 +24,7 @@ app.factory(
 
                 delete: {
                     method: 'DELETE',
-                    url: apiUrl + 'users/:username/todo/:taskId'
+                    url: apiUrl + 'users/:username/todo'
                 },
 
                 getLikes: {

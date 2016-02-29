@@ -132,20 +132,13 @@
 
                     <div class="trans-box task-doers">
 
-                        <a class="btn btn-danger btn-remove-todo btn-labeled pull-right no-block"
+                        <a class="btn btn-labeled pull-right no-block todo-btn"
                            href="#"
-                           ng-click="removeToDo()"
-                           ng-if="isOnToDoList">
-                            <span class="btn-label"><i class="fa fa-minus-circle"></i></span>
-                            Remove <span class="hidden-xs">from To-Do</span>
-                        </a>
-
-                        <a class="btn btn-primary btn-add-todo btn-labeled  pull-right no-block"
-                           href="#"
-                           ng-click="addToDo()"
-                           ng-if="!isOnToDoList">
-                            <span class="btn-label"><i class="fa fa-plus-circle"></i></span>
-                            Add <span class="hidden-xs">to </span>To-Do <span class="hidden-xs">List</span>
+                           ng-click="toggleToDo()"
+                           ng-class="{'btn-success': task.isOnToDoList, 'btn-primary': !task.isOnToDoList}"
+                           >
+                            <span class="btn-label"><i class="fa fa-fw" ng-class="{'fa-check': task.isOnToDoList, 'fa-plus-circle': !task.isOnToDoList}"></i></span>
+                            To Do
                         </a>
 
                         <h2><i class="fa fa-users fa-fw"></i> Working On It</h2>
@@ -153,7 +146,7 @@
                         <st-users ng-if="doers.users.length > 0" data="doers" like="likeDoer"></st-users>
 
                         <p class="text-center" ng-if="!(doers.users.length > 0)">
-                            Nobody has this on their to-do list yet.
+                            Nobody has this on their to do list yet.
                         </p>
                     </div>
 

@@ -148,6 +148,12 @@ a.btn {
     .button-variant(@btn-text-color, @grey, @grey);
 }
 
+.btn-link,
+.btn-link:hover {
+    border:transparent;
+    background: none;
+}
+
 @media (max-width: @screen-xs-max) {
     .btn:not(.no-block) {
         .btn-block();

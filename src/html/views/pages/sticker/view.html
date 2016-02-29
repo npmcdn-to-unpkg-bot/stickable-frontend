@@ -107,9 +107,9 @@
                         </li>
                         <li ng-hide="sticker.isOnToDoList">
                             <span>
-                                <a class="btn btn-primary btn-block btn-labeled" ng-click="addToDo()">
+                                <a class="btn btn-primary btn-block btn-labeled todo-btn" ng-click="toggleToDo()">
                                     <span class="btn-label"><i class="fa fa-plus-circle"></i></span>
-                                    Add To To-Do List
+                                    Add To Your To Do List
                                 </a>
                             </span>
                         </li>
@@ -137,17 +137,23 @@
 
                     <st-users ng-if="earners.users.length > 0" data="earners" like="likeEarner"></st-users>
 
-                    <h2><i class="fa fa-users"></i> Working On It</h2>
+                    <div style="margin-bottom:30px;"></div>
+
+                    <a class="btn btn-labeled pull-right no-block todo-btn"
+                           href="#"
+                           ng-click="toggleToDo()"
+                           ng-class="{'btn-success': sticker.isOnToDoList, 'btn-primary': !sticker.isOnToDoList}"
+                           >
+                            <span class="btn-label"><i class="fa fa-fw" ng-class="{'fa-check': sticker.isOnToDoList, 'fa-plus-circle': !sticker.isOnToDoList}"></i></span>
+                            To Do
+                        </a>
+
+                    <h2 style="margin-top:0;"><i class="fa fa-users"></i> Working On It</h2>
 
                     <st-users data="doers" like="likeDoer"></st-users>
 
                     <div ng-if="doers.users.length < 1" class="text-center text-muted">
                         Nobody has this on their to do list yet.
-                        <br/>
-                        <a class="btn btn-primary btn-labeled sticker-add-todo-btn-nobody" ng-click="addToDo()">
-                            <span class="btn-label"><i class="fa fa-plus-circle"></i></span>
-                            Add To Your To-Do List
-                        </a>
                     </div>
 
                 </div>

@@ -15,27 +15,46 @@
     max-height:350px;
 }
 
-.view-home {
-    .search-results {
-        //overflow: hidden;
-        //max-height:0;
-        //.transition-all();
-    }
+#home-splash-logo {
+    display: none;
+}
 
-    .search-results-visible {
-        .home-splash {
-            max-height:0;
-            padding:0;
-        }
+.featured-sticker {
+    display: block;
+    background: #000 center no-repeat;
+    background-size: cover;
+    background-image:url(/assets/img/s-circle.jpg);
+    height:400px;
+    .black-shade();
 
-        .search-results {
-            //max-height:300px;
+    > span {
+        color:#fff;
+        position: absolute;
+        bottom:15px;
+        left:15px;
+        right:15px;
+        font-size:22px;
+
+        h4 {
+            color:#fff;
+            margin-bottom:5px;
         }
     }
 }
 
 
-#home-splash-logo {
+
+
+
+
+.search-open {
+    .home-splash {
+        max-height:0;
+        padding:0;
+    }
+}
+
+.close-search-btn {
     display: none;
 }
 
@@ -44,6 +63,194 @@
         margin:10px !important;
     }
 }
+
+.search-results {
+
+    ul {
+
+        list-style: none;
+        padding: 0;
+        text-align: center;
+    }
+
+    li {
+        display: inline-block;
+        margin: 15px;
+    }
+
+    .result {
+
+        a {
+            display: block;
+            box-shadow: 1px 1px 1px rgba(0, 0, 0, .05);
+            background: #fff;
+            border-radius: 80px;
+            padding-right:15px;
+        }
+
+        .result-text {
+            font-weight: bold;
+            color:@default-text-color;
+            width:auto;
+            padding:0 15px;
+        }
+
+        .media-right {
+            font-size:12px;
+        }
+
+        strong {
+            color: @blue;
+        }
+
+        small {
+            display: block;
+            font-weight: normal;
+        }
+    }
+
+
+
+    .sticker,
+    .sticker-create-icon {
+        width:80px;
+        height:80px;
+        vertical-align: middle;
+        float:left;
+    }
+
+    .sticker-create-icon {
+        background: @blue;
+        display: inline-block;
+        color:#fff;
+        border-radius: 50%;
+        font-size: 40px;
+        padding: 10px 0 0 1px;
+        border: 3px #fff solid;
+    }
+
+   .fa-user {
+        color:@grey;
+    }
+
+    .task-result {
+        a {
+            background: @light-grey-bg;
+        }
+    }
+}
+
+
+@media (max-width: @screen-sm-max) {
+    .search-open {
+
+        transition: none !important;
+        padding-top: 0;
+
+        header {
+            display: none;
+        }
+
+        .home-splash {
+            display: none;
+        }
+
+        .home-content {
+            display: none;
+        }
+
+        .home-task-search {
+            h2 {
+                display: none;
+            }
+
+            background: @navbar-color;
+
+            input {
+                width: ~"calc(100% - 35px)";
+            }
+
+            .close-search-btn {
+                color:#fff;
+                text-shadow: none;
+                float:right;
+                display: inline-block;
+                padding: 5px 0;
+                font-size: 25px;
+            }
+        }
+
+        .content .container.home-task-search {
+            padding:15px;
+        }
+
+        .search-results {
+            display: block !important;
+            min-height: ~"calc(100vh - 79px)";
+        }
+    }
+
+    .content .container.home-task-search {
+        padding:30px 15px;
+    }
+
+    .search-results {
+
+        .container {
+            padding:0;
+        }
+
+        li {
+            display: block;
+            margin:0;
+        }
+
+        .result {
+            .result-text {
+                width:10000px;
+                padding:0;
+            }
+
+            a {
+                border-radius:0;
+                padding:10px;
+                background-color:#fff;
+            }
+
+            &:nth-child(even) a {
+                background-color:@light-grey-bg;
+            }
+        }
+
+        .sticker {
+            float:none;
+            width: 52px;
+            height: 52px;
+        }
+        .sticker-create-icon {
+            width: 52px;
+            height: 52px;
+            font-size: 27px;
+            padding-top: 6px;
+            margin: 6px 0;
+        }
+
+        .btn {
+            margin-top:5px;
+        }
+
+        small {
+            font-size:10px;
+        }
+    }
+
+    .search-results-loading,
+    .search-results-none {
+        padding: 15px 0;
+        color:@grey;
+    }
+}
+
 
 @media (min-width: @screen-sm-min) {
 
@@ -76,92 +283,17 @@
         margin: auto;
         max-width: 100%;
     }
-}
 
-.featured-sticker {
-    display: block;
-    background: #000 center no-repeat;
-    background-size: cover;
-    background-image:url(/assets/img/s-circle.jpg);
-    height:400px;
-    .black-shade();
-
-    > span {
-        color:#fff;
-        position: absolute;
-        bottom:15px;
-        left:15px;
-        right:15px;
-        font-size:22px;
-
-        h4 {
-            color:#fff;
-            margin-bottom:5px;
-        }
-    }
-}
-
-.search-results {
-
-    ul {
-        list-style: none;
-        padding: 0;
-        text-align: center;
-    }
-
-    li {
-        display: inline-block;
-        margin: 15px;
-    }
-
-    .result {
+    .search-results {
         a {
-            .clearfix();
-            display: inline-block;
-            box-shadow: 1px 1px 1px rgba(0, 0, 0, .05);
-            background: #fff;
-            border-radius: 80px;
-            font-size: 18px;
+            font-size:18px;
         }
 
-        .result-text {
-            float:left;
-            display: block;
-            padding-top:26px;
-            padding-left:15px;
-            padding-right:15px;
+        .task-result {
+            .result-text {
+                font-size: 14px;
+            }
         }
-
-        small {
-            display: block;
-        }
-    }
-
-    .task-result {
-        a {
-            background: @darker-grey-bg;
-        }
-
-        .result-text {
-            padding-top:16px;
-        }
-    }
-
-    .sticker,
-    .sticker-create-icon {
-        width:80px;
-        height:80px;
-        vertical-align: middle;
-        float:left;
-    }
-
-    .sticker-create-icon {
-        background: @blue;
-        display: inline-block;
-        color:#fff;
-        border-radius: 50%;
-        font-size: 40px;
-        padding: 10px 0 0 1px;
-        border: 3px #fff solid;
     }
 }
+

@@ -1,9 +1,9 @@
 app.controller(
     'HomeController',
-    function ($state, $scope, $rootScope, $filter, CategoryResource, PostResource, StickerResource, ModalService, debounce) {
+    function ($element, $state, $scope, $rootScope, $filter, CategoryResource, PostResource, StickerResource, ModalService, debounce, ToDoResource) {
 
         $scope.setBg = function () {
-            setBg($('.home-splash'), '/assets/img/splash/badges.png');
+            setBg($element, '/assets/img/splash/badges.png');
         };
 
         setTimeout($scope.setBg(), 1);
@@ -32,20 +32,30 @@ app.controller(
             value: ''
         };
         $scope.searchResults = [];
-        $scope.searchResultsVisible = false;
-        $scope.searchResultsLoading = false;
+
+        $scope.searchLoading = false;
 
         var debouncedSearch = debounce(300, function() {
             if ($scope.searchData.value) {
-                $scope.searchResultsVisible = true;
-                $scope.searchResultsLoading = true;
+                $scope.searchOpen = true;
+                $scope.searchLoading = true;
 
                 StickerResource.search(
                     {
                         q: $scope.searchData.value
                     },
                     function (results) {
-                        $scope.searchResultsLoading = false;
+
+                        for (var i = 0; i < results.length; i++) {
+                            var result = results[i];
+                            if (result.type === 'task') {
+                                result.isOnToDoList = result.task.isOnToDoList;
+                            } else {
+                                result.isOnToDoList = result.sticker.isOnToDoList;
+                            }
+                        }
+
+                        $scope.searchLoading = false;
                         $scope.searchResults = results;
                     }
                 );
@@ -60,13 +70,24 @@ app.controller(
         };
 
         $scope.searchFocus = function () {
-            $scope.searchResultsVisible = true;
+            $rootScope.searchOpen = true;
             $scope.setBg();
+            window.scrollTo(0, 0);
+            document.body.scrollTop = 0;
+        };
+
+        $scope.closeSearch = function () {
+            $scope.searchData.value = '';
+            $scope.searchResults = [];
+            $rootScope.searchOpen = false;
         };
 
         $scope.searchBlur = function () {
-            if (!$scope.searchData.value) {
-                $scope.searchResultsVisible = false;
+
+            if ($('.close-search-btn:visible').length < 1) { // Hack to detect >= md
+                if (!$scope.searchData.value) {
+                    $rootScope.searchOpen = false;
+                }
             }
         };
 
@@ -89,6 +110,52 @@ app.controller(
                 });
 
             });
+        };
+
+        $scope.toggleToDo = function ($event, result) {
+
+            preventDefault($event);
+
+            var data = {};
+            var name = '';
+            if (result.type === 'task') {
+                data.taskId = result.task.id;
+                name = result.task.name;
+            } else {
+                data.stickerId = result.sticker.id;
+                name = result.sticker.name;
+            }
+
+            if (result.isOnToDoList) {
+                result.isOnToDoList = false;
+                result.people -= 1;
+
+                ToDoResource.delete(
+                    {username: $rootScope.currentUser.username},
+                    data,
+                    function (result) {
+                        alertSuccess('Removed ' + name + ' from your To Do List');
+                    },
+                    function (result) {
+                        alertError(result.data.message);
+                    }
+                );
+            } else {
+                result.isOnToDoList = true;
+                result.people += 1;
+
+                ToDoResource.save(
+                    {username: $rootScope.currentUser.username},
+                    data,
+                    function (result) {
+                        alertSuccess('Added ' + name + ' to your To Do List');
+                    },
+                    function (result) {
+                        alertError(result.data.message);
+                    }
+                );
+            }
+
         };
 
 

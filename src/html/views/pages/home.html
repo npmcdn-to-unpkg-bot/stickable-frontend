@@ -1,136 +1,173 @@
-<div ng-class="{'search-results-visible': searchResultsVisible}">
+<div class="splash home-splash">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-3">
+                <img src="/assets/img/stickable.svg" alt="Stickable" id="home-splash-logo"/>
+            </div>
+            <div class="col-sm-9 white">
+                <h2>Discover new hobbies. Get help from our community. Earn stickers for achieving your goals.</h2>
+                <a class="btn btn-lg no-block btn-labeled" href="/help">
+                    <span class="btn-label"><i class="fa fa-fw fa-info"></i></span>
+                    Learn More
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
 
-    <div class="splash home-splash">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-3">
-                    <img src="/assets/img/stickable.svg" alt="Stickable" id="home-splash-logo"/>
-                </div>
-                <div class="col-sm-9 white">
-                    <h2>Discover new hobbies. Get help from our community. Earn stickers for achieving your goals.</h2>
-                    <a class="btn btn-lg no-block btn-labeled" href="/help">
-                        <span class="btn-label"><i class="fa fa-fw fa-info"></i></span>
-                        Learn More
-                    </a>
+<div class="content">
+
+    <div class="black-bg dark-page">
+        <div class="container home-task-search">
+
+            <div class="text-center">
+                <h2>Start Building Your To Do List</h2>
+
+                <div class="row">
+
+                    <div class="col-md-8">
+                        <p class="hidden-sm hidden-xs">Type something you want to achieve.</p>
+
+                        <a ng-if="searchOpen" href="#" ng-click="closeSearch()" class="close-search-btn"><i class="fa fa-times"></i></a>
+
+                        <input
+                                type="text"
+                                class="form-control input-lg"
+                                ng-keyup="search()"
+                                ng-focus="searchFocus($event)"
+                                ng-blur="searchBlur()"
+                                ng-model="searchData.value"
+                                placeholder="I want to..."
+                                />
+
+                    </div>
+                    <div class="col-md-4 hidden-sm hidden-xs">
+
+                        <p>Can't think of something?</p>
+
+                        <a class="btn btn-primary btn-block btn-lg btn-labeled" href="/bot">
+                            <span class="btn-label"><i class="fa fa-fw fa-search"></i></span>
+                            Try The Idea Robot
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="content">
+    <div class="white-bg search-results" ng-show="searchData.value">
+        <div class="container">
 
-        <div class="black-bg dark-page">
-            <div class="container home-task-search">
+            <h2 class="visible-lg visible-md text-center" ng-if="searchData.value">
+                &quot;{{ searchData.value }}&quot; Stickers
+            </h2>
 
-                <div class="text-center">
-                    <h2>Start Building Your To Do List</h2>
-
-                    <div class="row">
-
-                        <div class="col-md-8">
-                            <p>Type something you want to achieve.</p>
-
-                            <input
-                                    type="text"
-                                    class="form-control input-lg"
-                                    ng-keyup="search()"
-                                    ng-focus="searchFocus()"
-                                    ng-blur="searchBlur()"
-                                    ng-model="searchData.value"
-                                    placeholder="I want to..."
-                                    />
-
-                        </div>
-                        <div class="col-md-4">
-
-                            <p>Can't think of something?</p>
-
-                            <a class="btn btn-primary btn-block btn-lg btn-labeled" href="/bot">
-                                <span class="btn-label"><i class="fa fa-fw fa-search"></i></span>
-                                Try The Idea Robot
-                            </a>
-                        </div>
-                    </div>
-                </div>
+            <div class="text-center search-results-loading" ng-if="searchLoading">
+                <i class="fa fa-spinner fa-spin"></i>
             </div>
-        </div>
 
-        <div class="white-bg search-results" ng-show="searchData.value">
-            <div class="container">
+            <div class="text-center search-results-none"
+                 ng-show="searchData.value && !searchLoading && searchResults.length < 1">
+                No existing stickers found
+            </div>
 
-                <h2 class="text-center" ng-if="searchData.value">
-                    &quot;{{ searchData.value }}&quot; Stickers
-                </h2>
+            <ul>
+                <li
+                        ng-repeat="result in searchResults"
+                        class="result"
+                        ng-class="{'sticker-result': result.type === 'sticker', 'task-result': result.type === 'task'}"
+                        >
 
-                <div class="text-center search-results-loading" ng-if="searchResultsLoading">
-                    <i class="fa fa-spinner fa-spin"></i>
-                </div>
+                    <a class="media" ng-href="{{ (result.type === 'task' ? '/task/'+result.task.slug : '/sticker/'+result.sticker.slug) }}">
 
-                <div class="text-center search-results-none"
-                     ng-show="!searchResultsLoading && searchResults.length < 1">
-                    No existing stickers found
-                </div>
-
-                <ul>
-                    <li
-                            ng-repeat="result in searchResults"
-                            class="result"
-                            ng-class="{'sticker-result': result.type === 'sticker', 'task-result': result.type === 'task'}"
-                            >
-
-                        <a href="/sticker/{{result.sticker.slug}}">
+                        <span class="media-left media-middle">
                             <st-sticker sticker="result.sticker"></st-sticker>
+                        </span>
 
-                            <span class="result-text" ng-if="result.type === 'task'">
+                        <span class="media-body media-middle result-text">
+
+                            <span ng-if="result.type === 'task'">
                                 {{ result.task.name }}
                                 <small>A task for the <strong>{{ result.sticker.name }}</strong> sticker</small>
                             </span>
 
-                            <span class="result-text" ng-if="result.type === 'sticker'">{{ result.sticker.name }}</span>
-                        </a>
-                    </li>
+                            <span ng-if="result.type === 'sticker'">
+                                {{ result.sticker.name }}
+                            </span>
 
-                    <li class="result sticker-result">
-                        <a href="#" ng-click="newSticker(searchData.value)">
+                            <small class="hidden-xs hidden-sm">
+                                <i class="fa fa-user"></i> <ng-pluralize count="result.people"
+                                when="{'0': 'Nobody yet', 'one': '1 person', 'other': '{} people'}"></ng-pluralize>
+                            </small>
+
+                        </span>
+
+                        <span class="media-right media-middle">
+
+                            <small class="hidden-lg hidden-md">
+                                <i class="fa fa-user"></i> {{ result.people }}
+                            </small>
+
+                            <span class="btn btn-sm todo-btn"
+                               ng-click="toggleToDo($event, result)"
+                               ng-class="{'btn-success': result.isOnToDoList, 'btn-primary': !result.isOnToDoList}"
+                               >
+                                <i class="fa fa-fw" ng-class="{'fa-check': result.isOnToDoList, 'fa-plus-circle': !result.isOnToDoList}"></i>
+                                To Do
+                            </span>
+
+                        </span>
+
+                    </a>
+
+                </li>
+
+                <li class="result" ng-if="searchData.value">
+
+                    <a class="media" href="#" ng-click="newSticker(searchData.value)">
+
+                        <span class="media-left media-middle">
                             <span class="sticker-create-icon"><i class="fa fa-plus"></i></span>
-                            <span class="result-text">
-                                Create a new sticker called <strong>{{ searchData.value | titlecase }}</strong>
+                        </span>
+
+                        <span class="media-body media-middle result-text">
+                            Create a new sticker called <strong>{{ searchData.value | titlecase }}</strong>
+                        </span>
+                    </a>
+
+                </li>
+            </ul>
+
+        </div>
+    </div>
+
+    <div class="home-content">
+
+        <div class="white-bg">
+            <div class="container">
+
+                <div class="row">
+
+                    <div class="col-md-4">
+                        <h2>Sticker Of The Week</h2>
+                        <a class="featured-sticker" href="/sticker/example-sticker">
+                            <span>
+                                Example Sticker
                             </span>
                         </a>
-                    </li>
-                </ul>
-
-            </div>
-        </div>
-
-        <div class="home-content">
-
-            <div class="white-bg">
-                <div class="container">
-
-                    <div class="row">
-
-                        <div class="col-md-4">
-                            <a class="featured-sticker" href="/sticker/example-sticker">
-                                <span>
-                                    <h4>Sticker of the week</h4>
-                                    Example Sticker
-                                </span>
-                            </a>
-                        </div>
-
-
-                        <div class="col-md-8">
-                            <h2>Featured Posts</h2>
-                            <ng-include src="'views/partials/post-list.html'"
-                                        ng-controller="PostsController"></ng-include>
-                        </div>
-
                     </div>
+
+
+                    <div class="col-md-8">
+                        <h2>Featured Posts</h2>
+                        <ng-include src="'views/partials/post-list.html'"
+                                    ng-controller="PostsController"></ng-include>
+                    </div>
+
                 </div>
             </div>
-
         </div>
 
     </div>
+
 </div>

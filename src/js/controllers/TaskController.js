@@ -21,11 +21,9 @@ app.controller(
          */
         $scope.task = null;
         $scope.doers = null;
-        $scope.isOnToDoList = false;
 
         function onTaskLoad(task) {
             $scope.task = task;
-            $scope.isOnToDoList = $scope.task.isOnToDoList;
 
             setBg($element, task.bgUrl);
         }
@@ -140,35 +138,38 @@ app.controller(
 
         };
 
-        $scope.addToDo = function () {
-            console.log('addToDo');
-            ToDoResource.save(
-                {username: $rootScope.currentUser.username},
-                {taskId: $scope.task.id},
-                function (result) {
-                    alertSuccess('Added to To Do List');
-                    $scope.isOnToDoList = true;
-                    $scope.loadDoers();
-                },
-                function (result) {
-                    alertError(result.data.message);
-                }
-            );
-        };
+        $scope.toggleToDo = function () {
 
-        $scope.removeToDo = function () {
-            ToDoResource.delete(
-                {username: $rootScope.currentUser.username},
-                {taskId: $scope.task.id},
-                function (result) {
-                    alertSuccess('Removed from To Do List');
-                    $scope.isOnToDoList = false;
-                    $scope.loadDoers();
-                },
-                function (result) {
-                    alertError(result.data.message);
-                }
-            );
+            if ($scope.task.isOnToDoList) {
+                $scope.task.isOnToDoList = false;
+                ToDoResource.delete(
+                    {username: $rootScope.currentUser.username},
+                    {taskId: $scope.task.id},
+                    function (result) {
+                        alertSuccess('Removed ' + $scope.task.name + ' from your To Do List');
+                        //$scope.task.isOnToDoList = false;
+                        $scope.loadDoers();
+                    },
+                    function (result) {
+                        alertError(result.data.message);
+                    }
+                );
+            } else {
+                $scope.task.isOnToDoList = true;
+                ToDoResource.save(
+                    {username: $rootScope.currentUser.username},
+                    {taskId: $scope.task.id},
+                    function (result) {
+                        alertSuccess('Added ' + $scope.task.name + ' to your To Do List');
+                        //$scope.task.isOnToDoList = true;
+                        $scope.loadDoers();
+                    },
+                    function (result) {
+                        alertError(result.data.message);
+                    }
+                );
+            }
+
         };
 
         $scope.submissionFormData = {

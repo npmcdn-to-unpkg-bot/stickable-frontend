@@ -9,7 +9,7 @@ body {
     //-webkit-text-stroke: 0.1px;
 
     // To allow menu to slide in
-    transition: all 0.2s ease-out;
+    .transition-all();
 
     font-weight: 300;
 
@@ -391,4 +391,19 @@ h1 .user-image,
 .task-form-modal .tabs {
     margin-top:20px;
     margin-bottom: -3px;
+}
+
+body:not(.ios) {
+    .todo-btn {
+        &.btn-success:hover {
+
+            color: #fff;
+            background-color: #962d22;
+            border-color: #8e2a20;
+
+            .fa:before {
+                content: "\f057";
+            }
+        }
+    }
 }
