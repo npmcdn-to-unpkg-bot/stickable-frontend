@@ -2,6 +2,8 @@ app.controller(
     'SettingsController',
     function ($scope, $rootScope, $state, $stateParams, AuthService, UserResource, $timeout) {
 
+        $rootScope.pageTitle = 'Settings';
+
         $scope.hasNewImage = false;
 
         var dropzone;

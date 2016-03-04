@@ -13,7 +13,6 @@ app.controller(
               PostResource,
               CommentResource) {
 
-        $rootScope.pageTitle = '';
         $rootScope.loading = true;
 
         /**
@@ -44,7 +43,7 @@ app.controller(
 
             PostResource.get({postSlug:$stateParams.postSlug}, function (response) {
                 $rootScope.loading = false;
-                //$rootScope.pageTitle = response.post.title;
+                $rootScope.pageTitle = response.post.title;
                 $scope.post = response.post;
                 onTaskLoad(response.post.task);
 
@@ -57,7 +56,7 @@ app.controller(
 
             TaskResource.get({slug: $stateParams.slug}, function (task) {
                 $rootScope.loading = false;
-                //$rootScope.pageTitle = task.name;
+                $rootScope.pageTitle = task.name;
                 onTaskLoad(task);
 
                 $scope.loadDoers();

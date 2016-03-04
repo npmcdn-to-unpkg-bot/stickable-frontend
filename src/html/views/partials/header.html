@@ -1,7 +1,7 @@
 <header class="navbar" id="top-bar">
     <div class="container-fluid">
 
-        <div class="navbar-header" ng-class="{'has-title':pageTitle}">
+        <div class="navbar-header" ng-class="{'has-title':headerTitle}">
 
             <a href="#" ng-click="back()" class="navbar-back"><i class="fa fa-chevron-left"></i></a>
 
@@ -13,7 +13,7 @@
 
             <a ui-sref="home" class="navbar-brand"><img src="/assets/img/stickable.svg" alt="Stickable" /></a>
 
-            <h1>{{ pageTitle }}</h1>
+            <h1>{{ headerTitle }}</h1>
         </div>
 
         <ul ng-if="currentUser" class="nav navbar-nav navbar-right notification-nav" ng-class="{'has-notification': notifications.length > 0}">
@@ -36,34 +36,7 @@
 
         <nav role="navigation" id="top-bar-nav">
 
-            <ul class="nav navbar-nav">
-                <li class="hidden-lg hidden-md"><a href="/"><i class="fa fa-home fa-fw"></i> Front Page</a></li>
-                <li><a href="/bot"><i class="fa fa-search fa-fw"></i> Ideas</a></li>
-                <li><a href="/browse"><i class="fa fa-folder fa-fw"></i> Categories</a></li>
-                <li><a href="/popular"><i class="fa fa-star fa-fw"></i> Popular</a></li>
-                <li><a href="/new"><i class="fa fa-newspaper-o fa-fw"></i> Latest</a></li>
-                <li ng-if="currentUser"><a href="/moderate"><i class="fa fa-gavel fa-fw"></i> Moderate</a></li>
-                <li><a ui-sref="help"><i class="fa fa-question fa-fw"></i> Help</a></li>
-            </ul>
-
-            <ul class="nav navbar-nav navbar-right nav-logged-in" ng-if="currentUser">
-
-                <li><a href="/user/{{ currentUser.username }}/planner"><i class="fa fa-bookmark fa-fw"></i> Planner</a></li>
-                <li><a href="/user/{{ currentUser.username }}/stickers"><i class="fa fa-trophy fa-fw"></i> Sticker Book</a>
-                </li>
-
-                <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user fa-fw"></i> {{
-                        currentUser.username }} <b class="caret"></b></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="/user/{{ currentUser.username }}"><i class="fa fa-user fa-fw"></i> Profile</a></li>
-                        <li class="divider"></li>
-                        <li><a href="/settings"><i class="fa fa-cog fa-fw"></i> Settings</a></li>
-                        <li class="divider"></li>
-                        <li><a href="#" ng-click="logout()"><i class="fa fa-unlock-alt fa-fw"></i> Logout</a></li>
-                    </ul>
-                </li>
-            </ul>
+            <ng-include src="'views/partials/nav.html'"></ng-include>
 
             <form class="navbar-form navbar-right visible-lg" ng-submit="login()" ng-if="currentUser === false">
 
@@ -89,11 +62,6 @@
                 </button>
                 <a class="btn" href="/signup"><i class="fa fa-user fa-fw"></i> Signup</a>
             </form>
-            <ul class="nav navbar-nav navbar-right nav-logged-out" ng-if="currentUser === false">
-                <li class="hidden-lg"><a href="/login"><i class="fa fa-key fa-fw"></i> Login</a></li>
-                <li class="hidden-lg"><a href="/signup"><i class="fa fa-user fa-fw"></i> Signup</a></li>
-            </ul>
-
 
         </nav>
 

@@ -15,7 +15,7 @@
           content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, target-densitydpi=device-dpi"/>
     <base href="/"/>
 
-    <title>Stickable</title>
+    <title ng-bind="(pageTitle ? pageTitle + ' - Stickable' : 'Stickable')">Stickable</title>
 </head>
 <body
         class="{{'state-' + $state.current.name}}"

@@ -3,7 +3,7 @@ app.controller(
     function ($element, $scope, $rootScope, $state, $stateParams, UserResource, ToDoResource, ProgressService) {
 
         $rootScope.loading = true;
-        $rootScope.pageTitle = $stateParams.username;
+
         setBg($element, '/assets/img/bg/planner.jpg');
 
         $scope.stickers = [];
@@ -21,6 +21,7 @@ app.controller(
             function (result) {
                 $scope.user = result.user;
                 $scope.stickers = result.stickers;
+                $rootScope.pageTitle = result.user.possessiveName+' Planner';
 
                 for (var i in result.stickers) {
                     if (result.stickers.hasOwnProperty(i)) {

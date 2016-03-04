@@ -1,7 +1,9 @@
 app.controller(
     'BotController',
     function ($element, $scope, $rootScope, TaskResource) {
-        $rootScope.pageTitle = '';
+
+        $rootScope.pageTitle = 'What To Do';
+
         //setBg($element, '/assets/img/bg/feet.jpg');
 
         var skipMessages = [

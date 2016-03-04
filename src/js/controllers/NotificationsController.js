@@ -2,6 +2,7 @@ app.controller(
     'NotificationsController',
     function ($scope, $rootScope, UserNotificationsResource) {
 
+        $rootScope.pageTitle = 'Notifications';
 
         $scope.init = function () {
 

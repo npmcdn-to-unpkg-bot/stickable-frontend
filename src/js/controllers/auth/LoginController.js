@@ -1,7 +1,8 @@
 app.controller(
     'LoginController',
-    function ($element, $scope, $state, $stateParams, AuthService) {
+    function ($element, $scope, $rootScope, $state, $stateParams, AuthService) {
 
+        $rootScope.pageTitle = 'Login';
         setBg($element, '/assets/img/bg/login.jpg');
 
         $scope.loginFormData = {

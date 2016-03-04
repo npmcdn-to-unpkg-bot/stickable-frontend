@@ -55,22 +55,16 @@ app.config(function ($httpProvider,
             controller: 'BrowseController'
         })
 
+        .state('stickers', {
+            url: "/stickers",
+            templateUrl: "views/pages/stickers.html",
+            controller: 'StickersController'
+        })
+
         .state('bot', {
             url: "/bot",
             templateUrl: "views/pages/bot.html",
             controller: 'BotController'
-        })
-
-        .state('new', {
-            url: "/new",
-            templateUrl: "views/pages/new.html",
-            controller: 'NewController'
-        })
-
-        .state('moderate', {
-            url: "/moderate",
-            templateUrl: "views/pages/moderate.html",
-            controller: 'ModerateController'
         })
 
         .state('signup', {
@@ -219,7 +213,12 @@ app.run(function ($rootScope, $state, AuthService, UserNotificationsResource, No
     };
 
     $rootScope.$state = $state;
+
+    // Content for page's <title>
     $rootScope.pageTitle = '';
+
+    // Title shown in header on mobile. Blank = show logo
+    $rootScope.headerTitle = '';
 
     AuthService.checkSession();
 
@@ -238,6 +237,8 @@ app.run(function ($rootScope, $state, AuthService, UserNotificationsResource, No
 
     $rootScope.$on('$stateChangeStart', function (ev, to, toParams, from) {
         $rootScope.searchOpen = false;
+        $rootScope.headerTitle = '';
+        $rootScope.pageTitle = '';
         clearBg();
     });
 

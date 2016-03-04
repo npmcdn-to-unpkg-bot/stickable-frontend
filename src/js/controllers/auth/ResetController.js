@@ -2,6 +2,7 @@ app.controller(
     'ResetController',
     function ($element, $scope, $state, $stateParams, UserResource) {
 
+        $rootScope.pageTitle = 'Reset Password';
         setBg($element, '/assets/img/bg/login.jpg');
 
         $scope.resetFormData = {

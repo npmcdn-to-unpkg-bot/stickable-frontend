@@ -1,7 +1,8 @@
 app.controller(
     'SignupController',
-    function ($element, $scope, $state, AuthService, UserResource) {
+    function ($element, $scope, $rootScope, $state, AuthService, UserResource) {
 
+        $rootScope.pageTitle = 'Signup';
         setBg($element, '/assets/img/bg/register.jpg');
 
         $scope.signupFormData = {

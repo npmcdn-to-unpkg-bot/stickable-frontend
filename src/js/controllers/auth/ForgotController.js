@@ -1,7 +1,8 @@
 app.controller(
     'ForgotController',
-    function ($element, $scope, $state, $stateParams, UserResource) {
+    function ($element, $scope, $rootScope, $state, $stateParams, UserResource) {
 
+        $rootScope.pageTitle = 'Forgotten Login Details';
         setBg($element, '/assets/img/bg/login.jpg');
 
         $scope.forgotFormData = {

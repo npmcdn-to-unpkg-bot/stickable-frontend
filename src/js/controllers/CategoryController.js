@@ -7,11 +7,12 @@ app.controller(
         $scope.category = null;
         $scope.hasSubcategories = false;
         $scope.hasStickers = false;
-        $rootScope.pageTitle = '';
 
         CategoryResource.get({slug: $stateParams.slug}, function (category) {
 
             $scope.category = category;
+
+            $rootScope.headerTitle = category.name;
             $rootScope.pageTitle = category.name;
 
             $scope.hasSubcategories = category.subcategories.length > 0;

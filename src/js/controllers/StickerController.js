@@ -7,8 +7,9 @@ app.controller(
         $scope.sticker = null;
         $scope.progress = null;
         StickerResource.get({slug: $stateParams.slug}, function (sticker) {
+
             $rootScope.loading = false;
-            //$rootScope.pageTitle = sticker.name;
+            $rootScope.pageTitle = sticker.name;
 
             $scope.sticker = sticker;
             if (sticker.progress) {

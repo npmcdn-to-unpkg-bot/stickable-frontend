@@ -1,7 +1,7 @@
 app.controller(
-    'HelpController',
+    'StickersController',
     function ($element, $scope, $rootScope) {
-        $rootScope.pageTitle = 'Help';
+        $rootScope.pageTitle = 'Popular Stickers';
         setBg($element, '/assets/img/bg/about.jpg');
     }
 );

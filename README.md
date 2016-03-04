@@ -1,6 +1,9 @@
 # Stickable.io Website
 
 ## To Do
+* Number in title when new notification
+* Desktop notifications?
+* Show disapproval reason in notification
 * Add big search box on front page: "I want to..." searches tasks / stickers. With ability to add the task if it doesn't already exist.
 * Add tasks
 * Add sticker designs
@@ -15,5 +18,4 @@
 * Show on task page if completed and accepted. Add "I've done it again" button
 
 ## Bugs
-* Can scroll down while the right menu is open and lose it off the screen
-* Right menu bg goes white in Safari sometimes
+*

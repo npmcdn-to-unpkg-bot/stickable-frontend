@@ -6,9 +6,7 @@ app.controller(
             setBg($element, '/assets/img/splash/badges.png');
         };
 
-        setTimeout($scope.setBg(), 1);
-
-        $rootScope.pageTitle = '';
+        $scope.setBg();
 
         /*var splashImages = [
             'aurora',

@@ -3,7 +3,6 @@ app.controller(
     function ($scope, $rootScope, $state, $stateParams, AuthService, UserResource, ToDoResource) {
 
         $rootScope.loading = true;
-        $rootScope.pageTitle = $stateParams.username;
 
         $scope.username = $stateParams.username;
 
@@ -15,6 +14,8 @@ app.controller(
             {username: $scope.username},
             function(user) {
                 $scope.user = user;
+
+                $rootScope.pageTitle = user.username;
 
                 $scope.stickers = UserResource.getStickers({username: $scope.username});
                 $scope.posts = UserResource.getPosts({username: $scope.username});
