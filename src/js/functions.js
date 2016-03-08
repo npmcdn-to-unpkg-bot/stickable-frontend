@@ -22,5 +22,6 @@ function setBg($element, url) {
 
 function clearBg() {
     $('.splash').backstretch('destroy');
+    // FIXME: This tries to load 'destroy' as an image
     $.backstretch('destroy');
 }

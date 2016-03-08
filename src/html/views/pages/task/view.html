@@ -51,7 +51,7 @@
                         <ul class="post-info">
                             <li>
                                 <a href="/user/{{post.user.username}}">
-                                    <img ng-if="post.user.image" ng-src="{{post.user.image.thumbUrl}}" class="user-image" />
+                                    <img ng-if="post.user.image" ng-src="{{post.user.imageThumbUrl}}" class="user-image" />
                                     <i ng-if="!post.user.image" class="fa fa-user"></i> {{post.user.username}}</a>
                             </li>
                             <li><a href="/task/{{post.task.slug}}/{{post.slug}}"><i class="fa fa-clock-o"></i> <span

@@ -17,17 +17,18 @@
                 <span><i class="fa fa-heart-o"></i> {{ thisPost.likeCount }}</span>
             </a>
 
-            <span class="task" ng-if="showPostTasks">
-                <a href="/task/{{thisPost.task.slug}}">
-                    <i class="fa fa-check-square-o"></i> {{ thisPost.task.name }}
-                </a>
-            </span>
-
             <a class="title"
                href="/task/{{ (thisPost.task ? thisPost.task.slug : (task ? task.slug : ''))}}/{{ thisPost.slug }}"
                ng-click="goToPost($event, thisPost)">{{ thisPost.title }}</a>
 
             <span class="details">
+
+                <span ng-if="showPostTasks">
+                    <a href="/task/{{thisPost.task.slug}}">
+                        <i class="fa fa-check-square-o"></i> {{ thisPost.task.name }}
+                    </a>
+                    <br/>
+                </span>
 
                 <span ng-if="showPostApproval && thisPost.submission.approved === true" class="green">
                     <i class="fa fa-check-circle"></i> Approved Submission
@@ -41,11 +42,11 @@
                     <i class="fa fa-times-circle"></i> Rejected Submission
                 </span>
 
-                <span ng-if="!showPostApproval && thisPost.type === 'SUBMISSION'">
+                <!--<span ng-if="!showPostApproval && thisPost.type === 'SUBMISSION'">
                     <i class="fa"
                    ng-class="{'fa-check-circle': thisPost.type === 'SUBMISSION', 'fa-question-circle' : thisPost.type === 'QUESTION', 'fa-info-circle' : thisPost.type === 'TIP'}"></i>
                     {{ thisPost.type.capitalizeFirstLetter() }}
-                </span>
+                </span>-->
 
                 <span ng-if="showPostUser !== false"><i class="fa fa-user"></i> {{ thisPost.user.username }}</span>
                 <i class="fa fa-comment"></i> {{ thisPost.commentCount }}

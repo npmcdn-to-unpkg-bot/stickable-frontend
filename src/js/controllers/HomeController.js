@@ -1,14 +1,19 @@
 app.controller(
     'HomeController',
-    function ($element, $state, $scope, $rootScope, $filter, CategoryResource, PostResource, StickerResource, ModalService, debounce, ToDoResource) {
+    function ($element,
+              $state,
+              $scope,
+              $rootScope,
+              $filter,
+              CategoryResource,
+              PostResource,
+              StickerResource,
+              ModalService,
+              debounce,
+              ToDoResource,
+              EventLogResource) {
 
-        $scope.setBg = function () {
-            setBg($element, '/assets/img/splash/badges.png');
-        };
-
-        $scope.setBg();
-
-        /*var splashImages = [
+        var splashImages = [
             'aurora',
             'field',
             'girl',
@@ -18,9 +23,15 @@ app.controller(
             'trees'
         ];
         splashImages.shuffle();
-        $scope.splashImage = '/assets/img/splash/' + splashImages[0] + '.jpg';*/
+        $scope.splashImage = '/assets/img/splash/' + splashImages[0] + '.jpg';
 
-        //$scope.categories = CategoryResource.query();
+        $scope.setBg = function () {
+            setBg($element, $scope.splashImage);
+        };
+
+        $scope.setBg();
+
+        $scope.eventLog = EventLogResource.query();
 
         /**
          * Sticker Search
@@ -57,9 +68,6 @@ app.controller(
                         $scope.searchResults = results;
                     }
                 );
-
-
-
             }
         });
 

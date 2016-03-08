@@ -1,0 +1,28 @@
+<ng-switch on="event.type">
+
+    <span ng-switch-when="NEW_USER">{{event.user.username}} joined Stickable</span>
+
+    <span ng-switch-when="NEW_STICKER">{{event.user.username}} created the sticker <a href="/sticker/{{event.sticker.slug}}">{{event.sticker.name}}</a></span>
+
+    <span ng-switch-when="NEW_TASK">{{event.user.username}} created the task <a href="/task/{{event.task.slug}}">{{event.task.name}}</a></span>
+
+    <span ng-switch-when="NEW_POST">{{event.user.username}} posted <a href="/task/{{event.task.slug}}/{{event.post.slug}}">{{event.post.title}}</a> about {{event.task.name}}</span>
+
+    <span ng-switch-when="NEW_COMMENT">{{event.user.username}} <a href="/task/{{event.task.slug}}/{{event.post.slug}}#comment-{{event.commentId}}">commented on the post {{event.post.title}}</a></span>
+
+    <span ng-switch-when="STICKER_EARNT">{{event.user.username}} earnt the sticker <a href="/sticker/{{event.sticker.slug}}">{{event.sticker.name}}</a></span>
+
+    <span ng-switch-when="SUBMISSION_APPROVED">{{event.user.username}} completed the task <a href="/task/{{event.task.slug}}">{{event.task.name}}</a></span>
+
+    <span ng-switch-when="NEW_TO_DO">
+        <span ng-if="event.sticker">
+            {{event.user.username}} wants the sticker <a href="/sticker/{{event.sticker.slug}}">{{event.sticker.name}}</a>
+        </span>
+        <span ng-if="event.task">
+            {{event.user.username}} wants to <a href="/task/{{event.task.slug}}">{{event.task.name}}</a>
+        </span>
+    </span>
+
+    <span ng-switch-default>{{event.type}}</span>
+
+</ng-switch>

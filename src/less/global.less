@@ -226,7 +226,12 @@ textarea.form-control {
     width: 50px;
     height: 50px;
     margin-right: 5px;
-    border-radius: @border-radius-base;
+}
+
+.user-image,
+.user-image.dz-image,
+#settings-image .dz-image {
+    border-radius: 50%;
 }
 
 .default-user-image {
@@ -406,4 +411,11 @@ body:not(.ios) {
             }
         }
     }
+}
+
+.latest-actions {
+    list-style: none;
+}
+.event a {
+    font-weight: bold;
 }

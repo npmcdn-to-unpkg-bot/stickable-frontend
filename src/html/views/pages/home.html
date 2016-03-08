@@ -148,6 +148,12 @@
 
                 <div class="row">
 
+                    <div class="col-md-8">
+                        <h2>Featured Posts</h2>
+                        <ng-include src="'views/partials/post-list.html'"
+                                    ng-controller="PostsController"></ng-include>
+                    </div>
+
                     <div class="col-md-4">
                         <h2>Sticker Of The Week</h2>
                         <a class="featured-sticker" href="/sticker/example-sticker">
@@ -155,13 +161,10 @@
                                 Example Sticker
                             </span>
                         </a>
-                    </div>
 
+                        <h2>The Latest</h2>
+                        <st-events events="eventLog"></st-events>
 
-                    <div class="col-md-8">
-                        <h2>Featured Posts</h2>
-                        <ng-include src="'views/partials/post-list.html'"
-                                    ng-controller="PostsController"></ng-include>
                     </div>
 
                 </div>

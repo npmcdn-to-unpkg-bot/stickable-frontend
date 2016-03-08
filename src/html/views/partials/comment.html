@@ -9,7 +9,7 @@
 
     <span class="author">
         <a href="/user/{{ comment.user.username }}">
-            <img ng-if="comment.user.image" ng-src="{{comment.user.image.thumbUrl}}" class="user-image" />
+            <img ng-if="comment.user.image" ng-src="{{comment.user.imageThumbUrl}}" class="user-image" />
             <i ng-if="!comment.user.image" class="fa fa-user"></i> {{ comment.user.username }}
         </a>
 
