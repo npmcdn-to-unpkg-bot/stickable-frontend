@@ -93,6 +93,7 @@ app.controller(
                 {username: $rootScope.currentUser.username},
                 $scope.formData,
                 function (response) {
+                    $scope.formData.loading = false;
                     $scope.user = response.user;
                     $scope.hasNewImage = false;
                     dropzone.removeAllFiles();
@@ -118,7 +119,33 @@ app.controller(
 
                 }
             )
-
         };
+
+        $scope.generatingAvatar = false;
+        $scope.generateAvatar = function ($event) {
+            preventDefault($event);
+            if ($scope.generatingAvatar) {
+                return false
+            }
+
+            $scope.generatingAvatar = true;
+
+            UserResource.generateAvatar(
+                {username: $rootScope.currentUser.username},
+                {},
+                function (response) {
+                    $scope.generatingAvatar = false;
+                    $scope.user = response.user;
+                    $scope.hasNewImage = false;
+                    dropzone.removeAllFiles();
+                    alertSuccess("Changes saved");
+                },
+                function (response) {
+                    $scope.generatingAvatar = false;
+                    alertError(response.data.message);
+
+                }
+            )
+        }
     }
 );

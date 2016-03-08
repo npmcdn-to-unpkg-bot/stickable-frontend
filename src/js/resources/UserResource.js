@@ -24,6 +24,11 @@ app.factory(
                     url: apiUrl + 'users/:username'
                 },
 
+                generateAvatar: {
+                    method: 'POST',
+                    url: apiUrl + 'users/:username/generate-avatar'
+                },
+
                 save: {
                     method: 'POST',
                 },

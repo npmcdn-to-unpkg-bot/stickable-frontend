@@ -21,6 +21,11 @@
                         Select A New Picture
                     </a>
 
+                    <a class="btn btn-primary btn-labeled" ng-click="generateAvatar($event)" ng-class="{'btn-loading': generatingAvatar}">
+                        <span class="btn-label"><i class="fa fa-image"></i></span>
+                        Generate A Random Picture
+                    </a>
+
                     <div class="dz-message"></div>
                 </div>
 

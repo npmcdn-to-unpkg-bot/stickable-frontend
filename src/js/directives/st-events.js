@@ -6,7 +6,9 @@ app.directive('stEvents', function () {
             events: '='
         },
         controller: function ($scope, $rootScope, $state, UserNotificationsResource) {
-
+            $scope.likeEvent = function ($event, event) {
+                alert('Liking these doesn\'t work yet.');
+            };
         }
     }
 });

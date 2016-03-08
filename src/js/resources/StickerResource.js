@@ -29,7 +29,6 @@ app.factory(
                     }
                 },
 
-
                 getDoers: {
                     method: 'GET',
                     url: apiUrl + 'stickers/:slug/doers'

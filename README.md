@@ -18,4 +18,4 @@
 * Show on task page if completed and accepted. Add "I've done it again" button
 
 ## Bugs
-*
+* If you logout while on settings page, you're still on the page you now shouldn't be on
