@@ -1,6 +1,6 @@
 <ng-switch on="event.type">
 
-    <span ng-switch-when="NEW_USER">{{event.user.username}} joined Stickable</span>
+    <span ng-switch-when="NEW_USER"><a href="/user/{{event.user.username}}">{{event.user.username}}</a> joined Stickable</span>
 
     <span ng-switch-when="NEW_STICKER">{{event.user.username}} created the sticker <a href="/sticker/{{event.sticker.slug}}">{{event.sticker.name}}</a></span>
 
