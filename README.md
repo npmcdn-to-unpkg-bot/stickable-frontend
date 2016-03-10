@@ -19,3 +19,7 @@
 
 ## Bugs
 * If you logout while on settings page, you're still on the page you now shouldn't be on
+* If you clear notifications with the drawer open it gets stuck open because the icon disappears
+* User menu should have pointer cursor
+
+

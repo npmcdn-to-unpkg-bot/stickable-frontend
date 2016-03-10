@@ -11,9 +11,10 @@ app.directive('stNotifications', function () {
             $scope.clear = function ($event, index) {
                 preventDefault($event);
                 var notification = $scope.notifications[index];
-                console.log('clear', index, notification);
                 $scope.notifications.splice(index, 1);
-
+                if ($scope.notifications.length < 1) {
+                    $rootScope.notificationsOpen = false;
+                }
                 UserNotificationsResource.delete({username: $rootScope.currentUser.username, id: notification.id});
 
             };

@@ -225,6 +225,7 @@ app.run(function ($rootScope, $state, AuthService, UserNotificationsResource, No
     $rootScope.currentUser = AuthService.getUser();
     $rootScope.notificationsPreview = 0;
     $rootScope.notifications = [];
+    $rootScope.notificationsOpen = false;
 
     $rootScope.$on('login', function (event, args) {
         $rootScope.currentUser = args.user;

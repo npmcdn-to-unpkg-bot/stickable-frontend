@@ -1,6 +1,6 @@
 app.controller(
     'HeaderController',
-    function ($scope, $state, ModalService, AuthService) {
+    function ($scope, $rootScope, $state, ModalService, AuthService) {
 
         $scope.loginFormData = {
             loading: false,
@@ -38,11 +38,9 @@ app.controller(
             window.history.go(-1);
         };
 
-        $scope.notificationsOpen = false;
         $scope.toggleNotifications = function ($event) {
             preventDefault($event);
-            $scope.notificationsOpen = !$scope.notificationsOpen;
-            console.log($scope.notificationsOpen);
+            $rootScope.notificationsOpen = !$rootScope.notificationsOpen;
         };
 
     }

@@ -20,7 +20,7 @@
             <li>
                 <a ng-click="toggleNotifications($event)" href="#">
                     <span ng-show="notifications.length > 0" class="notification">{{ notifications.length }}</span>
-                    <i class="fa fa-envelope fa-fw"></i>
+                    <i ng-show="notifications.length < 1" class="fa fa-envelope fa-fw"></i>
                     <b class="caret visible-lg-inline-block"></b>
                 </a>
             </li>

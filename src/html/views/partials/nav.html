@@ -13,15 +13,13 @@
     </li>
 
     <li class="dropdown">
-        <a class="dropdown-toggle" data-toggle="dropdown">
-
+        <a class="dropdown-toggle" href="#" data-toggle="dropdown">
             <img class="user-image" ng-src="{{ currentUser.imageThumbUrl}}" />
-            {{ currentUser.username }} <b class="caret"></b></a>
+            {{ currentUser.username }} <b class="caret"></b>
+        </a>
         <ul class="dropdown-menu">
             <li><a href="/user/{{ currentUser.username }}"><i class="fa fa-user fa-fw"></i> Profile</a></li>
-            <li class="divider"></li>
             <li><a href="/settings"><i class="fa fa-cog fa-fw"></i> Settings</a></li>
-            <li class="divider"></li>
             <li><a href="#" ng-click="logout()"><i class="fa fa-unlock-alt fa-fw"></i> Logout</a></li>
         </ul>
     </li>
