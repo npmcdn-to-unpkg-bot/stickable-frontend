@@ -1,6 +1,6 @@
 <div class="content">
 <div class="container">
-    <h1><img class="user-image" ng-src="{{user.imageThumbUrl}}" ng-if="user.image" />{{ user.username }}</h1>
+    <h1><img class="user-image" ng-src="{{user.imageThumbUrl}}" ng-if="user.imageThumbUrl" />{{ user.username }}</h1>
 
     <h2 ng-if="user.profile.about">About {{ user.username }}</h2>
     <p ng-if="user.profile.about">{{ user.profile.about }}</p>
