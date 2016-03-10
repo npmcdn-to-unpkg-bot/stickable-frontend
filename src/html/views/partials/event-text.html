@@ -2,9 +2,23 @@
 
     <span ng-switch-when="NEW_USER"><a href="/user/{{event.user.username}}">{{event.user.username}}</a> joined Stickable</span>
 
-    <span ng-switch-when="NEW_STICKER">{{event.user.username}} created the sticker <a href="/sticker/{{event.sticker.slug}}">{{event.sticker.name}}</a></span>
+    <span ng-switch-when="NEW_STICKER">
+        <span ng-if="event.user">
+            {{event.user.username}} created the sticker <a href="/sticker/{{event.sticker.slug}}">{{event.sticker.name}}</a>
+        </span>
+        <span ng-if="!event.user">
+            A new sticker, <a href="/sticker/{{event.sticker.slug}}">{{event.sticker.name}}</a>, was created.
+        </span>
+    </span>
 
-    <span ng-switch-when="NEW_TASK">{{event.user.username}} created the task <a href="/task/{{event.task.slug}}">{{event.task.name}}</a></span>
+    <span ng-switch-when="NEW_TASK">
+        <span ng-if="event.user">
+            {{event.user.username}} created the task <a href="/task/{{event.task.slug}}">{{event.task.name}}</a>
+        </span>
+        <span ng-if="!event.user">
+            A new task, <a href="/task/{{event.task.slug}}">{{event.task.name}}</a>, was created.
+        </span>
+    </span>
 
     <span ng-switch-when="NEW_POST">{{event.user.username}} posted <a href="/task/{{event.task.slug}}/{{event.post.slug}}">{{event.post.title}}</a> about {{event.task.name}}</span>
 
