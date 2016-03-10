@@ -2,7 +2,7 @@
     <div class="user" ng-repeat="user in data.users" ng-class="{'liked': !!user.pivot.liked, 'like-clicked': !!user.likeClicked}">
 
         <a href="/user/{{ user.username }}">
-            <span class="pic" ng-style="{'background-image':user.image?'url('+user.imageThumbUrl+')' : ''}">
+            <span class="pic" ng-style="{'background-image':user.imageThumbUrl?'url('+user.imageThumbUrl+')' : ''}">
                 <span>
                     {{ user.username }}
                     <small>
@@ -13,7 +13,7 @@
         </a>
 
         <a class="like-btn like-thumb" ng-click="like($event, user)" href="#">
-            <span><i class="fa fa-thumbs-up"></i> <strong ng-bind="user.pivot.likeCount"></strong></span>
+            <span><strong ng-bind="user.pivot.likeCount  | suppressZero"></strong> <i class="fa fa-thumbs-up"></i></span>
         </a>
     </div>
 </div>

@@ -1,7 +1,7 @@
 <div class="comment" ng-class="{'liked': !!comment.liked, 'like-clicked': !!comment.likeClicked}" data-commentid="{{comment.id}}">
     <div class="inner">
         <a class="like-btn" ng-click="likeComment($event, comment)" href="#">
-            <span><i class="fa fa-heart-o"></i> {{ comment.likeCount }}</span>
+            <span>{{ comment.likeCount | suppressZero }} <i class="fa fa-heart-o"></i></span>
         </a>
 
         <div ng-bind-html="comment.comment | markdown"></div>

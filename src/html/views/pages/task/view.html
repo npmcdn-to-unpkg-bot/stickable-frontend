@@ -45,7 +45,7 @@
                          ng-class="{'liked': !!post.liked, 'like-clicked': !!post.likeClicked}">
 
                         <a class="like-btn" ng-click="likePost($event, post)" href="#">
-                            <span><i class="fa fa-heart-o"></i> {{ post.likeCount }}</span>
+                            <span>{{ post.likeCount | suppressZero }} <i class="fa fa-heart-o"></i></span>
                         </a>
 
                         <ul class="post-info">

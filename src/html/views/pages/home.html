@@ -163,7 +163,29 @@
                         </a>
 
                         <h2>The Latest</h2>
-                        <st-events events="eventLog"></st-events>
+                        <ul class="latest-actions" ng-controller="EventsController">
+                            <li
+                                    ng-repeat="event in eventLog"
+                                    class="event media"
+                                    ng-class="{'liked': !!event.liked, 'like-clicked': !!event.likeClicked}"
+                                    >
+                                <span class="media-left">
+                                    <img ng-if="event.user.imageThumbUrl" ng-src="{{event.user.imageThumbUrl}}" class="user-image" />
+                                </span>
+
+                                <span class="media-body">
+                                    <ng-include src="'views/partials/event-text.html'"></ng-include>
+                                </span>
+
+                                <span class="media-right media-middle">
+
+                                    <a class="like-btn" ng-click="likeEvent($event, event)" href="#" ng-if="event.action === 'like'">
+                                        <span>{{ event.likeCount | suppressZero }} <i class="fa fa-heart-o"></i></span>
+                                    </a>
+
+                                </span>
+                            </li>
+                        </ul>
 
                     </div>
 

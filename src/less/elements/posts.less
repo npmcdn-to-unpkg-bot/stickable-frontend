@@ -156,6 +156,7 @@
 a.like-btn {
     float: right;
     color: @grey;
+    white-space: nowrap;
 
     span {
         position: relative;
@@ -163,6 +164,9 @@ a.like-btn {
 
     i {
         font-size: 20px;
+        margin-left:3px;
+        position: relative;
+        top:1px;
     }
 }
 
@@ -173,6 +177,7 @@ a.like-btn {
 
 // Like heart when hovering
 // (switch to filled icon)
+.event.liked .like-btn i:before,
 .post.liked .like-btn i:before,
 .comment.liked > div > .like-btn i:before,
 .like-btn:hover i:before {
@@ -180,6 +185,7 @@ a.like-btn {
 }
 
 // Like heart when active
+.event.liked .like-btn,
 .post.liked .like-btn,
 .comment.liked > div > .like-btn {
     i {

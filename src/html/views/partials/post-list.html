@@ -14,7 +14,7 @@
         <span class="media-body media-middle">
 
             <a class="like-btn" ng-click="likePost($event, thisPost)" href="#">
-                <span><i class="fa fa-heart-o"></i> {{ thisPost.likeCount }}</span>
+                <span>{{ thisPost.likeCount | suppressZero }} <i class="fa fa-heart-o"></i></span>
             </a>
 
             <a class="title"
