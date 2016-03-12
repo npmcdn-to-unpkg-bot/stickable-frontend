@@ -28,7 +28,9 @@
 
         <st-notifications
                 class="header-notifications"
-                ng-class="{'notifications-preview': !notificationsOpen && notificationsPreview}"
+                ng-class="{
+                    'notifications-preview': !notificationsOpen && notificationsPreview
+                    }"
                 ng-if="currentUser && (notificationsOpen || notificationsPreview)"
                 notifications="notifications"
                 toggle="toggleNotifications"

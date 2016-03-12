@@ -11,6 +11,8 @@ app.controller(
         $scope.stage = $scope.hasFirstStage ? 1 : 2;
         $scope.nextEnabled = $scope.hasFirstStage ? false : true;
 
+        $scope.errors = {};
+
         $scope.formData = {
             imageIds: [],
             title: '',
@@ -96,7 +98,35 @@ app.controller(
             $scope.formData.private = val;
         };
 
+        $scope.submitting = false;
+
         $scope.submit = function () {
+
+            if ($scope.submitting) {
+                return false;
+            }
+
+            var errors = false;
+
+            $scope.errors = {};
+
+            if (!$scope.formData.title) {
+                $scope.errors.title = ['Please enter a title.'];
+                $scope.stage = 2;
+                errors = true;
+            }
+
+            if (!$scope.formData.text) {
+                $scope.errors.text = ['Please enter some content.'];
+                $scope.stage = 2;
+                errors = true;
+            }
+
+            if (errors) {
+                return false;
+            }
+
+            $scope.submitting = true;
 
             SubmissionResource.save(
                 {
@@ -104,12 +134,29 @@ app.controller(
                 },
                 $scope.formData,
                 function (response) {
+                     $scope.submitting = false;
                     console.log(response);
                     alertSuccess("Submission saved");
-                    close(response.post);
                 },
                 function (response) {
-                    alertError(response.data.message);
+
+                    $scope.submitting = false;
+
+                    if (
+                        response.data.messages
+                        &&
+                        (
+                            response.data.messages.hasOwnProperty('title')
+                            ||
+                            response.data.messages.hasOwnProperty('text')
+                        )
+                    ) {
+                        $scope.errors = response.data.messages;
+                    } else {
+                        alertError(response.data.message);
+                    }
+
+
                 }
             );
 

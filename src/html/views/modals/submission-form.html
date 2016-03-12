@@ -1,4 +1,4 @@
-<div class="modal submission-form-modal">
+<div class="modal submission-form-modal modal-paged">
 
     <div class="modal-content">
 
@@ -9,10 +9,10 @@
         <form class="form" ng-submit="submit()">
 
             <div class="modal-body">
-
+                
                 <div ng-show="stage === 1" class="submission-stage">
 
-                    <h2 class="text-center">{{ task.submission }}</h2>
+                    <h2>{{ task.submission }}</h2>
 
                     <div ng-include="'views/partials/submission-forms/' + task.submissionType.toLowerCase() + '.html'"></div>
 
@@ -20,7 +20,7 @@
 
                 <div ng-show="stage === 2" class="submission-stage">
 
-                    <h2 class="text-center">{{ (hasFirstStage ? 'Post Your Submission' : task.submission) }}</h2>
+                    <h2>{{ (hasFirstStage ? 'Post Your Submission' : task.submission) }}</h2>
 
                     <!--<div class="form-group">
 
@@ -40,6 +40,22 @@
 
                     </div>-->
 
+                    <div class="form-group" ng-show="formData.private === 0" ng-class="{'has-error': errors.title}">
+                        <label for="post-title">Title</label>
+                        <span ng-if="errors.title" class="help-block">{{ errors.title.join(' ') }}</span>
+                        <input type="text"
+                               class="form-control"
+                               ng-model="formData.title"
+                               id="post-title"
+                               placeholder="Give your post a title."/>
+                    </div>
+
+                    <div class="form-group" ng-show="formData.private === 0" ng-class="{'has-error': errors.text}">
+                        <label for="post-text">Content</label>
+                        <span ng-if="errors.text" class="help-block">{{ errors.text.join(' ') }}</span>
+                        <textarea class="form-control" id="post-text" ng-model="formData.text" placeholder="Write your post."></textarea>
+                    </div>
+
                     <p class="submission-help submission-post-help" ng-show="formData.private === 0 && submissionType === 'image'">
                         <i class="fa fa-star"></i> Tell the story of how you completed this task. Did you find it interesting? Can you share some tips to help others?
                         <br/><i class="fa fa-info-circle"></i> Your photo(s) from the previous page and story you enter below will appear on the page for the task. Other members can like and comment on your post.
@@ -52,27 +68,11 @@
                         <i class="fa fa-exclamation-triangle"></i> Stickable works best when you post about the task and share stories and advice for others attempting to complete this. Consider writing a post even if it's only a few lines.</span>
                     </p>
 
-                    <div class="form-group" ng-show="formData.private === 0">
-                        <label for="post-title">Title</label>
-                        <input type="text"
-                               class="form-control"
-                               ng-model="formData.title"
-                               id="post-title"
-                               placeholder="Give your post a title."/>
-                    </div>
-
-                    <div class="form-group" ng-show="formData.private === 0">
-                        <textarea class="form-control" id="post-text" ng-model="formData.text" placeholder="Write your post."></textarea>
-                    </div>
-
                 </div>
 
                 <div ng-show="stage === 3" class="submission-stage">
 
-                    <h2 class="text-center">Rate The Task</h2>
-
-                    <p class="submission-help">
-                        <i class="fa fa-info-circle"></i> Providing this feedback helps us suggest tasks you'll enjoy that fit your time and budget.</p>
+                    <h2>Rate The Task</h2>
 
                     <label>How much did it cost?</label>
                     <st-rating class="rating-price" model="formData.cost" values="costs"></st-rating>
@@ -82,6 +82,10 @@
 
                     <label>How much did you enjoy it?</label>
                     <st-rating class="rating-star" model="formData.rating" values="ratings"></st-rating>
+
+                    <p class="submission-help">
+                        <i class="fa fa-info-circle"></i> Providing this feedback helps us suggest tasks you'll enjoy that fit your time and budget.
+                    </p>
 
                 </div>
 
@@ -95,12 +99,12 @@
                     <li ng-class="{'active': stage === 3}"><a href="#" ng-click="toStage(3)"></a></li>
                 </ul>
 
-                <a class="btn btn-labeled" ng-class="{'disabled': !nextEnabled}" ng-click="nextStage()" ng-hide="stage === 3">
+                <a class="btn btn-labeled btn-block-sm" ng-class="{'disabled': !nextEnabled}" ng-click="nextStage()" ng-hide="stage === 3">
                     <span class="btn-label"><i class="fa fa-arrow-right"></i></span>
                     Continue
                 </a>
 
-                <button class="btn btn-primary btn-labeled" ng-show="stage === 3">
+                <button class="btn btn-primary btn-labeled btn-block-sm" ng-show="stage === 3" ng-class="{'btn-loading': submitting}">
                     <span class="btn-label"><i class="fa fa-save"></i></span>
                     Submit
                 </button>

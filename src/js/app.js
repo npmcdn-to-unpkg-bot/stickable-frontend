@@ -221,11 +221,7 @@ app.run(function ($rootScope, $state, AuthService, UserNotificationsResource, No
     $rootScope.headerTitle = '';
 
     AuthService.checkSession();
-
     $rootScope.currentUser = AuthService.getUser();
-    $rootScope.notificationsPreview = 0;
-    $rootScope.notifications = [];
-    $rootScope.notificationsOpen = false;
 
     $rootScope.$on('login', function (event, args) {
         $rootScope.currentUser = args.user;
@@ -251,6 +247,15 @@ app.run(function ($rootScope, $state, AuthService, UserNotificationsResource, No
     $rootScope.costs = ['Free', '< $10', '$10 - $50', '$50 - $200', '> $200'];
     $rootScope.times = ['< 15 mins', '< 1 hr', '1 - 4 hrs', '1 day', '> 1 day'];
     $rootScope.ratings = ['Sucked', 'Meh', 'Good', 'Great', 'Life Changing'];
+
+
+    $rootScope.notificationsPreview = 0;
+    $rootScope.notificationsOpen = false;
+    $rootScope.notifications = [];
+
+    $rootScope.bodyClick = function ($event) {
+        $rootScope.notificationsOpen = false;
+    };
 
 });
 

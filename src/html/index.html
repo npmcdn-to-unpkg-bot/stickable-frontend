@@ -19,6 +19,7 @@
 </head>
 <body
         class="{{'state-' + $state.current.name}}"
+        ng-click="bodyClick($event)"
         ng-class="{
             'ios': iOS,
             'search-open': searchOpen

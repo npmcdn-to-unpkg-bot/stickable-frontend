@@ -15,8 +15,8 @@ app.directive('stNotifications', function () {
                 if ($scope.notifications.length < 1) {
                     $rootScope.notificationsOpen = false;
                 }
+                console.log('$scope.notifications', $scope.notifications, $scope.notifications.length, $rootScope.notificationsOpen);
                 UserNotificationsResource.delete({username: $rootScope.currentUser.username, id: notification.id});
-
             };
 
             $scope.goTo = function ($event, index) {

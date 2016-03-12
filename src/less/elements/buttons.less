@@ -27,6 +27,12 @@ a.btn {
     }
 }
 
+.btn.disabled {
+    -webkit-filter:~"grayscale(100%)";
+    filter:~"grayscale(100%)";
+    opacity:.5;
+}
+
 // Buttons with a darker label BG on the left (from jasny bootstrap)
 .btn-labeled {
     padding-left: 11px;
@@ -111,6 +117,29 @@ a.btn {
     }
 }
 
+// Make buttons block on sm
+@media (max-width: @screen-sm-max) {
+    .btn-block-sm {
+        .btn-block();
+        margin-bottom: 14px;
+
+        &:last-child {
+            margin-bottom:0;
+        }
+    }
+
+    .btn-block-sm.btn-labeled {
+        //padding: (@btn-padding / 2) @btn-padding (@btn-padding / 2) (@btn-padding + 34);
+        padding:7px;
+
+        .btn-label {
+            position: absolute;
+            left: -1px;
+            margin-bottom:0;
+        }
+    }
+}
+
 // Make buttons block on xs
 @media (max-width: @screen-xs-max) {
     .btn:not(.no-block) {
@@ -120,14 +149,11 @@ a.btn {
         &:last-child {
             margin-bottom:0;
         }
-
-        /*&.btn-labeled {
-            .btn-block.btn-labeled()
-        }*/
     }
 
     .btn-labeled:not(.no-block) {
-        padding: (@btn-padding / 2) @btn-padding (@btn-padding / 2) (@btn-padding + 34);
+        //padding: (@btn-padding / 2) @btn-padding (@btn-padding / 2) (@btn-padding + 34);
+        padding:7px;
 
         .btn-label {
             position: absolute;

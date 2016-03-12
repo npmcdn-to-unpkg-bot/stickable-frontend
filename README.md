@@ -1,6 +1,7 @@
 # Stickable.io Website
 
 ## To Do
+* Form validation
 * Number in title when new notification
 * Desktop notifications?
 * Show disapproval reason in notification
@@ -17,9 +18,11 @@
 * Ability to assign roles / admin
 * Show on task page if completed and accepted. Add "I've done it again" button
 
+
 ## Bugs
+* Needs login check for many things!
 * If you logout while on settings page, you're still on the page you now shouldn't be on
+* On sm the sticker search box container has weird sides
+
+### Fixed?
 * If you clear notifications with the drawer open it gets stuck open because the icon disappears
-* User menu should have pointer cursor
-
-
