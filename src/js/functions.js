@@ -6,7 +6,7 @@ function preventDefault($event) {
 var iOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
 
 function setBg($element, url) {
-    setTimeout(function() {
+    setTimeout(function () {
         if (url) {
             $element.removeClass('dark-bg');
             if (iOS) {

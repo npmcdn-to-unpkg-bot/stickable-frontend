@@ -41,7 +41,7 @@ app.controller(
         $scope.comments = null;
         if ($stateParams.postSlug) {
 
-            PostResource.get({postSlug:$stateParams.postSlug}, function (response) {
+            PostResource.get({postSlug: $stateParams.postSlug}, function (response) {
                 $rootScope.loading = false;
                 $rootScope.pageTitle = response.post.title;
                 $scope.post = response.post;
@@ -63,13 +63,13 @@ app.controller(
             });
         }
 
-        $scope.loadDoers = function() {
+        $scope.loadDoers = function () {
             TaskResource.getDoers({slug: $scope.task.slug}, function (result) {
                 $scope.doers = result;
             });
         };
 
-        $scope.likeDoer = function($event, doer) {
+        $scope.likeDoer = function ($event, doer) {
             preventDefault($event);
 
             doer.likeClicked = true;
@@ -86,26 +86,26 @@ app.controller(
             doer.likeCount = doer.pivot.likeCount;
         };
 
-        $scope.goToTask = function($event, task) {
+        $scope.goToTask = function ($event, task) {
             /*preventDefault($event);
-            $scope.post = null;
-            onTaskLoad(task);*/
+             $scope.post = null;
+             onTaskLoad(task);*/
         };
 
         // TODO: paginate posts
 
-        $scope.setPostsOrder = function(order) {
+        $scope.setPostsOrder = function (order) {
             $scope.postsOrder = order;
         };
 
-        $scope.showSubmissionForm = function() {
+        $scope.showSubmissionForm = function () {
             ModalService.showModal({
                 templateUrl: 'views/modals/submission-form.html',
                 controller: 'SubmissionFormController',
                 inputs: {
                     task: $scope.task,
                 }
-            }).then(function(modal) {
+            }).then(function (modal) {
 
                 modal.close.then(function (post) {
                     if (post) {
@@ -117,7 +117,7 @@ app.controller(
 
         };
 
-        $scope.showPostForm = function(type) {
+        $scope.showPostForm = function (type) {
             ModalService.showModal({
                 templateUrl: 'views/modals/post-form.html',
                 controller: 'PostFormController',
@@ -125,7 +125,7 @@ app.controller(
                     task: $scope.task,
                     postType: type
                 }
-            }).then(function(modal) {
+            }).then(function (modal) {
 
                 modal.close.then(function (post) {
                     if (post) {
@@ -199,7 +199,7 @@ app.controller(
          */
 
         $scope.commentFormVisible = false;
-        $scope.showCommentForm = function($event, replyToComment) {
+        $scope.showCommentForm = function ($event, replyToComment) {
             preventDefault($event);
             $scope.commentFormVisible = true;
 

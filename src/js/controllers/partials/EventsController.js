@@ -2,7 +2,7 @@ app.controller(
     'EventsController',
     function ($scope, $state, EventLogResource) {
 
-        $scope.likeEvent = function($event, event) {
+        $scope.likeEvent = function ($event, event) {
             preventDefault($event);
 
             event.liked = event.liked ? false : true;

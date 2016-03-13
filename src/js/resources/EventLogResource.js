@@ -20,12 +20,12 @@ app.factory(
 
                 likeEvent: {
                     url: apiUrl + 'event-logs/:id/likes',
-                    method:'POST'
+                    method: 'POST'
                 },
 
                 unlikeEvent: {
                     url: apiUrl + 'event-logs/:id/likes',
-                    method:'DELETE'
+                    method: 'DELETE'
                 }
             }
         );

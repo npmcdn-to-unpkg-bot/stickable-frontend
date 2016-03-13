@@ -70,12 +70,12 @@ app.controller(
 
         $scope.findTask();
 
-        $scope.$watch('formData.cost', function() {
-             $scope.findTask();
+        $scope.$watch('formData.cost', function () {
+            $scope.findTask();
         });
 
-        $scope.$watch('formData.time', function() {
-             $scope.findTask();
+        $scope.$watch('formData.time', function () {
+            $scope.findTask();
         });
     }
 );

@@ -6,7 +6,5 @@ app.controller(
 
         $scope.task = $scope.$parent.task;
 
-
-
     }
 );

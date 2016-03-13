@@ -158,8 +158,8 @@
                         CKEDITOR.remove(instance);
 
                         /*instance.destroy(
-                            false //If the instance is replacing a DOM element, this parameter indicates whether or not to update the element with the instance contents.
-                        );*/
+                         false //If the instance is replacing a DOM element, this parameter indicates whether or not to update the element with the instance contents.
+                         );*/
                     });
 
                     var setModelData = function (setPristine) {

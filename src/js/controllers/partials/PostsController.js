@@ -4,7 +4,7 @@ app.controller(
 
         console.log('PostsController', $scope);
 
-        $scope.likePost = function($event, post) {
+        $scope.likePost = function ($event, post) {
             preventDefault($event);
 
             post.liked = post.liked ? false : true;
@@ -19,15 +19,15 @@ app.controller(
             }
         };
 
-        $scope.goToPost = function($event, post) {
+        $scope.goToPost = function ($event, post) {
             /*try {
-                if ($scope.$parent.$parent.hasOwnProperty('post')) {
-                    preventDefault($event);
-                    $scope.$parent.$parent.post = post;
-                }
-            } catch (e) {
-                console.log(e);
-            }*/
+             if ($scope.$parent.$parent.hasOwnProperty('post')) {
+             preventDefault($event);
+             $scope.$parent.$parent.post = post;
+             }
+             } catch (e) {
+             console.log(e);
+             }*/
         };
 
     }

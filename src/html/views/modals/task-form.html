@@ -12,23 +12,35 @@
 
                 <h2 class="text-center">Create A Task</h2>
 
-                <div class="form-group">
-                    <span class="pull-right help-block">e.g. Visit <em>place</em> or Make a <em>thing</em>.</span>
+                <div class="alert alert-info">
+                    <p><i class="fa fa-check-square-o"></i> A task is one measurable thing out of many that need doing to earn a sticker.</p>
+                </div>
+
+
+                <div class="form-group" ng-class="{'has-error': errors.name}">
                     <label for="task-title"><i class="fa fa-check-square-o"></i> What Needs Doing?</label>
+                    <span ng-if="errors.name" class="help-block">{{ errors.name.join(' ') }}</span>
                     <input type="text"
                            class="form-control"
                            ng-model="formData.name"
                            id="task-title"
-                           placeholder="Give your task a title."/>
+                           placeholder="e.g. Visit Place Name, or make A Thing."/>
                 </div>
 
-                <div class="form-group">
-                    <span class="help-block pull-right">e.g. Take a photo of you at <em>place</em> or Take a photo of <em>the thing you made</em>.</span>
+                <div class="form-group" ng-class="{'has-error': errors.submission}">
                     <label for="task-submission"><i class="fa fa-cloud-upload"></i> How Do You Show You've Done It?</label>
+                    <span ng-if="errors.submission" class="help-block">{{ errors.submission.join(' ') }}</span>
 
                     <st-tabs class="clear" model="formData.submissionType" values="submissionTypes"></st-tabs>
 
-                    <textarea class="form-control" id="task-submission" ng-model="formData.submission" placeholder="What's needed?" style="min-height:0"></textarea>
+                    <textarea
+                            class="form-control"
+                            id="task-submission"
+                            ng-model="formData.submission"
+                            placeholder="e.g. Take a photo at Place Name or of The Thing"
+                            style="min-height:100px">
+
+                    </textarea>
                 </div>
 
             </div>

@@ -21,7 +21,7 @@ app.controller(
             function (result) {
                 $scope.user = result.user;
                 $scope.stickers = result.stickers;
-                $rootScope.pageTitle = result.user.possessiveName+' Planner';
+                $rootScope.pageTitle = result.user.possessiveName + ' Planner';
 
                 for (var i in result.stickers) {
                     if (result.stickers.hasOwnProperty(i)) {
@@ -32,7 +32,7 @@ app.controller(
                 UserResource.getPosts(
                     {
                         username: $scope.username,
-                        type:'submission'
+                        type: 'submission'
                     },
                     function (response) {
                         $scope.posts = response;

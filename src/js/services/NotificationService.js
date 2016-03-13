@@ -14,7 +14,7 @@ app.service(
                 $rootScope.notifications = UserNotificationsResource.query({username: user.username});
             },
 
-            onLogin: function(user) {
+            onLogin: function (user) {
                 this.getNotifications(user);
 
                 this.initSocket();
@@ -38,7 +38,7 @@ app.service(
                     self.setUser();
                 });
 
-                socket.on('new-notification', function(message) {
+                socket.on('new-notification', function (message) {
                     self.addNewNotification(message.notification);
                 });
 

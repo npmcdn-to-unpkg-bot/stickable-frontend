@@ -102,11 +102,9 @@
                         </li>
 
 
-                        <li class="header" ng-hide="sticker.isOnToDoList">
-                            <h3>Want this sticker?</h3>
-                        </li>
-                        <li ng-hide="sticker.isOnToDoList">
+                        <li ng-hide="sticker.isOnToDoList" class="text-center">
                             <span>
+                                <h3>Want this sticker?</h3>
                                 <a class="btn btn-primary btn-block btn-labeled todo-btn" ng-click="toggleToDo()">
                                     <span class="btn-label"><i class="fa fa-plus-circle"></i></span>
                                     Add To Your To Do List
@@ -114,11 +112,7 @@
                             </span>
                         </li>
 
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                        <li></li>
+                        <li class="hidden-sm hidden-xs" ng-repeat="n in [] | range:taskPadding"></li>
                     </ul>
 
                 </div>

@@ -12,8 +12,26 @@
 
                 <h2 class="text-center">Create A Sticker</h2>
 
-                <div class="form-group">
+                <div class="alert alert-info">
+                    <p><i class="fa fa-trophy"></i> A <strong>sticker</strong> is the overall goal you want to achieve. On the next page you will be able to add individual <strong>tasks</strong> that are necessary to earn this sticker.</p>
+                </div>
+
+                <div class="form-group"  ng-class="{'has-error': errors.name}">
+                    <label for="sticker-name"><i class="fa fa-trophy"></i> Name The Goal</label>
+                    <span ng-if="!errors.name" class="help-block">Keep it simple and specific, like <em>Stop Smoking</em> or <em>Visit Beijing</em>.</span>
+                    <span ng-if="errors.name" class="help-block">{{ errors.name.join(' ') }}</span>
+                    <input type="text"
+                           class="form-control"
+                           ng-model="formData.name"
+                           id="sticker-name"
+                           placeholder="Give your sticker a name."
+                           required
+                            />
+                </div>
+
+                <div class="form-group"  ng-class="{'has-error': errors.categoryId}">
                     <label for="sticker-category"><i class="fa fa-folder"></i> Category</label>
+                    <span ng-if="errors.categoryId" class="help-block">{{ errors.categoryId.join(' ') }}</span>
                     <select
                            class="form-control"
                            ng-model="formData.categoryId"
@@ -22,18 +40,6 @@
                            >
                         <option ng-repeat="(id, name) in categories" value="{{id}}" ng-bind-html="name"></option>
                     </select>
-                </div>
-
-                <div class="form-group">
-                    <span class="help-block pull-right">Keep it simple, like "Stop Smoking" or "Visit Beijing".</span>
-                    <label for="sticker-name"><i class="fa fa-trophy"></i> What's the goal?</label>
-                    <input type="text"
-                           class="form-control"
-                           ng-model="formData.name"
-                           id="sticker-name"
-                           placeholder="Give your sticker a name."
-                           required
-                            />
                 </div>
 
             </div>

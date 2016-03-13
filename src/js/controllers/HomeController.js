@@ -44,7 +44,7 @@ app.controller(
 
         $scope.searchLoading = false;
 
-        var debouncedSearch = debounce(300, function() {
+        var debouncedSearch = debounce(300, function () {
             if ($scope.searchData.value) {
                 $scope.searchOpen = true;
                 $scope.searchLoading = true;
@@ -107,9 +107,9 @@ app.controller(
                 inputs: {
                     name: name,
                 }
-            }).then(function(modal) {
+            }).then(function (modal) {
 
-                 modal.close.then(function (sticker) {
+                modal.close.then(function (sticker) {
                     if (sticker) {
                         $state.go('sticker', {slug: sticker.slug});
                     }
@@ -164,33 +164,32 @@ app.controller(
 
         };
 
-
         /*$scope.taskSearchUrl = apiUrl + '/tasks/search?q=';
 
-        $scope.onTaskSelect = function (object) {
-            console.log(object);
-            if (object.hasOwnProperty('new')) {
+         $scope.onTaskSelect = function (object) {
+         console.log(object);
+         if (object.hasOwnProperty('new')) {
 
-                ModalService.showModal({
-                    templateUrl: 'views/modals/task-form.html',
-                    controller: 'TaskFormController',
-                    inputs: {
-                        name: object.new,
-                    }
-                }).then(function(modal) {
+         ModalService.showModal({
+         templateUrl: 'views/modals/task-form.html',
+         controller: 'TaskFormController',
+         inputs: {
+         name: object.new,
+         }
+         }).then(function(modal) {
 
-                     modal.close.then(function (task) {
-                        if (task) {
-                            $state.go('task', {slug: task.slug});
-                        }
-                    });
+         modal.close.then(function (task) {
+         if (task) {
+         $state.go('task', {slug: task.slug});
+         }
+         });
 
-                });
+         });
 
-            } else {
-                $state.go('task', {slug: object.originalObject.slug});
-            }
-        };*/
+         } else {
+         $state.go('task', {slug: object.originalObject.slug});
+         }
+         };*/
 
         /**
          * Recent Posts

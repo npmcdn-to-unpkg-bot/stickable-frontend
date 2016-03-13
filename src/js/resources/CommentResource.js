@@ -35,17 +35,17 @@ app.factory(
 
                 getLikes: {
                     url: apiUrl + 'comments/:commentId/likes',
-                    method:'GET'
+                    method: 'GET'
                 },
 
                 likeComment: {
                     url: apiUrl + 'comments/:commentId/likes',
-                    method:'POST'
+                    method: 'POST'
                 },
 
                 unlikeComment: {
                     url: apiUrl + 'comments/:commentId/likes',
-                    method:'DELETE'
+                    method: 'DELETE'
                 }
 
             }

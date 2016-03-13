@@ -12,7 +12,7 @@ app.controller(
         $scope.posts = null;
         UserResource.get(
             {username: $scope.username},
-            function(user) {
+            function (user) {
                 $scope.user = user;
 
                 $rootScope.pageTitle = user.username;

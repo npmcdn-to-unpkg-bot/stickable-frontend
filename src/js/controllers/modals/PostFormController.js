@@ -11,7 +11,7 @@ app.controller(
             text: '',
         };
 
-        $scope.setPostType = function($event, postType) {
+        $scope.setPostType = function ($event, postType) {
             preventDefault($event);
 
             $scope.postType = postType === $scope.postType ? '' : postType;

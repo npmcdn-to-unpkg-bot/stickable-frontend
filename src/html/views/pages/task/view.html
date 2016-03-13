@@ -110,9 +110,9 @@
                         </p>
                     </div>
 
-                    <div class="padded-box">
-                        <p class="white">{{ task.description }}</p>
-                        <ul class="task-ratings white">
+                    <div class="padded-box" ng-if="task.description || task.time || task.cost || task.rating">
+                        <p class="white" ng-if="task.description">{{ task.description }}</p>
+                        <ul class="task-ratings white" ng-if="task.time || task.cost || task.rating">
                             <li ng-if="task.time"><strong>Time Needed</strong> <i class="fa fa-fw fa-clock-o" ng-repeat="n in [] | range:task.time"></i> <small>{{ times[(task.time - 1)] }}</small></li>
                             <li ng-if="task.cost"><strong>Cost</strong> <i class="fa fa-fw fa-usd" ng-repeat="n in [] | range:task.cost"></i> <small>{{ costs[(task.cost - 1)] }}</small></li>
                             <li ng-if="task.rating"><strong>Rating</strong> <i class="fa fa-fw fa-star" ng-repeat="n in [] | range:task.rating"></i> <small>{{ ratings[(task.rating - 1)] }}</small></li>

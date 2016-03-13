@@ -15,12 +15,10 @@ app.factory(
                 /**
                  * Get recent submission posts (for homepage)
                  */
-                query: {
-
-                },
+                query: {},
 
                 getTaskPosts: {
-                  method: 'GET',
+                    method: 'GET',
                     url: apiUrl + 'tasks/:taskSlug/posts',
                 },
 
@@ -36,21 +34,20 @@ app.factory(
                     url: apiUrl + 'posts/:postSlug',
                     cache: true,
                     /*transformResponse: function (data) {
-                        data = angular.fromJson(data);
-                        return data.post;
-                    }*/
+                     data = angular.fromJson(data);
+                     return data.post;
+                     }*/
                 },
 
                 likePost: {
                     url: apiUrl + 'posts/:id/likes',
-                    method:'POST'
+                    method: 'POST'
                 },
 
                 unlikePost: {
                     url: apiUrl + 'posts/:id/likes',
-                    method:'DELETE'
+                    method: 'DELETE'
                 }
-
 
             }
         );

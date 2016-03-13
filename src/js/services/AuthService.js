@@ -65,7 +65,7 @@ app.service(
                 console.log('onLogin', newSession);
 
                 // Tell everybody we're logged in
-                $rootScope.$broadcast('login', {user: newSession.user, token:newSessionToken});
+                $rootScope.$broadcast('login', {user: newSession.user, token: newSessionToken});
             },
 
             logout: function () {

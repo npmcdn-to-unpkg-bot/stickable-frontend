@@ -2,10 +2,10 @@
 
 angular.module('markdown', [])
     .filter(
-        'markdown',
-        function () {
-            return function (text) {
-                return marked(text || '');
-            };
-        }
-    );
+    'markdown',
+    function () {
+        return function (text) {
+            return marked(text || '');
+        };
+    }
+);

@@ -92,7 +92,7 @@ app.controller(
             $scope.stage++;
         };
 
-        $scope.setPrivate = function($event, val) {
+        $scope.setPrivate = function ($event, val) {
             preventDefault($event);
 
             $scope.formData.private = val;
@@ -134,7 +134,7 @@ app.controller(
                 },
                 $scope.formData,
                 function (response) {
-                     $scope.submitting = false;
+                    $scope.submitting = false;
                     console.log(response);
                     alertSuccess("Submission saved");
                 },
@@ -155,7 +155,6 @@ app.controller(
                     } else {
                         alertError(response.data.message);
                     }
-
 
                 }
             );

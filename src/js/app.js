@@ -167,19 +167,19 @@ app.run(function ($rootScope, $state, AuthService, UserNotificationsResource, No
     FastClick.attach(document.body);
 
     moment.locale('en', {
-        relativeTime : {
+        relativeTime: {
             future: "in %s",
-            past:   "%s",
-            s:  "1s",
-            m:  "1m",
+            past: "%s",
+            s: "1s",
+            m: "1m",
             mm: "%dm",
-            h:  "1h",
+            h: "1h",
             hh: "%dh",
-            d:  "1d",
+            d: "1d",
             dd: "%dd",
-            M:  "1mo",
+            M: "1mo",
             MM: "%dmo",
-            y:  "1y",
+            y: "1y",
             yy: "%dy"
         }
     });
@@ -247,7 +247,6 @@ app.run(function ($rootScope, $state, AuthService, UserNotificationsResource, No
     $rootScope.costs = ['Free', '< $10', '$10 - $50', '$50 - $200', '> $200'];
     $rootScope.times = ['< 15 mins', '< 1 hr', '1 - 4 hrs', '1 day', '> 1 day'];
     $rootScope.ratings = ['Sucked', 'Meh', 'Good', 'Great', 'Life Changing'];
-
 
     $rootScope.notificationsPreview = 0;
     $rootScope.notificationsOpen = false;

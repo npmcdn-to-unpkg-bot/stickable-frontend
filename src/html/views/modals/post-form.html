@@ -2,17 +2,17 @@
 
     <div class="modal-content">
 
-        <div class="modal-header">
-            <button ng-click="close()" class="modal-close-btn">
-                <i class="fa fa-times"></i>
-            </button>
-
-            <h4 class="modal-title">Add A Post</h4>
-        </div>
+        <button ng-click="close()" class="modal-close-btn">
+            <i class="fa fa-times"></i>
+        </button>
 
         <form class="form" ng-submit="submit()">
 
             <div class="modal-body">
+
+                <h2>Add A Post</h2>
+
+                <div class="alert alert-info"><i class="fa fa-info-circle"></i> This is for asking questions or giving tips about the <strong>{{ task.name }}</strong> task. If you want to show that you've completed the task, close this popup and click <em>I've done it</em> instead.</div>
 
                 <!--<div class="form-group">
 

@@ -7,7 +7,7 @@ app.directive('stComments', function factory() {
         },
         controller: function ($scope, CommentResource) {
 
-            $scope.likeComment = function($event, comment) {
+            $scope.likeComment = function ($event, comment) {
                 preventDefault($event);
 
                 comment.liked = comment.liked ? false : true;
@@ -46,7 +46,7 @@ app.directive('stComments', function factory() {
             };
 
         },
-        template: function($scope) {
+        template: function ($scope) {
             return '<div class="comment-include" ng-repeat="(index, comment) in comments" ng-include="\'views/partials/comment.html\'"></div>';
         }
     };

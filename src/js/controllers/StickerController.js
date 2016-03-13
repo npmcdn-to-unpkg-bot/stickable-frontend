@@ -6,6 +6,7 @@ app.controller(
 
         $scope.sticker = null;
         $scope.progress = null;
+        $scope.taskPadding = 0;
         StickerResource.get({slug: $stateParams.slug}, function (sticker) {
 
             $rootScope.loading = false;
@@ -20,9 +21,10 @@ app.controller(
 
             $scope.loadDoers();
             $scope.earners = StickerResource.getEarners({slug: sticker.slug});
+            $scope.taskPadding = Math.max(0, 6 - sticker.tasks.length);
         });
 
-        $scope.loadDoers = function() {
+        $scope.loadDoers = function () {
             StickerResource.getDoers({slug: $scope.sticker.slug}, function (result) {
                 $scope.doers = result;
             });
@@ -62,38 +64,7 @@ app.controller(
 
         };
 
-        /*$scope.addToDo = function () {
-            console.log('addToDo');
-            ToDoResource.save(
-                {username: $rootScope.currentUser.username},
-                {stickerId: $scope.sticker.id},
-                function (result) {
-                    alertSuccess('Added ' + $scope.sticker.name + ' to your To Do List');
-                    $scope.sticker.isOnToDoList = true;
-                    $scope.loadDoers();
-                },
-                function (result) {
-                    alertError(result.data.message);
-                }
-            );
-        };
-
-        $scope.removeToDo = function () {
-            ToDoResource.delete(
-                {username: $rootScope.currentUser.username},
-                {stickerId: $scope.sticker.id},
-                function (result) {
-                    alertSuccess('Removed ' + $scope.sticker.name + ' from your To Do List');
-                    $scope.sticker.isOnToDoList = false;
-                    $scope.loadDoers();
-                },
-                function (result) {
-                    alertError(result.data.message);
-                }
-            );
-        };*/
-
-        $scope.likeEarner = function($event, earner) {
+        $scope.likeEarner = function ($event, earner) {
             preventDefault($event);
 
             earner.likeClicked = true;
@@ -110,7 +81,7 @@ app.controller(
             earner.likeCount = earner.pivot.likeCount;
         };
 
-        $scope.likeDoer = function($event, doer) {
+        $scope.likeDoer = function ($event, doer) {
             preventDefault($event);
 
             doer.likeClicked = true;
@@ -136,9 +107,9 @@ app.controller(
                 inputs: {
                     sticker: $scope.sticker
                 }
-            }).then(function(modal) {
+            }).then(function (modal) {
 
-                 modal.close.then(function (task) {
+                modal.close.then(function (task) {
                     if (task) {
                         $state.go('task', {slug: task.slug});
                     }

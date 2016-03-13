@@ -44,7 +44,7 @@ app.controller(
                 $scope.hasNewImage = dropzone.files.length > 0;
                 $scope.formData.imageId = false;
                 try {
-                    if(!$scope.$$phase) {
+                    if (!$scope.$$phase) {
                         $scope.$apply();
                     }
                 } catch (e) {

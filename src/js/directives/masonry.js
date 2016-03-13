@@ -1,10 +1,10 @@
-(function() {
+(function () {
     "use strict";
 
-    angular.module('masonry', ['ng']).directive('masonry', function($timeout) {
+    angular.module('masonry', ['ng']).directive('masonry', function ($timeout) {
         return {
             restrict: 'AC',
-            link: function(scope, elem, attrs) {
+            link: function (scope, elem, attrs) {
                 var container = elem[0];
                 var options = angular.extend({
                     itemSelector: '.item'
@@ -13,11 +13,11 @@
                 var masonry = scope.masonry = new Masonry(container, options);
 
                 var debounceTimeout = 0;
-                scope.update = function() {
+                scope.update = function () {
                     if (debounceTimeout) {
                         $timeout.cancel(debounceTimeout);
                     }
-                    debounceTimeout = $timeout(function() {
+                    debounceTimeout = $timeout(function () {
                         debounceTimeout = 0;
 
                         masonry.reloadItems();
@@ -26,41 +26,41 @@
                     }, 120);
                 };
 
-                scope.removeBrick = function() {
-                    $timeout(function() {
+                scope.removeBrick = function () {
+                    $timeout(function () {
                         masonry.reloadItems();
                         masonry.layout();
-                   }, 500);
+                    }, 500);
                 };
 
-                scope.appendBricks = function(ele) {
+                scope.appendBricks = function (ele) {
                     masonry.appended(ele);
                 };
 
-                scope.$on('masonry.layout', function() {
+                scope.$on('masonry.layout', function () {
                     masonry.layout();
                 });
 
                 scope.update();
             }
         };
-    }).directive('masonryImage', function() {
+    }).directive('masonryImage', function () {
         return {
             restrict: 'AC',
-            link: function(scope, elem) {
+            link: function (scope, elem) {
                 elem.css('visibility', 'hidden');
                 var master = elem.closest('*[masonry]').scope(),
                     update = master.update,
                     removeBrick = master.removeBrick,
                     appendBricks = master.appendBricks;
                 if (update) {
-                    imagesLoaded( elem.get(0), update);
+                    imagesLoaded(elem.get(0), update);
                     elem.ready(update);
                 }
                 if (appendBricks) {
-                    imagesLoaded( elem.get(0), appendBricks(elem));
+                    imagesLoaded(elem.get(0), appendBricks(elem));
                 }
-                scope.$on('$destroy', function() {
+                scope.$on('$destroy', function () {
                     if (removeBrick) {
                         removeBrick();
                     }

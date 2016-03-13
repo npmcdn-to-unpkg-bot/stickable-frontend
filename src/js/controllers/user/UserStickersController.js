@@ -13,7 +13,7 @@ app.controller(
                 $scope.user = result.user;
                 $scope.stickers = result.stickers;
 
-                $rootScope.pageTitle = result.user.possessiveName+' Stickers';
+                $rootScope.pageTitle = result.user.possessiveName + ' Stickers';
             }
         );
     }
